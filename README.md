@@ -40,6 +40,13 @@ Link to Project Board used for application development - [https://github.com/Hol
 
 ## User Story
 
+```
+AS a user who needs to organize a secret santa gift exchange
+I WANT to be able to use an online application
+SO THAT I can prepare an awesome holiday event for friends and family
+
+```
+
 ---
 
 ## Concept
