@@ -20,7 +20,13 @@
 
 ## Project Description
 
-The 2020 holiday season is quickly approaching. This Secret Santa App will help orchestrate the holiday fan-favorite game, Secret Santa!
+The 2020 holiday season is quickly approaching! This Secret Santa App will help your orchestrate the holiday fan-favorite game, Secret Santa! With this app, the user will be able to do the following:
+
+- Schedule a date for the secret santa gift exchange event
+- Invite family and friends to join in on the holiday fun
+- Keep track of who accepted the secret santa invite
+- Discretely assign a single participant to each individual registered for the event
+- Allow participants to create a list of gift ideas they would like to recieve
 
 ---
 
