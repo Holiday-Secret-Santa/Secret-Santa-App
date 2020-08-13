@@ -32,6 +32,10 @@ The 2020 holiday season is quickly approaching! This Secret Santa App will help 
 
 ## Reference Links
 
+Link to GitHub Repo used for application development- [https://github.com/Holiday-Secret-Santa/Secret-Santa-App](https://github.com/Holiday-Secret-Santa/Secret-Santa-App)
+
+Link to Project Board used for application development - [https://github.com/Holiday-Secret-Santa/Secret-Santa-App/projects/1](https://github.com/Holiday-Secret-Santa/Secret-Santa-App/projects/1)
+
 ---
 
 ## User Story
