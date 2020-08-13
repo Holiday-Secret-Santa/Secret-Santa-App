@@ -8,10 +8,38 @@
 
 ## Table of Contents
 
+---
+
 ## Project Description
 
 The 2020 holiday season is quickly approaching. This Secret Santa App will help orchestrate the holiday fan-favorite game, Secret Santa!
 
+---
+
 ## Reference Links
 
+---
+
 ## User Story
+
+---
+
+## Concept
+
+### Actions Diagram
+
+### Design
+
+---
+
+## Application MVP
+
+---
+
+## Technologies
+
+---
+
+## Installation
+
+---
