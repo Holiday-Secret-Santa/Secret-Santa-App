@@ -44,7 +44,6 @@ Link to Project Board used for application development - [https://github.com/Hol
 AS a user who needs to organize a secret santa gift exchange
 I WANT to be able to use an online application
 SO THAT I can prepare an awesome holiday event for friends and family
-
 ```
 
 ---
@@ -53,7 +52,13 @@ SO THAT I can prepare an awesome holiday event for friends and family
 
 ### Actions Diagram
 
+### ER Diagram
+
+Once available, all ER diagrams for any database used for this application will be included in this section.
+
 ### Design
+
+Once available, all whiteboard designs will be listed under this section.
 
 ---
 
