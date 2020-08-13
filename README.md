@@ -52,6 +52,10 @@ SO THAT I can prepare an awesome holiday event for friends and family
 
 ### Actions Diagram
 
+The flow chart below outlines the basic functionality of the secret santa app.
+
+![Secret Santa App Flow Chart](./imgs/readme/conceptMap.png)
+
 ### ER Diagram
 
 Once available, all ER diagrams for any database used for this application will be included in this section.
