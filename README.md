@@ -12,6 +12,12 @@
 - [Reference Links](#reference-links)
 - [User Story](#user-story)
 - [Concept](#concept)
+- [Design](#design)
+
+  - [Actions Diagram](#actions-diagram)
+  - [Sequence Diagrams](#sequence-diagrams)
+  - [ER Diagram](#er-diagram)
+
 - [Application MVP](#application-mvp)
 - [Technologies](#technologies)
 - [Installation](#installation)
@@ -50,17 +56,21 @@ SO THAT I can prepare an awesome holiday event for friends and family
 
 ## Concept
 
+## Design
+
 ### Actions Diagram
 
 The flow chart below outlines the basic functionality of the secret santa app.
 
 ![Secret Santa App Flow Chart](./imgs/readme/conceptMap.png)
 
+### Sequence Diagrams
+
 ### ER Diagram
 
 Once available, all ER diagrams for any database used for this application will be included in this section.
 
-### Design
+### Wireframes
 
 Once available, all whiteboard designs will be listed under this section.
 
@@ -92,7 +102,6 @@ Here is a list of the core technologies we plan to use for the development of th
 - Node.js _(specific packages will be identifed at a later date)_
 - Mongo or SQL _(team will choose at a later date)_
 - Moment.js
-
 
 ---
 
