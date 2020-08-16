@@ -17,6 +17,7 @@
   - [Actions Diagram](#actions-diagram)
   - [Sequence Diagrams](#sequence-diagrams)
   - [ER Diagram](#er-diagram)
+  - []
 
 - [Application MVP](#application-mvp)
 - [Technologies](#technologies)
@@ -68,7 +69,9 @@ The flow chart below outlines the basic functionality of the secret santa app.
 
 ### ER Diagram
 
-Once available, all ER diagrams for any database used for this application will be included in this section.
+The entity relationship **(ER) diagram** below provides a visual representation of how the data is saved inside the application's back-end database. This diagram also demonstrates the relationship between each database table.
+
+_ER Diagram here_
 
 ### Wireframes
 
