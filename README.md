@@ -161,7 +161,7 @@ Once available, this section will be updated to include installation instruction
 - [Krystal Duran](https://github.com/KEDuran)
 - [Yadira Tamarit](https://github.com/ystamaritq)
 - [Joshua Martinez](https://github.com/JDMartinez1531)
-- [Erik ](https://github.com/CodingErik)
+- [Erik De Luna](https://github.com/CodingErik)
 
 ---
 
