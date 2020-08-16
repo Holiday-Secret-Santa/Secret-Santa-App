@@ -88,6 +88,18 @@ Sequence of events for the all key MVP features. Visualize interaction between t
 
 [Sequence Diagram Track of Invitations](http://wire-dev-tools.mybluemix.net/sequence/?d=Title%3A+User+Keep+Track+of+Invitations%0AUser--%3EGuest%3A+Sends+Invite+Email+through+System%0AGuest--%3EEmail%3A+Clicks+link+on+email+invite%0AEmail--%3EUser+Interface%3A+Open+accepting+page%0AGuest--%3EUser+Interface%3A+Clicks+accept+invite%0AUser+Interface--%3EServer+API%3A+Calls+accept+invite+API%0AServer+API--%3EServer+API%3A+Validates+Data%0ANote+right+of+Server+API%3A+If+error%2C+return+with+error%0AServer+API--%3EDatabase%3A+Update+guest+invite+to+accepted%0ADatabase--%3EServer+API%3A+Saved+guest+invite%0AServer+API--%3EEmail+Platform%3A+Send+thanks+for+accepting+invite+and+calendar+reminder+email%0AServer+API--%3EUser+Interface%3A+Saved+guest+json%0AUser+Interface--%3EUser+Interface%3A+Show+success+message%0AUser+Interface--%3EGuest%3A+Asks+to+login+or+register+for+account%0ANote+right+of+Guest%3A+Only+logged+in+guests+can+add+gift+ideas%0AUser--%3EUser+Interface%3ASee+List+of+Guests%0AUser+Interface--%3EServer+API%3A+Calls+list+guests+API%0AServer+API--%3EDatabase%3A+Get+guest+list+w%2F+status%0ADatabase--%3EServer+API%3A+List+of+guests+w%2F+status%0AServer+API--%3EUser+Interface%3A+List+of+guests+w%2F+status%0AUser+Interface--%3EUser%3A+Display+guests+with+status&t=simple)
 
+**Flow to Manually Assign Gift Exchange Guests**
+
+<img src="./imgs/readme/guest-assign-manual.svg">
+
+[Sequence Diagram Manually Assign Gift Exchange Guests](http://wire-dev-tools.mybluemix.net/sequence/?d=Title%3A+User+Manually+Assign+Gift+Exchange+Guests%0AUser--%3EUser+Interface%3A+Click+Assign+Exchange+Guests+button%0AUser+Interface--%3EUser%3A+Display+Assign+Exchange+Guests+Page%0AUser--%3EUser+Interface%3A+Select+guest+and+gifting+guest%2C+click+save%0AUser+Interface--%3EUser+Interface%3A+Validates+Data%0ANote+right+of+User+Interface%3A+If+error%2C+display+message%0AUser+Interface--%3EServer+API%3A+Calls+assign+exchange+guest+API%0AServer+API--%3EServer+API%3A+Validates+Data%0ANote+right+of+Server+API%3A+If+error%2C+return+with+error%0AServer+API--%3EDatabase%3A+Assign+gifting+guest+to+guest%0ADatabase--%3EServer+API%3A+Saved+guest%0AServer+API--%3EEmail+Platform%3A+Send+email+to+gifting+guest+with+assignment+details%0AServer+API--%3EUser+Interface%3A+Saved+guest+json%0AUser+Interface--%3EUser+Interface%3A+Show+success+message&t=simple)
+
+**Flow to use System to Auto Assign Gift Exchange Guests**
+
+<img src="./imgs/readme/guest-assign-system.svg">
+
+[Sequence Diagram System Assign Gift Exchange Guests](http://wire-dev-tools.mybluemix.net/sequence/?d=Title%3A+System+Auto+Assign+Gift+Exchange+Guests%0AUser--%3EUser+Interface%3A+Click+Assign+Exchange+Guests+button%0AUser+Interface--%3EUser%3A+Display+Assign+Exchange+Guests+Page%0AUser--%3EUser+Interface%3A+Select+system+auto+assignment%0AUser+Interface--%3EUser+Interface%3A+Validates+Data%0ANote+right+of+User+Interface%3A+If+error%2C+display+message%0AUser+Interface--%3EUser+Interface%3A+Confirms+this+will+override+previous+assignments%0AUser+Interface--%3EServer+API%3A+Calls+auto+assign+guests+API%0AServer+API--%3EServer+API%3A+Validates+Data%0ANote+right+of+Server+API%3A+If+error%2C+return+with+error%0A%0AServer+API--%3EDatabase%3A+Assign+gifting+guest+to+guest%0ADatabase--%3EServer+API%3A+Saved+guest%0AServer+API--%3EEmail+Platform%3A+Send+email+to+gifting+guest+with+assignment+details%0AServer+API--%3EUser+Interface%3A+Saved+guest+json%0AUser+Interface--%3EUser+Interface%3A+Show+success+message&t=simple)
+
 ### ER Diagram
 
 The entity relationship **(ER) diagram** below provides a visual representation of how the data is saved inside the application's back-end database. This diagram also demonstrates the relationship between each database table.
@@ -109,6 +121,7 @@ Here is a list of the MVP requirements for this app. Please note that these are 
 - The User can invite family and friends to join in on the holiday fun
 - The User can keep track of who accepted the secret santa invite
 - The User can discretely assign a single participant to each individual registered for the event
+  - System offers option to do a random assignment
 - The System allows participants to create a list of gift ideas they would like to recieve
 
 ---
