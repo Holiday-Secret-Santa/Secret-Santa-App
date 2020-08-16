@@ -20,6 +20,7 @@
 - [Application MVP](#application-mvp)
 - [Technologies](#technologies)
 - [Installation](#installation)
+- [Team Members](#team-members)
 
 ---
 
@@ -55,6 +56,8 @@ SO THAT I can prepare an awesome holiday event for friends and family
 
 ## Concept
 
+_App concept placeholder _
+
 ## Design
 
 ### Actions Diagram
@@ -64,6 +67,12 @@ The flow chart below outlines the basic functionality of the secret santa app.
 ![Secret Santa App Flow Chart](./imgs/readme/conceptMap.png)
 
 ### Sequence Diagrams
+
+Sequence of events for the all key MVP features. Visualize interaction between the different components of the application.
+
+**Flow to Create Secret Santa Gift Exchange Event**
+
+[Sequence Diagram Link](http://wire-dev-tools.mybluemix.net/sequence/?d=Title%3A+Create+Secret+Santa+Gift+Exchange+Event%0AUser--%3EUser+Interface%3A+Click+Create+button%0AUser+Interface--%3EUser%3A+Display+Exchange+Page%0AUser--%3EUser+Interface%3A+Enters+Data+and+Submit%0AUser+Interface--%3EUser+Interface%3A+Validates+Data%0ANote+right+of+User+Interface%3A+If+error%2C+display+message%0AUser+Interface--%3EServer+API%3A+Calls+create+event+API%0AServer+API--%3EServer+API%3A+Validates+Data%0ANote+right+of+Server+API%3A+If+error%2C+return+with+error%0AServer+API--%3EDatabase%3A+Save+new+event%0ADatabase--%3EServer+API%3A+Saved+event%0AServer+API--%3EUser+Interface%3A+Saved+event+json%0AUser+Interface--%3EUser+Interface%3A+Show+success+message%0AUser+Interface--%3EUser%3A+Redirect+to+list+of+events+page%0A++++++++++++&t=simple)
 
 ### ER Diagram
 
