@@ -13,12 +13,10 @@
 - [User Story](#user-story)
 - [Concept](#concept)
 - [Design](#design)
-
   - [Actions Diagram](#actions-diagram)
   - [Sequence Diagrams](#sequence-diagrams)
   - [ER Diagram](#er-diagram)
-  - []
-
+  - [Wireframes](#wireframes)
 - [Application MVP](#application-mvp)
 - [Technologies](#technologies)
 - [Installation](#installation)
