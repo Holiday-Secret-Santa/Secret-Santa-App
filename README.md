@@ -100,6 +100,12 @@ Sequence of events for the all key MVP features. Visualize interaction between t
 
 [Sequence Diagram System Assign Gift Exchange Guests](http://wire-dev-tools.mybluemix.net/sequence/?d=Title%3A+System+Auto+Assign+Gift+Exchange+Guests%0AUser--%3EUser+Interface%3A+Click+Assign+Exchange+Guests+button%0AUser+Interface--%3EUser%3A+Display+Assign+Exchange+Guests+Page%0AUser--%3EUser+Interface%3A+Select+system+auto+assignment%0AUser+Interface--%3EUser+Interface%3A+Validates+Data%0ANote+right+of+User+Interface%3A+If+error%2C+display+message%0AUser+Interface--%3EUser+Interface%3A+Confirms+this+will+override+previous+assignments%0AUser+Interface--%3EServer+API%3A+Calls+auto+assign+guests+API%0AServer+API--%3EServer+API%3A+Validates+Data%0ANote+right+of+Server+API%3A+If+error%2C+return+with+error%0A%0AServer+API--%3EDatabase%3A+Assign+gifting+guest+to+guest%0ADatabase--%3EServer+API%3A+Saved+guest%0AServer+API--%3EEmail+Platform%3A+Send+email+to+gifting+guest+with+assignment+details%0AServer+API--%3EUser+Interface%3A+Saved+guest+json%0AUser+Interface--%3EUser+Interface%3A+Show+success+message&t=simple)
 
+**Flow for Guests to Add Gift Ideas**
+
+<img src="./imgs/readme/guest-gift-ideas.svg">
+
+[Sequence Diagram Guest Adds Gift Ideas](http://wire-dev-tools.mybluemix.net/sequence/?d=Title%3A+Guest+Adds+Gift+Ideas%0AGuest--%3EUser+Interface%3A+Guest+click+Events+Invitations+List%0AUser+Interface--%3EServer+API%3A+Calls+get+guest+events+API%0AServer+API--%3EDatabase%3A+Read+guest+events%0ADatabase--%3EServer+API%3A+Events+List%0AServer+API--%3EUser+Interface%3A+Events+List+json%0AUser+Interface--%3EGuest%3A+Display+Page+with+list+of+events+user+is+invited+as+guest%0AGuest--%3EUser+Interface%3A+Select+an+event+to+edit+gift+ideas%0AUser+Interface--%3EServer+API%3A+Calls+get+gift+ideas+details+API%0AServer+API--%3EDatabase%3A+Reads+gifts+ideas+for+event%0ADatabase--%3EServer+API%3A+Gifts+idea%0AServer+API--%3EUser+Interface%3A+Gifts+ideas+json%0AUser+Interface--%3EGuest%3A+Display+page+with+gifts+ideas%0AGuest--%3EUser+Interface%3A+Edit+ideas%0AGuest--%3EUser+Interface%3A+Search+for+ideas%0AUser+Interface--%3EServer+API%3A+Call+search+gifts+API%0AServer+API--%3EAmazon%3A+Search+gifts%0AServer+API--%3EUser+Interface%3A+List+of+products%0AUser+Interface--%3EGuest%3A+Display+gifts+results%0AGuest--%3EUser+Interface%3A+Pick+one+or+more+gifts%0AGuest--%3EUser+Interface%3A+Save+gifts+ideas%0AUser+Interface--%3EUser+Interface%3A+Validates+Data%0ANote+right+of+User+Interface%3A+If+error%2C+display+message%0AUser+Interface--%3EServer+API%3A+Calls+Save+gifts+ideas%0AServer+API--%3EServer+API%3A+Validates+Data%0ANote+right+of+Server+API%3A+If+error%2C+return+with+error%0AServer+API--%3EDatabase%3A+Save+gifts+ideas%0ADatabase--%3EServer+API%3A+Saved+gifts+ideas%0AServer+API--%3EEmail+Platform%3A+Send+email+to+gifting+guest+with+ideas+details%0AServer+API--%3EUser+Interface%3A+Success+result%0AUser+Interface--%3EUser+Interface%3A+Show+success+message&t=simple)
+
 ### ER Diagram
 
 The entity relationship **(ER) diagram** below provides a visual representation of how the data is saved inside the application's back-end database. This diagram also demonstrates the relationship between each database table.
@@ -154,7 +160,6 @@ Once available, this section will be updated to include installation instruction
 
 - [Krystal Duran](https://github.com/KEDuran)
 - [Yadira Tamarit](https://github.com/ystamaritq)
-- [Joshua Martinez](https://github.com/JDMartinez1531)
 - [Joshua Martinez](https://github.com/JDMartinez1531)
 - [Erik ](https://github.com/CodingErik)
 
