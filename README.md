@@ -60,7 +60,12 @@ SO THAT I can prepare an awesome holiday event for friends and family
 
 The flow chart below outlines the basic functionality of the secret santa app.
 
-![Secret Santa App Flow Chart](./imgs/readme/conceptMap.png)
+<details>
+  <summary>Click to expand!</summary>
+  
+  ![Secret Santa App Flow Chart](./imgs/readme/conceptMap.png)
+  
+</details>
 
 ### Sequence Diagrams
 
