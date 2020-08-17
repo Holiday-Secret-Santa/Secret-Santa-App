@@ -24,7 +24,7 @@
 
 ---
 
-## Project Description
+## Project Concept
 
 The 2020 holiday season is quickly approaching! This Secret Santa App will help your orchestrate the holiday fan-favorite game, Secret Santa! With this app, the user will be able to do the following:
 
@@ -53,10 +53,6 @@ SO THAT I can prepare an awesome holiday event for friends and family
 ```
 
 ---
-
-## Concept
-
-_App concept placeholder _
 
 ## Design
 
