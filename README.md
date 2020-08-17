@@ -110,11 +110,11 @@ _ER Diagram here_
 
 ### Wireframes
 
-### Wireframes for Homepage
+#### Wireframes for Homepage
 
-### Wirefreames for Event Organizer
+#### Wirefreames for Event Organizer
 
-### Wireframes for Invited Participant
+#### Wireframes for Invited Participant
 
 ---
 
