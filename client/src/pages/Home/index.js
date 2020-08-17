@@ -7,7 +7,7 @@ const HomePage = () => {
 		<Container fluid className="p-0">
 			<Row>
 				<Col>
-					<h1>Welcome to Express React Auth0 Template App</h1>
+					<h1>Welcome to Secret Santa App</h1>
 				</Col>
 			</Row>
 		</Container>
