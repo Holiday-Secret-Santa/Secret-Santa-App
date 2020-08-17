@@ -110,7 +110,11 @@ _ER Diagram here_
 
 ### Wireframes
 
-Once available, all whiteboard designs will be listed under this section.
+### Wireframes for Homepage
+
+### Wirefreames for Event Organizer
+
+### Wireframes for Invited Participant
 
 ---
 
