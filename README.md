@@ -8,16 +8,15 @@
 
 ## Table of Contents
 
-- [Project Description](#project-description)
+- [Project Concept](#project-concept)
 - [Reference Links](#reference-links)
 - [User Story](#user-story)
-- [Concept](#concept)
+- [Application MVP](#application-mvp)
 - [Design](#design)
   - [Actions Diagram](#actions-diagram)
   - [Sequence Diagrams](#sequence-diagrams)
   - [ER Diagram](#er-diagram)
   - [Wireframes](#wireframes)
-- [Application MVP](#application-mvp)
 - [Technologies](#technologies)
 - [Installation](#installation)
 - [Team Members](#team-members)
