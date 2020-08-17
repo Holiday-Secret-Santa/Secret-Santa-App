@@ -1,11 +1,11 @@
 import React from "react";
 import { Nav, Navbar } from "react-bootstrap";
-import "./style.css";
 import LoginLink from "../LoginLink";
 import SignupLink from "./../SignupLink";
 import LogoutLink from "../LogoutLink";
 import ProfileLink from "../ProfileLink";
 import { useAuth0 } from "@auth0/auth0-react";
+import "./style.css";
 
 //  Added nav bar component placeholder with Auth0 validations
 const NavigationBar = () => {
