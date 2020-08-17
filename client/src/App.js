@@ -18,9 +18,9 @@ const App = () => {
 	// placeholder app router with Auth0 integration and external home page that will be replace it by the first wireframe
 	return (
 		<Router>
-			{/* no private route */}
+			{/* no private routes must be place it inside Route*/}
 			<Route exact path="/" component={HomePage} />
-			{/* private route */}
+			{/* private routes must be place it inside PrivateRoute */}
 			<PrivateRoute exact path="/events" component={NavigationBar} />
 		</Router>
 	);
