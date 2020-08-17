@@ -157,6 +157,12 @@ _ER Diagram here_
 ### Wireframes
 
 #### Wireframes for Homepage
+<details>
+<summary> 🎨 Click to expand the homepage wireframe.</summary>
+
+  <img src="./imgs/readme/wireframes/wireframe-homepage.png">
+
+</details>
 
 #### Wirefreames for Event Organizer
 
