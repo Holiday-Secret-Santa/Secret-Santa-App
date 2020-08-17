@@ -64,7 +64,7 @@ The flow chart below outlines the basic functionality of the secret santa app.
 
 ### Sequence Diagrams
 
-Sequence of events for the all key MVP features. Visualize interaction between the different components of the application.
+The diagrams listed below outline the sequence of events required for the all key MVP features. These diagrams help visualize the interaction between the different components of the application.
 
 **Flow to Create Secret Santa Gift Exchange Event**
 
