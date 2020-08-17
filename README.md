@@ -54,6 +54,20 @@ SO THAT I can prepare an awesome holiday event for friends and family
 
 ---
 
+## Application MVP
+
+Here is a list of the MVP requirements for this app. Please note that these are the same core functionality items listed in the project description section.
+
+- The User can _register_, _login_ and _logout_
+- The User can schedule a date for the secret santa gift exchange event
+- The User can invite family and friends to join in on the holiday fun
+- The User can keep track of who accepted the secret santa invite
+- The User can discretely assign a single participant to each individual registered for the event
+  - System offers option to do a random assignment
+- The System allows participants to create a list of gift ideas they would like to recieve
+
+---
+
 ## Design
 
 ### Actions Diagram
@@ -146,20 +160,6 @@ _ER Diagram here_
 #### Wirefreames for Event Organizer
 
 #### Wireframes for Invited Participant
-
----
-
-## Application MVP
-
-Here is a list of the MVP requirements for this app. Please note that these are the same core functionality items listed in the project description section.
-
-- The User can _register_, _login_ and _logout_
-- The User can schedule a date for the secret santa gift exchange event
-- The User can invite family and friends to join in on the holiday fun
-- The User can keep track of who accepted the secret santa invite
-- The User can discretely assign a single participant to each individual registered for the event
-  - System offers option to do a random assignment
-- The System allows participants to create a list of gift ideas they would like to recieve
 
 ---
 
