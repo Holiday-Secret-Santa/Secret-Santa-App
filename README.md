@@ -61,10 +61,10 @@ SO THAT I can prepare an awesome holiday event for friends and family
 The flow chart below outlines the basic functionality of the secret santa app.
 
 <details>
-  <summary>Click to expand!</summary>
-  
-  ![Secret Santa App Flow Chart](./imgs/readme/conceptMap.png)
-  
+  <summary>Click to expand the functionality flow chart.</summary>
+
+![Secret Santa App Flow Chart](./imgs/readme/conceptMap.png)
+
 </details>
 
 ### Sequence Diagrams
@@ -73,9 +73,14 @@ The diagrams listed below outline the sequence of events required for the all ke
 
 **Flow to Create Secret Santa Gift Exchange Event**
 
-<img src="./imgs/readme/create-event.svg">
+<details>
+  <summary>Click to expand the sequencee diagram.</summary>
+
+  <img src="./imgs/readme/create-event.svg">
 
 [Sequence Diagram Create Event Link](https://wire-dev-tools.mybluemix.net/sequence/?d=Title%3A+Create+Secret+Santa+Gift+Exchange+Event%0AUser--%3EUser+Interface%3A+Click+Create+button%0AUser+Interface--%3EUser%3A+Display+Exchange+Page%0AUser--%3EUser+Interface%3A+Enters+Data+and+Submit%0AUser+Interface--%3EUser+Interface%3A+Validates+Data%0ANote+right+of+User+Interface%3A+If+error%2C+display+message%0AUser+Interface--%3EServer+API%3A+Calls+create+event+API%0AServer+API--%3EServer+API%3A+Validates+Data%0ANote+right+of+Server+API%3A+If+error%2C+return+with+error%0AServer+API--%3EDatabase%3A+Save+new+event%0ADatabase--%3EServer+API%3A+Saved+event%0AServer+API--%3EUser+Interface%3A+Saved+event+json%0AUser+Interface--%3EUser+Interface%3A+Show+success+message%0AUser+Interface--%3EUser%3A+Redirect+to+list+of+events+page%0A++++++++++++&t=simple)
+
+</details>
 
 **Flow to Invite Guest to Exchange Event**
 
