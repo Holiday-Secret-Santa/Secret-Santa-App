@@ -7,10 +7,8 @@ import LogoutLink from "../LogoutLink";
 import ProfileLink from "../ProfileLink";
 import { useAuth0 } from "@auth0/auth0-react";
 
-/**
- *  Navbar Component using {Link}
- */
-function NavigationBar() {
+//  Added nav bar component placeholder with Auth0 validations
+const NavigationBar = () => {
 	const { isAuthenticated } = useAuth0();
 
 	return (
@@ -32,6 +30,6 @@ function NavigationBar() {
 			</Navbar.Collapse>
 		</Navbar>
 	);
-}
+};
 
 export default NavigationBar;
