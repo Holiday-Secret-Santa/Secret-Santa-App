@@ -29,3 +29,11 @@ if (process.env.NODE_ENV === "production") {
 
 // Add routes, both API and view
 app.use(routes);
+
+// Start the API server
+// ADD SEQUELIZE ORM HERE TO CONNECT TO YOUR DB
+db.sequelize.sync({ force: false }).then(() => {
+	app.listen(PORT, () => {
+		console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+	});
+});
