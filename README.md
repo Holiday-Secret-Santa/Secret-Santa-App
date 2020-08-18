@@ -157,6 +157,8 @@ _ER Diagram here_
 ### Wireframes
 
 #### Wireframes for Home page / Login page
+
+##### Homepage Wireframe
 <details>
 <summary> 🎨 Click to expand the homepage wireframe.</summary>
 
@@ -164,6 +166,7 @@ _ER Diagram here_
 
 </details>
 
+##### Login Wireframe
 <details>
 <summary> 🎨 Click to expand the login wireframe (Auth0-generated).</summary>
 
