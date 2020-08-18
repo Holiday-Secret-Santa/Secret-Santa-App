@@ -179,9 +179,16 @@ _ER Diagram here_
 #### Wirefreames for Event Organizer
 
 ##### Wireframe for Dashboard of  all Events
+
+<details>
+<summary> 🎨 Click to expand the event dashboard wireframe.</summary>
+
+  <img src="./imgs/readme/wireframes/loginAuth0.png">
+
+</details>
+
 ##### Wireframe for Viewing Specific Event
 ##### Wireframe for Creating a New Event
-
 
 #### Wireframes for Invited Participant
 
