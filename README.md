@@ -156,11 +156,18 @@ _ER Diagram here_
 
 ### Wireframes
 
-#### Wireframes for Homepage
+#### Wireframes for Home page / Login page
 <details>
 <summary> 🎨 Click to expand the homepage wireframe.</summary>
 
-  <img src="./imgs/readme/wireframes/wireframe-homepage.png">
+  <img src="./imgs/readme/wireframes/homepage.png">
+
+</details>
+
+<details>
+<summary> 🎨 Click to expand the login wireframe (Auth0-generated).</summary>
+
+  <img src="./imgs/readme/wireframes/loginAuth0.png">
 
 </details>
 
