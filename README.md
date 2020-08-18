@@ -158,7 +158,8 @@ _ER Diagram here_
 
 #### Wireframes for Home page / Login page
 
-##### Homepage Wireframe
+##### Wireframe for Home page
+
 <details>
 <summary> 🎨 Click to expand the homepage wireframe.</summary>
 
@@ -166,7 +167,8 @@ _ER Diagram here_
 
 </details>
 
-##### Login Wireframe
+##### Wireframe for Login page (Auth0-generated)
+
 <details>
 <summary> 🎨 Click to expand the login wireframe (Auth0-generated).</summary>
 
@@ -175,6 +177,11 @@ _ER Diagram here_
 </details>
 
 #### Wirefreames for Event Organizer
+
+##### Wireframe for Dashboard of  all Events
+##### Wireframe for Viewing Specific Event
+##### Wireframe for Creating a New Event
+
 
 #### Wireframes for Invited Participant
 
