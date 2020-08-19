@@ -197,6 +197,12 @@ _ER Diagram here_
 </details>
 
 ##### Wireframe for Creating a New Event
+<details>
+<summary> 🎨 Click to expand the create a new event wireframe.</summary>
+
+  <img src="./imgs/readme/wireframes/eventDetails.png">
+
+</details>
 
 #### Wireframes for Invited Participant
 
