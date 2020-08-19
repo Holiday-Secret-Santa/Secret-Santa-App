@@ -188,6 +188,14 @@ _ER Diagram here_
 </details>
 
 ##### Wireframe for Viewing Specific Event
+
+<details>
+<summary> 🎨 Click to expand the event details wireframe.</summary>
+
+  <img src="./imgs/readme/wireframes/eventDetails.png">
+
+</details>
+
 ##### Wireframe for Creating a New Event
 
 #### Wireframes for Invited Participant
@@ -234,7 +242,7 @@ Once available, this section will be updated to include installation instruction
 - [Krystal Duran](https://github.com/KEDuran)
 - [Yadira Tamarit](https://github.com/ystamaritq)
 - [Joshua Martinez](https://github.com/JDMartinez1531)
-- [Erik De Luna](https://github.com/CodingErik)
+- [Valeria Gonzalez Layva](https://github.com/valeglezleyva)
 
 ---
 
