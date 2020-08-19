@@ -158,7 +158,7 @@ _ER Diagram here_
 
 #### Wireframes Applicable for All Users
 
-The wireframes below are applicable for all users. In theory, any user should be able to create a new event; however, the event details wireframe will be different depending on whether the user is the `event organizer` or `invited guest`. The wireframes for event details specific to role are provided below.
+The wireframes below are applicable for all users. In theory, any user should be able to access the homepage, login page, view all their events, and create an event. However, the event details wireframe will be different depending on whether the user is the `event organizer` or `invited guest`. The wireframes for event details specific to that role are provided below in separate sections.
 
 ##### Wireframe for Home page
 
@@ -200,7 +200,7 @@ The wireframes below are applicable for all users. In theory, any user should be
 
 The wireframe below is for the `event organizer` role. The `event organizer` should be able to see all the event details, the number of attendees invited, RSVP status, and the secret santa assignment for each `invited guest` participating in the secret santa.
 
-##### Wireframe for Viewing Specific Event
+##### Wireframe for Viewing Specific Event (Organizer Role)
 
 <details>
 <summary> 🎨 Click to expand the event details wireframe.</summary>
@@ -213,7 +213,7 @@ The wireframe below is for the `event organizer` role. The `event organizer` sho
 
 The wireframe below is for the `invited guest` role. The `invited guest` should **_only_** be able to see the event details, whether they have been assigned a secret santa (but not the secret santa's name).
 
-##### Wireframe for Viewing Specific Event
+##### Wireframe for Viewing Specific Event (Invited Guest Role)
 
 <details>
 <summary> 🎨 Click to expand the event details wireframe.</summary>
@@ -222,7 +222,15 @@ The wireframe below is for the `invited guest` role. The `invited guest` should 
 
 </details>
 
----
+##### Wireframe for Adding an Wish List Item
+
+Please note that the when the user clicks the `Add Item Button` on the event details page, they will be redirected to the wireframe below.
+
+<summary> 🎨 Click to expand the wireframe for adding a wish list item.</summary>
+
+  <img src="./imgs/readme/wireframes/addWishListItem.png">
+
+</details>
 
 ## Technologies
 
