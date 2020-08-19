@@ -226,6 +226,7 @@ The wireframe below is for the `invited guest` role. The `invited guest` should 
 
 Please note that the when the user clicks the `Add Item Button` on the event details page, they will be redirected to the wireframe below.
 
+<details>
 <summary> 🎨 Click to expand the wireframe for adding a wish list item.</summary>
 
   <img src="./imgs/readme/wireframes/addWishListItem.png">
