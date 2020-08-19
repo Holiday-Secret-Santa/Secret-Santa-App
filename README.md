@@ -156,7 +156,9 @@ _ER Diagram here_
 
 ### Wireframes
 
-#### Wireframes for Home page / Login page
+#### Wireframes Applicable for All Users
+
+The wireframes below are applicable for all users. In theory any user, should be able to create a new event; however, the event details wireframe will be different depending on whether the user is the `event organizer` or `invited guest`. The wireframes for event details specific to role are provided below.
 
 ##### Wireframe for Home page
 
@@ -176,23 +178,12 @@ _ER Diagram here_
 
 </details>
 
-#### Wirefreames for Event Organizer
-
 ##### Wireframe for Dashboard of all Events
 
 <details>
 <summary> 🎨 Click to expand the event dashboard wireframe.</summary>
 
-  <img src="./imgs/readme/wireframes/loginAuth0.png">
-
-</details>
-
-##### Wireframe for Viewing Specific Event
-
-<details>
-<summary> 🎨 Click to expand the event details wireframe.</summary>
-
-  <img src="./imgs/readme/wireframes/eventDetails.png">
+  <img src="./imgs/readme/wireframes/eventDashboard.png">
 
 </details>
 
@@ -205,7 +196,20 @@ _ER Diagram here_
 
 </details>
 
-#### Wireframes for Invited Participant
+#### Wireframes for Event Organizer Role
+
+##### Wireframe for Viewing Specific Event
+
+<details>
+<summary> 🎨 Click to expand the event details wireframe.</summary>
+
+  <img src="./imgs/readme/wireframes/eventDetails.png">
+
+</details>
+
+#### Wireframes for Invited Guest Role
+
+##### Wireframe for Viewing Specific Event
 
 ---
 
