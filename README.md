@@ -158,7 +158,7 @@ _ER Diagram here_
 
 #### Wireframes Applicable for All Users
 
-The wireframes below are applicable for all users. In theory any user, should be able to create a new event; however, the event details wireframe will be different depending on whether the user is the `event organizer` or `invited guest`. The wireframes for event details specific to role are provided below.
+The wireframes below are applicable for all users. In theory, any user should be able to create a new event; however, the event details wireframe will be different depending on whether the user is the `event organizer` or `invited guest`. The wireframes for event details specific to role are provided below.
 
 ##### Wireframe for Home page
 
@@ -198,18 +198,29 @@ The wireframes below are applicable for all users. In theory any user, should be
 
 #### Wireframes for Event Organizer Role
 
+The wireframe below is for the `event organizer` role. The `event organizer` should be able to see all the event details, the number of attendees invited, RSVP status, and the secret santa assignment for each `invited guest` participating in the secret santa.
+
 ##### Wireframe for Viewing Specific Event
 
 <details>
 <summary> 🎨 Click to expand the event details wireframe.</summary>
 
-  <img src="./imgs/readme/wireframes/eventDetails.png">
+  <img src="./imgs/readme/wireframes/eventDetailsOrganizer.png">
 
 </details>
 
 #### Wireframes for Invited Guest Role
 
+The wireframe below is for the `invited guest` role. The `invited guest` should **_only_** be able to see the event details, whether they have been assigned a secret santa (but not the secret santa's name).
+
 ##### Wireframe for Viewing Specific Event
+
+<details>
+<summary> 🎨 Click to expand the event details wireframe.</summary>
+
+  <img src="./imgs/readme/wireframes/eventDetailsGuest.png">
+
+</details>
 
 ---
 
