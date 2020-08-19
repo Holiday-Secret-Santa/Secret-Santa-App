@@ -19,7 +19,7 @@ const App = () => {
 	return (
 		<Router>
 			{/* no private routes must be place it inside Route*/}
-			<Route exact path="/" component={HomePage} />
+			<PrivateRoute exact path="/" component={HomePage} />
 			{/* private routes must be place it inside PrivateRoute */}
 			<PrivateRoute exact path="/events" component={NavigationBar} />
 		</Router>
