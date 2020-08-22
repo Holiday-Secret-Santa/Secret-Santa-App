@@ -251,16 +251,6 @@ Here is a list of the core technologies we plan to use for the development of th
 - Moment.js
 - Email platform (Mailchim, Mailgun, ...) _(team will choose at a later date)_
 
-### Third-Party API
-
-A core functionality for this application is to allow users to create a wish list of items that will be shared with their assigned secret santa. To provide a more cohesive experience for the secret santa participants, the project team incorporated the use of the [Amazon Product Advertising API](https://webservices.amazon.com/paapi5/documentation/) to give the application users the ability to add actual wish list items that can be purchased on Amazon.
-
-Based on the available documentation, the project team plan on using the following end points to help query Amazon API data for this application:
-
-- Product price - [Buy price documentation](https://webservices.amazon.com/paapi5/documentation/use-cases/buying-price.html)
-- Product image - [Product image documentation](https://webservices.amazon.com/paapi5/documentation/images.html)
-- Amazon Prime eligibility - [Amazon Prime product documentation](https://webservices.amazon.com/paapi5/documentation/use-cases/prime-eligible-products.html)
-
 ---
 
 ## Installation
