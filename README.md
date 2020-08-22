@@ -19,7 +19,6 @@
   - [Wireframes](#wireframes)
 - [Technologies](#technologies)
   - [Core Technologies](#core-technologies)
-  - [Third Party API](#third-party-api)
 - [Installation](#installation)
 - [Team Members](#team-members)
 
@@ -67,7 +66,8 @@ Here is a list of the MVP requirements for this app. Please note that these are 
 - The User can keep track of who accepted the secret santa invite
 - The User can discretely assign a single participant to each individual registered for the event
   - System offers option to do a random assignment
-- The System allows participants to create a list of gift ideas they would like to recieve
+- The System allows participants to manually create a list of gift ideas they would like to recieve
+  - When creating a wish list item, the participant will be able to add an item name and URL link for potential online purchase
 
 ---
 
