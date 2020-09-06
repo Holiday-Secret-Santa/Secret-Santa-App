@@ -24,12 +24,12 @@ jobs:
           command: |
             ./cc-test-reporter before-build
             npm test -- --coverage
-            ./cc-test-reporter after-build --coverage-input-type lcov --exit-code $?
+            ./cc-test-reporter after-build --exit-code $?
       - run: # run frontend tests
           name: Run frontend tests and coverage
           command: |
             ./cc-test-reporter before-build
             cd client
             npm test -- --coverage
-            ../cc-test-reporter after-build --coverage-input-type lcov --exit-code $?
+            ../cc-test-reporter after-build --exit-code $?
 
