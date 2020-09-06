@@ -20,7 +20,7 @@ jobs:
           paths:
             - ./node_modules
       - run: # run frontend and backend tests
-          name: Run backend tests and coverage
+          name: Run frontend and backend tests and coverage
           command: |
             ./cc-test-reporter before-build
             npm test -- --coverage
