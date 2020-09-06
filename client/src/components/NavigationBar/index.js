@@ -9,27 +9,27 @@ import "./style.css";
 
 //  Added nav bar component placeholder with Auth0 validations
 const NavigationBar = () => {
-	const { isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
-	return (
-		<Navbar bg="light" shadow="lg" expand="lg">
-			{/* nav bar logo placeholder here */}
-			<Navbar.Toggle aria-controls="navbar-nav" />
-			<Navbar.Collapse>
-				{isAuthenticated ? (
-					<Nav className="ml-auto">
-						<ProfileLink />
-						<LogoutLink />
-					</Nav>
-				) : (
-					<Nav className="ml-auto">
-						<LoginLink />
-						<SignupLink />
-					</Nav>
-				)}
-			</Navbar.Collapse>
-		</Navbar>
-	);
+  return (
+    <Navbar bg="light" shadow="lg" expand="lg">
+      {/* nav bar logo placeholder here */}
+      <Navbar.Toggle aria-controls="navbar-nav" />
+      <Navbar.Collapse>
+        {isAuthenticated ? (
+          <Nav className="ml-auto">
+            <ProfileLink />
+            <LogoutLink />
+          </Nav>
+        ) : (
+          <Nav className="ml-auto">
+            <LoginLink />
+            <SignupLink />
+          </Nav>
+        )}
+      </Navbar.Collapse>
+    </Navbar>
+  );
 };
 
 export default NavigationBar;

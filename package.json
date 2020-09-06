@@ -12,15 +12,18 @@
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build",
-    "test": "npm run lint && cross-env NODE_ENV=test mocha -u tdd --reporter spec --exit",
-    "lint": "eslint \"**/*.js\"",
-    "fix": "eslint --fix ."
+    "test": "cross-env && jest --passWithNoTests --testPathPattern=controllers/ && cd client && npm run test"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "nodemon": "^1.18.7"
+    "cross-env": "^7.0.2",
+    "eslint": "^6.6.0",
+    "eslint-plugin-react": "^7.20.6",
+    "jest": "24.9.0",
+    "nodemon": "^1.18.7",
+    "babel-jest": "^24.9.0"
   },
   "dependencies": {
     "babel-eslint": "^10.0.1",

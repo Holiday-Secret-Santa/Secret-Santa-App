@@ -5,12 +5,12 @@ import Loading from "./../Loading";
 
 // Added private route component from Auth0 to manage required pages authentication
 const PrivateRoute = ({ component, ...args }) => (
-	<Route
-		component={withAuthenticationRequired(component, {
-			onRedirecting: () => <Loading />,
-		})}
-		{...args}
-	/>
+  <Route
+    component={withAuthenticationRequired(component, {
+      onRedirecting: () => <Loading />,
+    })}
+    {...args}
+  />
 );
 
 export default PrivateRoute;
