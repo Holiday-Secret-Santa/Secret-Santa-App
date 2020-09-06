@@ -12,7 +12,7 @@
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build",
-    "test": "cross-env && jest --coverage --testPathPattern=controllers/ && cd client && npm run test"
+    "test": "cross-env && cd client && npm run test && cd .. && jest --coverage --testPathPattern=controllers/"
   },
   "author": "",
   "license": "ISC",
