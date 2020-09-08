@@ -8,23 +8,23 @@ import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 // added logout component placeholder using boostrap
 const LogoutLink = () => {
-	const { logout } = useAuth0();
-	return (
-		<OverlayTrigger
-			placement="bottom"
-			overlay={<Tooltip id="tooltip-logout">Sign Out</Tooltip>}
-		>
-			<Nav.Link
-				onClick={() =>
-					logout({
-						returnTo: window.location.origin,
-					})
-				}
-			>
-				<FontAwesomeIcon icon={faSignOutAlt} size="lg" />
-			</Nav.Link>
-		</OverlayTrigger>
-	);
+  const { logout } = useAuth0();
+  return (
+    <OverlayTrigger
+      placement="bottom"
+      overlay={<Tooltip id="tooltip-logout">Sign Out</Tooltip>}
+    >
+      <Nav.Link
+        onClick={() =>
+          logout({
+            returnTo: window.location.origin,
+          })
+        }
+      >
+        <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
+      </Nav.Link>
+    </OverlayTrigger>
+  );
 };
 
 export default LogoutLink;
