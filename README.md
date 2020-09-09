@@ -164,13 +164,6 @@ The wireframes below are applicable for all users. In theory, any user should be
 
 ##### Wireframe for Home page
 
-<details>
-<summary> 🎨 Click to expand the homepage wireframe.</summary>
-
-  <img src="./imgs/readme/wireframes/homepage.png">
-
-</details>
-
 ##### Wireframe for Login page (Auth0-generated)
 
 <details>
