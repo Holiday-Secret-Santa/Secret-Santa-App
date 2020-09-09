@@ -154,6 +154,12 @@ The diagrams listed below outline the sequence of events required for the all ke
 
 The entity relationship **(ER) diagram** below provides a visual representation of how the data is saved inside the application's back-end database. This diagram also demonstrates the relationship between each database table.
 
+<details>
+<summary> 📈 Click to expand the ERM diagram.</summary>
+<img src="./imgs/readme/ermDiagram.png">
+
+</details>
+
 ![Secret Santa ERM Diagram](./imgs/readme/ermDiagram.png)
 
 ### Wireframes
