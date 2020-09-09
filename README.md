@@ -237,12 +237,15 @@ Here is a list of the core technologies we plan to use for the development of th
 - HTML
 - JavaScript
 - CSS
-- Bootstrap _(team will choose at a later date)_
+- React-compatabile UI library other than Bootstrap
+  - Following UI libaries are being researched: (1) Ant, (2) Chakra, (3) Tailwind, and (4) Semantic.
+  - Source article for research - [click here to reference article](https://www.robinwieruch.de/react-libraries#react-ui-libraries)
 - React.js
 - Node.js _(specific packages will be identifed at a later date)_
-- Mongo or SQL _(team will choose at a later date)_
-- Moment.js
+- SQL to design the application's database
+- Moment.js for date/time fields
 - Email platform (Mailchim, Mailgun, ...) _(team will choose at a later date)_
+- GraphQL - [click here to reference documentation](https://graphql.org/)
 
 ---
 
