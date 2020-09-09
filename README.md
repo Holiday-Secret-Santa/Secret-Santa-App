@@ -160,8 +160,6 @@ The entity relationship **(ER) diagram** below provides a visual representation 
 
 </details>
 
-![Secret Santa ERM Diagram](./imgs/readme/ermDiagram.png)
-
 ### Wireframes
 
 #### Wireframes Applicable for All Users
