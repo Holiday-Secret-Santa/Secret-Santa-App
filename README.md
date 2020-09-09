@@ -154,7 +154,11 @@ The diagrams listed below outline the sequence of events required for the all ke
 
 The entity relationship **(ER) diagram** below provides a visual representation of how the data is saved inside the application's back-end database. This diagram also demonstrates the relationship between each database table.
 
-![Secret Santa ERM Diagram](./imgs/readme/ermDiagram.png)
+<details>
+<summary> 📈 Click to expand the ERM diagram.</summary>
+<img src="./imgs/readme/ermDiagram.png">
+
+</details>
 
 ### Wireframes
 
@@ -163,13 +167,6 @@ The entity relationship **(ER) diagram** below provides a visual representation 
 The wireframes below are applicable for all users. In theory, any user should be able to access the homepage, login page, view all their events, and create an event. However, the event details wireframe will be different depending on whether the user is the `event organizer` or `invited guest`. The wireframes for event details specific to that role are provided below in separate sections.
 
 ##### Wireframe for Home page
-
-<details>
-<summary> 🎨 Click to expand the homepage wireframe.</summary>
-
-  <img src="./imgs/readme/wireframes/homepage.png">
-
-</details>
 
 ##### Wireframe for Login page (Auth0-generated)
 
@@ -244,12 +241,15 @@ Here is a list of the core technologies we plan to use for the development of th
 - HTML
 - JavaScript
 - CSS
-- Bootstrap _(team will choose at a later date)_
+- React-compatabile UI library other than Bootstrap
+  - Following UI libaries are being researched: (1) Ant, (2) Chakra, (3) Tailwind, and (4) Semantic.
+  - Source article for research - [click here to reference article](https://www.robinwieruch.de/react-libraries#react-ui-libraries)
 - React.js
 - Node.js _(specific packages will be identifed at a later date)_
-- Mongo or SQL _(team will choose at a later date)_
-- Moment.js
+- SQL to design the application's database
+- Moment.js for date/time fields
 - Email platform (Mailchim, Mailgun, ...) _(team will choose at a later date)_
+- GraphQL - [click here to reference documentation](https://graphql.org/)
 
 ---
 
