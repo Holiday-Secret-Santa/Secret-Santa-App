@@ -1,4 +1,4 @@
--- Drops the _db if it exists currently --
-DROP DATABASE IF EXISTS db;
--- Creates the "db" database --
-CREATE DATABASE db;
+-- Drops the dbsanta if it exists currently --
+DROP DATABASE IF EXISTS db_secret_santa;
+-- Creates the "dbsanta" database --
+CREATE DATABASE db_secret_santa;
