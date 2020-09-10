@@ -1,14 +1,21 @@
 import React from "react";
-import { Container } from "react-bootstrap";
 import "./style.css";
-import LogoutLink from "../../components/LogoutLink";
+import LoginLink from "./../../components/LoginLink";
+import SignupLink from "./../../components/SignupLink";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const EventsPage = () => {
+	const { isAuthenticated } = useAuth0();
 	return (
-		<Container fluid className="p-0">
-			<h1>Events Page</h1>
-			<LogoutLink />
-		</Container>
+		<div>
+			{!isAuthenticated ? (
+				<div>
+					<LoginLink /> <SignupLink />
+				</div>
+			) : (
+				<h1>Events Page</h1>
+			)}
+		</div>
 	);
 };
 
