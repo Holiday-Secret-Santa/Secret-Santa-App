@@ -36,7 +36,8 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "^3.0.1",
-    "webpack-dev-server": "3.10.3"
+    "webpack-dev-server": "3.10.3",
+    "mysql2": "^1.7.0"
   },
   "dependencies": {
     "babel-eslint": "^10.0.1",
@@ -47,6 +48,8 @@
     "jwks-rsa": "^1.8.1",
     "jwt-decode": "^2.2.0",
     "morgan": "^1.10.0",
-    "react-router-dom": "^5.2.0"
+    "mysql2": "^1.7.0",
+    "react-router-dom": "^5.2.0",
+    "sequelize": "^6.3.5"
   }
 }
