@@ -6,12 +6,7 @@ import LogoutLink from "../../components/LogoutLink";
 const ParticipantEvent = () => {
 	return (
 		<Container fluid className="p-0">
-			<Row>
-				<Col>
-					<h1>Participant Event Page</h1>
-					<LogoutLink />
-				</Col>
-			</Row>
+			<h1>Participant Event Page</h1>
 		</Container>
 	);
 };
