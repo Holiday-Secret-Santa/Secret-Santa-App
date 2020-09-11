@@ -55,7 +55,7 @@ const plannerEmailColumn = {
 };
 module.exports = function (sequelize, DataTypes) {
 	var Event = sequelize.define("Event", {
-		date: dateField,
+		date: dateColumn,
 		description: descriptionColumn,
 		start_time: startTimeColumn,
 		end_time: endTimeColumn,
