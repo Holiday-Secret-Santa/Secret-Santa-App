@@ -52,3 +52,38 @@ const inviteStatusColumn = {
 		},
 	},
 };
+
+const dateSentColumn = {
+	type: DataTypes.DATE,
+	allowNull: false,
+	validate: {
+		notNull: {
+			msg: "Must to enter the sent date",
+		},
+		isDate: true,
+	},
+};
+
+const dateAcceptedColumn = {
+	type: DataTypes.DATE,
+	allowNull: false,
+	validate: {
+		notNull: {
+			msg: "Must to enter the date accepted",
+		},
+		isDate: true,
+	},
+};
+
+module.exports = function (sequelize, DataTypes) {
+	var Participant = sequelize.define("Participant", {
+		first_name: firstNameColumn,
+		last_name: lastNameColumn,
+		email: emailColumn,
+		secret_santa: secretSantaColumn,
+		invite_status: inviteStatusColumn,
+		date_sent: dateSentColumn,
+		date_accepted: dateAcceptedColumn,
+	});
+	return Participant;
+};
