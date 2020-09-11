@@ -56,14 +56,6 @@ const plannerEmailColumn = {
 	},
 };
 
-Event.associate = function (models) {
-	Event.hasMany(models.Participant, {
-		onDelete: "cascade",
-	});
-};
-
-models.Participant.belongsTo(Event);
-
 module.exports = function (sequelize, DataTypes) {
 	var Event = sequelize.define("Event", {
 		date: dateColumn,
@@ -73,5 +65,14 @@ module.exports = function (sequelize, DataTypes) {
 		location: locationColumn,
 		planner_email: plannerEmailColumn,
 	});
+
 	return Event;
 };
+
+Event.associate = function (models) {
+	Event.hasMany(models.Participant, {
+		onDelete: "cascade",
+	});
+};
+
+models.Participant.belongsTo(Event);

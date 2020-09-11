@@ -1,7 +1,7 @@
-var DataTypes = require("sequelize/lib/data-types");
+var Sequelize = require("sequelize");
 
 const firstNameColumn = {
-	type: DataTypes.STRING,
+	type: Sequelize.DataTypes.STRING,
 	allowNull: false,
 	validate: {
 		notNull: {
@@ -11,7 +11,7 @@ const firstNameColumn = {
 };
 
 const lastNameColumn = {
-	type: DataTypes.STRING,
+	type: Sequelize.DataTypes.STRING,
 	allowNull: false,
 	validate: {
 		notNull: {
@@ -21,7 +21,7 @@ const lastNameColumn = {
 };
 
 const emailColumn = {
-	type: DataTypes.STRING,
+	type: Sequelize.DataTypes.STRING,
 	allowNull: false,
 	validate: {
 		notNull: {
@@ -35,18 +35,8 @@ const emailColumn = {
 	},
 };
 
-const secretSantaColumn = {
-	type: DataTypes.INTEGER,
-	allowNull: false,
-	validate: {
-		notNull: {
-			msg: "Please enter the secret santa",
-		},
-	},
-};
-
 const inviteStatusColumn = {
-	type: DataTypes.STRING,
+	type: Sequelize.DataTypes.STRING,
 	allowNull: false,
 	validate: {
 		notNull: {
@@ -56,7 +46,7 @@ const inviteStatusColumn = {
 };
 
 const dateSentColumn = {
-	type: DataTypes.DATE,
+	type: Sequelize.DataTypes.DATE,
 	allowNull: false,
 	validate: {
 		notNull: {
@@ -67,7 +57,7 @@ const dateSentColumn = {
 };
 
 const dateAcceptedColumn = {
-	type: DataTypes.DATE,
+	type: Sequelize.DataTypes.DATE,
 	allowNull: false,
 	validate: {
 		notNull: {
@@ -77,21 +67,22 @@ const dateAcceptedColumn = {
 	},
 };
 
-Participant.associate = function (models) {
-	Participant.hasOne(models.Participant, {
-		onDelete: "cascade",
-	});
-};
-
-module.exports = function (sequelize, DataTypes) {
+module.exports = function (sequelize) {
 	var Participant = sequelize.define("Participant", {
 		first_name: firstNameColumn,
 		last_name: lastNameColumn,
 		email: emailColumn,
-		secret_santa: secretSantaColumn,
 		invite_status: inviteStatusColumn,
 		date_sent: dateSentColumn,
 		date_accepted: dateAcceptedColumn,
 	});
+
+	Participant.associate = function (models) {
+		Participant.hasOne(models.Participant, {
+			onDelete: "cascade",
+			foreignKey: "secret_santa_id",
+		});
+	};
+
 	return Participant;
 };
