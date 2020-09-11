@@ -1,3 +1,5 @@
+var DataTypes = require("sequelize/lib/data-types");
+
 const dateColumn = {
 	type: DataTypes.DATE,
 	allowNull: false,

@@ -1,3 +1,5 @@
+var DataTypes = require("sequelize/lib/data-types");
+
 const firstNameColumn = {
 	type: DataTypes.STRING,
 	allowNull: false,
