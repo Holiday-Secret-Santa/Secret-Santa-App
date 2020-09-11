@@ -1,7 +1,7 @@
-var DataTypes = require("sequelize/lib/data-types");
+var Sequelize = require("sequelize");
 
 const dateColumn = {
-	type: DataTypes.DATE,
+	type: Sequelize.DataTypes.DATE,
 	allowNull: false,
 	validate: {
 		notNull: {
@@ -10,12 +10,14 @@ const dateColumn = {
 		isDate: true,
 	},
 };
+
 const descriptionColumn = {
-	type: DataTypes.TEXT,
+	type: Sequelize.DataTypes.TEXT,
 	allowNull: false,
 };
+
 const startTimeColumn = {
-	type: DataTypes.STRING,
+	type: Sequelize.DataTypes.STRING,
 	allowNull: false,
 	validate: {
 		notNull: {
@@ -23,8 +25,9 @@ const startTimeColumn = {
 		},
 	},
 };
+
 const endTimeColumn = {
-	type: DataTypes.STRING,
+	type: Sequelize.DataTypes.STRING,
 	allowNull: false,
 	validate: {
 		notNull: {
@@ -32,8 +35,9 @@ const endTimeColumn = {
 		},
 	},
 };
+
 const locationColumn = {
-	type: DataTypes.STRING,
+	type: Sequelize.DataTypes.STRING,
 	allowNull: false,
 	validate: {
 		notNull: {
@@ -41,8 +45,9 @@ const locationColumn = {
 		},
 	},
 };
+
 const plannerEmailColumn = {
-	type: DataTypes.STRING,
+	type: Sequelize.DataTypes.STRING,
 	allowNull: false,
 	validate: {
 		notNull: {
@@ -56,7 +61,7 @@ const plannerEmailColumn = {
 	},
 };
 
-module.exports = function (sequelize, DataTypes) {
+module.exports = function (sequelize) {
 	var Event = sequelize.define("Event", {
 		date: dateColumn,
 		description: descriptionColumn,
@@ -66,13 +71,13 @@ module.exports = function (sequelize, DataTypes) {
 		planner_email: plannerEmailColumn,
 	});
 
+	Event.associate = function (models) {
+		Event.hasMany(models.Participant, {
+			onDelete: "cascade",
+		});
+
+		models.Participant.belongsTo(Event);
+	};
+
 	return Event;
 };
-
-Event.associate = function (models) {
-	Event.hasMany(models.Participant, {
-		onDelete: "cascade",
-	});
-};
-
-models.Participant.belongsTo(Event);
