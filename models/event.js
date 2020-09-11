@@ -55,6 +55,15 @@ const plannerEmailColumn = {
 		},
 	},
 };
+
+Event.associate = function (models) {
+	Event.hasMany(models.Participant, {
+		onDelete: "cascade",
+	});
+};
+
+models.Participant.belongsTo(Event);
+
 module.exports = function (sequelize, DataTypes) {
 	var Event = sequelize.define("Event", {
 		date: dateColumn,

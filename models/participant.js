@@ -77,6 +77,12 @@ const dateAcceptedColumn = {
 	},
 };
 
+Participant.associate = function (models) {
+	Participant.hasOne(models.Participant, {
+		onDelete: "cascade",
+	});
+};
+
 module.exports = function (sequelize, DataTypes) {
 	var Participant = sequelize.define("Participant", {
 		first_name: firstNameColumn,
