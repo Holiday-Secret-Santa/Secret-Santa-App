@@ -1,33 +1,12 @@
 var Sequelize = require("sequelize");
+var { StringColumn, DateColumn } = require("./../utils");
 
-const firstNameColumn = {
-	type: Sequelize.DataTypes.STRING,
-	allowNull: false,
-	validate: {
-		notNull: {
-			msg: "Please enter the first_name",
-		},
-	},
-};
+const firstNameColumn = StringColumn("Please enter the first_name");
 
-const lastNameColumn = {
-	type: Sequelize.DataTypes.STRING,
-	allowNull: false,
-	validate: {
-		notNull: {
-			msg: "Please enter the last_name",
-		},
-	},
-};
+const lastNameColumn = StringColumn("Please enter the last_name");
 
 const emailColumn = {
-	type: Sequelize.DataTypes.STRING,
-	allowNull: false,
-	validate: {
-		notNull: {
-			msg: "Please enter an email",
-		},
-	},
+	...StringColumn("Please enter an email"),
 	validate: {
 		isEmail: {
 			msg: "Please enter a valid email format: example@gmail.com ",
@@ -35,37 +14,11 @@ const emailColumn = {
 	},
 };
 
-const inviteStatusColumn = {
-	type: Sequelize.DataTypes.STRING,
-	allowNull: false,
-	validate: {
-		notNull: {
-			msg: "Please enter the invite status",
-		},
-	},
-};
+const inviteStatusColumn = StringColumn("Please enter the invite status");
 
-const dateSentColumn = {
-	type: Sequelize.DataTypes.DATE,
-	allowNull: false,
-	validate: {
-		notNull: {
-			msg: "Must to enter the sent date",
-		},
-		isDate: true,
-	},
-};
+const dateSentColumn = DateColumn("Must to enter the sent date", true);
 
-const dateAcceptedColumn = {
-	type: Sequelize.DataTypes.DATE,
-	allowNull: false,
-	validate: {
-		notNull: {
-			msg: "Must to enter the date accepted",
-		},
-		isDate: true,
-	},
-};
+const dateAcceptedColumn = DateColumn("Must to enter the date accepted", true);
 
 module.exports = function (sequelize) {
 	var Participant = sequelize.define("Participant", {
