@@ -32,7 +32,6 @@ module.exports = function (sequelize) {
 
 	Participant.associate = function (models) {
 		Participant.hasOne(models.Participant, {
-			onDelete: "cascade",
 			foreignKey: "secret_santa_id",
 		});
 	};
