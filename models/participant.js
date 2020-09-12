@@ -1,5 +1,5 @@
 var Sequelize = require("sequelize");
-var { StringColumn, DateColumn } = require("./../utils");
+var { StringColumn, DateColumn, DefineTable } = require("./../utils");
 
 const firstNameColumn = StringColumn("Please enter the first_name");
 
@@ -21,7 +21,7 @@ const dateSentColumn = DateColumn("Must to enter the sent date", true);
 const dateAcceptedColumn = DateColumn("Must to enter the date accepted", true);
 
 module.exports = function (sequelize) {
-	var Participant = sequelize.define("Participant", {
+	var Participant = DefineTable(sequelize, "Participant", {
 		first_name: firstNameColumn,
 		last_name: lastNameColumn,
 		email: emailColumn,

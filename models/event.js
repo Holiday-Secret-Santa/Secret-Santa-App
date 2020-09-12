@@ -1,5 +1,5 @@
 var Sequelize = require("sequelize");
-var { StringColumn, DateColumn } = require("./../utils");
+var { StringColumn, DateColumn, DefineTable } = require("./../utils");
 
 const dateColumn = DateColumn("Must to enter an Date", false);
 
@@ -21,7 +21,7 @@ const plannerEmailColumn = {
 };
 
 module.exports = function (sequelize) {
-	var Event = sequelize.define("Event", {
+	var Event = DefineTable(sequelize, "Event", {
 		date: dateColumn,
 		description: descriptionColumn,
 		start_time: startTimeColumn,

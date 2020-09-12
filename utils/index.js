@@ -22,7 +22,12 @@ const DateColumn = (msg, allowNull) => {
 	};
 };
 
+const DefineTable = (sequelize, name, columns) => {
+	return sequelize.define(name, columns);
+};
+
 module.exports = {
 	StringColumn,
 	DateColumn,
+	DefineTable,
 };
