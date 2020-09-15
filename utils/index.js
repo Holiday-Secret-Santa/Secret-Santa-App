@@ -22,6 +22,16 @@ const DateColumn = (msg, allowNull) => {
 	};
 };
 
+const NumberColumn = (msg, allowNul) => {
+	return {
+		type: Sequelize.DataTypes.INTEGER,
+		allowNull: false,
+		validate: {
+			isNumerica: true,
+		},
+	};
+};
+
 const DefineTable = (sequelize, name, columns) => {
 	return sequelize.define(name, columns);
 };
@@ -29,5 +39,6 @@ const DefineTable = (sequelize, name, columns) => {
 module.exports = {
 	StringColumn,
 	DateColumn,
+	NumberColumn,
 	DefineTable,
 };
