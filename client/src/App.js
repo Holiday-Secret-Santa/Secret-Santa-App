@@ -15,9 +15,32 @@ import HomePage from "./pages/HomePage/HomePage";
 
 import "./app.css";
 
+const { Content } = Layout;
+
+const AppContent = (
+	<Content className="site-layout">
+		<Switch>
+			<Route exact path="/" component={HomePage} />
+			<PrivateRoute exact path="/events" component={EventsPage} />
+			<PrivateRoute exact path="/profile" component={ProfilePage} />
+			<PrivateRoute exact path="/events/create" component={CreateEvent} />
+			<PrivateRoute exact path="/events/:id/accept" component={AcceptEvent} />
+			<PrivateRoute
+				exact
+				path="/events/:id/organize"
+				component={OrganizerEvent}
+			/>
+			<PrivateRoute
+				exact
+				path="/events/:id/participant"
+				component={ParticipantEvent}
+			/>
+		</Switch>
+	</Content>
+);
+
 const App = () => {
 	const { isLoading } = useAuth0();
-	const { Content } = Layout;
 
 	if (isLoading) {
 		return <Loading />;
@@ -26,31 +49,7 @@ const App = () => {
 	return (
 		<Layout>
 			<NavigationBar />
-			<Layout>
-				<Content className="site-layout">
-					<Switch>
-						<Route exact path="/" component={HomePage} />
-						<PrivateRoute exact path="/events" component={EventsPage} />
-						<PrivateRoute exact path="/profile" component={ProfilePage} />
-						<PrivateRoute exact path="/events/create" component={CreateEvent} />
-						<PrivateRoute
-							exact
-							path="/events/:id/accept"
-							component={AcceptEvent}
-						/>
-						<PrivateRoute
-							exact
-							path="/events/:id/organize"
-							component={OrganizerEvent}
-						/>
-						<PrivateRoute
-							exact
-							path="/events/:id/participant"
-							component={ParticipantEvent}
-						/>
-					</Switch>
-				</Content>
-			</Layout>
+			<Layout>{AppContent}</Layout>
 		</Layout>
 	);
 };
