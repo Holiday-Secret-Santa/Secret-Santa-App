@@ -40,6 +40,7 @@
     "mysql2": "^1.7.0"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
     "babel-eslint": "^10.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
