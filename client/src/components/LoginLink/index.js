@@ -5,7 +5,11 @@ import { Link } from "react-router-dom";
 // added login link using for authenticate the user once enter to the page (could change to button component and keep the auth0 )
 const LoginLink = () => {
 	const { loginWithRedirect } = useAuth0();
-	return <Link onClick={() => loginWithRedirect()}>Log In</Link>;
+	return (
+		<Link to="" onClick={() => loginWithRedirect()}>
+			Log In / Signup
+		</Link>
+	);
 };
 
 export default LoginLink;
