@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import NavigationBar from "./components/NavigationBar";
 // added useAuth0 from @auth0/auth0-react" to handle the routes
 import { useAuth0 } from "@auth0/auth0-react";
@@ -15,9 +15,10 @@ import Loading from "./components/Loading";
 import { Layout } from "antd";
 import "antd/dist/antd.css";
 import "./app.css";
+import HomePage from "./pages/HomePage/HomePage";
 
 const App = () => {
-	const { isLoading, isAuthenticated } = useAuth0();
+	const { isLoading } = useAuth0();
 	const { Content } = Layout;
 
 	if (isLoading) {
@@ -31,7 +32,7 @@ const App = () => {
 			<Layout>
 				<Content className="site-layout"></Content>
 				<Switch>
-					<Route exact path="/" component={EventsPage} />
+					<Route exact path="/" component={HomePage} />
 					<PrivateRoute exact path="/events" component={EventsPage} />
 					<PrivateRoute exact path="/profile" component={ProfilePage} />
 					<PrivateRoute exact path="/events/create" component={CreateEvent} />
