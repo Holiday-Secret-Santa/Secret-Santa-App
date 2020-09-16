@@ -1,10 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import NavigationBar from "./components/NavigationBar";
-// added useAuth0 from @auth0/auth0-react" to handle the routes
+import { Switch, Route } from "react-router-dom";
+import NavigationBar from "./components/NavigationBar/NavigationBar";
 import { useAuth0 } from "@auth0/auth0-react";
 import PrivateRoute from "./components/PrivateRoute";
-
 import EventsPage from "./pages/Events/Events";
 import ProfilePage from "./pages/Profile/Profile";
 import CreateEvent from "./pages/CreateEvent/CreateEvent";
@@ -12,19 +10,18 @@ import AcceptEvent from "./pages/AcceptEvent/AcceptEvent";
 import OrganizerEvent from "./pages/OrganizerEvent/OrganizerEvent";
 import ParticipantEvent from "./pages/ParticipantEvent/ParticipantEvent";
 import Loading from "./components/Loading";
+import { Layout } from "antd";
+import HomePage from "./pages/HomePage/HomePage";
 
-const App = () => {
-	const { isLoading, isAuthenticated } = useAuth0();
+import "./app.css";
 
-	if (isLoading) {
-		return <Loading />;
-	}
+const { Content } = Layout;
 
-	// placeholder app router with Auth0 integration and external home page that will be replace it by the first wireframe
-	return (
-		<Router>
-			{isAuthenticated && <NavigationBar />}
-			<PrivateRoute exact path="/" component={EventsPage} />
+const AppContent = (
+	<Content className="site-layout">
+		<Switch>
+			<Route exact path="/" component={HomePage} />
+			<PrivateRoute exact path="/events" component={EventsPage} />
 			<PrivateRoute exact path="/profile" component={ProfilePage} />
 			<PrivateRoute exact path="/events/create" component={CreateEvent} />
 			<PrivateRoute exact path="/events/:id/accept" component={AcceptEvent} />
@@ -38,7 +35,22 @@ const App = () => {
 				path="/events/:id/participant"
 				component={ParticipantEvent}
 			/>
-		</Router>
+		</Switch>
+	</Content>
+);
+
+const App = () => {
+	const { isLoading } = useAuth0();
+
+	if (isLoading) {
+		return <Loading />;
+	}
+
+	return (
+		<Layout>
+			<NavigationBar />
+			<Layout>{AppContent}</Layout>
+		</Layout>
 	);
 };
 
