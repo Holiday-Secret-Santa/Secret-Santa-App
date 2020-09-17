@@ -30,6 +30,7 @@
     "eslint-plugin-react": "^7.20.6",
     "jest": "24.9.0",
     "jest-transform-css": "^2.0.0",
+    "jest-transform-file": "^1.1.1",
     "nodemon": "^1.18.7",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.14",
