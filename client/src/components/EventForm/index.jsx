@@ -1,5 +1,6 @@
-import react from "react";
+import React from "react";
 import { Form, Input, DatePicker, TimePicker, Button } from "antd";
+import "antd/dist/antd.css";
 
 const EventForm = () => {
   const { RangePicker } = TimePicker;
@@ -9,7 +10,7 @@ const EventForm = () => {
         <Input placeholder="Enter Title Here"></Input>
       </Form.Item>
       <Form.Item label="Date">
-        <DatePicker onChange={onChange} />
+        <DatePicker />
       </Form.Item>
       <Form.Item label="Time">
         <RangePicker />
