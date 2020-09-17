@@ -1,8 +1,5 @@
 import React from "react";
-import { Card, Avatar, Tooltip } from "antd";
-import { EyeFilled, SaveFilled, DeleteFilled } from "@ant-design/icons";
-
-const { Meta } = Card;
+import { Card } from "antd";
 
 const exchangeCard = ({
 	id,
