@@ -4,27 +4,25 @@ import "./style.css";
 import "../../components/TableComp/TableComp";
 import TableComp from "../../components/TableComp/TableComp";
 import CardComp from "../../components/CardComp";
+import ButtonComp from "../../components/ButtonComp/ButtonComp";
 
 const ParticipantEvent = () => {
 	return (
 		<>
 			<Row style={{ marginTop: "30px" }}>
-				<Col span={2} offset={2}></Col>
+				<Col span={1} offset={2}></Col>
 				<Col span={4}>
 					<CardComp />
 				</Col>
-				<Col span={12}>
+				<Col span={2} offset={2}></Col>
+				<Col span={10}>
 					<TableComp />
 				</Col>
-				<Col span={4} offset={4}></Col>
 			</Row>
 			<Row>
-				<Col span={2} offset={2}></Col>
-				<Col span={16}>
-					{" "}
-					<TableComp />
+				<Col span={12} offset={2}>
+					<ButtonComp />
 				</Col>
-				<Col span={4} offset={4}></Col>
 			</Row>
 		</>
 	);
