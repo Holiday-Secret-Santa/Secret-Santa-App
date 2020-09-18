@@ -2,3 +2,32 @@ body {
 	width: 100%;
 	height: 100%;
 }
+.ant-table-title {
+	font-size: 25px !important;
+	color: #2c6e49 !important;
+	text-shadow: rgb(5, 20, 43);
+	text-align: center;
+	font-family: cursive;
+	font-weight: bold;
+}
+
+.ant-table {
+	border: 4px solid rgb(142, 161, 142);
+	border-radius: 30px !important;
+	color: rgb(54, 84, 106) !important;
+	text-align: center;
+}
+
+.ant-table-thead > tr > th {
+	color: #c46f6f !important;
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+		"Lucida Sans", Arial, sans-serif;
+	font-weight: bolder !important;
+	font-size: "16px" !important;
+}
+
+.ant-table-container {
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+		"Lucida Sans", Arial, sans-serif !important;
+	color: rgb(15, 31, 70) !important;
+}

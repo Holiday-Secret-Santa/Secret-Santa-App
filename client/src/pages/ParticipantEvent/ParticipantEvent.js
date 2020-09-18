@@ -21,24 +21,27 @@ const columns = [
 		title: "Wish List Items",
 		dataIndex: "item",
 		key: "item",
+		align: "center",
 	},
 	{
 		title: "Price",
 		dataIndex: "price",
 		key: "price",
 		responsive: ["md"],
+		align: "center",
 	},
 	{
 		title: "Purchase Gift Here",
 		dataIndex: "url",
 		key: "url",
 		responsive: ["lg"],
+		align: "center",
 	},
 	{
 		title: "",
 		dataIndex: "",
 		key: "action",
-		render: (text, record) => (
+		render: (record) => (
 			<Button action={() => alert(record.item)} icon={<DeleteTwoTone />} />
 		),
 	},
@@ -72,7 +75,12 @@ const ParticipantEvent = () => {
 								shape="circle"
 								size="large"
 								type="text"
-								icon={<GiftTwoTone style={{ fontSize: 48 }} />}
+								icon={
+									<GiftTwoTone
+										twoToneColor="#D62828"
+										style={{ fontSize: 48 }}
+									/>
+								}
 								style={{ width: 80, height: 80 }}
 							></Button>
 						</Tooltip>
