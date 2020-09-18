@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Tooltip } from "antd";
 import { SettingFilled, GiftOutlined } from "@ant-design/icons";
+// import "antd/dist/antd.css";
 import "./style.css";
 
 // placeholder parameters for API data

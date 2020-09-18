@@ -2,18 +2,18 @@ import React from "react";
 import { Row, Col, Button } from "antd";
 import CardComp from "../../components/CardComp";
 import { PlusCircleOutlined } from "@ant-design/icons";
-import "antd/dist/antd.css";
+// import "antd/dist/antd.css";
 import "./style.css";
 
 const EventsPage = () => {
 	return (
 		<div className="white">
-			<Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+			<Row>
 				<Col>
 					<h1>Events Page</h1>
 				</Col>
 			</Row>
-			<Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+			<Row>
 				<Col>
 					<CardComp description="Frosty the Snow Man" />
 				</Col>
@@ -21,7 +21,7 @@ const EventsPage = () => {
 					<CardComp description="Feeling the Holiday Spirit" />
 				</Col>
 			</Row>
-			<Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+			<Row>
 				<Col>
 					<Button
 						type="primary"
