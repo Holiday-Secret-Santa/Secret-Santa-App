@@ -1,20 +1,22 @@
 import React from "react";
-import { Card } from "antd";
+import { Card, Space } from "antd";
 
 const detailCard = ({
 	id,
-	description,
+	title,
 	date,
 	startTime,
 	location,
 	participants,
 	actions,
 }) => (
-	<Card title={description} actions={actions} style={{ width: 300 }}>
-		<p>Event Date: {date}</p>
-		<p>Event Time:{startTime}</p>
-		<p>Location: {location}</p>
-		<p>Total Participants: {participants}</p>
+	<Card title={title} actions={actions}>
+		<Space direction="vertical">
+			<span>Event Date: {date}</span>
+			<span>Event Time:{startTime}</span>
+			<span>Location: {location}</span>
+			<span>Total Participants: {participants}</span>
+		</Space>
 	</Card>
 );
 
