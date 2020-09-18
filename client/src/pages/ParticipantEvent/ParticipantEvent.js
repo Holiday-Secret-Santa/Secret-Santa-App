@@ -4,9 +4,10 @@ import { GiftTwoTone, DeleteTwoTone } from "@ant-design/icons";
 import DetailCard from "../../components/DetailCard/DetailCard";
 import "./style.css";
 
-const getMySecretSantaItems = () => {
+const getDummyItems = (size) => {
 	var itemsArray = [];
-	for (let i = 0; i < 8; i++) {
+
+	for (let i = 0; i < size; i++) {
 		itemsArray.push({
 			key: i,
 			item: `item ${i}`,
@@ -17,17 +18,12 @@ const getMySecretSantaItems = () => {
 	return itemsArray;
 };
 
+const getMySecretSantaItems = () => {
+	return getDummyItems(8);
+};
+
 const getMyItems = () => {
-	var itemsArray = [];
-	for (let i = 0; i < 3; i++) {
-		itemsArray.push({
-			key: i,
-			item: `item ${i}`,
-			price: 32,
-			url: `http:"www.example.html"`,
-		});
-	}
-	return itemsArray;
+	return getDummyItems(3);
 };
 
 const customColor = "#D62828";
