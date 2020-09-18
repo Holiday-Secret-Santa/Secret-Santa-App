@@ -1,7 +1,6 @@
 import React from "react";
-import { Row, Col, Button, Tooltip } from "antd";
+import { Row, Col, Button, Tooltip, Table } from "antd";
 import { GiftTwoTone, DeleteTwoTone } from "@ant-design/icons";
-import TableComp from "../../components/Table/TableComp";
 import DetailCard from "../../components/DetailCard/DetailCard";
 import "./style.css";
 
@@ -79,6 +78,18 @@ const getColumns = (showDeleteAction) => {
 		});
 
 	return columns;
+};
+
+const TableComp = ({ title, dataSource, columns }) => {
+	return (
+		<Table
+			title={title}
+			dataSource={dataSource}
+			columns={columns}
+			pagination={{ pageSize: 5 }}
+			className="custom-table-style"
+		/>
+	);
 };
 
 const ResponsiveColumn = ({ children, lg, offset, span, flex, style }) => {
