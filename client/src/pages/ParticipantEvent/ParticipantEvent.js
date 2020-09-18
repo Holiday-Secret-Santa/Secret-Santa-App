@@ -1,6 +1,6 @@
-import React from "react";
-import { Row, Col } from "antd";
-import { FolderAddTwoTone } from "@ant-design/icons";
+import React, { useState } from "react";
+import { Row, Col, Space } from "antd";
+import { GiftTwoTone } from "@ant-design/icons";
 import TableComp from "../../components/Table/TableComp";
 import DetailCard from "../../components/DetailCard/DetailCard";
 import ButtonComp from "../../components/Button/ButtonComp";
@@ -8,7 +8,7 @@ import "./style.css";
 
 const dataSourceItemsArray = [];
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 15; i++) {
 	dataSourceItemsArray.push({
 		key: i,
 		item: `item ${i}`,
@@ -22,49 +22,64 @@ const columns = [
 		title: "Wish List Items",
 		dataIndex: "item",
 		key: "item",
-		responsive: ["sm", "md", "lg"],
 	},
 	{
 		title: "Price",
 		dataIndex: "price",
 		key: "price",
-		responsive: ["sm", "md", "lg"],
+		responsive: ["md"],
 	},
 	{
 		title: "Purchase Gift Here",
 		dataIndex: "url",
 		key: "url",
-		responsive: ["sm", "md", "lg"],
+		responsive: ["lg"],
+	},
+	{
+		title: "Action",
+		dataIndex: "",
+		key: "action",
+		render: (text, record) => (
+			<>
+				<a onClick={() => alert(record.item)}>Delete</a>
+			</>
+		),
 	},
 ];
 
+const ResponsiveColumn = ({ children, lg, offset, span, flex, style }) => {
+	return (
+		<Col
+			xs={24}
+			sm={24}
+			md={24}
+			lg={lg}
+			offset={offset}
+			span={span}
+			flex={flex}
+			style={style}
+		>
+			{children}
+		</Col>
+	);
+};
+
 const ParticipantEvent = () => {
+	const [container, setContainer] = useState(null);
 	return (
 		<>
-			<Row style={{ marginTop: "40px" }}>
-				<Col span={4} orientation="right">
-					<ButtonComp
-						type="secondary"
-						icon={<FolderAddTwoTone tyle={{ color: "green", fontSize: 60 }} />}
-						text="Add Item"
-						style={({ backgroundColor: "white" }, { border: "3px" })}
-						shape="round"
-					/>
-				</Col>
-			</Row>
-			<Row gutter={40} style={{ marginTop: "30px" }}>
-				<Col span={4} offset={1}>
-					<DetailCard
-						style={{ witdh: "400px" }}
-						date="date"
-						startTime="9:00 am"
-					/>
-				</Col>
-				<Col offset={1}></Col>
-				<Col flex="auto">
+			<Row gutter={[30, 30]} style={{ padding: 20 }}>
+				<ResponsiveColumn span={24} style={{ justify: "flex-end" }}>
+					<Row justify="end">
+						<ButtonComp shape="circle" icon={<GiftTwoTone />} />
+					</Row>
+				</ResponsiveColumn>
+				<ResponsiveColumn lg={6}>
+					<DetailCard title="Event Details" date="date" startTime="9:00 am" />
+				</ResponsiveColumn>
+				<ResponsiveColumn lg={18}>
 					<TableComp dataSource={dataSourceItemsArray} columns={columns} />
-				</Col>
-				<Col offset={1}></Col>
+				</ResponsiveColumn>
 			</Row>
 		</>
 	);
