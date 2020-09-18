@@ -5,22 +5,37 @@ import CardComp from "../../components/CardComp";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import "./style.css";
 
+// Adding responsiveness
+const ResponsiveColumn = ({ children, lg, offset, span, flex, style }) => {
+	return (
+		<Col
+			xs={24}
+			sm={24}
+			md={8}
+			lg={8}
+			offset={offset}
+			span={span}
+			flex={flex}
+			style={style}
+		>
+			{children}
+		</Col>
+	);
+};
+
 const EventsPage = () => {
 	return (
 		<div>
-			<Row>
-				<Col xs={2} xl={1}></Col>
-				<Col xs={20} xl={22}>
+			<Row style={{ padding: 15 }}>
+				<ResponsiveColumn>
 					<h1>Events Page</h1>
-				</Col>
-				<Col xs={2} xl={1}></Col>
+				</ResponsiveColumn>
 			</Row>
-			<Row>
-				<Col xs={2} xl={1}></Col>
-				<Col xs={20} xl={5}>
-					<Space className="space-top">
+			<Row style={{ padding: 15 }}>
+				<ResponsiveColumn>
+					<Space>
 						<CardComp
-							description="Frosty the Snow Man"
+							description="Charlie Brown Christmas"
 							actions={[
 								// Icon buttons for future use
 								<span>
@@ -38,13 +53,17 @@ const EventsPage = () => {
 									</Tooltip>
 								</span>,
 							]}
+							date={"December 25, 2020"}
+							startTime={"7:30pm"}
+							location={"https://testvideolink.com"}
+							participants={10}
 						/>
 					</Space>
-				</Col>
-				<Col xs={20} xl={5}>
-					<Space className="space-top">
+				</ResponsiveColumn>
+				<ResponsiveColumn>
+					<Space>
 						<CardComp
-							description="Simpson Christmas"
+							description="Ugly Sweater Party"
 							actions={[
 								// Icon buttons for future use
 								<span>
@@ -62,13 +81,17 @@ const EventsPage = () => {
 									</Tooltip>
 								</span>,
 							]}
+							date={"December 25, 2020"}
+							startTime={"7:30pm"}
+							location={"https://testvideolink.com"}
+							participants={10}
 						/>
 					</Space>
-				</Col>
-				<Col xs={20} xl={5}>
-					<Space className="space-top">
+				</ResponsiveColumn>
+				<ResponsiveColumn>
+					<Space>
 						<CardComp
-							description="Rocking Around the Christmas Tree"
+							description="Epic Gift and Cookie Exchange"
 							actions={[
 								// Icon buttons for future use
 								<span>
@@ -86,38 +109,16 @@ const EventsPage = () => {
 									</Tooltip>
 								</span>,
 							]}
+							date={"December 25, 2020"}
+							startTime={"7:30pm"}
+							location={"https://testvideolink.com"}
+							participants={10}
 						/>
 					</Space>
-				</Col>
-				<Col xs={20} xl={5}>
-					<Space className="space-top">
-						<CardComp
-							description="Frozen"
-							actions={[
-								// Icon buttons for future use
-								<span>
-									<Tooltip title="Manage Your Gift Exchange">
-										<SettingFilled
-											style={{ fontSize: "24px", color: "#2c6e49" }}
-										/>
-									</Tooltip>
-								</span>,
-								<span>
-									<Tooltip title="Add Gifts for Secret Santa">
-										<GiftFilled
-											style={{ fontSize: "24px", color: "#2c6e49" }}
-										/>
-									</Tooltip>
-								</span>,
-							]}
-						/>
-					</Space>
-				</Col>
-				<Col xs={2} xl={1}></Col>
+				</ResponsiveColumn>
 			</Row>
-			<Row className="space-top">
-				<Col xs={2} xl={2}></Col>
-				<Col xs={20} xl={20}>
+			<Row style={{ padding: 15 }}>
+				<ResponsiveColumn>
 					<Button
 						type="primary"
 						shape="round"
@@ -130,8 +131,7 @@ const EventsPage = () => {
 					>
 						Create New Event
 					</Button>
-				</Col>
-				<Col xs={2} xl={2}></Col>
+				</ResponsiveColumn>
 			</Row>
 		</div>
 	);
