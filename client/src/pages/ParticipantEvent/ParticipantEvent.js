@@ -1,15 +1,14 @@
 import React from "react";
 import { Row, Col } from "antd";
-import "./style.css";
-import "../../components/TableComp/TableComp";
+import { FolderAddTwoTone } from "@ant-design/icons";
 import TableComp from "../../components/Table/TableComp";
-import CardComp from "../../components/CardComp";
-import ButtonComp from "../../components/ButtonComp/ButtonComp";
+import DetailCard from "../../components/DetailCard/DetailCard";
+import ButtonComp from "../../components/Button/ButtonComp";
+import "./style.css";
 
 const dataSourceItemsArray = [];
 
-// just for testing the table, must to adapt
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 10; i++) {
 	dataSourceItemsArray.push({
 		key: i,
 		item: `item ${i}`,
@@ -23,39 +22,48 @@ const columns = [
 		title: "Wish List Items",
 		dataIndex: "item",
 		key: "item",
-		responsive: ["sm", "md"],
+		responsive: ["sm", "md", "lg"],
 	},
 	{
 		title: "Price",
 		dataIndex: "price",
 		key: "price",
-		responsive: ["sm", "md"],
+		responsive: ["sm", "md", "lg"],
 	},
 	{
 		title: "Purchase Gift Here",
 		dataIndex: "url",
 		key: "url",
-		responsive: ["sm", "md"],
+		responsive: ["sm", "md", "lg"],
 	},
 ];
+
+const date = "10/18/20";
 
 const ParticipantEvent = () => {
 	return (
 		<>
-			<Row style={{ marginTop: "30px" }}>
-				<Col span={1} offset={2}></Col>
-				<Col span={4}>
-					<CardComp />
-				</Col>
-				<Col span={2} offset={2}></Col>
-				<Col span={10}>
-					<TableComp dataSource={dataSourceItemsArray} columns={columns} />
+			<Row style={{ marginTop: "40px" }}>
+				<Col span={4} orientation="right">
+					<ButtonComp
+						icon={<FolderAddTwoTone twoToneColor="#52c41a" width="3em" />}
+						text="Add Item"
+					/>
 				</Col>
 			</Row>
-			<Row>
-				<Col span={12} offset={2}>
-					<ButtonComp />
+			<Row gutter={40} style={{ marginTop: "30px" }}>
+				<Col span={4} offset={1}>
+					<DetailCard
+						style={{ witdh: "400px" }}
+						date={`Santa Event Date: ${date}`}
+						startTime="9:00 am"
+					/>
 				</Col>
+				<Col offset={1}></Col>
+				<Col flex="auto">
+					<TableComp dataSource={dataSourceItemsArray} columns={columns} />
+				</Col>
+				<Col offset={1}></Col>
 			</Row>
 		</>
 	);
