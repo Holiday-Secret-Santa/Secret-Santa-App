@@ -3,7 +3,7 @@ body {
 	height: 100%;
 }
 .ant-table-title {
-	font-size: 25px !important;
+	font-size: 30px !important;
 	color: #2c6e49 !important;
 	text-shadow: rgb(5, 20, 43);
 	text-align: center;
@@ -19,15 +19,15 @@ body {
 }
 
 .ant-table-thead > tr > th {
-	color: #c46f6f !important;
+	color: rgb(15, 31, 70) !important;
 	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
 		"Lucida Sans", Arial, sans-serif;
 	font-weight: bolder !important;
-	font-size: "16px" !important;
+	font-size: "20px" !important;
 }
 
 .ant-table-container {
 	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
 		"Lucida Sans", Arial, sans-serif !important;
-	color: rgb(15, 31, 70) !important;
+	color: rgb(35, 55, 106) !important;
 }
