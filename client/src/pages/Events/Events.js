@@ -22,17 +22,17 @@ const EventsPage = () => {
 					</Space>
 				</Col>
 				<Col xs={20} xl={5}>
-					<Space className="space-top space-left">
+					<Space className="space-top">
 						<CardComp description="Simpson Christmas" />
 					</Space>
 				</Col>
 				<Col xs={20} xl={5}>
-					<Space className="space-top space-left">
+					<Space className="space-top">
 						<CardComp description="Rocking Around the Christmas Tree" />
 					</Space>
 				</Col>
 				<Col xs={20} xl={5}>
-					<Space className="space-top space-left">
+					<Space className="space-top">
 						<CardComp description="Frozen" />
 					</Space>
 				</Col>
