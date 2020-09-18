@@ -1,9 +1,8 @@
 import React from "react";
-import { FolderAddTwoTone } from "@ant-design/icons";
 import { Button } from "antd";
 import TooltipComp from "../Tooltip/TooltipComp";
 
-const ButtonComp = ({ action }) => {
+const ButtonComp = ({ action, icon, text }) => {
 	return (
 		<>
 			<TooltipComp title="Add Item">
@@ -13,9 +12,9 @@ const ButtonComp = ({ action }) => {
 					onClick={action}
 					orientation="right"
 					shape="round"
-					icon={<FolderAddTwoTone twoToneColor="#52c41a" width="3em" />}
+					icon={icon}
 				>
-					Add Item
+					{text}
 				</Button>
 			</TooltipComp>
 		</>
