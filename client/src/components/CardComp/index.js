@@ -29,8 +29,7 @@ const exchangeCard = ({
 			</span>,
 		]}
 		style={{ width: 400 }}
-		headStyle={{ backgroundColor: "#d62828" }}
-		
+		headStyle={{ backgroundColor: "#d62828", fontStyle: "#ffffff" }}
 	>
 		<p>Event Date: {date}</p>
 		<p>Event Time:{startTime}</p>

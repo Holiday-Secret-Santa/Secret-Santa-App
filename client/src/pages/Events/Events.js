@@ -6,7 +6,7 @@ import "./style.css";
 
 const EventsPage = () => {
 	return (
-		<div className="white" >
+		<div className="white" justify="space-between" align="bottom">
 			<Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
 				<Col>
 					<h1>Events Page</h1>
@@ -27,7 +27,7 @@ const EventsPage = () => {
 						shape="round"
 						icon={<PlusCircleOutlined />}
 						size="large"
-						style={{ backgroundColor: "#2c6e49", borderColor:"#2c6e49" }}
+						style={{ backgroundColor: "#2c6e49", borderColor: "#2c6e49" }}
 					>
 						Create New Event
 					</Button>
