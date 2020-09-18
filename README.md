@@ -17,9 +17,13 @@
   - [Sequence Diagrams](#sequence-diagrams)
   - [ER Diagram](#er-diagram)
   - [Wireframes](#wireframes)
-- [Technologies](#technologies)
+- [Technologies Used for Development](#technologies-used-for-development)
   - [Core Technologies](#core-technologies)
-- [Installation](#installation)
+  - [CircleCI and Code Climate](#circleci-and-code-climate)
+- [Installation and Testing Instructions](#installation-and-testing-instructions)
+  - [Required Technologies](#required-technologies)
+  - [Installation Instructions](#installation-instructions)
+  - [Testing Instructions](#testing-instructions)
 - [Team Members](#team-members)
 
 ---
