@@ -245,7 +245,7 @@ Please note that the when the user clicks the `Add Item Button` on the event det
 
 </details>
 
-## Technologies
+## Technologies Used for Development
 
 Here is a list of the core technologies we plan to use for the development of this application. Please note that this list may change throughout the development of the application.
 
@@ -285,7 +285,7 @@ I am including this update to make it clear that we are aware react-related depe
 
 ---
 
-## Installation and Testing
+## Installation and Testing Instructions
 
 ### Required Technologies
 
