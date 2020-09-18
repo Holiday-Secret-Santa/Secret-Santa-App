@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Button } from "antd";
+import { Row, Col, Button, Tooltip } from "antd";
 import { GiftTwoTone, DeleteTwoTone } from "@ant-design/icons";
 import TableComp from "../../components/Table/TableComp";
 import DetailCard from "../../components/DetailCard/DetailCard";
@@ -67,13 +67,15 @@ const ParticipantEvent = () => {
 			<Row gutter={[30, 30]} style={{ padding: 20 }}>
 				<ResponsiveColumn span={24} style={{ justify: "flex-end" }}>
 					<Row justify="end">
-						<Button
-							shape="circle"
-							size="large"
-							type="text"
-							icon={<GiftTwoTone style={{ fontSize: 48 }} />}
-							style={{ width: 80, height: 80 }}
-						></Button>
+						<Tooltip title="Add Gift Item">
+							<Button
+								shape="circle"
+								size="large"
+								type="text"
+								icon={<GiftTwoTone style={{ fontSize: 48 }} />}
+								style={{ width: 80, height: 80 }}
+							></Button>
+						</Tooltip>
 					</Row>
 				</ResponsiveColumn>
 				<ResponsiveColumn lg={6}>
