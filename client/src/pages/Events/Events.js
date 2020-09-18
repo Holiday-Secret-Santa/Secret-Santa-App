@@ -23,100 +23,81 @@ const ResponsiveColumn = ({ children, lg, offset, span, flex, style }) => {
 	);
 };
 
+//
 const EventsPage = () => {
 	return (
 		<div>
+			{/* Header */}
 			<Row style={{ padding: 15 }}>
 				<ResponsiveColumn>
 					<h1>Events Page</h1>
 				</ResponsiveColumn>
 			</Row>
+			{/* Cards */}
 			<Row style={{ padding: 15 }}>
-				<ResponsiveColumn>
-					<Space>
-						<CardComp
-							description="Charlie Brown Christmas"
-							actions={[
-								// Icon buttons for future use
-								<span>
-									<Tooltip title="Manage Your Gift Exchange">
-										<SettingFilled
-											style={{ fontSize: "24px", color: "#2c6e49" }}
-										/>
-									</Tooltip>
-								</span>,
-								<span>
-									<Tooltip title="Add Gifts for Secret Santa">
-										<GiftFilled
-											style={{ fontSize: "24px", color: "#2c6e49" }}
-										/>
-									</Tooltip>
-								</span>,
-							]}
-							date={"December 25, 2020"}
-							startTime={"7:30pm"}
-							location={"https://testvideolink.com"}
-							participants={10}
-						/>
-					</Space>
-				</ResponsiveColumn>
-				<ResponsiveColumn>
-					<Space>
-						<CardComp
-							description="Ugly Sweater Party"
-							actions={[
-								// Icon buttons for future use
-								<span>
-									<Tooltip title="Manage Your Gift Exchange">
-										<SettingFilled
-											style={{ fontSize: "24px", color: "#2c6e49" }}
-										/>
-									</Tooltip>
-								</span>,
-								<span>
-									<Tooltip title="Add Gifts for Secret Santa">
-										<GiftFilled
-											style={{ fontSize: "24px", color: "#2c6e49" }}
-										/>
-									</Tooltip>
-								</span>,
-							]}
-							date={"December 25, 2020"}
-							startTime={"7:30pm"}
-							location={"https://testvideolink.com"}
-							participants={10}
-						/>
-					</Space>
-				</ResponsiveColumn>
-				<ResponsiveColumn>
-					<Space>
-						<CardComp
-							description="Epic Gift and Cookie Exchange"
-							actions={[
-								// Icon buttons for future use
-								<span>
-									<Tooltip title="Manage Your Gift Exchange">
-										<SettingFilled
-											style={{ fontSize: "24px", color: "#2c6e49" }}
-										/>
-									</Tooltip>
-								</span>,
-								<span>
-									<Tooltip title="Add Gifts for Secret Santa">
-										<GiftFilled
-											style={{ fontSize: "24px", color: "#2c6e49" }}
-										/>
-									</Tooltip>
-								</span>,
-							]}
-							date={"December 25, 2020"}
-							startTime={"7:30pm"}
-							location={"https://testvideolink.com"}
-							participants={10}
-						/>
-					</Space>
-				</ResponsiveColumn>
+				<CardComp
+					description={"Ugly Sweather Exchange"}
+					date={"12/25/2020"}
+					startTime={"7:30pm"}
+					location={"https://myvirtuallink.com"}
+					participants={"10 accepted attendees"}
+					actions={[
+						// Icon buttons for future use
+						<span>
+							<Tooltip title="Manage Your Gift Exchange">
+								<SettingFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
+							</Tooltip>
+						</span>,
+						<span>
+							<Tooltip title="Add Gifts for Secret Santa">
+								<GiftFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
+							</Tooltip>
+						</span>,
+					]}
+				/>
+				<CardComp
+					description={"Frosty the Snow Man"}
+					date={"12/10/2020"}
+					startTime={"7:30pm"}
+					location={"https://myvirtuallink.com"}
+					participants={"15 accepted attendees"}
+					actions={[
+						// Icon buttons for future use
+						<span>
+							<Tooltip title="Manage Your Gift Exchange">
+								<SettingFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
+							</Tooltip>
+						</span>,
+						<span>
+							<Tooltip title="Add Gifts for Secret Santa">
+								<GiftFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
+							</Tooltip>
+						</span>,
+					]}
+				/>
+				<CardComp
+					description={"Feliz Navidad"}
+					date={"12/24/2020"}
+					startTime={"7:30pm"}
+					location={"https://myvirtuallink.com"}
+					participants={"12 accepted attendees"}
+					actions={[
+						// Icon buttons for future use
+						<span>
+							<Tooltip title="Manage Your Gift Exchange">
+								<SettingFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
+							</Tooltip>
+						</span>,
+						<span>
+							<Tooltip title="Add Gifts for Secret Santa">
+								<GiftFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
+							</Tooltip>
+						</span>,
+					]}
+				/>
 			</Row>
+
+			{/* Button */}
 			<Row style={{ padding: 15 }}>
 				<ResponsiveColumn>
 					<Button
