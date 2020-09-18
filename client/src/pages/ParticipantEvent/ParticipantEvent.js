@@ -38,16 +38,17 @@ const columns = [
 	},
 ];
 
-const date = "10/18/20";
-
 const ParticipantEvent = () => {
 	return (
 		<>
 			<Row style={{ marginTop: "40px" }}>
 				<Col span={4} orientation="right">
 					<ButtonComp
-						icon={<FolderAddTwoTone twoToneColor="#52c41a" width="3em" />}
+						type="secondary"
+						icon={<FolderAddTwoTone tyle={{ color: "green", fontSize: 60 }} />}
 						text="Add Item"
+						style={({ backgroundColor: "white" }, { border: "3px" })}
+						shape="round"
 					/>
 				</Col>
 			</Row>
@@ -55,7 +56,7 @@ const ParticipantEvent = () => {
 				<Col span={4} offset={1}>
 					<DetailCard
 						style={{ witdh: "400px" }}
-						date={`Santa Event Date: ${date}`}
+						date="date"
 						startTime="9:00 am"
 					/>
 				</Col>
