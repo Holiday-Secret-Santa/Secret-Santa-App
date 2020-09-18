@@ -5,7 +5,7 @@ import "antd/dist/antd.css";
 
 const AddGuests = () => {
   return (
-    <Card title="Import Guest List" style={{ width: 300 }}>
+    <Card title="Import Guest List" style={{ width: 300, margin: "auto" }}>
       <Upload>
         <Button icon={<UploadOutlined />}>Click to Upload</Button>
       </Upload>
