@@ -1,5 +1,5 @@
 import React from "react";
-import { Table } from "antd";
+import { Table, Tooltip } from "antd";
 
 const gifts = [];
 
@@ -19,6 +19,12 @@ const columns = [
 		dataIndex: "item",
 		key: "item",
 		responsive: ["sm", "md"],
+
+		render: (item) => (
+			<Tooltip placement="topRight" title={item}>
+				{item}
+			</Tooltip>
+		),
 	},
 	{
 		title: "Price",
