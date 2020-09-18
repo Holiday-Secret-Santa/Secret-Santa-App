@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Pagination } from "antd";
+import { Table } from "antd";
 
 const TableComp = ({ dataSource, columns }) => {
 	return (
