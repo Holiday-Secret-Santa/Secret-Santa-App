@@ -2,7 +2,8 @@ body {
 	width: 100%;
 	height: 100%;
 }
-.ant-table-title {
+.ant-table-title,
+.ant-card-head-title {
 	font-size: 30px !important;
 	color: #2c6e49 !important;
 	text-shadow: rgb(5, 20, 43);
@@ -11,10 +12,14 @@ body {
 	font-weight: bold;
 }
 
-.ant-table {
-	border: 4px solid rgb(142, 161, 142);
-	border-radius: 30px !important;
+.ant-table,
+.ant-card {
+	border: 1px solid rgb(142, 161, 142) !important;
+	border-radius: 10px !important;
 	color: rgb(54, 84, 106) !important;
+}
+
+.ant-table {
 	text-align: center;
 }
 

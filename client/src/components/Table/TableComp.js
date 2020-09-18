@@ -1,10 +1,10 @@
 import React from "react";
 import { Table } from "antd";
 
-const TableComp = ({ dataSource, columns }) => {
+const TableComp = ({ title, dataSource, columns }) => {
 	return (
 		<Table
-			title={() => "You are the Secret Santa for ... "}
+			title={title}
 			dataSource={dataSource}
 			columns={columns}
 			pagination={{ pageSize: 5 }}

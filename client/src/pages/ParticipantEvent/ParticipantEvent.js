@@ -5,47 +5,81 @@ import TableComp from "../../components/Table/TableComp";
 import DetailCard from "../../components/DetailCard/DetailCard";
 import "./style.css";
 
-const dataSourceItemsArray = [];
+const getMySecretSantaItems = () => {
+	var itemsArray = [];
+	for (let i = 0; i < 8; i++) {
+		itemsArray.push({
+			key: i,
+			item: `item ${i}`,
+			price: 32,
+			url: `http:"www.example.html"`,
+		});
+	}
+	return itemsArray;
+};
 
-for (let i = 0; i < 15; i++) {
-	dataSourceItemsArray.push({
-		key: i,
-		item: `item ${i}`,
-		price: 32,
-		url: `http:"www.example.html"`,
-	});
-}
+const getMyItems = () => {
+	var itemsArray = [];
+	for (let i = 0; i < 3; i++) {
+		itemsArray.push({
+			key: i,
+			item: `item ${i}`,
+			price: 32,
+			url: `http:"www.example.html"`,
+		});
+	}
+	return itemsArray;
+};
 
-const columns = [
-	{
-		title: "Wish List Items",
-		dataIndex: "item",
-		key: "item",
-		align: "center",
-	},
-	{
-		title: "Price",
-		dataIndex: "price",
-		key: "price",
-		responsive: ["md"],
-		align: "center",
-	},
-	{
-		title: "Purchase Gift Here",
-		dataIndex: "url",
-		key: "url",
-		responsive: ["lg"],
-		align: "center",
-	},
-	{
-		title: "",
-		dataIndex: "",
-		key: "action",
-		render: (record) => (
-			<Button action={() => alert(record.item)} icon={<DeleteTwoTone />} />
-		),
-	},
-];
+const customColor = "#D62828";
+
+const getColumns = (showDeleteAction) => {
+	const columns = [
+		{
+			title: "Wish List Items",
+			dataIndex: "item",
+			key: "item",
+			align: "center",
+		},
+		{
+			title: "Price",
+			dataIndex: "price",
+			key: "price",
+			responsive: ["md"],
+			align: "center",
+		},
+		{
+			title: "Purchase Gift Here",
+			dataIndex: "url",
+			key: "url",
+			responsive: ["lg"],
+			align: "center",
+		},
+	];
+
+	if (showDeleteAction)
+		columns.push({
+			title: "",
+			dataIndex: "",
+			key: "action",
+			render: (record) => (
+				<Tooltip title="Delete Gift Item">
+					<Button
+						type="text"
+						onClick={() => alert(record.item)}
+						icon={
+							<DeleteTwoTone
+								twoToneColor={customColor}
+								style={{ fontSize: 24 }}
+							/>
+						}
+					/>
+				</Tooltip>
+			),
+		});
+
+	return columns;
+};
 
 const ResponsiveColumn = ({ children, lg, offset, span, flex, style }) => {
 	return (
@@ -64,33 +98,55 @@ const ResponsiveColumn = ({ children, lg, offset, span, flex, style }) => {
 	);
 };
 
+const MyGiftListAddButton = () => {
+	return (
+		<Row justify="end">
+			<Tooltip title="Add Gift Item">
+				<Button
+					shape="circle"
+					size="large"
+					type="text"
+					icon={
+						<GiftTwoTone twoToneColor={customColor} style={{ fontSize: 48 }} />
+					}
+					style={{ width: 80, height: 80 }}
+				></Button>
+			</Tooltip>
+		</Row>
+	);
+};
+
+const EventCard = () => {
+	return (
+		<DetailCard
+			title="Event Details"
+			date="date"
+			startTime="9:00 am"
+			location={"My House"}
+			participants={12}
+		/>
+	);
+};
+
 const ParticipantEvent = () => {
 	return (
 		<>
 			<Row gutter={[30, 30]} style={{ padding: 20 }}>
-				<ResponsiveColumn span={24} style={{ justify: "flex-end" }}>
-					<Row justify="end">
-						<Tooltip title="Add Gift Item">
-							<Button
-								shape="circle"
-								size="large"
-								type="text"
-								icon={
-									<GiftTwoTone
-										twoToneColor="#D62828"
-										style={{ fontSize: 48 }}
-									/>
-								}
-								style={{ width: 80, height: 80 }}
-							></Button>
-						</Tooltip>
-					</Row>
-				</ResponsiveColumn>
 				<ResponsiveColumn lg={6}>
-					<DetailCard title="Event Details" date="date" startTime="9:00 am" />
+					<EventCard />
 				</ResponsiveColumn>
 				<ResponsiveColumn lg={18}>
-					<TableComp dataSource={dataSourceItemsArray} columns={columns} />
+					<TableComp
+						title={() => "You are the Secret Santa for ... "}
+						dataSource={getMySecretSantaItems()}
+						columns={getColumns(false)}
+					/>
+					<MyGiftListAddButton />
+					<TableComp
+						title={() => "Create Your Gift List for Your Secret Santa!"}
+						dataSource={getMyItems()}
+						columns={getColumns(true)}
+					/>
 				</ResponsiveColumn>
 			</Row>
 		</>

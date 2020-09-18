@@ -1,6 +1,15 @@
 import React from "react";
 import { Card, Space } from "antd";
 
+const FieldSpan = ({ label, data }) => {
+	return (
+		<span>
+			<span style={{ fontWeight: "bold" }}>{label}: </span>
+			{data}
+		</span>
+	);
+};
+
 const detailCard = ({
 	id,
 	title,
@@ -12,10 +21,10 @@ const detailCard = ({
 }) => (
 	<Card title={title} actions={actions}>
 		<Space direction="vertical">
-			<span>Event Date: {date}</span>
-			<span>Event Time:{startTime}</span>
-			<span>Location: {location}</span>
-			<span>Total Participants: {participants}</span>
+			<FieldSpan label="Event Date" data={date} />
+			<FieldSpan label="Event Time" data={startTime} />
+			<FieldSpan label="Location" data={location} />
+			<FieldSpan label="Total Participants" data={participants} />
 		</Space>
 	</Card>
 );
