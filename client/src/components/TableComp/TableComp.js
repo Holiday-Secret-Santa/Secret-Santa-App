@@ -3,6 +3,7 @@ import { Table } from "antd";
 
 const gifts = [];
 
+// just for testing the table, must to adapt
 for (let i = 0; i < 100; i++) {
 	gifts.push({
 		key: i,
@@ -17,16 +18,19 @@ const columns = [
 		title: "Wish List Items",
 		dataIndex: "item",
 		key: "item",
+		responsive: ["sm", "md"],
 	},
 	{
 		title: "Price",
 		dataIndex: "price",
 		key: "price",
+		responsive: ["sm", "md"],
 	},
 	{
 		title: "Purchase Gift Here",
 		dataIndex: "url",
 		key: "url",
+		responsive: ["sm", "md"],
 	},
 ];
 
