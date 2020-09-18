@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Row, Col, Space } from "antd";
-import { GiftTwoTone } from "@ant-design/icons";
+import React from "react";
+import { Row, Col } from "antd";
+import { GiftTwoTone, DeleteTwoTone } from "@ant-design/icons";
 import TableComp from "../../components/Table/TableComp";
 import DetailCard from "../../components/DetailCard/DetailCard";
 import ButtonComp from "../../components/Button/ButtonComp";
@@ -36,13 +36,11 @@ const columns = [
 		responsive: ["lg"],
 	},
 	{
-		title: "Action",
+		title: "",
 		dataIndex: "",
 		key: "action",
 		render: (text, record) => (
-			<>
-				<a onClick={() => alert(record.item)}>Delete</a>
-			</>
+			<ButtonComp action={() => alert(record.item)} icon={<DeleteTwoTone />} />
 		),
 	},
 ];
@@ -65,7 +63,6 @@ const ResponsiveColumn = ({ children, lg, offset, span, flex, style }) => {
 };
 
 const ParticipantEvent = () => {
-	const [container, setContainer] = useState(null);
 	return (
 		<>
 			<Row gutter={[30, 30]} style={{ padding: 20 }}>
