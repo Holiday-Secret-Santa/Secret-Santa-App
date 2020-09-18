@@ -1,27 +1,37 @@
 import React from "react";
-import { Row, Col, Container } from "antd";
+import { Row, Col, Button } from "antd";
 import CardComp from "../../components/CardComp";
+import { PlusCircleOutlined } from "@ant-design/icons";
 import "./style.css";
 
 const EventsPage = () => {
 	return (
 		<div className="white">
 			<Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-				<Col xs={1}></Col>
-				<Col xs={22}>
+				<Col>
 					<h1>Events Page</h1>
 				</Col>
-				<Col xs={1}></Col>
 			</Row>
 			<Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-				<Col xs={1}></Col>
-				<Col xs={11}>
+				<Col>
 					<CardComp description="Frosty the Snow Man" />
 				</Col>
-				<Col xs={11}>
+				<Col>
 					<CardComp description="Feeling the Holiday Spirit" />
 				</Col>
-				<Col xs={1}></Col>
+			</Row>
+			<Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+				<Col>
+					<Button
+						type="primary"
+						shape="round"
+						icon={<PlusCircleOutlined />}
+						size="large"
+						style={{ backgroundColor: "#2c6e49", borderColor:"#2c6e49" }}
+					>
+						Create New Event
+					</Button>
+				</Col>
 			</Row>
 		</div>
 	);

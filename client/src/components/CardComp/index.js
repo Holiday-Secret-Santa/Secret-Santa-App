@@ -28,7 +28,9 @@ const exchangeCard = ({
 				</Tooltip>
 			</span>,
 		]}
-		style={{ width: 300 }}
+		style={{ width: 400 }}
+		headStyle={{ backgroundColor: "#d62828" }}
+		
 	>
 		<p>Event Date: {date}</p>
 		<p>Event Time:{startTime}</p>
