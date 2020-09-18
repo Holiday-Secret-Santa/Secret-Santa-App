@@ -1,39 +1,16 @@
 import React from "react";
 import { Table } from "antd";
 
-const gifts = [
-	{
-		key: "1",
-		item: "babysister",
-		price: 800,
-		url: "https://www.sittercity.com/?utm_medium=cpc&utm_source=google&utm_",
-	},
-	{
-		key: "2",
-		item: "vacation",
-		price: 2000,
-		url:
-			"https://www.tripadvisor.com/Tourism-g150807-Cancun_Yucatan_Peninsula-Vacations.html",
-	},
-	{
-		key: "3",
-		item: "babysister",
-		price: 800,
-		url: "https://www.sittercity.com/?utm_medium=cpc&utm_source=google&utm_",
-	},
-	{
-		key: "4",
-		item: "babysister",
-		price: 800,
-		url: "https://www.sittercity.com/?utm_medium=cpc&utm_source=google&utm_",
-	},
-	{
-		key: "5",
-		item: "babysister",
-		price: 800,
-		url: "https://www.sittercity.com/?utm_medium=cpc&utm_source=google&utm_",
-	},
-];
+const gifts = [];
+
+for (let i = 0; i < 100; i++) {
+	gifts.push({
+		key: i,
+		item: `item ${i}`,
+		price: 32,
+		url: `http:"www.example.html"`,
+	});
+}
 
 const columns = [
 	{
@@ -54,7 +31,14 @@ const columns = [
 ];
 
 const TableComp = () => {
-	return <Table dataSource={gifts} columns={columns} />;
+	return (
+		<Table
+			dataSource={gifts}
+			columns={columns}
+			pagination={{ pageSize: 50 }}
+			scroll={{ y: 240 }}
+		/>
+	);
 };
 
 export default TableComp;
