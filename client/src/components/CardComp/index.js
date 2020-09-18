@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Tooltip } from "antd";
-import { SettingFilled, GiftOutlined } from "@ant-design/icons";
+import { SettingFilled, GiftFilled } from "@ant-design/icons";
 import "./style.css";
 
 // placeholder parameters for API data
@@ -19,17 +19,17 @@ const exchangeCard = ({
 			// Icon buttons for future use
 			<span>
 				<Tooltip title="Manage Your Gift Exchange">
-					<SettingFilled />
+					<SettingFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
 				</Tooltip>
 			</span>,
 			<span>
 				<Tooltip title="Add Gifts for Secret Santa">
-					<GiftOutlined />
+					<GiftFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
 				</Tooltip>
 			</span>,
 		]}
 		style={{ width: 400 }}
-		headStyle={{ backgroundColor: "#d62828", fontStyle: "#ffffff" }}
+		headStyle={{ backgroundColor: "#d62828", color: "#ffffff" }}
 	>
 		<p>Event Date: {date}</p>
 		<p>Event Time:{startTime}</p>
