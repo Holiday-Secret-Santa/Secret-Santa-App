@@ -6,7 +6,7 @@ import "./style.css";
 
 const EventsPage = () => {
 	return (
-		<div className="white">
+		<div className="white" >
 			<Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
 				<Col>
 					<h1>Events Page</h1>
