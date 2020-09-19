@@ -9,8 +9,8 @@ const ResponsiveColumn = ({ children, lg, offset, span, flex, style }) => {
 		<Col
 			xs={24}
 			sm={24}
-			md={8}
-			lg={8}
+			md={12}
+			lg={12}
 			offset={offset}
 			span={span}
 			flex={flex}
@@ -25,15 +25,11 @@ const ResponsiveColumn = ({ children, lg, offset, span, flex, style }) => {
 const AddGift = () => {
 	return (
 		<div>
-			<Row style={{ padding: 15 }}>
-				<ResponsiveColumn>
-					<h1>Add Gift Ideas</h1>
-				</ResponsiveColumn>
-			</Row>
-			<Row style={{ padding: 15 }}>
+			<Row style={{ padding: 15 }} className="addGiftForm">
 				<ResponsiveColumn>
 					{/* Gift Input Form */}
 					<Form name="nest-messages">
+						<h1>Add Gift Ideas</h1>
 						{/* Input for gift description*/}
 						<Form.Item
 							name="description"
