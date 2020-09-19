@@ -19,7 +19,7 @@ const exchangeCard = ({
 		actions={actions}
 		style={{ width: "100%", fontSize: "18px" }}
 		headStyle={{
-			backgroundColor: "#d62828",
+			// backgroundColor: "#d62828",
 			color: "#ffffff",
 			fontSize: "20px",
 		}}
