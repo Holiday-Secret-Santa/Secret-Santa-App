@@ -1,8 +1,9 @@
 import React from "react";
+import EventForm from "../../components/EventForm/index";
 import "./style.css";
 
 const CreateEvent = () => {
-	return <h1>Create Events Page</h1>;
+  return <EventForm />;
 };
 
 export default CreateEvent;
