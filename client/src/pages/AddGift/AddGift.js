@@ -9,8 +9,9 @@ const ResponsiveColumn = ({ children, lg, offset, span, flex, style }) => {
 		<Col
 			xs={24}
 			sm={24}
-			md={12}
-			lg={12}
+			md={24}
+            lg={20}
+            xl={20}
 			offset={offset}
 			span={span}
 			flex={flex}
