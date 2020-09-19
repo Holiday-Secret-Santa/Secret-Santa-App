@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Table, Space, Divider } from "antd";
+import { Row, Col, Table, Divider } from "antd";
 import { Bar } from "ant-design-pro/lib/Charts";
 import "ant-design-pro/dist/ant-design-pro.css";
 import DetailCard from "../../components/DetailCard/DetailCard";
