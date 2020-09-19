@@ -26,6 +26,7 @@ const ResponsiveColumn = ({ children, lg, offset, span, flex, style }) => {
 const EventsPage = () => {
 	const sampleData = [
 		{
+			role: "organizer",
 			description: "Frosty the Snow Man",
 			date: "12/24/2020",
 			startTime: "7:30pm",
@@ -33,6 +34,7 @@ const EventsPage = () => {
 			participants: "12 participants confirmed",
 		},
 		{
+			role: "participant",
 			description: "Feliz Navidad",
 			date: "12/25/2020",
 			startTime: "7:30pm",
@@ -40,6 +42,7 @@ const EventsPage = () => {
 			participants: "15 participants confirmed",
 		},
 		{
+			role: "organizer",
 			description: "Ugly Sweater Exchange Party",
 			date: "12/10/2020",
 			startTime: "7:30pm",
@@ -56,13 +59,20 @@ const EventsPage = () => {
 					actions={[
 						// Icon buttons for future use
 						<span>
-							<Tooltip title="Manage Your Gift Exchange">
-								<SettingFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
-							</Tooltip>
-						</span>,
-						<span>
-							<Tooltip title="Add Gifts for Secret Santa">
-								<GiftFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
+							<Tooltip
+								title={
+									data.role === "organizer"
+										? "Manage Your Gift Exchange"
+										: "Add Gifts for Secret Santa"
+								}
+							>
+								{data.role === "organizer" ? (
+									<SettingFilled
+										style={{ fontSize: "24px", color: "#2c6e49" }}
+									/>
+								) : (
+									<GiftFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
+								)}
 							</Tooltip>
 						</span>,
 					]}
@@ -82,9 +92,7 @@ const EventsPage = () => {
 					<h1>Events Page</h1>
 				</ResponsiveColumn>
 			</Row>
-			<Row style={{ padding: 15 }}>
-				{partyList}
-			</Row>
+			<Row style={{ padding: 15 }}>{partyList}</Row>
 			<Row style={{ padding: 15 }}>
 				<ResponsiveColumn>
 					<Button
