@@ -1,5 +1,5 @@
 module.exports = {
-	// Do not delete:
+  // Do not delete:
 	// Jest needs this in order to parse & stub css files. Required by module jest-transform-css.
 	transform: {
 		"^.+\\.js$": "babel-jest",
@@ -7,4 +7,5 @@ module.exports = {
 		".+\\.(jpg|jpeg|png|gif|webp|svg)$": "jest-transform-file",
 	},
 	setupFilesAfterEnv: ["./jest.setup.js"],
+  transformIgnorePatterns: ['node_modules/(?!(antd/dist)/)'],
 };

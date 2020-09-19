@@ -4,5 +4,5 @@ import Events from "./Events";
 
 // mvp test scenario for events page
 test("renders events dashboard", () => {
-	render(<Events />);
+  render(<Events />);
 });
