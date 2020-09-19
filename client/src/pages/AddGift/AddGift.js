@@ -10,8 +10,8 @@ const ResponsiveColumn = ({ children, lg, offset, span, flex, style }) => {
 			xs={24}
 			sm={24}
 			md={24}
-            lg={20}
-            xl={20}
+			lg={20}
+			xl={20}
 			offset={offset}
 			span={span}
 			flex={flex}
@@ -34,20 +34,42 @@ const AddGift = () => {
 						{/* Input for gift description*/}
 						<Form.Item
 							name="description"
-							label="Gift Description"
+							label={
+								<label
+									style={{
+										color: "#2c6e49",
+										fontSize: "16px",
+										fontWeight: "bold",
+									}}
+								>
+									Description
+								</label>
+							}
 							rules={[
 								{
 									required: true,
 									message: "Please enter gift description.",
 								},
-							]}
+                            ]}
+                            style={{alignItems:"center"}}
+                           
 						>
 							<Input />
 						</Form.Item>
 						{/*Input for URL link to gift  */}
 						<Form.Item
 							name="urlLink"
-							label="Link to Gift"
+							label={
+								<label
+									style={{
+										color: "#2c6e49",
+										fontSize: "16px",
+										fontWeight: "bold",
+									}}
+								>
+									Link
+								</label>
+							}
 							rules={[
 								{
 									required: true,
@@ -60,7 +82,17 @@ const AddGift = () => {
 						{/* Input for gift price */}
 						<Form.Item
 							name="price"
-							label="Gift Price"
+							label={
+								<label
+									style={{
+										color: "#2c6e49",
+										fontSize: "16px",
+										fontWeight: "bold",
+									}}
+								>
+									Price
+								</label>
+							}
 							rules={[
 								{
 									required: true,
