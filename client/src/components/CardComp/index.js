@@ -4,7 +4,7 @@ import { Card } from "antd";
 import "./style.css";
 
 // placeholder parameters for API data
-const EventCard = ({
+const exchangeCard = ({
 	id,
 	description,
 	date,
@@ -32,4 +32,4 @@ const EventCard = ({
 );
 
 // Exporting component
-export default EventCard;
+export default exchangeCard;
