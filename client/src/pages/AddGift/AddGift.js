@@ -1,8 +1,8 @@
 import React from "react";
 import "./style.css";
 
-const addGift = () => {
+const AddGift = () => {
 	return <h1>Add Gift Ideas</h1>;
 };
 
-export default addGift;
+export default AddGift;
