@@ -7,7 +7,5 @@ module.exports = {
 		".+\\.(jpg|jpeg|png|gif|webp|svg)$": "jest-transform-file",
 	},
 	setupFilesAfterEnv: ["./jest.setup.js"],
+  transformIgnorePatterns: ['node_modules/(?!(antd/dist)/)'],
 };
-  
-
-	
