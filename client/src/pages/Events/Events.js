@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Button, Space, Tooltip } from "antd";
 import { SettingFilled, GiftFilled } from "@ant-design/icons";
-import CardComp from "../../components/CardComp";
+import EventCard from "../../components/EventCard";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import "./style.css";
 
@@ -54,7 +54,7 @@ const EventsPage = () => {
 	const partyList = sampleData.map((data) => (
 		<ResponsiveColumn>
 			<Space>
-				<CardComp
+				<EventCard
 					description={data.description}
 					actions={[
 						// Icon buttons for future use
