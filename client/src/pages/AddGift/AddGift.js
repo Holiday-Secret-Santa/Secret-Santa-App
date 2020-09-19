@@ -1,6 +1,8 @@
 import React from "react";
-import { Row, Col, Form, Input, InputNumber, Button } from "antd";
+import { Row, Col, Form, Button } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
+import FormInputText from "../../components/FormInputText";
+import FormInputNumber from "../../components/FormInputNumber";
 import "./style.css";
 
 // Variable to for responsive columns
@@ -32,79 +34,33 @@ const AddGift = () => {
 					<Form name="nest-messages">
 						<h1>Add Gift Ideas</h1>
 						{/* Input for gift description*/}
-						<Form.Item
+						<FormInputText
 							name="description"
-							label={
-								<label
-									style={{
-										color: "#2c6e49",
-										fontSize: "16px",
-										fontWeight: "bold",
-									}}
-								>
-									Description
-								</label>
-							}
+							label="Description"
 							rules={[
-								{
-									required: true,
-									message: "Please enter gift description.",
-								},
-                            ]}
-                            style={{alignItems:"center"}}
-                           
-						>
-							<Input />
-						</Form.Item>
-						{/*Input for URL link to gift  */}
-						<Form.Item
-							name="urlLink"
-							label={
-								<label
-									style={{
-										color: "#2c6e49",
-										fontSize: "16px",
-										fontWeight: "bold",
-									}}
-								>
-									Link
-								</label>
-							}
-							rules={[
-								{
-									required: true,
-									message: "Please enter link to gift.",
-								},
+								{ required: true, message: "please enter gift description" },
 							]}
-						>
-							<Input />
-						</Form.Item>
-						{/* Input for gift price */}
-						<Form.Item
+						/>
+						{/* Input link to gift*/}
+						<FormInputText
+							name="url"
+							label="Link"
+							rules={[{ required: true, message: "please enter link to gift" }]}
+						/>
+						{/* Input gift price */}
+						<FormInputNumber
 							name="price"
-							label={
-								<label
-									style={{
-										color: "#2c6e49",
-										fontSize: "16px",
-										fontWeight: "bold",
-									}}
-								>
-									Price
-								</label>
-							}
+							label="Price"
 							rules={[
 								{
 									required: true,
 									type: "number",
 									min: 1,
 									max: 100,
-									message: "Please enter price between $1 and $100.",
+									message: "please enter price between $1 and $100",
 								},
 							]}
-						>
-							<InputNumber />
-						</Form.Item>
+						/>
 						{/* Submit Button */}
 						<Button
 							type="primary"
