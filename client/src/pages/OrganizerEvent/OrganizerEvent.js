@@ -1,9 +1,10 @@
 import React from "react";
-import { Row, Table, Divider } from "antd";
+import { Row, Divider } from "antd";
 import { Bar } from "ant-design-pro/lib/Charts";
 import DetailCard from "./../../components/DetailCard/DetailCard";
-import "./style.css";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
+import TableComp from "./../../components/Table";
+import "./style.css";
 
 const getParticipantsInfo = () => {
 	return [];
@@ -41,18 +42,6 @@ const getColumns = () => {
 	];
 
 	return columns;
-};
-
-const TableComp = ({ title, dataSource, columns }) => {
-	return (
-		<Table
-			title={title}
-			dataSource={dataSource}
-			columns={columns}
-			pagination={{ pageSize: 5 }}
-			className="custom-table-style"
-		/>
-	);
 };
 
 const EventCard = () => {
