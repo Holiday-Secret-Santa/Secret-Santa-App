@@ -1,26 +1,9 @@
 import React from "react";
-import { Row, Form, Button } from "antd";
-import { PlusCircleOutlined } from "@ant-design/icons";
+import { Row, Form } from "antd";
 import { FormInputText, FormInputNumber } from "./../../components/FormInput";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
+import { AddButton } from "./../../components/Button";
 import "./style.css";
-
-const SubmitButton = () => {
-	return (
-		<Button
-			type="primary"
-			shape="round"
-			icon={<PlusCircleOutlined />}
-			size="large"
-			style={{
-				backgroundColor: "#2c6e49",
-				borderColor: "#2c6e49",
-			}}
-		>
-			Add Gift
-		</Button>
-	);
-};
 
 const descriptionFieldRules = [
 	{ required: true, message: "please enter gift description" },
@@ -55,7 +38,7 @@ const AddGift = () => {
 					/>
 					<FormInputText name="url" label="Link" rules={giftLinkRules} />
 					<FormInputNumber name="price" label="Price" rules={giftPriceRules} />
-					<SubmitButton />
+					<AddButton text="Add Gift" />
 				</Form>
 			</ResponsiveColumn>
 		</Row>
