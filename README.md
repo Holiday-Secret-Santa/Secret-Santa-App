@@ -231,7 +231,9 @@ The wireframe below is for the `invited guest` role. The `invited guest` should 
 
 ##### Wireframe for Accepting Invite
 
-If the **_user accepts_** the invite, then the `accept` button should take them to the login page so they can see the event in their person event's dashboard. If the **_user declines_** the invite, then the user will be redirected to the homepage of the app.
+If **_user accepts_** the invite, then the `accept` button should take them to the login page so they can see the event in their person event's dashboard.
+
+If the **_user declines_** the invite, then the user will be redirected to the homepage of the app.
 
 <details>
 <summary> 🎨 Click to expand the accept invite wireframe.</summary>
