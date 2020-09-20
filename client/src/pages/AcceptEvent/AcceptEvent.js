@@ -11,7 +11,7 @@ const AcceptEvent = () => {
 	return (
 		<>
 			<Row gutter={[30, 30]} justify="center">
-				<ResponsiveColumn style={{ padding: 40 }} lg={8} md={8}>
+				<ResponsiveColumn style={{ padding: 40 }} lg={9} md={9}>
 					<DetailCard
 						title="You are invited"
 						date="date"
