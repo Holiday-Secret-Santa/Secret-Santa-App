@@ -17,8 +17,7 @@ const exchangeCard = ({
 	<Card
 		title={description}
 		actions={actions}
-		style={{ fontSize: "18px" }}
-		headStyle={{}}
+		style={{ width: "auto", fontSize: "18px" }}
 	>
 		<p>Event Date: {date}</p>
 		<p>Event Time:{startTime}</p>
