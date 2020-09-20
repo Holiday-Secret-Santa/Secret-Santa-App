@@ -1,7 +1,9 @@
 import React from "react";
-import { Row, Col, Button, Tooltip, Table } from "antd";
+import { Row, Button, Tooltip } from "antd";
 import { GiftTwoTone, DeleteTwoTone } from "@ant-design/icons";
 import DetailCard from "../../components/DetailCard/DetailCard";
+import ResponsiveColumn from "./../../components/ResponsiveColumn";
+import TableComp from "./../../components/Table";
 import "./style.css";
 
 const getDummyItems = (size) => {
@@ -74,35 +76,6 @@ const getColumns = (showDeleteAction) => {
 		});
 
 	return columns;
-};
-
-const TableComp = ({ title, dataSource, columns }) => {
-	return (
-		<Table
-			title={title}
-			dataSource={dataSource}
-			columns={columns}
-			pagination={{ pageSize: 5 }}
-			className="custom-table-style"
-		/>
-	);
-};
-
-const ResponsiveColumn = ({ children, lg, offset, span, flex, style }) => {
-	return (
-		<Col
-			xs={24}
-			sm={24}
-			md={24}
-			lg={lg}
-			offset={offset}
-			span={span}
-			flex={flex}
-			style={style}
-		>
-			{children}
-		</Col>
-	);
 };
 
 const MyGiftListAddButton = () => {

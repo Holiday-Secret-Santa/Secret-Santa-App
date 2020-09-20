@@ -27,10 +27,10 @@ const AppContent = (
 			<PrivateRoute exact path="/events/:id/accept" component={AcceptEvent} />
 			<PrivateRoute
 				exact
-				path="/events/:id/organize"
+				path="/events/:id/organizer"
 				component={OrganizerEvent}
 			/>
-			<Route
+			<PrivateRoute
 				exact
 				path="/events/:id/participant"
 				component={ParticipantEvent}
