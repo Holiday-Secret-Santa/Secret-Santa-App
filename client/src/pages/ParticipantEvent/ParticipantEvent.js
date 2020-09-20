@@ -1,7 +1,8 @@
 import React from "react";
-import { Row, Col, Button, Tooltip, Table } from "antd";
+import { Row, Button, Tooltip, Table } from "antd";
 import { GiftTwoTone, DeleteTwoTone } from "@ant-design/icons";
 import DetailCard from "../../components/DetailCard/DetailCard";
+import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import "./style.css";
 
 const getDummyItems = (size) => {
@@ -85,23 +86,6 @@ const TableComp = ({ title, dataSource, columns }) => {
 			pagination={{ pageSize: 5 }}
 			className="custom-table-style"
 		/>
-	);
-};
-
-const ResponsiveColumn = ({ children, lg, offset, span, flex, style }) => {
-	return (
-		<Col
-			xs={24}
-			sm={24}
-			md={24}
-			lg={lg}
-			offset={offset}
-			span={span}
-			flex={flex}
-			style={style}
-		>
-			{children}
-		</Col>
 	);
 };
 

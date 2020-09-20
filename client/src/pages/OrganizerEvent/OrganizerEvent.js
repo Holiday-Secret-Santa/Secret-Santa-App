@@ -1,8 +1,9 @@
 import React from "react";
-import { Row, Col, Table, Divider } from "antd";
+import { Row, Table, Divider } from "antd";
 import { Bar } from "ant-design-pro/lib/Charts";
-import DetailCard from "../../components/DetailCard/DetailCard";
+import DetailCard from "./../../components/DetailCard/DetailCard";
 import "./style.css";
+import ResponsiveColumn from "./../../components/ResponsiveColumn";
 
 const getParticipantsInfo = () => {
 	return [];
@@ -51,23 +52,6 @@ const TableComp = ({ title, dataSource, columns }) => {
 			pagination={{ pageSize: 5 }}
 			className="custom-table-style"
 		/>
-	);
-};
-
-const ResponsiveColumn = ({ children, lg, offset, span, flex, style }) => {
-	return (
-		<Col
-			xs={24}
-			sm={24}
-			md={24}
-			lg={lg}
-			offset={offset}
-			span={span}
-			flex={flex}
-			style={style}
-		>
-			{children}
-		</Col>
 	);
 };
 
