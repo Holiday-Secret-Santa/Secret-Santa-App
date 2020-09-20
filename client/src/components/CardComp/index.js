@@ -14,11 +14,7 @@ const exchangeCard = ({
 	actions,
 }) => (
 	// Basic Ant card components (will update design during development)
-	<Card
-		title={description}
-		actions={actions}
-		style={{ width: "auto", fontSize: "18px" }}
-	>
+	<Card title={description} actions={actions} style={{ fontSize: "18px" }}>
 		<p>Event Date: {date}</p>
 		<p>Event Time:{startTime}</p>
 		<p>Location: {location}</p>
