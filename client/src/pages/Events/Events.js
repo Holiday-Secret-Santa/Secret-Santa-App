@@ -1,90 +1,70 @@
 import React from "react";
 import { Row, Col, Button, Space, Tooltip } from "antd";
 import { SettingFilled, GiftFilled } from "@ant-design/icons";
-import CardComp from "../../components/CardComp";
+import CardComp from "./../../components/CardComp";
 import { PlusCircleOutlined } from "@ant-design/icons";
+import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import "./style.css";
 
-// Adding responsiveness
-const ResponsiveColumn = ({ children, lg, offset, span, flex, style }) => {
-	return (
-		<Col
-			xs={24}
-			sm={24}
-			md={24}
-			lg={lg}
-			offset={offset}
-			span={span}
-			flex={flex}
-			style={style}
-		>
-			{children}
-		</Col>
-	);
-};
+const sampleData = [
+	{
+		role: "organizer",
+		description: "Frosty the Snow Man",
+		date: "12/24/2020",
+		startTime: "7:30pm",
+		location: "https://virtualremoteparty.com",
+		participants: "12 participants confirmed",
+	},
+	{
+		role: "participant",
+		description: "Feliz Navidad",
+		date: "12/25/2020",
+		startTime: "7:30pm",
+		location: "https://virtualremoteparty.com",
+		participants: "15 participants confirmed",
+	},
+	{
+		role: "organizer",
+		description: "Ugly Sweater Exchange Party",
+		date: "12/10/2020",
+		startTime: "7:30pm",
+		location: "https://virtualremoteparty.com",
+		participants: "12 participants confirmed",
+	},
+];
 
-const EventsPage = () => {
-	const sampleData = [
-		{
-			role: "organizer",
-			description: "Frosty the Snow Man",
-			date: "12/24/2020",
-			startTime: "7:30pm",
-			location: "https://virtualremoteparty.com",
-			participants: "12 participants confirmed",
-		},
-		{
-			role: "participant",
-			description: "Feliz Navidad",
-			date: "12/25/2020",
-			startTime: "7:30pm",
-			location: "https://virtualremoteparty.com",
-			participants: "15 participants confirmed",
-		},
-		{
-			role: "organizer",
-			description: "Ugly Sweater Exchange Party",
-			date: "12/10/2020",
-			startTime: "7:30pm",
-			location: "https://virtualremoteparty.com",
-			participants: "12 participants confirmed",
-		},
-	];
-
-	const partyList = sampleData.map((data) => (
-		<ResponsiveColumn lg={8}>
-			<Space>
-				<CardComp
-					description={data.description}
-					actions={[
-						// Icon buttons for future use
-						<span>
-							<Tooltip
-								title={
-									data.role === "organizer"
-										? "Manage Your Gift Exchange"
-										: "Add Gifts for Secret Santa"
-								}
-							>
-								{data.role === "organizer" ? (
-									<SettingFilled
-										style={{ fontSize: "24px", color: "#2c6e49" }}
-									/>
-								) : (
-									<GiftFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
-								)}
-							</Tooltip>
-						</span>,
-					]}
-					date={data.date}
-					startTime={data.startTime}
-					location={data.location}
-					participants={data.participants}
-				/>
-			</Space>
+const partyList = (eventsData) =>
+	eventsData.map((data, index) => (
+		<ResponsiveColumn key={index}>
+			<CardComp
+				description={data.description}
+				actions={[
+					// Icon buttons for future use
+					<span>
+						<Tooltip
+							title={
+								data.role === "organizer"
+									? "Manage Your Gift Exchange"
+									: "Add Gifts for Secret Santa"
+							}
+						>
+							{data.role === "organizer" ? (
+								<SettingFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
+							) : (
+								<GiftFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
+							)}
+						</Tooltip>
+					</span>,
+				]}
+				date={data.date}
+				startTime={data.startTime}
+				location={data.location}
+				participants={data.participants}
+			/>
 		</ResponsiveColumn>
 	));
 
+const EventsPage = () => {
 	return (
 		<div>
 			<Row style={{ padding: 15 }}>
