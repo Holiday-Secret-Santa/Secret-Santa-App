@@ -1,8 +1,7 @@
 import React from "react";
 import { Row, Form, Button } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
-import FormInputText from "./../../components/FormInputText";
-import FormInputNumber from "./../../components/FormInputNumber";
+import { FormInputText, FormInputNumber } from "./../../components/FormInput";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import "./style.css";
 
@@ -23,65 +22,43 @@ const SubmitButton = () => {
 	);
 };
 
-const DescriptionField = () => {
-	return (
-		<FormInputText
-			name="description"
-			label="Description"
-			rules={[{ required: true, message: "please enter gift description" }]}
-		/>
-	);
-};
+const descriptionFieldRules = [
+	{ required: true, message: "please enter gift description" },
+];
 
-const GiftLink = () => {
-	return (
-		<FormInputText
-			name="url"
-			label="Link"
-			rules={[{ required: true, message: "please enter link to gift" }]}
-		/>
-	);
-};
+const giftLinkRules = [
+	{ required: true, message: "please enter link to gift" },
+];
 
-const GiftPrice = () => {
-	return (
-		<FormInputNumber
-			name="price"
-			label="Price"
-			rules={[
-				{
-					required: true,
-					type: "number",
-					min: 1,
-					max: 100,
-					message: "please enter price between $1 and $100",
-				},
-			]}
-		/>
-	);
-};
+const giftPriceRules = [
+	{
+		required: true,
+		type: "number",
+		min: 1,
+		max: 100,
+		message: "please enter price between $1 and $100",
+	},
+];
 
 // Creates the Add Gift Pages
 const AddGift = () => {
 	return (
-		<div>
-			<Row style={{ padding: 15 }} className="addGiftForm">
-				<ResponsiveColumn>
-					{/* Gift Input Form */}
-					<Form name="nest-messages">
-						<h1>Add Gift Ideas</h1>
-						{/* Input for gift description*/}
-						<DescriptionField />
-						{/* Input link to gift*/}
-						<GiftLink />
-						{/* Input gift price */}
-						<GiftPrice />
-						{/* Submit Button */}
-						<SubmitButton />
-					</Form>
-				</ResponsiveColumn>
-			</Row>
-		</div>
+		<Row gutter={[30, 30]} style={{ padding: 20 }} className="addGiftForm">
+			<ResponsiveColumn lg={24}>
+				<Form name="nest-messages">
+					<h1>Add Gift Ideas</h1>
+					{/* Input for gift description*/}
+					<FormInputText
+						name="description"
+						label="Description"
+						rules={descriptionFieldRules}
+					/>
+					<FormInputText name="url" label="Link" rules={giftLinkRules} />
+					<FormInputNumber name="price" label="Price" rules={giftPriceRules} />
+					<SubmitButton />
+				</Form>
+			</ResponsiveColumn>
+		</Row>
 	);
 };
 
