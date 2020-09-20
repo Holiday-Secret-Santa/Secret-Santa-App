@@ -52,7 +52,7 @@ const EventsPage = () => {
 	];
 
 	const partyList = sampleData.map((data) => (
-		<ResponsiveColumn>
+		<ResponsiveColumn lg={8}>
 			<Space>
 				<CardComp
 					description={data.description}
@@ -92,9 +92,7 @@ const EventsPage = () => {
 					<h1>Events Page</h1>
 				</ResponsiveColumn>
 			</Row>
-			<Row style={{ padding: 15 }} lg={8}>
-				{partyList}
-			</Row>
+			<Row style={{ padding: 15 }}>{partyList}</Row>
 			<Row style={{ padding: 15 }}>
 				<ResponsiveColumn>
 					<Button
