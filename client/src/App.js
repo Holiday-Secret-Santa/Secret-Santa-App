@@ -9,6 +9,7 @@ import CreateEvent from "./pages/CreateEvent/CreateEvent";
 import AcceptEvent from "./pages/AcceptEvent/AcceptEvent";
 import OrganizerEvent from "./pages/OrganizerEvent/OrganizerEvent";
 import ParticipantEvent from "./pages/ParticipantEvent/ParticipantEvent";
+import AddGift from "./pages/AddGift/AddGift";
 import Loading from "./components/Loading";
 import { Layout } from "antd";
 import HomePage from "./pages/HomePage/HomePage";
@@ -35,6 +36,7 @@ const AppContent = (
 				path="/events/:id/participant"
 				component={ParticipantEvent}
 			/>
+			<Route exact path="/events/:id/participant/addgift" component={AddGift} />
 		</Switch>
 	</Content>
 );
