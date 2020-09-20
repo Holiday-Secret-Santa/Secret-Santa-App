@@ -229,6 +229,19 @@ The wireframe below is for the `event organizer` role. The `event organizer` sho
 
 The wireframe below is for the `invited guest` role. The `invited guest` should **_only_** be able to see the event details, whether they have been assigned a secret santa (but not the secret santa's name).
 
+##### Wireframe for Accepting Invite
+
+If **_user accepts_** the invite, then the `accept` button should take them to the login page so they can see the event in their person event's dashboard.
+
+If the **_user declines_** the invite, then the user will be redirected to the homepage of the app.
+
+<details>
+<summary> 🎨 Click to expand the accept invite wireframe.</summary>
+
+  <img src="./imgs/readme/wireframes/acceptInvite.png">
+
+</details>
+
 ##### Wireframe for Viewing Specific Event (Invited Guest Role)
 
 <details>
