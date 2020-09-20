@@ -51,8 +51,8 @@ const EventsPage = () => {
 		},
 	];
 
-	const partyList = sampleData.map((data) => (
-		<ResponsiveColumn>
+	const partyList = sampleData.map((data, index) => (
+		<ResponsiveColumn key={index}>
 			<Space>
 				<CardComp
 					description={data.description}
