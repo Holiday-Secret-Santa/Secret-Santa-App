@@ -6,7 +6,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import EventsPage from "./pages/Events/Events";
 import ProfilePage from "./pages/Profile/Profile";
 import CreateEvent from "./pages/CreateEvent/CreateEvent";
-import AcceptEvent from "./pages/AcceptEvent/AcceptEvent";
+import RsvpEvent from "./pages/RsvpEvent/RsvpEvent";
 import OrganizerEvent from "./pages/OrganizerEvent/OrganizerEvent";
 import ParticipantEvent from "./pages/ParticipantEvent/ParticipantEvent";
 import AddGift from "./pages/AddGift/AddGift";
@@ -25,7 +25,6 @@ const AppContent = (
 			<PrivateRoute exact path="/events" component={EventsPage} />
 			<PrivateRoute exact path="/profile" component={ProfilePage} />
 			<PrivateRoute exact path="/events/create" component={CreateEvent} />
-			<PrivateRoute exact path="/events/:id/accept" component={AcceptEvent} />
 			<PrivateRoute
 				exact
 				path="/events/:id/organizer"
@@ -37,6 +36,11 @@ const AppContent = (
 				component={ParticipantEvent}
 			/>
 			<Route exact path="/events/:id/participant/addgift" component={AddGift} />
+			<Route
+				exact
+				path="/events/:id/rsvp/:participantid"
+				component={RsvpEvent}
+			/>
 		</Switch>
 	</Content>
 );
