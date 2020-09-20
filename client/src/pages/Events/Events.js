@@ -1,7 +1,7 @@
 import React from "react";
-import { Row, Col, Button, Space, Tooltip } from "antd";
+import { Row, Button, Tooltip } from "antd";
 import { SettingFilled, GiftFilled } from "@ant-design/icons";
-import CardComp from "./../../components/CardComp";
+import DetailCard from "./../../components/DetailCard/DetailCard";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import "./style.css";
@@ -35,9 +35,9 @@ const sampleData = [
 
 const partyList = (eventsData) =>
 	eventsData.map((data, index) => (
-		<ResponsiveColumn key={index}>
-			<CardComp
-				description={data.description}
+		<ResponsiveColumn key={index} lg={8}>
+			<DetailCard
+				title={data.description}
 				actions={[
 					// Icon buttons for future use
 					<span>
@@ -67,13 +67,15 @@ const partyList = (eventsData) =>
 const EventsPage = () => {
 	return (
 		<div>
-			<Row style={{ padding: 15 }}>
+			<Row style={{ padding: 20 }}>
 				<ResponsiveColumn>
 					<h1>Events Page</h1>
 				</ResponsiveColumn>
 			</Row>
-			<Row style={{ padding: 15 }}>{partyList}</Row>
-			<Row style={{ padding: 15 }}>
+			<Row gutter={[30, 30]} style={{ padding: 20 }}>
+				{partyList(sampleData)}
+			</Row>
+			<Row style={{ padding: 20 }}>
 				<ResponsiveColumn>
 					<Button
 						type="primary"
