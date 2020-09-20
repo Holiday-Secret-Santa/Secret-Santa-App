@@ -92,7 +92,7 @@ const getRsvpData = () => {
 
 const ChartTitle = () => {
 	return (
-		<h4
+		<span
 			style={{
 				color: "#2c6e49",
 				fontFamily: "cursive",
@@ -102,7 +102,7 @@ const ChartTitle = () => {
 			}}
 		>
 			Track RSVP
-		</h4>
+		</span>
 	);
 };
 
@@ -114,7 +114,12 @@ const OrganizerEvent = () => {
 					<EventCard />
 				</ResponsiveColumn>
 				<ResponsiveColumn lg={18}>
-					<Bar title={<ChartTitle />} data={getRsvpData()} color="#d62828" />
+					<Bar
+						height="300"
+						title={<ChartTitle />}
+						data={getRsvpData()}
+						color="#d62828"
+					/>
 					<Divider />
 					<TableComp
 						dataSource={getParticipantsInfo()}
