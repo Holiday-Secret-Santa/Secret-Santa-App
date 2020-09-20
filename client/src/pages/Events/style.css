@@ -14,3 +14,8 @@ body {
 .space-left {
 	margin-left: 50px;
 }
+
+.wrap {
+	display: flex;
+	flex-wrap: wrap;
+}

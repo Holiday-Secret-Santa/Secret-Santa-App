@@ -11,8 +11,8 @@ const ResponsiveColumn = ({ children, lg, offset, span, flex, style }) => {
 		<Col
 			xs={24}
 			sm={24}
-			md={8}
-			lg={8}
+			md={24}
+			lg={lg}
 			offset={offset}
 			span={span}
 			flex={flex}
@@ -92,7 +92,9 @@ const EventsPage = () => {
 					<h1>Events Page</h1>
 				</ResponsiveColumn>
 			</Row>
-			<Row style={{ padding: 15 }}>{partyList}</Row>
+			<Row style={{ padding: 15 }} lg={8}>
+				{partyList}
+			</Row>
 			<Row style={{ padding: 15 }}>
 				<ResponsiveColumn>
 					<Button
