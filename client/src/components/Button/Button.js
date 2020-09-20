@@ -1,7 +1,7 @@
 import React from "react";
 import { Button as AntdButton } from "antd";
 
-const Button = ({ text, icon, action }) => {
+const Button = ({ text, icon, action, disabled, bgColor }) => {
 	return (
 		<AntdButton
 			type="primary"
@@ -9,10 +9,11 @@ const Button = ({ text, icon, action }) => {
 			icon={icon}
 			size="large"
 			style={{
-				backgroundColor: "#2c6e49",
+				backgroundColor: bgColor ? bgColor : "#2c6e49",
 				borderColor: "#2c6e49",
 			}}
 			onClick={action}
+			disabled={disabled}
 		>
 			{text}
 		</AntdButton>
