@@ -1,28 +1,10 @@
 import React from "react";
-import { Row, Col, Form, Button } from "antd";
+import { Row, Form, Button } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
-import FormInputText from "../../components/FormInputText";
-import FormInputNumber from "../../components/FormInputNumber";
+import FormInputText from "./../../components/FormInputText";
+import FormInputNumber from "./../../components/FormInputNumber";
+import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import "./style.css";
-
-// Variable to for responsive columns
-const ResponsiveColumn = ({ children, lg, offset, span, flex, style }) => {
-	return (
-		<Col
-			xs={24}
-			sm={24}
-			md={24}
-			lg={20}
-			xl={20}
-			offset={offset}
-			span={span}
-			flex={flex}
-			style={style}
-		>
-			{children}
-		</Col>
-	);
-};
 
 // Creates the Add Gift Pages
 const AddGift = () => {
