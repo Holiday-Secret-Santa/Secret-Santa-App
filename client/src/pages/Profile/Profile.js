@@ -2,7 +2,6 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Row } from "antd";
 import ResponsiveColumn from "../../components/ResponsiveColumn";
-
 import "./style.css";
 
 const ProfilePage = () => {
@@ -18,7 +17,7 @@ const ProfilePage = () => {
 			</Row>
 			<Row gutter={[30, 30]} style={{ padding: 15 }}>
 				<ResponsiveColumn lg={24}>
-					<img src={picture} alt="profile picture" className="profile" />
+					<img src={picture} alt="profile" className="profile" />
 				</ResponsiveColumn>
 			</Row>
 			<Row gutter={[30, 30]} style={{ padding: 15 }}>
