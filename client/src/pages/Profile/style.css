@@ -6,28 +6,30 @@
 }
 
 .font-style-title {
-	font-size: 40px !important;
-	color: #2c6e49 !important;
-	font-weight: bold;
-	font-family: "Comic Sans MS", cursive, sans-serif !important;
-}
-
-.font-style-header {
 	font-size: 30px !important;
 	color: #2c6e49 !important;
 	font-weight: bold;
 	font-family: "Comic Sans MS", cursive, sans-serif !important;
 }
 
+.font-style-header {
+	font-size: 28px !important;
+	color: #2c6e49 !important;
+	font-weight: bold;
+	font-family: "Comic Sans MS", cursive, sans-serif !important;
+}
+
 .font-style-text {
-	font-size: 22px !important;
+	font-size: 18px !important;
 	color: #2c6e49 !important;
 	font-family: "Comic Sans MS", cursive, sans-serif !important;
 }
 
-.profile-image {
+.profile {
 	border-radius: 50% !important;
 	border-style: solid !important;
 	border-width: 10px !important;
 	border-color: #2c6e49 !important;
+	width: 100% !important;
+	height: auto !important;
 }
