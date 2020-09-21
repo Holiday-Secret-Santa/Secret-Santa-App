@@ -1,7 +1,7 @@
 import React from "react";
 import { Button as AntdButton } from "antd";
 
-const Button = ({ text, icon, action, disabled, bgColor }) => {
+const Button = ({ text, icon, action, disabled, bgColor, testid }) => {
 	return (
 		<AntdButton
 			type="primary"
@@ -14,6 +14,7 @@ const Button = ({ text, icon, action, disabled, bgColor }) => {
 			}}
 			onClick={action}
 			disabled={disabled}
+			data-testid={testid}
 		>
 			{text}
 		</AntdButton>

@@ -34,11 +34,13 @@ const RsvpEvent = () => {
 						participants="12 people"
 						actions={[
 							<Button
+								testid="going-btn"
 								text="Going"
 								disabled={status === "going"}
 								action={() => processStatusAction("going", setStatus)}
 							/>,
 							<Button
+								testid="not-going-btn"
 								text="Not Going"
 								disabled={status === "not going"}
 								bgColor="#D62828"
