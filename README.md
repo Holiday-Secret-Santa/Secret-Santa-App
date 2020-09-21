@@ -69,7 +69,7 @@ Here is a list of the MVP requirements for this app. Please note that these are 
 - The User can invite family and friends to join in on the holiday fun
 - The User can keep track of who accepted the secret santa invite
 - The User can discretely assign a single participant to each individual registered for the event
-  - System offers option to do a random assignment
+  - System offers option to do a random assignment (potential future development)
 - The System allows participants to manually create a list of gift ideas they would like to recieve
   - When creating a wish list item, the participant will be able to add an item name and URL link for potential online purchase
 
@@ -222,6 +222,17 @@ The wireframe below is for the `event organizer` role. The `event organizer` sho
 <summary> 🎨 Click to expand the event details wireframe.</summary>
 
   <img src="./imgs/readme/wireframes/eventDetailsOrganizer.png">
+
+</details>
+
+##### Wireframe for Viewing Secret Santa Assignments (Organizer Role)
+
+This wireframe was designed for the main MVP functionality that will allow for manual secret santa assignment.
+
+<details>
+<summary> 🎨 Click to expand the secret santa assignment wireframe.</summary>
+
+  <img src="./imgs/readme/wireframes/manageParticipants.png">
 
 </details>
 
