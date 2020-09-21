@@ -1,5 +1,4 @@
 const { GraphQLSchema, GraphQLObjectType, GraphQLString } = require("graphql");
-
 const _ = require("lodash");
 
 // dummy data
