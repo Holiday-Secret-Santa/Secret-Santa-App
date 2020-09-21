@@ -17,7 +17,7 @@ const ProfilePage = () => {
 			</Row>
 			<Row gutter={[30, 30]} style={{ padding: 15 }}>
 				<ResponsiveColumn lg={24}>
-					<img src={picture} alt="profile" className="profile" />
+					<img src={picture} alt="profile" className="profile-img-style" />
 				</ResponsiveColumn>
 			</Row>
 			<Row gutter={[30, 30]} style={{ padding: 15 }}>
