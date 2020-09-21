@@ -225,6 +225,15 @@ The wireframe below is for the `event organizer` role. The `event organizer` sho
 
 </details>
 
+##### Wireframe for Viewing Specific Event (Organizer Role)
+
+<details>
+<summary> 🎨 Click to expand the secret santa assignment wireframe.</summary>
+
+  <img src="./imgs/readme/wireframes/manageParticipants.png">
+
+</details>
+
 #### Wireframes for Invited Guest Role
 
 The wireframe below is for the `invited guest` role. The `invited guest` should **_only_** be able to see the event details, whether they have been assigned a secret santa (but not the secret santa's name).
