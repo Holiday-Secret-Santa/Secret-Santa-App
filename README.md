@@ -17,9 +17,13 @@
   - [Sequence Diagrams](#sequence-diagrams)
   - [ER Diagram](#er-diagram)
   - [Wireframes](#wireframes)
-- [Technologies](#technologies)
+- [Technologies Used for Development](#technologies-used-for-development)
   - [Core Technologies](#core-technologies)
-- [Installation](#installation)
+  - [CircleCI and Code Climate](#circleci-and-code-climate)
+- [Installation and Testing Instructions](#installation-and-testing-instructions)
+  - [Required Technologies](#required-technologies)
+  - [Installation Instructions](#installation-instructions)
+  - [Testing Instructions](#testing-instructions)
 - [Team Members](#team-members)
 
 ---
@@ -225,6 +229,19 @@ The wireframe below is for the `event organizer` role. The `event organizer` sho
 
 The wireframe below is for the `invited guest` role. The `invited guest` should **_only_** be able to see the event details, whether they have been assigned a secret santa (but not the secret santa's name).
 
+##### Wireframe for Accepting Invite
+
+If **_user accepts_** the invite, then the `accept` button should take them to the login page so they can see the event in their person event's dashboard.
+
+If the **_user declines_** the invite, then the user will be redirected to the homepage of the app.
+
+<details>
+<summary> 🎨 Click to expand the accept invite wireframe.</summary>
+
+  <img src="./imgs/readme/wireframes/acceptInvite.png">
+
+</details>
+
 ##### Wireframe for Viewing Specific Event (Invited Guest Role)
 
 <details>
@@ -245,18 +262,19 @@ Please note that the when the user clicks the `Add Item Button` on the event det
 
 </details>
 
-## Technologies
+## Technologies Used for Development
 
 Here is a list of the core technologies we plan to use for the development of this application. Please note that this list may change throughout the development of the application.
 
 ### Core Technologies
 
+Here is a list of core technologies that were used to develop this web application:
+
 - HTML
 - JavaScript
 - CSS
-- React-compatabile UI library other than Bootstrap
-  - Following UI libaries are being researched: (1) Ant, (2) Chakra, (3) Tailwind, and (4) Semantic.
-  - Source article for research - [click here to reference article](https://www.robinwieruch.de/react-libraries#react-ui-libraries)
+- Ant Design (React-compatabile UI library)
+- Here is a link to the UI library's documentation - [click here to access documentation](https://ant.design/)
 - React.js
 - Node.js _(specific packages will be identifed at a later date)_
 - SQL to design the application's database
@@ -264,11 +282,41 @@ Here is a list of the core technologies we plan to use for the development of th
 - Email platform (Mailchim, Mailgun, ...) _(team will choose at a later date)_
 - GraphQL - [click here to reference documentation](https://graphql.org/)
 
+### CircleCI and Code Climate
+
+#### CircleCI
+
+While developing this application, the team integrated CircleCI into this repository to automatically monitor added unit testing included throughout the application. Please visit the [CircleCi documentation](https://circleci.com/) for additional instruction on how to integrate the CircleCI tool.
+
+#### Code Climate
+
+In addition to CircleCi, the team also incorporated Code Climate monitoring services into this repository to ensure the overall code quality developed by the team met coding best practices. Please visit the [Code Climate](https://codeclimate.com/) for additional instruction on how to integrate the Code Climate tool.
+
+##### IMPORTANT FYI for Package.json Files
+
+This project contains two `package.json` files - one at the root directory and another in the client folder.
+
+In order to resolve coverage issues / limitations associated with Code Climate running coverage reports this full-stack application, the team had to **_intentionally_** include front-end dev dependencies in the root `package.json` file to ensure all frontend and backend tests are run from the single root `package.json` file.
+
+I am including this update to make it clear that we are aware react-related dependencies are typically only needed in the frontend portion and an application; however, the approach we used in this repository was used to work around Code Climate limitations.
+
 ---
 
-## Installation
+## Installation and Testing Instructions
 
-Once available, this section will be updated to include installation instructions.
+### Required Technologies
+
+In order to success launch this web application, you will need to have the following installed in your local working environment:
+
+- **Node.js** - Make sure Node.js is installed in your machine. If Node.js is not installed on your machine, [click here](https://nodejs.org/en/) to download the application.
+
+### Installation Instructions
+
+All NPM packages needed for this application are already listed as dependencies in the package.json file. If running this web application in your local environment, please make sure to run the `npm install` command in your terminal for **_both_** the `root directory` and `client folder` in order to access all required package.
+
+### Testing Instructions
+
+When checking to see if all applicable unit tests pass throughout the development of this application, make sure to run the `npm test` command in your terminal each time you would like to test the application.
 
 ---
 

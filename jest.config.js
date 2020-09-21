@@ -6,4 +6,6 @@ module.exports = {
 		".+\\.(css|styl|less|sass|scss)$": "jest-transform-css",
 		".+\\.(jpg|jpeg|png|gif|webp|svg)$": "jest-transform-file",
 	},
+	setupFilesAfterEnv: ["./jest.setup.js", "jest-canvas-mock"],
+	transformIgnorePatterns: ["node_modules/(?!(antd/dist)/)"],
 };

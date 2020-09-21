@@ -1,8 +1,8 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import Events from "./Events";
+import AddGift from "./AddGift";
 
 // mvp test scenario for events page
-test("renders events dashboard", () => {
-  render(<Events />);
+test("renders form to add gift", () => {
+	render(<AddGift />);
 });
