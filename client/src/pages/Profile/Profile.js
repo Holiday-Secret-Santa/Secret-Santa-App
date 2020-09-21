@@ -1,29 +1,33 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Image, Descriptions, Row } from "antd";
+import { Row } from "antd";
 import ResponsiveColumn from "../../components/ResponsiveColumn";
-import DescriptionItem from "../../components/DescriptionItem";
+
+import "./style.css";
 
 const ProfilePage = () => {
 	const { user } = useAuth0();
 	const { name, picture, email } = user ? user : {};
 
 	return (
-		<div>
+		<div className="center">
 			<Row style={{ padding: 15 }}>
-				<ResponsiveColumn lg={20}>
-					<h3>Profile</h3>
+				<ResponsiveColumn lg={24}>
+					<h3 className="font-style-title">Profile</h3>
 				</ResponsiveColumn>
 			</Row>
 			<Row gutter={[30, 30]} style={{ padding: 15 }}>
-				<ResponsiveColumn lg={20}>
-					<Image src={picture} />
+				<ResponsiveColumn lg={24}>
+					<img src={picture} alt="profile picture" className="profile-image" />
 				</ResponsiveColumn>
 			</Row>
 			<Row>
-				<ResponsiveColumn gutter={[30, 30]} style={{ padding: 15 }} lg={20}>
-					<DescriptionItem title="User Info" label="Name" data={name} />
-					<DescriptionItem label="Email" data={email} />
+				<ResponsiveColumn style={{ padding: 15 }} lg={24}>
+					<p className="font-style-header">User Info</p>
+					<div className="font-style-text">
+						<p>Name: {name}</p>
+						<p>Email: {email}</p>
+					</div>
 				</ResponsiveColumn>
 			</Row>
 		</div>
