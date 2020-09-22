@@ -4,3 +4,7 @@ h1.message {
     font-family: 'Petit Formal Script', cursive;
     text-align: center
 }
+
+.green {
+    color: green;
+}
