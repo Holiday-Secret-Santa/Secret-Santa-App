@@ -13,7 +13,6 @@ import AddGift from "./pages/AddGift/AddGift";
 import Loading from "./components/Loading";
 import { Layout } from "antd";
 import HomePage from "./pages/HomePage/HomePage";
-
 import "./app.css";
 
 const { Content } = Layout;
