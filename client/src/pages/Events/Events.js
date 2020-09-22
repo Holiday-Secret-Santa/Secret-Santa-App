@@ -79,13 +79,11 @@ const EventsPage = () => {
 			<Row gutter={[30, 30]} style={{ padding: 20 }}>
 				{partyList(sampleData)}
 			</Row>
-			<div className="center">
-				<Row gutter={[30, 30]} style={{ padding: 20 }}>
-					<ResponsiveColumn>
-						<AddButton text="Create New Event" />
-					</ResponsiveColumn>
-				</Row>
-			</div>
+			<Row style={{ padding: 20 }}>
+				<ResponsiveColumn>
+					<AddButton text="Create New Event" />
+				</ResponsiveColumn>
+			</Row>
 		</div>
 	);
 };
