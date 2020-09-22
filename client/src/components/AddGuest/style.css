@@ -6,3 +6,9 @@
   width: 40vw;
   margin: auto;
 }
+
+@media only screen and (max-width: 540px) {
+  .add-guest-card {
+    width: 100%
+  }
+}
