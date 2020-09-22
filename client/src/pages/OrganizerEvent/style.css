@@ -36,3 +36,9 @@ body {
 		"Lucida Sans", Arial, sans-serif !important;
 	color: rgb(35, 55, 106) !important;
 }
+
+.assignment-button {
+	color: #2c6e49 !important;
+	border-color: #2c6e49 !important;
+	color: #ffffff !important;
+}
