@@ -1,50 +1,54 @@
-const { GraphQLSchema, GraphQLObjectType, GraphQLString } = require("graphql");
+const { buildSchema } = require("graphql");
 const _ = require("lodash");
+const db = require("./../models");
 
-// dummy data
-var events = [
-	{
-		id: "1",
-		date: "10/08/20",
-		description: "test graphql",
-		start_time: " 5:00 am",
-		end_time: "10:00 am",
-		location: "my location",
-		planner_email: "ystamaritq@gmail.com",
+var schema = buildSchema(`
+	input InputEvent {
+		date: String,
+		description: String,
+		start_time: String,
+		end_time: String,
+		location: String,
+		planner_email: String,
+	}
+
+	type Event {
+		id: String,
+		date: String,
+		description: String,
+		start_time: String,
+		end_time: String,
+		location: String,
+		planner_email: String,
+	}
+
+	type Query {
+		getEvents: [Event],
+		getEvent(id: String): Event
+	}
+
+	type Mutation {
+		createEvent(input: InputEvent): Event,
+		deleteEvent(id: String): String
+	}
+`);
+
+var root = {
+	getEvents: () => {
+		return db.Event.findAll();
 	},
-];
-
-// define the graphql schema
-const EventType = new GraphQLObjectType({
-	name: "Event",
-	fields: () => ({
-		id: { type: GraphQLString },
-		date: { type: GraphQLString },
-		description: { type: GraphQLString },
-		start_time: { type: GraphQLString },
-		end_time: { type: GraphQLString },
-		location: { type: GraphQLString },
-		planner_email: { type: GraphQLString },
-	}),
-});
-
-// define queries
-const RootQuery = new GraphQLObjectType({
-	name: "RootQueryType",
-	fields: {
-		event: {
-			type: EventType,
-			args: { id: { type: GraphQLString } },
-			resolve(parent, args) {
-				// code to get data from db / other source
-				return _.find(events, { id: args.id });
-			},
-		},
+	getEvent: ({ id }) => {
+		return db.Event.findOne({ where: { id: id } });
 	},
-});
+	createEvent: ({ input }) => {
+		return db.Event.create(input);
+	},
+	deleteEvent: ({ id }) => {
+		return db.Event.destroy({ where: { id: id } });
+	},
+};
 
-const schema = new GraphQLSchema({
-	query: RootQuery,
-});
-
-module.exports = schema;
+module.exports = {
+	schema,
+	root,
+};
