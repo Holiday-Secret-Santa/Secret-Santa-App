@@ -54,8 +54,9 @@ var schema = buildSchema(`
 
 	type Mutation {
 		createEvent(input: InputEvent): Event,
-		deleteEvent(id: String): String
-	
+		deleteEvent(id: Int): Int,
+		createParticipant(input: InputParticipant): Participant,
+		deleteParticipant(id: Int): Int
 	
 	}
 `);
