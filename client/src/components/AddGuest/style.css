@@ -1,3 +1,8 @@
 .add-guest-text {
   margin-top: 14px;
 }
+
+.add-guest-card {
+  width: 40vw;
+  margin: auto;
+}

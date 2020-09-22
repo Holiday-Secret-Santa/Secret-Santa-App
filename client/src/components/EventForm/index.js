@@ -19,7 +19,7 @@ const EventForm = () => {
       name="newEventForm"
       className="newEventForm"
     >
-      <h1>Create New Event</h1>
+      <h1 className="new-event-title">Create New Event</h1>
       <Form.Item
         name="Event Title"
         label="Your Event Title"
@@ -32,7 +32,7 @@ const EventForm = () => {
         name="Location" 
         label="Location" 
         rules={[{ required: true }]}>
-          
+
         <Input placeholder="Enter address or virtual meeting link"></Input>
       </Form.Item>
       <AddGuests />
