@@ -5,6 +5,14 @@ import AddGuests from "../AddGuest/index";
 import "antd/dist/antd.css";
 import "./style.css";
 
+const createFormItem = (key, name, label, children) => {
+  return (
+    <Form.Item key={key} name={name} label={label} rules={[{ required: true }]}>
+      {children}
+    </Form.Item>
+  );
+};
+
 const EventForm = () => {
   const [form] = Form.useForm();
 
@@ -20,21 +28,21 @@ const EventForm = () => {
       className="newEventForm"
     >
       <h1 className="new-event-title">Create New Event</h1>
-      <Form.Item
-        name="Event Title"
-        label="Your Event Title"
-        rules={[{ required: true }]}
-      >
-        <Input placeholder="Enter Title Here"></Input>
-      </Form.Item>
-      <DateTimeIinput className="dateTimeInput" />
-      <Form.Item 
-        name="Location" 
-        label="Location" 
-        rules={[{ required: true }]}>
 
+      {createFormItem(
+        2,
+        "Event Title",
+        "Your Event Title",
+        <Input placeholder="Enter Title Here"></Input>
+      )}
+      <DateTimeIinput className="dateTimeInput" />
+
+      {createFormItem(
+        3,
+        "Location",
+        "Location",
         <Input placeholder="Enter address or virtual meeting link"></Input>
-      </Form.Item>
+      )}
       <AddGuests />
       <Form.Item className="submitBtn">
         <Button type="primary" htmlType="submit">
