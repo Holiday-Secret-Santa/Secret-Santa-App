@@ -13,13 +13,36 @@ var schema = buildSchema(`
 	}
 
 	type Event {
-		id: String,
+		id: Int,
 		date: String,
 		description: String,
 		start_time: String,
 		end_time: String,
 		location: String,
 		planner_email: String,
+	}
+
+	input InputParticipant {
+		first_name: String,
+		last_name: String,
+		email: String,
+		invite_status: String,
+		date_sent: String,
+		date_accepted: String,
+		event_id: Int,
+		secret_santa_id: Int
+	}
+
+	type Participant {
+		id: Int,
+		first_name: String,
+		last_name: String,
+		email: String,
+		invite_status: String,
+		date_sent: String,
+		date_accepted: String,
+		event_id: Int,
+		secret_santa_id: Int
 	}
 
 	type Query {
