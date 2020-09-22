@@ -74,6 +74,18 @@ var root = {
 	deleteEvent: ({ id }) => {
 		return db.Event.destroy({ where: { id: id } });
 	},
+	getParticipants: () => {
+		return db.Participant.findAll();
+	},
+	getParticipant: ({ id }) => {
+		return db.Participant.findOne({ where: { id: id } });
+	},
+	createParticipant: ({ input }) => {
+		return db.Participant.create(input);
+	},
+	deleteParticipant: ({ id }) => {
+		return db.Participant.destroy({ where: { id: id } });
+	},
 };
 
 module.exports = {
