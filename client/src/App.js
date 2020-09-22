@@ -11,7 +11,7 @@ import OrganizerEvent from "./pages/OrganizerEvent/OrganizerEvent";
 import ParticipantEvent from "./pages/ParticipantEvent/ParticipantEvent";
 import AddGift from "./pages/AddGift/AddGift";
 import Loading from "./components/Loading";
-import FooterComp from "./components/FooterComp"
+import FooterComp from "./components/FooterComp/FooterComp";
 import { Layout } from "antd";
 import HomePage from "./pages/HomePage/HomePage";
 import "./app.css";
@@ -67,7 +67,7 @@ const App = () => {
 			<Layout>
 				<AppContent isAuthenticated={isAuthenticated} />
 			</Layout>
-			<FooterComp />
+			<FooterComp text={"Secret Santa App"}/>
 		</Layout>
 	);
 };
