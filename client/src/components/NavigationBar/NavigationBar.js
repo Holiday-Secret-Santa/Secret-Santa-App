@@ -6,11 +6,15 @@ import {
 	LogoutOutlined,
 	UserOutlined,
 	GiftOutlined,
+	MenuUnfoldOutlined,
 } from "@ant-design/icons";
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginLink from "../LoginLink";
 import LogoutLink from "../LogoutLink";
 import appLogo from "./appLogo.png";
+import "./style.css";
+
+const { SubMenu } = Menu;
 
 const LogoLink = () => {
 	return (
@@ -22,9 +26,19 @@ const LogoLink = () => {
 
 const createMenuItem = (key, icon, children) => {
 	return (
-		<Menu.Item key={key} icon={icon} style={{ float: "right" }}>
-			{children}
-		</Menu.Item>
+		<SubMenu
+			key="SubMenu"
+			icon={
+				<MenuUnfoldOutlined style={{ fontSize: "20px", color: "#2c6e49" }} />
+			}
+			style={{ float: "right" }}
+		>
+			<Menu.ItemGroup>
+				<Menu.Item key={key} icon={icon}>
+					{children}
+				</Menu.Item>
+			</Menu.ItemGroup>
+		</SubMenu>
 	);
 };
 
