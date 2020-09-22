@@ -19,7 +19,7 @@ const { SubMenu } = Menu;
 
 const LogoLink = () => {
 	return (
-		<Link to="/" style={{ float: "left", paddingRight: "70px" }}>
+		<Link to="/" style={{ float: "left" }}>
 			<Image src={appLogo} width={200} preview={false} />
 		</Link>
 	);
@@ -27,7 +27,7 @@ const LogoLink = () => {
 
 const createMenuItem = (key, icon, children) => {
 	return (
-		<Menu.Item key={key} icon={icon} style={{padding:"7px"}}>
+		<Menu.Item key={key} icon={icon} style={{ padding: "7px" }}>
 			{children}
 		</Menu.Item>
 	);
