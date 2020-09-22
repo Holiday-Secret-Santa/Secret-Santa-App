@@ -6,8 +6,9 @@ import "antd/dist/antd.css";
 import "./style.css";
 
 const EventForm = () => {
+  const [form] = Form.useForm();
   return (
-    <Form className="newEventForm">
+    <Form form={form} className="newEventForm">
       <h1>Create New Event</h1>
       <Form.Item label="Your Event Title">
         <Input placeholder="Enter Title Here"></Input>
