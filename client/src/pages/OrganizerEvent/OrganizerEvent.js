@@ -4,7 +4,9 @@ import { Bar } from "ant-design-pro/lib/Charts";
 import DetailCard from "./../../components/DetailCard/DetailCard";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import TableComp from "./../../components/Table";
+import Button from "../../components/Button/Button";
 import "./style.css";
+import { TeamOutlined } from "@ant-design/icons";
 
 const getParticipantsInfo = () => {
 	return [];
@@ -51,6 +53,14 @@ const EventCard = () => {
 			date="date"
 			startTime="9:00am"
 			location="park"
+			actions={[
+				<span>
+					<Button
+						icon={<TeamOutlined style={{ fontSize: "18px" }} />}
+						text={" Make Assignments"}
+					/>
+				</span>,
+			]}
 		/>
 	);
 };

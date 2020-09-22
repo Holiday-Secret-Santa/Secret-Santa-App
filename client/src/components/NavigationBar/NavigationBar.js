@@ -6,23 +6,28 @@ import {
 	LogoutOutlined,
 	UserOutlined,
 	GiftOutlined,
+	MenuUnfoldOutlined,
 } from "@ant-design/icons";
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginLink from "../LoginLink";
 import LogoutLink from "../LogoutLink";
-import logo from "./logo.png";
+import appLogo from "./appLogo.png";
+import "./style.css";
+import MenuItem from "antd/lib/menu/MenuItem";
+
+const { SubMenu } = Menu;
 
 const LogoLink = () => {
 	return (
-		<Link to="/" style={{ float: "left", paddingRight: "70px" }}>
-			<Image src={logo} width={200} preview={false} />
+		<Link to="/" style={{ float: "left" }}>
+			<Image src={appLogo} width={200} preview={false} />
 		</Link>
 	);
 };
 
 const createMenuItem = (key, icon, children) => {
 	return (
-		<Menu.Item key={key} icon={icon} style={{ float: "right" }}>
+		<Menu.Item key={key} icon={icon} style={{ padding: "7px" }}>
 			{children}
 		</Menu.Item>
 	);
@@ -30,9 +35,22 @@ const createMenuItem = (key, icon, children) => {
 
 const createMenu = (items) => {
 	return (
-		<Menu mode="horizontal">
-			<LogoLink />
-			{items}
+		<Menu
+			mode="horizontal"
+			style={{ background: "#cad2c5", borderColor: "#2c6e49" }}
+		>
+			<MenuItem>
+				<LogoLink />
+			</MenuItem>
+			<SubMenu
+				key="SubMenu"
+				icon={
+					<MenuUnfoldOutlined style={{ fontSize: "20px", color: "#2c6e49" }} />
+				}
+				style={{ float: "right" }}
+			>
+				<Menu.ItemGroup>{items}</Menu.ItemGroup>
+			</SubMenu>
 		</Menu>
 	);
 };
