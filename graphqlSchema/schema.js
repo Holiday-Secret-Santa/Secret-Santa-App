@@ -29,7 +29,7 @@ var schema = buildSchema(`
 		invite_status: String,
 		date_sent: String,
 		date_accepted: String,
-		event_id: Int,
+		eventId: Int,
 		secret_santa_id: Int
 	}
 
@@ -41,7 +41,7 @@ var schema = buildSchema(`
 		invite_status: String,
 		date_sent: String,
 		date_accepted: String,
-		event_id: Int,
+		eventId: Int,
 		secret_santa_id: Int
 	}
 
