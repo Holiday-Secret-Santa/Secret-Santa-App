@@ -5,6 +5,7 @@ import "./style.css";
 
 const DateTimeIinput = () => {
   const { RangePicker } = TimePicker;
+  const dateFormat = "DD/MM/YYYY";
 
   return (
     <Row className="dateTimeRow">
