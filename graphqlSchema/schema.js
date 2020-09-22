@@ -29,7 +29,7 @@ var schema = buildSchema(`
 		invite_status: String,
 		date_sent: String,
 		date_accepted: String,
-		eventId: Int,
+		EventId: Int,
 		secret_santa_id: Int
 	}
 
@@ -41,7 +41,7 @@ var schema = buildSchema(`
 		invite_status: String,
 		date_sent: String,
 		date_accepted: String,
-		eventId: Int,
+		EventId: Int,
 		secret_santa_id: Int
 	}
 
@@ -49,7 +49,8 @@ var schema = buildSchema(`
 		getEvents: [Event],
 		getEvent(id: Int): Event, 
 		getParticipants: [Participant],
-		getParticipant(id: Int): Participant
+		getParticipant(id: Int): Participant,
+		getParticipantsByEventId(EventId: Int): [Participant]
 	}
 
 	type Mutation {
@@ -76,6 +77,9 @@ var root = {
 	},
 	getParticipants: () => {
 		return db.Participant.findAll();
+	},
+	getParticipantsByEventId: ({ EventId }) => {
+		return db.Participant.findAll({ where: { EventId: EventId } });
 	},
 	getParticipant: ({ id }) => {
 		return db.Participant.findOne({ where: { id: id } });
