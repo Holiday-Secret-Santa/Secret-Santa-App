@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Divider, Tooltip } from "antd";
+import { Row, Divider } from "antd";
 import { Bar } from "ant-design-pro/lib/Charts";
 import DetailCard from "./../../components/DetailCard/DetailCard";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
@@ -55,12 +55,10 @@ const EventCard = () => {
 			location="park"
 			actions={[
 				<span>
-					<Tooltip title={" Generate Secret Santa Assignments"}>
-						<Button
-							icon={<TeamOutlined style={{ fontSize: "18px" }} />}
-							text={"Assignments"}
-						/>
-					</Tooltip>
+					<Button
+						icon={<TeamOutlined style={{ fontSize: "18px" }} />}
+						text={" Make Assignments"}
+					/>
 				</span>,
 			]}
 		/>
