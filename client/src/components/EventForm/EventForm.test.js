@@ -10,8 +10,9 @@ describe("New Event Form", () => {
     expect(screen.getByText("Create New Event")).toBeInTheDocument();
   });
 
-  test("user text inputs", () => {
+  test("user text inputs and submit button", () => {
     render(<EventForm />);
+
     userEvent.type(
       screen.getByLabelText("Your Event Title"),
       "Office Gift Exchange"
@@ -24,5 +25,6 @@ describe("New Event Form", () => {
     expect(screen.getByRole("textbox", { name: /Location/i })).toHaveValue(
       "The ole office"
     );
+    userEvent.click(screen.getByRole("button", { name: /Submit/i }));
   });
 });
