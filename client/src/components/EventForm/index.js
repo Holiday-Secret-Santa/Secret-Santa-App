@@ -28,7 +28,7 @@ const EventForm = () => {
         <Input placeholder="Enter Title Here"></Input>
       </Form.Item>
       <DateTimeIinput className="dateTimeInput" />
-      <Form.Item label="Location">
+      <Form.Item name="Location" label="Location" rules={[{ required: true }]}>
         <Input placeholder="Enter address or virtual meeting link"></Input>
       </Form.Item>
       <AddGuests />
