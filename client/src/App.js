@@ -11,7 +11,6 @@ import OrganizerEvent from "./pages/OrganizerEvent/OrganizerEvent";
 import ParticipantEvent from "./pages/ParticipantEvent/ParticipantEvent";
 import AddGift from "./pages/AddGift/AddGift";
 import Loading from "./components/Loading";
-import Assignments from "./pages/Assignments/Assignments";
 import { Layout } from "antd";
 import HomePage from "./pages/HomePage/HomePage";
 
