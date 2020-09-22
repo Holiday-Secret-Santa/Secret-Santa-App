@@ -1,18 +1,6 @@
 const { buildSchema } = require("graphql");
 const _ = require("lodash");
-
-// dummy data
-var events = [
-	{
-		id: "1",
-		date: "10/08/20",
-		description: "test graphql",
-		start_time: " 5:00 am",
-		end_time: "10:00 am",
-		location: "my location",
-		planner_email: "ystamaritq@gmail.com",
-	},
-];
+const db = require("./../models");
 
 var schema = buildSchema(`
 	input InputEvent {
@@ -47,20 +35,16 @@ var schema = buildSchema(`
 
 var root = {
 	getEvents: () => {
-		return events;
+		return db.Event.findAll();
 	},
 	getEvent: ({ id }) => {
-		return _.find(events, { id });
+		return db.Event.findOne({ where: { id: id } });
 	},
 	createEvent: ({ input }) => {
-		let id = events.length + 1;
-		let newEvent = { ...input, id: `${id}` };
-		events.push(newEvent);
-		return newEvent;
+		return db.Event.create(input);
 	},
 	deleteEvent: ({ id }) => {
-		_.remove(events, { id });
-		return id;
+		return db.Event.destroy({ where: { id: id } });
 	},
 };
 
