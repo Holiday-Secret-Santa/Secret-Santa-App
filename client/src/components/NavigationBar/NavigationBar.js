@@ -30,7 +30,10 @@ const createMenuItem = (key, icon, children) => {
 
 const createMenu = (items) => {
 	return (
-		<Menu mode="horizontal">
+		<Menu
+			mode="horizontal"
+			style={{ background: "#cad2c5", borderColor: "#2c6e49" }}
+		>
 			<LogoLink />
 			{items}
 		</Menu>
