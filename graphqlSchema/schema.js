@@ -47,12 +47,16 @@ var schema = buildSchema(`
 
 	type Query {
 		getEvents: [Event],
-		getEvent(id: String): Event
+		getEvent(id: Int): Event, 
+		getParticipants: [Participant],
+		getParticipant(id: Int): Participant
 	}
 
 	type Mutation {
 		createEvent(input: InputEvent): Event,
 		deleteEvent(id: String): String
+	
+	
 	}
 `);
 
