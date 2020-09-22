@@ -6,7 +6,7 @@ import "./style.css";
 
 const AddGuests = () => {
   return (
-    <Card title="Import Guest List" style={{ width: 300, margin: "auto" }}>
+    <Card title="Import Guest List" className="add-guest-card">
       <Upload>
         <Button icon={<UploadOutlined />}>Click to Upload</Button>
       </Upload>
