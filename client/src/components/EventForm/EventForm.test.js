@@ -5,17 +5,24 @@ import userEvent from "@testing-library/user-event";
 import EventForm from "./index.js";
 
 describe("New Event Form", () => {
-
   test("renders form with header", () => {
     render(<EventForm />);
     expect(screen.getByText("Create New Event")).toBeInTheDocument();
   });
-  
+
   test("user text inputs", () => {
     render(<EventForm />);
-    userEvent.type(screen.getByLabelText("Your Event Title"), "Hello, World!");
+    userEvent.type(
+      screen.getByLabelText("Your Event Title"),
+      "Office Gift Exchange"
+    );
+    userEvent.type(screen.getByLabelText("Location"), "The ole office");
+
     expect(
       screen.getByRole("textbox", { name: /Your Event Title/i })
-    ).toHaveValue("Hello, World!");
+    ).toHaveValue("Office Gift Exchange");
+    expect(screen.getByRole("textbox", { name: /Location/i })).toHaveValue(
+      "The ole office"
+    );
   });
 });
