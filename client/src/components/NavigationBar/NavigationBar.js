@@ -10,12 +10,12 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginLink from "../LoginLink";
 import LogoutLink from "../LogoutLink";
-import logo from "./logo.png";
+import appLogo from "./appLogo.png";
 
 const LogoLink = () => {
 	return (
 		<Link to="/" style={{ float: "left", paddingRight: "70px" }}>
-			<Image src={logo} width={200} preview={false} />
+			<Image src={appLogo} width={200} preview={false} />
 		</Link>
 	);
 };
