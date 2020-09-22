@@ -7,13 +7,27 @@ import "./style.css";
 
 const EventForm = () => {
   const [form] = Form.useForm();
+
+  const onFinish = (values) => {
+    console.log(values);
+  };
+
   return (
-    <Form form={form} className="newEventForm">
+    <Form
+      form={form}
+      onFinish={onFinish}
+      name="newEventForm"
+      className="newEventForm"
+    >
       <h1>Create New Event</h1>
-      <Form.Item label="Your Event Title">
+      <Form.Item
+        name="Event Title"
+        label="Your Event Title"
+        rules={[{ required: true }]}
+      >
         <Input placeholder="Enter Title Here"></Input>
       </Form.Item>
-      <DateTimeIinput className="dateTimeInput"/>
+      <DateTimeIinput className="dateTimeInput" />
       <Form.Item label="Location">
         <Input placeholder="Enter address or virtual meeting link"></Input>
       </Form.Item>
