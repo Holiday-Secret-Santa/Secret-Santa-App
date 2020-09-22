@@ -6,7 +6,7 @@ import HomePageImgs from "../../components/HomePageImgs/HomePageImgs";
 import ResponsiveColumn from "../../components/ResponsiveColumn";
 
 const HomePage = () => {
-	return (
+  return (
     <Layout fluid className="p-0">
       <Row>
         <ResponsiveColumn>
