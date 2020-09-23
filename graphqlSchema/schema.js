@@ -45,6 +45,23 @@ var schema = buildSchema(`
 		secret_santa_id: Int
 	}
 
+	type InputGift {
+		id: Int,
+		description: String,
+		link: String,
+		price: Float,
+		Participant_id: Int
+	}
+
+	type Gift {
+		id: Int,
+		description: String,
+		link: String,
+		price: Float,
+		Participant_id: Int
+	}
+	
+
 	type Query {
 		getEvents: [Event],
 		getEvent(id: Int): Event, 
