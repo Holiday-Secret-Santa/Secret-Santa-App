@@ -110,6 +110,9 @@ var root = {
 	deleteParticipant: ({ id }) => {
 		return db.Participant.destroy({ where: { id: id } });
 	},
+	getGifts: () => {
+		return db.Gift.findAll();
+	},
 	getGift: ({ id }) => {
 		return db.Gift.findOne({ where: { id: id } });
 	},
