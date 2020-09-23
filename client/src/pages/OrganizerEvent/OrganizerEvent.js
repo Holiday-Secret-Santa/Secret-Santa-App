@@ -48,6 +48,7 @@ const getColumns = () => {
 };
 
 const EventCard = () => {
+	
 	return (
 		<DetailCard
 			title="Event details"
