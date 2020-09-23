@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
 import DateTimeIinput from "../DateTimeInput/index";
-import AddGuests from "../AddGuest/index";
+import ImportGuestList from "../ImportGuestList/index.js";
 import "antd/dist/antd.css";
 import "./style.css";
 
@@ -43,7 +43,7 @@ const EventForm = () => {
         "Location",
         <Input placeholder="Enter address or virtual meeting link"></Input>
       )}
-      <AddGuests />
+      <ImportGuestList />
       <Form.Item className="submitBtn">
         <Button type="primary" htmlType="submit">
 					Submit
