@@ -48,7 +48,7 @@ var schema = buildSchema(`
 	input InputGift {
 		description: String,
 		link: String,
-		price: Float,
+		price: Int,
 		Participant_id: Int
 	}
 
@@ -56,7 +56,7 @@ var schema = buildSchema(`
 		id: Int,
 		description: String,
 		link: String,
-		price: Float,
+		price: Int,
 		Participant_id: Int
 	}
 	
