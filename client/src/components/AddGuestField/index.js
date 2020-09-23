@@ -3,30 +3,47 @@ import "antd/dist/antd.css";
 import { Form, Input, Button, Space } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 
+const CreateNameFields = (key, fieldData, name, fieldKey, children) => {
+  return (
+    <Form.Item
+      key={key}
+      {...fieldData}
+      name={name}
+      fieldKey={fieldKey}
+      rules={[{ required: true, message: "Please enter first and last name" }]}
+    >
+      {children}
+    </Form.Item>
+  );
+};
+
 const AddGuestField = () => {
-  return(
+  return (
     <Form.List name="guests">
       {(fields, { add, remove }) => {
         return (
           <div>
-            {fields.map(field => (
-              <Space key={field.key} style={{ display: "flex", marginBottom: 8 }} align="start">
-                <Form.Item
-                  {...field}
-                  name={[field.name, "first"]}
-                  fieldKey={[field.fieldKey, "first"]}
-                  rules={[{ required: true, message: "Missing first name" }]}
-                >
+            {fields.map((field) => (
+              <Space
+                key={field.key}
+                style={{ display: "flex", marginBottom: 8 }}
+                align="start"
+              >
+                {CreateNameFields(
+                  2,
+                  field,
+                  [field.name, "first"],
+                  [field.fieldKey, "first"],
                   <Input placeholder="First Name" />
-                </Form.Item>
-                <Form.Item
-                  {...field}
-                  name={[field.name, "last"]}
-                  fieldKey={[field.fieldKey, "last"]}
-                  rules={[{ required: true, message: "Missing last name" }]}
-                >
+                )}
+
+                {CreateNameFields(
+                  3,
+                  field,
+                  [field.name, "last"],
+                  [field.fieldKey, "last"],
                   <Input placeholder="Last Name" />
-                </Form.Item>
+                )}
 
                 <MinusCircleOutlined
                   onClick={() => {
