@@ -67,7 +67,8 @@ var schema = buildSchema(`
 		getParticipant(id: Int): Participant,
 		getParticipantsByEventId(EventId: Int): [Participant],
 		getGifts: [Gift],
-		getGift(id: Int): Gift
+		getGift(id: Int): Gift,
+		getGiftByParticipantId(Participant_id: Int): [Gift],
 		
 	}
 
@@ -121,6 +122,11 @@ var root = {
 	},
 	deleteGift: ({ id }) => {
 		return db.Gift.destroy({ where: { id: id } });
+	},
+	getGiftByParticipantId: ({ Participant_id }) => {
+		return db.Gift.findAll({
+			where: { Participant_id: Participant_id },
+		});
 	},
 };
 
