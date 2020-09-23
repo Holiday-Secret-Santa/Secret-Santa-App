@@ -1,7 +1,9 @@
+import React from "react";
 import { Modal } from "antd";
 import AntButton from "../Button/Button";
+import { UserAddOutlined } from "@ant-design/icons";
 
-const ModalPopUp = ({ children }) => {
+const ModalPopUp = ({ children, state }) => {
 	state = { visible: false };
 
 	showModal = () => {
@@ -25,9 +27,10 @@ const ModalPopUp = ({ children }) => {
 	};
 	return (
 		<div>
-			<AntButton text="Add Guests" />
+			<AntButton icon={<UserAddOutlined />} action={this.showModal} />
+			Invite New Guests
 			<Modal
-				title="Add Guests"
+				title="Basic Modal"
 				visible={this.state.visible}
 				onOk={this.handleOk}
 				onCancel={this.handleCancel}

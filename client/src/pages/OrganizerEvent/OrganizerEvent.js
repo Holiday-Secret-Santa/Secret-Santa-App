@@ -7,6 +7,7 @@ import TableComp from "./../../components/Table";
 import Button from "../../components/Button/Button";
 import "./style.css";
 import { TeamOutlined, UserAddOutlined } from "@ant-design/icons";
+// import ModalPopUp from "../../components/ModalPopUp/ModalPopUp";
 
 const getParticipantsInfo = () => {
 	return [];
@@ -109,6 +110,7 @@ const OrganizerEvent = () => {
 							icon={<UserAddOutlined style={{ fontSize: "18px" }} />}
 							text={"Invite More Guests"}
 						/>
+						{/* <ModalPopUp /> */}
 					</Space>
 					<TableComp
 						dataSource={getParticipantsInfo()}
