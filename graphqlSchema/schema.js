@@ -61,13 +61,12 @@ var schema = buildSchema(`
 		Participant_id: Int
 	}
 	
-
 	type Query {
 		getEvents: [Event],
 		getEvent(id: Int): Event, 
 		getParticipants: [Participant],
 		getParticipant(id: Int): Participant,
-		getParticipantsByEventId(EventId: Int): [Participant]
+		getParticipantsByEventId(EventId: Int): [Participant],
 		getGifts: [Gift],
 		getGift(id: Int): Gift,
 		getGiftsByParticipantId: (Participant_id: Int): [Gift],
