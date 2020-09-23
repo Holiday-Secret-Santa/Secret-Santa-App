@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import EventForm from "./index.js";
+import AddGuest from "../AddGuest/index";
 
 describe("New Event Form", () => {
   test("renders form with header", () => {
@@ -26,5 +27,10 @@ describe("New Event Form", () => {
       "The ole office"
     );
     userEvent.click(screen.getByRole("button", { name: /Submit/i }));
+  });
+
+  test("renders add guest card", () => {
+    render(<AddGuest />);
+    expect(screen.getByRole("button", { name: /Add Guest/i}));
   });
 });
