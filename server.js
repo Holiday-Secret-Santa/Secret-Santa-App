@@ -11,7 +11,7 @@ require("dotenv").config();
 // require models
 var db = require("./models");
 const { graphqlHTTP } = require("express-graphql");
-const schema = require("./graphqlSchema/schema");
+const { schema, root } = require("./graphqlSchema/schema");
 
 const PORT = process.env.PORT || 3001;
 const appOrigin = process.env.APP_ORIGIN;
@@ -30,7 +30,8 @@ if (process.env.NODE_ENV === "production") {
 app.use(
 	"/graphql",
 	graphqlHTTP({
-		schema,
+		schema: schema,
+		rootValue: root,
 		graphiql: true,
 	})
 );

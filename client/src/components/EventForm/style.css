@@ -1,9 +1,15 @@
 .newEventForm {
   width: 70%;
   margin: auto;
+  margin-top: 5%;
 }
 
 .submitBtn .ant-form-item-control-input {
   align-self: center;
   margin-top: 2vw;
+}
+
+.new-event-title {
+  text-align: center;
+  margin-bottom: 5%;
 }
