@@ -31,5 +31,6 @@ describe("New Event Form", () => {
 
   test("renders add guest card", () => {
     render(<AddGuest />);
+    expect(screen.getByRole("button", { name: /Add Guest/i}));
   });
 });
