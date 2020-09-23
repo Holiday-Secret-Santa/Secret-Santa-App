@@ -2,6 +2,7 @@ import React from "react";
 import { Form, Input, Button } from "antd";
 import DateTimeIinput from "../DateTimeInput/index";
 import ImportGuestList from "../ImportGuestList/index.js";
+import AddGuestField from "../AddGuestField";
 import "antd/dist/antd.css";
 import "./style.css";
 
