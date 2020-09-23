@@ -37,5 +37,6 @@ describe("New Event Form", () => {
 
   test("renders AddguestField component", () => {
     render(<Form><AddguestField /></Form>);
+    expect(screen.getByRole("button", { name: /Add Guest/i})).toBeInTheDocument;
   });
 });
