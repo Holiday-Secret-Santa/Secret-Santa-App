@@ -45,8 +45,7 @@ var schema = buildSchema(`
 		secret_santa_id: Int
 	}
 
-	type InputGift {
-		id: Int,
+	input InputGift {
 		description: String,
 		link: String,
 		price: Float,
@@ -68,8 +67,8 @@ var schema = buildSchema(`
 		getParticipant(id: Int): Participant,
 		getParticipantsByEventId(EventId: Int): [Participant],
 		getGifts: [Gift],
-		getGift(id: Int): Gift,
-		getGiftsByParticipantId: (Participant_id: Int): [Gift],
+		getGift(id: Int): Gift
+		
 	}
 
 	type Mutation {
