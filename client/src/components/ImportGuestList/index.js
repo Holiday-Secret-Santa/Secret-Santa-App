@@ -4,7 +4,7 @@ import { UploadOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import "./style.css";
 
-const AddGuests = () => {
+const ImportGuestList = () => {
   return (
     <Card title="Import Guest List" className="add-guest-card">
       <Upload>
@@ -14,4 +14,4 @@ const AddGuests = () => {
   );
 };
 
-export default AddGuests;
+export default ImportGuestList;
