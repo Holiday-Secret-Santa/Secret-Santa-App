@@ -68,6 +68,9 @@ var schema = buildSchema(`
 		getParticipants: [Participant],
 		getParticipant(id: Int): Participant,
 		getParticipantsByEventId(EventId: Int): [Participant]
+		getGifts: [Gift],
+		getGift(id: Int): Gift,
+		getGiftsByParticipantId: (Participant_id: Int): [Gift],
 	}
 
 	type Mutation {
@@ -75,6 +78,8 @@ var schema = buildSchema(`
 		deleteEvent(id: Int): Int,
 		createParticipant(input: InputParticipant): Participant,
 		deleteParticipant(id: Int): Int
+		createGift(input: InputGift): Gift,
+		deleteGift(id: Int): Int
 	
 	}
 `);
@@ -106,6 +111,15 @@ var root = {
 	},
 	deleteParticipant: ({ id }) => {
 		return db.Participant.destroy({ where: { id: id } });
+	},
+	getGift: ({ id }) => {
+		return db.Gift.findOne({ where: { id: id } });
+	},
+	createGift: ({ input }) => {
+		return db.Gift.create(input);
+	},
+	deleteGift: ({ id }) => {
+		return db.Gift.destroy({ where: { id: id } });
 	},
 };
 
