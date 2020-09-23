@@ -22,16 +22,6 @@ const DateColumn = (msg, allowNull) => {
 	};
 };
 
-const IntegerColumn = (msg, allowNul) => {
-	return {
-		type: Sequelize.DataTypes.INTEGER,
-		allowNull: false,
-		validate: {
-			isNumeric: true,
-		},
-	};
-};
-
 const DecimalColumn = (msg, allowNul) => {
 	return {
 		type: Sequelize.DataTypes.DECIMAL,
@@ -49,7 +39,6 @@ const DefineTable = (sequelize, name, columns) => {
 module.exports = {
 	StringColumn,
 	DateColumn,
-	IntegerColumn,
 	DecimalColumn,
 	DefineTable,
 };
