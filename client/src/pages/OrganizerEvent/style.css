@@ -42,3 +42,10 @@ body {
 	border-color: #2c6e49 !important;
 	color: #ffffff !important;
 }
+
+.center {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}

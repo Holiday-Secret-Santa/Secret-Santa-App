@@ -1,12 +1,12 @@
 import React from "react";
-import { Row, Divider } from "antd";
+import { Row, Divider, Space } from "antd";
 import { Bar } from "ant-design-pro/lib/Charts";
 import DetailCard from "./../../components/DetailCard/DetailCard";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import TableComp from "./../../components/Table";
 import Button from "../../components/Button/Button";
 import "./style.css";
-import { TeamOutlined } from "@ant-design/icons";
+import { TeamOutlined, UserAddOutlined } from "@ant-design/icons";
 
 const getParticipantsInfo = () => {
 	return [];
@@ -104,6 +104,12 @@ const OrganizerEvent = () => {
 						color="#d62828"
 					/>
 					<Divider />
+					<Space style={{ padding: 20 }} className="center">
+						<Button
+							icon={<UserAddOutlined style={{ fontSize: "18px" }} />}
+							text={"Invite More Guests"}
+						/>
+					</Space>
 					<TableComp
 						dataSource={getParticipantsInfo()}
 						columns={getColumns(true)}
