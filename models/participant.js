@@ -34,6 +34,12 @@ module.exports = function (sequelize) {
 		Participant.hasOne(models.Participant, {
 			foreignKey: "secret_santa_id",
 		});
+
+		Participant.hasMany(models.Gift, {
+			onDelete: "cascade",
+		});
+
+		models.Gift.belongsTo(Participant);
 	};
 
 	return Participant;
