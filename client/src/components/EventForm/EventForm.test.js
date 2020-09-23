@@ -31,6 +31,5 @@ describe("New Event Form", () => {
 
   test("renders add guest card", () => {
     render(<ImportGuestList />);
-    expect(screen.getByRole("button", { name: /Click to Upload/i}));
   });
 });
