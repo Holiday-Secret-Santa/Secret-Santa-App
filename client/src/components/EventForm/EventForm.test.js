@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import EventForm from "./index.js";
-import AddGuest from "../AddGuest/index";
+import ImportGuestList from "../ImportGuestList";
 
 describe("New Event Form", () => {
   test("renders form with header", () => {
@@ -30,7 +30,7 @@ describe("New Event Form", () => {
   });
 
   test("renders add guest card", () => {
-    render(<AddGuest />);
+    render(<ImportGuestList />);
     expect(screen.getByRole("button", { name: /Add Guest/i}));
   });
 });

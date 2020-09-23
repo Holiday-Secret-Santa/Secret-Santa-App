@@ -44,6 +44,7 @@ const EventForm = () => {
         "Location",
         <Input placeholder="Enter address or virtual meeting link"></Input>
       )}
+      <AddGuestField />
       <ImportGuestList />
       <Form.Item className="submitBtn">
         <Button type="primary" htmlType="submit">
