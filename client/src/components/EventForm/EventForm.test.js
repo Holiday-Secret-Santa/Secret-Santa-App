@@ -6,6 +6,8 @@ import EventForm from "./index.js";
 import { Form } from "antd";
 import ImportGuestList from "../ImportGuestList";
 import AddguestField from "../AddGuestField/index";
+import DateTimeIinput from "../DateTimeInput/index";
+import { act } from "react-dom/test-utils";
 
 describe("New Event Form", () => {
   test("renders form with header", () => {
@@ -13,7 +15,7 @@ describe("New Event Form", () => {
     expect(screen.getByText("Create New Event")).toBeInTheDocument();
   });
 
-  test("user text inputs and submit button", () => {
+  test("user field inputs and submit button", () => {
     render(<EventForm />);
 
     userEvent.type(
@@ -21,6 +23,7 @@ describe("New Event Form", () => {
       "Office Gift Exchange"
     );
     userEvent.type(screen.getByLabelText("Location"), "The ole office");
+    const date = screen.getByRole("textbox", { name: "Date" });
 
     expect(
       screen.getByRole("textbox", { name: /Your Event Title/i })
@@ -36,7 +39,22 @@ describe("New Event Form", () => {
   });
 
   test("renders AddguestField component", () => {
-    render(<Form><AddguestField /></Form>);
-    expect(screen.getByRole("button", { name: /Add Guest/i})).toBeInTheDocument;
+    render(
+      <Form>
+        <AddguestField />
+      </Form>
+    );
+    expect(screen.getByRole("button", { name: /Add Guest/i }))
+      .toBeInTheDocument;
+  });
+
+  test("renders dateTimeInputs", () => {
+    render(
+      <Form>
+        <DateTimeIinput />
+      </Form>
+    );
+    expect(screen.getByLabelText("Date")).toBeInTheDocument;
+    expect(screen.getByLabelText("Time")).toBeInTheDocument;
   });
 });
