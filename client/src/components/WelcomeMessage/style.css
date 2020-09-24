@@ -9,4 +9,5 @@ h1.message {
 
 .green {
 	color: green;
+	text-shadow: 0 0 0.1em rgb(33, 199, 83);
 }
