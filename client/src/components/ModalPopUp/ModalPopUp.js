@@ -4,7 +4,7 @@ import AntButton from "../Button/Button";
 import { UserAddOutlined } from "@ant-design/icons";
 import FormInputText from "../FormInput/FormInputText";
 
-const ModalPopUp = ({ children, state }) => {
+const ModalPopUp = ({ state }) => {
 	state = { visible: false };
 
 	const [visible, setvisible] = useState(false);
