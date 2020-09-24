@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal } from "antd";
 import AntButton from "../Button/Button";
 import { UserAddOutlined } from "@ant-design/icons";
@@ -6,34 +6,34 @@ import { UserAddOutlined } from "@ant-design/icons";
 const ModalPopUp = ({ children, state }) => {
 	state = { visible: false };
 
-	showModal = () => {
-		this.setState({
-			visible: true,
-		});
+	const [visible, setvisible] = useState(false);
+
+	const showModal = () => {
+		setvisible(true);
 	};
 
-	handleOk = (e) => {
+	const handleOk = (e) => {
 		console.log(e);
-		this.setState({
-			visible: false,
-		});
+		setvisible(false);
 	};
 
-	handleCancel = (e) => {
+	const handleCancel = (e) => {
 		console.log(e);
-		this.setState({
-			visible: false,
-		});
+		setvisible(false);
 	};
+
 	return (
 		<div>
-			<AntButton icon={<UserAddOutlined />} action={this.showModal} />
-			Invite New Guests
+			<AntButton
+				icon={<UserAddOutlined />}
+				action={showModal}
+				text={"Add Participants"}
+			/>
 			<Modal
-				title="Basic Modal"
-				visible={this.state.visible}
-				onOk={this.handleOk}
-				onCancel={this.handleCancel}
+				title="Add Participants"
+				visible={visible}
+				onOk={handleOk}
+				onCancel={handleCancel}
 			>
 				{children}
 			</Modal>

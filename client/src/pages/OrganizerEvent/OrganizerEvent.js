@@ -1,13 +1,13 @@
 import React from "react";
-import { Row, Divider, Space } from "antd";
+import { Row, Divider } from "antd";
 import { Bar } from "ant-design-pro/lib/Charts";
 import DetailCard from "./../../components/DetailCard/DetailCard";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import TableComp from "./../../components/Table";
 import Button from "../../components/Button/Button";
 import "./style.css";
-import { TeamOutlined, UserAddOutlined } from "@ant-design/icons";
-// import ModalPopUp from "../../components/ModalPopUp/ModalPopUp";
+import { TeamOutlined } from "@ant-design/icons";
+import ModalPopUp from "../../components/ModalPopUp/ModalPopUp";
 
 const getParticipantsInfo = () => {
 	return [];
@@ -48,7 +48,6 @@ const getColumns = () => {
 };
 
 const EventCard = () => {
-	
 	return (
 		<DetailCard
 			title="Event details"
@@ -106,18 +105,14 @@ const OrganizerEvent = () => {
 						color="#d62828"
 					/>
 					<Divider />
-					<Space style={{ padding: 20 }} className="center">
-						<Button
-							icon={<UserAddOutlined style={{ fontSize: "18px" }} />}
-							text={"Invite More Guests"}
-						/>
-						{/* <ModalPopUp /> */}
-					</Space>
 					<TableComp
 						dataSource={getParticipantsInfo()}
 						columns={getColumns(true)}
 					/>
 				</ResponsiveColumn>
+			</Row>
+			<Row>
+				<ModalPopUp />
 			</Row>
 		</>
 	);
