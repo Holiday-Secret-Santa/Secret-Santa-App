@@ -1,0 +1,24 @@
+[
+  {
+  "id": 1,
+  "alt": "gifts3",
+  "title": "Create or join an event",
+  "description": "You can create, invite and manage your event's guests, or join the party!",
+  "photo": "https://images.unsplash.com/photo-1512909006721-3d6018887383?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+  },
+  {
+    "id": 2,
+    "alt": "gifts2",
+    "title": "Gift Selection",
+    "description": "Access your Secret Santa's wish list and purchase via the app!",
+    "photo": "https://images.unsplash.com/photo-1574758174730-606380f294bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+  },
+  {
+    "id": 3,
+    "alt": "friends",
+    "title": "Secret Santa Participants",
+    "description": "See who else is participating and who your Secret Santa might be!",
+    "photo": "https://images.unsplash.com/photo-1513270246933-7a934b770ea6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+  }
+
+]
