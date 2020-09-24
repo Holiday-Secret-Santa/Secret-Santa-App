@@ -109,10 +109,11 @@ const OrganizerEvent = () => {
 						dataSource={getParticipantsInfo()}
 						columns={getColumns(true)}
 					/>
+					<Divider />
+					<div className="center">
+						<ModalPopUp />
+					</div>
 				</ResponsiveColumn>
-			</Row>
-			<Row>
-				<ModalPopUp />
 			</Row>
 		</>
 	);

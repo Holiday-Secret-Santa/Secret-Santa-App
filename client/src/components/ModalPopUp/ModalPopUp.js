@@ -31,7 +31,13 @@ const ModalPopUp = ({ children, state }) => {
 				text={"Add Participants"}
 			/>
 			<Modal
-				title="Add Participants"
+				title={
+					<label
+						style={{ color: "#2c6e49", fontSize: "22px", fontWeight: "bold" }}
+					>
+						Add Participants
+					</label>
+				}
 				visible={visible}
 				onOk={handleOk}
 				onCancel={handleCancel}
