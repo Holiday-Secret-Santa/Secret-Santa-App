@@ -28,8 +28,8 @@ class HomePageImgs extends Component {
 		return (
 			<div>
 				<Row gutter={[30, 30]} style={{ padding: 40 }}>
-					{this.state.images.map((image) => (
-						<ResponsiveColumn lg={8}>
+					{this.state.images.map((image, index) => (
+						<ResponsiveColumn lg={8} key={index}>
 							<CardHome
 								style={{ textAlign: "center" }}
 								id={image.id}
