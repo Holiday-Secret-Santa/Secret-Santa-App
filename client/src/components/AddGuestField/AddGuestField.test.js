@@ -15,13 +15,17 @@ describe("AddGuestField", () => {
   const addguestBtn = screen.getByRole("button", { name: /Add Guest/i });
   test("should render add guest button", () => {
     expect(addguestBtn).toBeInTheDocument;
+    expect(screen.getByRole("img", {name: /plus/i})).toBeInTheDocument;
   });
 
   test("Returns form item on button click", async () => {
     userEvent.click(addguestBtn);
-    await expect(screen.findByRole("textbox", { name: /First Name/i})).toBeInTheDocument;
+    const fName = screen.findByRole("textbox", { name: /First Name/i});
+    await expect(fName).toBeInTheDocument;
+    // userEvent.type(fName, "Antonio");
     await expect(screen.findByRole("textbox", { name: /Last Name/i})).toBeInTheDocument;
     await expect(screen.findByRole("img", { name: /minus-circle/i})).toBeInTheDocument;
+    
   });
 
   test("renders form item", () => {
