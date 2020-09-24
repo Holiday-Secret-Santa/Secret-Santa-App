@@ -1,10 +1,12 @@
 h1.message {
-    color: red;
-    padding: 70px 20px;
-    font-family: 'Petit Formal Script', cursive;
-    text-align: center
+	color: red;
+	padding: 70px 20px;
+	font-family: "Petit Formal Script", cursive;
+	text-align: center;
+	font-size: xx-large;
+	font-weight: bold;
 }
 
 .green {
-    color: green;
+	color: green;
 }
