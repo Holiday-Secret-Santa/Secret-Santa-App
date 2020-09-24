@@ -21,5 +21,16 @@ describe("AddGuestField", () => {
     userEvent.click(addguestBtn);
     await expect(screen.findByRole("textbox", { name: /First Name/i})).toBeInTheDocument;
     await expect(screen.findByRole("textbox", { name: /Last Name/i})).toBeInTheDocument;
+    await expect(screen.findByRole("img", { name: /minus-circle/i})).toBeInTheDocument;
   });
+
+  test("renders form item", () => {
+    render(
+      <Form>
+        {CreateNameFields(2, null, "test", 3, <Input placeholder="First Name" />)}
+      </Form>
+    );
+    expect(screen.getByRole("textbox")).toHaveClass("ant-input");
+  });
+
 });
