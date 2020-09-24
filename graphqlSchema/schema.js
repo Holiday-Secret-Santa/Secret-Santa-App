@@ -78,9 +78,11 @@ var schema = buildSchema(`
 		createParticipant(input: InputParticipant): Participant,
 		deleteParticipant(id: Int): Int
 		createGift(input: InputGift): Gift,
-		deleteGift(id: Int): Int
+		deleteGift(id: Int): Int,
+		assignSecretSanta({Participant_id: Int, secret_santa_id: Int}): Int 
 	
-	}
+	} 
+
 `);
 
 var root = {
@@ -127,6 +129,18 @@ var root = {
 		return db.Gift.findAll({
 			where: { Participant_id: Participant_id },
 		});
+	},
+	assignSecretSanta: ({ Participant_id, secret_santa_id }) => {
+		return db.Participant.update(
+			{
+				secret_santa_id: secret_santa_id,
+			},
+			{
+				where: {
+					Participant_id: Participant_id,
+				},
+			}
+		);
 	},
 };
 
