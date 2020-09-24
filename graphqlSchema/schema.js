@@ -65,7 +65,7 @@ var schema = buildSchema(`
 		getEvent(id: Int): Event, 
 		getParticipants: [Participant],
 		getParticipant(id: Int): Participant,
-		getParticipantsByEventId(EventId: Int): [Participant],
+		getParticipantsByEventId(eventId: Int): [Participant],
 		getGifts: [Gift],
 		getGift(id: Int): Gift,
 		getGiftByParticipantId(Participant_id: Int): [Gift],
@@ -76,11 +76,10 @@ var schema = buildSchema(`
 		createEvent(input: InputEvent): Event,
 		deleteEvent(id: Int): Int,
 		createParticipant(input: InputParticipant): Participant,
-		deleteParticipant(id: Int): Int
+		deleteParticipant(id: Int): Int, 
 		createGift(input: InputGift): Gift,
 		deleteGift(id: Int): Int,
-		assignSecretSanta({Participant_id: Int, secret_santa_id: Int}): Int 
-	
+		assignSecretSanta({participant_id: Int, secret_santa_id: Int}): Int 
 	} 
 
 `);
