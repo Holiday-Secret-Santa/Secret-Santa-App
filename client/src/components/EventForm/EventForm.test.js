@@ -38,23 +38,23 @@ describe("New Event Form", () => {
     render(<ImportGuestList />);
   });
 
-  test("renders AddguestField component", async () => {
-    render(
-      <Form>
-        <AddguestField />
-      </Form>
-    );
-    const addguestBtn = screen.getByRole("button", { name: /Add Guest/i });
-    expect(addguestBtn).toBeInTheDocument;
-    userEvent.click(addguestBtn);
-    await waitFor(
-      () =>
-      {
-        return expect(screen.findByRole("textbox", { name: /First Name/i }))
-          .toBeInTheDocument;
-      }
-    );
-  });
+  // test("renders AddguestField component", async () => {
+  //   render(
+  //     <Form>
+  //       <AddguestField />
+  //     </Form>
+  //   );
+  //   const addguestBtn = screen.getByRole("button", { name: /Add Guest/i });
+  //   expect(addguestBtn).toBeInTheDocument;
+  //   userEvent.click(addguestBtn);
+  //   await waitFor(
+  //     () =>
+  //     {
+  //       return expect(screen.findByRole("textbox", { name: /First Name/i }))
+  //         .toBeInTheDocument;
+  //     }
+  //   );
+  // });
 
   test("renders dateTimeInputs", () => {
     render(
