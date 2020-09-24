@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import EventForm from "./index.js";
@@ -38,14 +38,22 @@ describe("New Event Form", () => {
     render(<ImportGuestList />);
   });
 
-  test("renders AddguestField component", () => {
+  test("renders AddguestField component", async () => {
     render(
       <Form>
         <AddguestField />
       </Form>
     );
-    expect(screen.getByRole("button", { name: /Add Guest/i }))
-      .toBeInTheDocument;
+    const addguestBtn = screen.getByRole("button", { name: /Add Guest/i });
+    expect(addguestBtn).toBeInTheDocument;
+    userEvent.click(addguestBtn);
+    await waitFor(
+      () =>
+      {
+        return expect(screen.findByRole("textbox", { name: /First Name/i }))
+          .toBeInTheDocument;
+      }
+    );
   });
 
   test("renders dateTimeInputs", () => {
