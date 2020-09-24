@@ -79,7 +79,7 @@ var schema = buildSchema(`
 		deleteParticipant(id: Int): Int, 
 		createGift(input: InputGift): Gift,
 		deleteGift(id: Int): Int,
-		assignSecretSanta({participant_id: Int, secret_santa_id: Int}): Int 
+		assignSecretSanta(participant_id: Int, secret_santa_id: Int): [Int] 
 	} 
 
 `);
@@ -134,7 +134,7 @@ var root = {
 			{ secret_santa_id: secret_santa_id },
 			{
 				where: {
-					Participant_id: participant_id,
+					id: participant_id,
 				},
 			}
 		);
