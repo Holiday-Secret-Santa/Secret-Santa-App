@@ -7,7 +7,6 @@ import { Form } from "antd";
 import ImportGuestList from "../ImportGuestList";
 import AddguestField from "../AddGuestField/index";
 import DateTimeIinput from "../DateTimeInput/index";
-import { act } from "react-dom/test-utils";
 
 describe("New Event Form", () => {
   test("renders form with header", () => {

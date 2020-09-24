@@ -71,4 +71,4 @@ const AddGuestField = () => {
   );
 };
 
-export default AddGuestField;
+export { AddGuestField, CreateNameFields };
