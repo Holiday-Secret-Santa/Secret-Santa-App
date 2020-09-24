@@ -131,9 +131,7 @@ var root = {
 	},
 	assignSecretSanta: ({ participant_id, secret_santa_id }) => {
 		return db.Participant.update(
-			{
-				secret_santa_id: secret_santa_id,
-			},
+			{ secret_santa_id: secret_santa_id },
 			{
 				where: {
 					Participant_id: participant_id,
