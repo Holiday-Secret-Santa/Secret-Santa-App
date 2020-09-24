@@ -68,7 +68,7 @@ var schema = buildSchema(`
 		getParticipantsByEventId(eventId: Int): [Participant],
 		getGifts: [Gift],
 		getGift(id: Int): Gift,
-		getGiftByParticipantId(Participant_id: Int): [Gift],
+		getGiftByParticipantId(participant_id: Int): [Gift],
 		
 	}
 
@@ -100,8 +100,8 @@ var root = {
 	getParticipants: () => {
 		return db.Participant.findAll();
 	},
-	getParticipantsByEventId: ({ EventId }) => {
-		return db.Participant.findAll({ where: { EventId: EventId } });
+	getParticipantsByEventId: ({ eventId }) => {
+		return db.Participant.findAll({ where: { EventId: eventId } });
 	},
 	getParticipant: ({ id }) => {
 		return db.Participant.findOne({ where: { id: id } });
@@ -124,19 +124,19 @@ var root = {
 	deleteGift: ({ id }) => {
 		return db.Gift.destroy({ where: { id: id } });
 	},
-	getGiftByParticipantId: ({ Participant_id }) => {
+	getGiftByParticipantId: ({ participant_id }) => {
 		return db.Gift.findAll({
-			where: { Participant_id: Participant_id },
+			where: { Participant_id: participant_id },
 		});
 	},
-	assignSecretSanta: ({ Participant_id, secret_santa_id }) => {
+	assignSecretSanta: ({ participant_id, secret_santa_id }) => {
 		return db.Participant.update(
 			{
 				secret_santa_id: secret_santa_id,
 			},
 			{
 				where: {
-					Participant_id: Participant_id,
+					Participant_id: participant_id,
 				},
 			}
 		);
