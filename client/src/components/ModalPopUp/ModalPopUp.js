@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Modal, Form } from "antd";
 import AntButton from "../Button/Button";
-import FormInputText from "../../components/FormInput/FormInputText";
 import { UserAddOutlined } from "@ant-design/icons";
+import FormInputText from "../FormInput/FormInputText";
 
 const ModalPopUp = ({ children, state }) => {
 	state = { visible: false };
