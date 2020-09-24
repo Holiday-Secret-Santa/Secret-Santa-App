@@ -6,20 +6,19 @@ import hohoho from "./imgs/hohoho-resized.jpg";
 import "./style.css";
 
 function CarouselPage() {
-    return (
-        <Carousel autoplay>
-            <div>
-            <img className="contentStyle" src={hohoho} alt="friends" />
-            </div>
-            <div>
-            <img className="contentStyle" src={gifts1} alt="friends"/>
-            </div>
-            <div>
-            <img className="contentStyle" src={gifts4} alt="friends"/>
-            </div>
-        </Carousel>
-        // mountNode,    
-    );
-}  
+	return (
+		<Carousel autoplay>
+			<div>
+				<img className="contentStyle" src={hohoho} alt="friends" />
+			</div>
+			<div>
+				<img className="contentStyle" src={gifts1} alt="friends" />
+			</div>
+			<div>
+				<img className="contentStyle" src={gifts4} alt="friends" />
+			</div>
+		</Carousel>
+	);
+}
 
 export default CarouselPage;

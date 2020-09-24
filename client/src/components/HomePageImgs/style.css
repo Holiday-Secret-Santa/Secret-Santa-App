@@ -1,4 +1,19 @@
 .image-card {
-    width: 100%;
+	width: 100%;
 }
 
+.ant-card-meta-title {
+	text-align: center;
+	color: green;
+	font-family: cursive;
+	font-weight: bolder;
+	font-size: 25px;
+	text-shadow: 0 0 0.1em rgb(33, 199, 83);
+}
+
+.ant-card-meta-description {
+	font-family: cursive;
+	font-size: 19px;
+	text-align: center;
+	color: gray;
+}
