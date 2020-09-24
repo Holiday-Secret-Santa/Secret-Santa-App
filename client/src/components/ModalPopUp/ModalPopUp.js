@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "antd";
 import AntButton from "../Button/Button";
+import FormInputText from "../../components/FormInput/FormInputText";
 import { UserAddOutlined } from "@ant-design/icons";
 
 const ModalPopUp = ({ children, state }) => {
@@ -35,7 +36,9 @@ const ModalPopUp = ({ children, state }) => {
 				onOk={handleOk}
 				onCancel={handleCancel}
 			>
-				{children}
+				<FormInputText label={"First Name"} />
+				<FormInputText label={"Last Name"} />
+				<FormInputText label={"Email"} />
 			</Modal>
 		</div>
 	);
