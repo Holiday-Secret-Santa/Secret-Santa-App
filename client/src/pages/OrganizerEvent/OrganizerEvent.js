@@ -7,6 +7,7 @@ import TableComp from "./../../components/Table";
 import Button from "../../components/Button/Button";
 import "./style.css";
 import { TeamOutlined } from "@ant-design/icons";
+import ModalPopUp from "../../components/ModalPopUp/ModalPopUp";
 
 const getParticipantsInfo = () => {
 	return [];
@@ -108,6 +109,10 @@ const OrganizerEvent = () => {
 						dataSource={getParticipantsInfo()}
 						columns={getColumns(true)}
 					/>
+					<Divider />
+					<div className="center">
+						<ModalPopUp />
+					</div>
 				</ResponsiveColumn>
 			</Row>
 		</>
