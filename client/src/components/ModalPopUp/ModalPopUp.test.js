@@ -9,6 +9,7 @@ test("renders modal popup component", () => {
 	render(<ModalPopUp />);
 
 	userEvent.click(screen.getByRole("button", { name: /Add Participants/i }));
+	userEvent.click(screen.getByRole("button", { name: /OK/i }));
 });
 
 test("renders input text component in modal", () => {
