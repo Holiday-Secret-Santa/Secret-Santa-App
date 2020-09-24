@@ -41,6 +41,7 @@ const ModalPopUp = ({ children, state }) => {
 				visible={visible}
 				onOk={handleOk}
 				onCancel={handleCancel}
+				style={{ padding: 20 }}
 			>
 				<FormInputText label={"First Name"} />
 				<FormInputText label={"Last Name"} />
