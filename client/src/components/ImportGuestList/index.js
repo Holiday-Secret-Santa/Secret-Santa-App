@@ -1,22 +1,17 @@
 import React from "react";
-import { Form, Input, Button, Upload, Card } from "antd";
+import { Button, Upload, Card } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import "./style.css";
 
-const AddGuests = () => {
+const ImportGuestList = () => {
   return (
     <Card title="Import Guest List" className="add-guest-card">
       <Upload>
         <Button icon={<UploadOutlined />}>Click to Upload</Button>
       </Upload>
-      <p className="add-guest-text">Or add guest email</p>
-      <Form.Item>
-        <Input type="text" placeholder="Guest Email"></Input>
-        <Button type="primary">Add Guest</Button>
-      </Form.Item>
     </Card>
   );
 };
 
-export default AddGuests;
+export default ImportGuestList;
