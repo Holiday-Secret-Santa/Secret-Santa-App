@@ -31,9 +31,15 @@ const AddGift = () => {
   const { user } = useAuth0();
   const { given_name, family_name, email } = user ? user : {};
 
-  const onFinish = values => {
-    console.log("Success:", values);
+  const onFinish = (values) => {
+    async function postGift() {
+      const endpoint = "/graphql";
+
+
+    
+    }
   };
+  
   return (
     <Row gutter={[30, 30]} style={{ padding: 20 }} className="addGiftForm">
       <ResponsiveColumn lg={24}>
