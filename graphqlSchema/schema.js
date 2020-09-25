@@ -55,7 +55,7 @@ var schema = buildSchema(`
 		description: String,
 		link: String,
 		price: Int,
-		Participant_id: Int
+		ParticipantId: Int
 	}
 
 	type Gift {
@@ -63,7 +63,7 @@ var schema = buildSchema(`
 		description: String,
 		link: String,
 		price: Int,
-		Participant_id: Int
+		ParticipantId: Int
 	}
 	
 	type Query {
@@ -136,7 +136,7 @@ var root = {
 	},
 	getGiftByParticipantId: ({ participant_id }) => {
 		return db.Gift.findAll({
-			where: { Participant_id: participant_id },
+			where: { ParticipantId: participant_id },
 		});
 	},
 	assignSecretSanta: ({ participant_id, secret_santa_id }) => {
