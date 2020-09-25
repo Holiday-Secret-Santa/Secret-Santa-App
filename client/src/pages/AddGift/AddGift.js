@@ -4,6 +4,7 @@ import { FormInputText, FormInputNumber } from "./../../components/FormInput";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import { AddButton } from "./../../components/Button";
 import { GraphQLClient, gql } from "graphql-request";
+import { useAuth0 } from "@auth0/auth0-react";
 import "./style.css";
 
 
@@ -27,6 +28,9 @@ const giftPriceRules = [
 
 // Creates the Add Gift Pages
 const AddGift = () => {
+  const { user } = useAuth0();
+  const { given_name, family_name, email } = user ? user : {};
+
   const onFinish = values => {
     console.log("Success:", values);
   };
