@@ -29,7 +29,7 @@ const giftPriceRules = [
 // Creates the Add Gift Pages
 const AddGift = () => {
   const { user } = useAuth0();
-  const { given_name, family_name, email } = user ? user : {};
+  const { user_id } = user ? user : {};
 
   const onFinish = (values) => {
     console.log(values);
@@ -50,7 +50,14 @@ const AddGift = () => {
 				}
       `;
       
-      
+      const variables = {
+        input: {
+          description: values.description,
+          link: values.url,
+          price: values.price,
+          ParticipantId: user_id
+        },
+      };
 
 
     
