@@ -43,7 +43,7 @@ const AddGift = () => {
 
       const mutation = gql`
 				mutation CreateGift($input: InputGift!) {
-					creategift(input: $input) {
+					createGift(input: $input) {
 						id
 					}
 				}
