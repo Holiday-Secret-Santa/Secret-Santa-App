@@ -35,11 +35,17 @@ const AddGift = () => {
     async function postGift() {
       const endpoint = "/graphql";
 
+      const graphQLClient = new GraphQLClient(endpoint, {
+        headers: {
+          authorization: "Bearer MY_TOKEN",
+        },
+      });
+
 
     
     }
   };
-  
+
   return (
     <Row gutter={[30, 30]} style={{ padding: 20 }} className="addGiftForm">
       <ResponsiveColumn lg={24}>
