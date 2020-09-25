@@ -3,7 +3,9 @@ import { Row, Form } from "antd";
 import { FormInputText, FormInputNumber } from "./../../components/FormInput";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import { AddButton } from "./../../components/Button";
+import { GraphQLClient, gql } from "graphql-request";
 import "./style.css";
+
 
 const descriptionFieldRules = [
   { required: true, message: "please enter gift description" },
