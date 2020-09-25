@@ -32,6 +32,7 @@ const AddGift = () => {
   const { given_name, family_name, email } = user ? user : {};
 
   const onFinish = (values) => {
+    console.log(values);
     async function postGift() {
       const endpoint = "/graphql";
 
@@ -47,7 +48,9 @@ const AddGift = () => {
 						id
 					}
 				}
-			`;
+      `;
+      
+      
 
 
     
