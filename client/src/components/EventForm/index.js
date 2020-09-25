@@ -3,6 +3,7 @@ import { Form, Row } from "antd";
 import Button from "./../Button";
 import ResponsiveColumn from "./../ResponsiveColumn";
 import { FormInputText, FormInputDate, FormInputTime } from "./../FormInput";
+import { GraphQLClient, gql } from "graphql-request";
 import "antd/dist/antd.css";
 import "./style.css";
 
