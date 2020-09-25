@@ -92,7 +92,7 @@ const getParticipantsByEventId = (eventId) => {
 	return db.Participant.findAll({ where: { EventId: eventId } });
 };
 
-const createParticipant = ({ input }) => {
+const createParticipant = (input) => {
 	// TODO: Send email invitation
 	return db.Participant.create({
 		...input,
@@ -109,17 +109,17 @@ var root = {
 		return db.Event.findOne({ where: { id: id } });
 	},
 	createEvent: async ({ input }) => {
-		let eventIdResponse = await db.Event.create(input);
-		let EventId = eventIdResponse.dataValues.id;
+		let createdEvent = await db.Event.create(input);
+		let EventId = createdEvent.dataValues.id;
 		let { planner_email, planner_first_name, planner_last_name } = input;
 		let participantInput = {
-			planner_email,
-			planner_first_name,
-			planner_last_name,
+			first_name: planner_first_name,
+			last_name: planner_last_name,
+			email: planner_email,
 			EventId,
 		};
-		await createParticipant({ participantInput });
-		return eventId;
+		let participant = await createParticipant(participantInput);
+		return createdEvent;
 	},
 	deleteEvent: ({ id }) => {
 		return db.Event.destroy({ where: { id: id } });
