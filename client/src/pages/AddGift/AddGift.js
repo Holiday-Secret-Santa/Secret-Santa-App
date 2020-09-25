@@ -32,7 +32,6 @@ const AddGift = () => {
   const { user_id } = user ? user : {};
 
   const onFinish = (values) => {
-    console.log(values);
     async function postGift() {
       const endpoint = "/graphql";
 
@@ -64,6 +63,8 @@ const AddGift = () => {
       console.log(JSON.stringify(data, undefined, 2));
     
     }
+
+    postGift().catch((error) => console.error(error));
   };
 
   return (
