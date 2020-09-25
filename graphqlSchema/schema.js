@@ -1,4 +1,5 @@
 const { buildSchema } = require("graphql");
+const { random } = require("lodash");
 const _ = require("lodash");
 const db = require("./../models");
 
@@ -45,6 +46,11 @@ var schema = buildSchema(`
 		secret_santa_id: Int
 	}
 
+	type ParticipantSanata {
+		participant_id: Int,
+		secret_santa_id: Int
+	}
+
 	input InputGift {
 		description: String,
 		link: String,
@@ -69,7 +75,6 @@ var schema = buildSchema(`
 		getGifts: [Gift],
 		getGift(id: Int): Gift,
 		getGiftByParticipantId(participant_id: Int): [Gift],
-		
 	}
 
 	type Mutation {
@@ -79,10 +84,15 @@ var schema = buildSchema(`
 		deleteParticipant(id: Int): Int, 
 		createGift(input: InputGift): Gift,
 		deleteGift(id: Int): Int,
-		assignSecretSanta(participant_id: Int, secret_santa_id: Int): [Int] 
+		assignSecretSanta(participant_id: Int, secret_santa_id: Int): [Int],
+		autoAssignSecretSanta(eventId: Int): [ParticipantSanata],
 	} 
 
 `);
+
+const getParticipantsByEventId = (eventId) => {
+	return db.Participant.findAll({ where: { EventId: eventId } });
+};
 
 var root = {
 	getEvents: () => {
@@ -101,7 +111,7 @@ var root = {
 		return db.Participant.findAll();
 	},
 	getParticipantsByEventId: ({ eventId }) => {
-		return db.Participant.findAll({ where: { EventId: eventId } });
+		return getParticipantsByEventId(eventId);
 	},
 	getParticipant: ({ id }) => {
 		return db.Participant.findOne({ where: { id: id } });
@@ -138,6 +148,23 @@ var root = {
 				},
 			}
 		);
+	},
+	autoAssignSecretSanta: async ({ eventId }) => {
+		let results = await getParticipantsByEventId(eventId);
+		if (results.length < 2) return [];
+		const participantIds = results.map((r) => r.dataValues.id);
+		var availableSantas = [...participantIds];
+		return participantIds.map((p, i) => {
+			var santaIndex = 0;
+			do {
+				santaIndex = random(Math.max(availableSantas.length - 1, 0));
+			} while (availableSantas[santaIndex] === p && availableSantas.length > 1);
+			let santa_id = availableSantas.splice(santaIndex, 1)[0];
+			return {
+				participant_id: p,
+				secret_santa_id: santa_id,
+			};
+		});
 	},
 };
 
