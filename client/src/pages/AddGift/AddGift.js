@@ -59,7 +59,9 @@ const AddGift = () => {
         },
       };
 
+      const data = await graphQLClient.request(mutation, variables);
 
+      console.log(JSON.stringify(data, undefined, 2));
     
     }
   };
