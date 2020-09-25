@@ -2,7 +2,6 @@ const { buildSchema } = require("graphql");
 const { random } = require("lodash");
 const _ = require("lodash");
 const db = require("./../models");
-
 var schema = buildSchema(`
 	input InputEvent {
 		date: String,
@@ -12,7 +11,6 @@ var schema = buildSchema(`
 		location: String,
 		planner_email: String,
 	}
-
 	type Event {
 		id: Int,
 		date: String,
@@ -22,7 +20,6 @@ var schema = buildSchema(`
 		location: String,
 		planner_email: String,
 	}
-
 	input InputParticipant {
 		first_name: String,
 		last_name: String,
@@ -33,7 +30,6 @@ var schema = buildSchema(`
 		EventId: Int,
 		secret_santa_id: Int
 	}
-
 	type Participant {
 		id: Int,
 		first_name: String,
@@ -45,27 +41,23 @@ var schema = buildSchema(`
 		EventId: Int,
 		secret_santa_id: Int
 	}
-
 	type ParticipantSanata {
 		participant_id: Int,
 		secret_santa_id: Int
 	}
-
 	input InputGift {
 		description: String,
 		link: String,
 		price: Int,
-		Participant_id: Int
+		ParticipantId: Int
 	}
-
 	type Gift {
 		id: Int,
 		description: String,
 		link: String,
 		price: Int,
-		Participant_id: Int
+		ParticipantId: Int
 	}
-	
 	type Query {
 		getEvents: [Event],
 		getEvent(id: Int): Event, 
@@ -76,7 +68,6 @@ var schema = buildSchema(`
 		getGift(id: Int): Gift,
 		getGiftByParticipantId(participant_id: Int): [Gift],
 	}
-
 	type Mutation {
 		createEvent(input: InputEvent): Event,
 		deleteEvent(id: Int): Int,
@@ -87,13 +78,10 @@ var schema = buildSchema(`
 		assignSecretSanta(participant_id: Int, secret_santa_id: Int): [Int],
 		autoAssignSecretSanta(eventId: Int): [ParticipantSanata],
 	} 
-
 `);
-
 const getParticipantsByEventId = (eventId) => {
 	return db.Participant.findAll({ where: { EventId: eventId } });
 };
-
 var root = {
 	getEvents: () => {
 		return db.Event.findAll();
@@ -136,7 +124,7 @@ var root = {
 	},
 	getGiftByParticipantId: ({ participant_id }) => {
 		return db.Gift.findAll({
-			where: { Participant_id: participant_id },
+			where: { ParticipantId: participant_id },
 		});
 	},
 	assignSecretSanta: ({ participant_id, secret_santa_id }) => {
@@ -167,7 +155,6 @@ var root = {
 		});
 	},
 };
-
 module.exports = {
 	schema,
 	root,
