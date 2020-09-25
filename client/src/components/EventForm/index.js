@@ -4,14 +4,53 @@ import Button from "./../Button";
 import ResponsiveColumn from "./../ResponsiveColumn";
 import { FormInputText, FormInputDate, FormInputTime } from "./../FormInput";
 import { GraphQLClient, gql } from "graphql-request";
+import { useAuth0 } from "@auth0/auth0-react";
 import "antd/dist/antd.css";
 import "./style.css";
 
 const EventForm = () => {
+	const { user } = useAuth0();
+	const { given_name, family_name, email } = user ? user : {};
+
 	const [form] = Form.useForm();
 
 	const onFinish = (values) => {
-		console.log(values);
+		async function postEvent() {
+			const endpoint = "/graphql";
+
+			const graphQLClient = new GraphQLClient(endpoint, {
+				headers: {
+					authorization: "Bearer MY_TOKEN",
+				},
+			});
+
+			const mutation = gql`
+				mutation CreateEvent($input: InputEvent!) {
+					createEvent(input: $input) {
+						id
+					}
+				}
+			`;
+
+			const variables = {
+				input: {
+					date: values.date,
+					description: values.title,
+					start_time: values.time[0],
+					end_time: values.time[1],
+					location: values.location,
+					planner_email: email,
+					planner_first_name: given_name,
+					planner_last_name: family_name,
+				},
+			};
+
+			const data = await graphQLClient.request(mutation, variables);
+
+			console.log(JSON.stringify(data, undefined, 2));
+		}
+
+		postEvent().catch((error) => console.error(error));
 	};
 
 	return (
