@@ -131,6 +131,7 @@ const OrganizerEvent = () => {
 				first_name: first_name,
 				last_name: last_name,
 				email: email,
+				// EventId: 1,
 			},
 		};
 		// Added graphQLClient
@@ -142,7 +143,14 @@ const OrganizerEvent = () => {
 			});
 
 		const token = await getAccessTokenSilently();
-		return client(token).request(mutation, variables);
+		return client(token)
+			.request(mutation, variables)
+			.then((event) => {
+				showSuccess();
+			})
+			.catch((error) => {
+				showError(error);
+			});
 	};
 
 	return (

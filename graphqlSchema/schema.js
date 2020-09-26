@@ -121,6 +121,7 @@ var root = {
 			email: input.email,
 			invite_status: "Invited",
 			date_sent: new Date(),
+			EventId: input.EventId,
 		});
 	},
 	deleteParticipant: ({ id }) => {
