@@ -57,30 +57,46 @@ const showError = ({ error }) => {
 	});
 };
 
-const CreateEvent = ({ props }) => {
-	const { user, getAccessTokenSilently } = useAuth0();
+const action = (
+	values,
+	user,
+	getAccessTokenSilently,
+	setNextUrl,
+	setEventCreated
+) => {
 	const { given_name, family_name, email } = user ? user : {};
+	let variables = getInput(values, email, given_name, family_name);
+	createEvent(variables, getAccessTokenSilently, graphQLClient)
+		.then((event) => {
+			showSuccess();
+			setNextUrl(`/events/${event.createEvent.id}/organizer`);
+			setEventCreated(true);
+		})
+		.catch((error) => {
+			showError(error);
+		});
+};
+
+const CreateEvent = () => {
+	const { user, getAccessTokenSilently } = useAuth0();
 	// used to send user to next page on create success
 	const [eventCreated, setEventCreated] = useState(false);
 	const [nextUrl, setNextUrl] = useState("");
 
-	const action = (values) => {
-		let variables = getInput(values, email, given_name, family_name);
-		createEvent(variables, getAccessTokenSilently, graphQLClient)
-			.then((event) => {
-				showSuccess();
-				setNextUrl(`/events/${event.createEvent.id}/organizer`);
-				setEventCreated(true);
-			})
-			.catch((error) => {
-				showError(error);
-			});
-	};
-
 	return (
 		<>
 			{eventCreated && <Redirect to={nextUrl} />}
-			<EventForm action={action} />
+			<EventForm
+				action={(values) =>
+					action(
+						values,
+						user,
+						getAccessTokenSilently,
+						setNextUrl,
+						setEventCreated
+					)
+				}
+			/>
 		</>
 	);
 };
@@ -93,5 +109,6 @@ export {
 	createEvent,
 	showSuccess,
 	showError,
+	action,
 };
 export default CreateEvent;
