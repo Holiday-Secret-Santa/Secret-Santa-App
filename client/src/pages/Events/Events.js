@@ -4,6 +4,7 @@ import { SettingFilled, GiftFilled } from "@ant-design/icons";
 import DetailCard from "./../../components/DetailCard/DetailCard";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import { AddButton } from "./../../components/Button";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 const sampleData = [
@@ -71,18 +72,15 @@ const partyList = (eventsData) =>
 const EventsPage = () => {
 	return (
 		<div>
-			<Row style={{ padding: 20 }}>
-				<ResponsiveColumn>
-					<h1>Events Page</h1>
-				</ResponsiveColumn>
-			</Row>
-			<Row gutter={[30, 30]} style={{ padding: 20 }}>
+			<Row gutter={[30, 30]} style={{ padding: 30 }}>
 				{partyList(sampleData)}
 			</Row>
 			<div className="center">
 				<Row gutter={[30, 30]} style={{ padding: 20 }}>
 					<ResponsiveColumn>
-						<AddButton text="Create New Event" />
+						<Link to="events/create">
+							<AddButton text="Create New Event" />
+						</Link>
 					</ResponsiveColumn>
 				</Row>
 			</div>

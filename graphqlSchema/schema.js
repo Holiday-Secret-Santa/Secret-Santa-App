@@ -11,6 +11,8 @@ var schema = buildSchema(`
 		end_time: String,
 		location: String,
 		planner_email: String,
+		planner_first_name: String,
+		planner_last_name: String,
 	}
 
 	type Event {
@@ -27,11 +29,7 @@ var schema = buildSchema(`
 		first_name: String,
 		last_name: String,
 		email: String,
-		invite_status: String,
-		date_sent: String,
-		date_accepted: String,
 		EventId: Int,
-		secret_santa_id: Int
 	}
 
 	type Participant {
@@ -55,7 +53,7 @@ var schema = buildSchema(`
 		description: String,
 		link: String,
 		price: Int,
-		Participant_id: Int
+		ParticipantId: Int
 	}
 
 	type Gift {
@@ -63,12 +61,12 @@ var schema = buildSchema(`
 		description: String,
 		link: String,
 		price: Int,
-		Participant_id: Int
+		ParticipantId: Int
 	}
-	
+
 	type Query {
 		getEvents: [Event],
-		getEvent(id: Int): Event, 
+		getEvent(id: Int): Event,
 		getParticipants: [Participant],
 		getParticipant(id: Int): Participant,
 		getParticipantsByEventId(eventId: Int): [Participant],
@@ -81,17 +79,26 @@ var schema = buildSchema(`
 		createEvent(input: InputEvent): Event,
 		deleteEvent(id: Int): Int,
 		createParticipant(input: InputParticipant): Participant,
-		deleteParticipant(id: Int): Int, 
+		deleteParticipant(id: Int): Int,
 		createGift(input: InputGift): Gift,
 		deleteGift(id: Int): Int,
 		assignSecretSanta(participant_id: Int, secret_santa_id: Int): [Int],
 		autoAssignSecretSanta(eventId: Int): [ParticipantSanata],
-	} 
+	}
 
 `);
 
 const getParticipantsByEventId = (eventId) => {
 	return db.Participant.findAll({ where: { EventId: eventId } });
+};
+
+const createParticipant = (input) => {
+	// TODO: Send email invitation
+	return db.Participant.create({
+		...input,
+		invite_status: "Invited",
+		date_sent: new Date(),
+	});
 };
 
 var root = {
@@ -101,8 +108,18 @@ var root = {
 	getEvent: ({ id }) => {
 		return db.Event.findOne({ where: { id: id } });
 	},
-	createEvent: ({ input }) => {
-		return db.Event.create(input);
+	createEvent: async ({ input }) => {
+		let createdEvent = await db.Event.create(input);
+		let EventId = createdEvent.dataValues.id;
+		let { planner_email, planner_first_name, planner_last_name } = input;
+		let participantInput = {
+			first_name: planner_first_name,
+			last_name: planner_last_name,
+			email: planner_email,
+			EventId,
+		};
+		let participant = await createParticipant(participantInput);
+		return createdEvent;
 	},
 	deleteEvent: ({ id }) => {
 		return db.Event.destroy({ where: { id: id } });
@@ -117,7 +134,7 @@ var root = {
 		return db.Participant.findOne({ where: { id: id } });
 	},
 	createParticipant: ({ input }) => {
-		return db.Participant.create(input);
+		return createParticipant({ input });
 	},
 	deleteParticipant: ({ id }) => {
 		return db.Participant.destroy({ where: { id: id } });
@@ -136,7 +153,7 @@ var root = {
 	},
 	getGiftByParticipantId: ({ participant_id }) => {
 		return db.Gift.findAll({
-			where: { Participant_id: participant_id },
+			where: { ParticipantId: participant_id },
 		});
 	},
 	assignSecretSanta: ({ participant_id, secret_santa_id }) => {
