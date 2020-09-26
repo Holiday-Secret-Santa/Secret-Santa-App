@@ -13,6 +13,17 @@ import { GraphQLClient, gql } from "graphql-request";
 // Main endpoint to query GraphQL
 const endpoint = "/graphql";
 
+// Function to get input entered by user (event organizer).
+const getInput = (values) => {
+	return {
+		input: {
+			first_name: values.first_name,
+			last_name: values.last_name,
+			email: values.email,
+		},
+	};
+};
+
 // Added graphQLClient
 const graphQLClient = (token) =>
 	new GraphQLClient(endpoint, {
@@ -39,8 +50,8 @@ const CreateParticipant = async (variables, getAccessTokenSilently, client) => {
 // Notification for when participant is entered successfully
 const showSuccess = () => {
 	notification.success({
-		message: "Event Created",
-		description: "Event Created. You can now add participants and more",
+		message: "Participant Added",
+		description: "Participant successfully added.",
 	});
 };
 
@@ -48,7 +59,7 @@ const showSuccess = () => {
 const showError = ({ error }) => {
 	notification.error({
 		message: "Error",
-		description: "We couldn't create your event due to error: " + error,
+		description: "We couldn't add your participant due to error: " + error,
 	});
 };
 
