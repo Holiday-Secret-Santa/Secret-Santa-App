@@ -120,7 +120,7 @@ const ChartTitle = () => {
 	);
 };
 
-const OrganizerEvent = () => {
+const OrganizerEvent = (props) => {
 	const { user, getAccessTokenSilently } = useAuth0();
 
 	// Function to create participant
@@ -131,9 +131,10 @@ const OrganizerEvent = () => {
 				first_name: first_name,
 				last_name: last_name,
 				email: email,
-				// EventId: 1,
+				EventId: parseInt(props.match.params.id),
 			},
 		};
+		console.log(props.match.params.id);
 		// Added graphQLClient
 		const client = (token) =>
 			new GraphQLClient(endpoint, {
