@@ -3,11 +3,15 @@ import { Modal, Form } from "antd";
 import AntButton from "../Button/Button";
 import { UserAddOutlined } from "@ant-design/icons";
 import FormInputText from "../FormInput/FormInputText";
+import { findLastKey } from "lodash";
 
 const ModalPopUp = ({ state }) => {
 	state = { visible: false };
 
 	const [visible, setvisible] = useState(false);
+	const [firstName, setFirstName] = useState("");
+	const [lastName, setLastName] = useState("");
+	const [email, setEmail] = useState("");
 
 	const showModal = () => {
 		setvisible(true);
@@ -16,6 +20,7 @@ const ModalPopUp = ({ state }) => {
 	const handleOk = (e) => {
 		console.log(e);
 		setvisible(false);
+		alert(`${firstName} ${lastName} ${email}`);
 	};
 
 	const handleCancel = (e) => {
@@ -44,9 +49,18 @@ const ModalPopUp = ({ state }) => {
 				style={{ padding: 20 }}
 			>
 				<Form>
-					<FormInputText label={"First Name"} />
-					<FormInputText label={"Last Name"} />
-					<FormInputText label={"Email"} />
+					<FormInputText
+						label={"First Name"}
+						onChange={(e) => setFirstName(e.target.value)}
+					/>
+					<FormInputText
+						label={"Last Name"}
+						onChange={(e) => setLastName(e.target.value)}
+					/>
+					<FormInputText
+						label={"Email"}
+						onChange={(e) => setEmail(e.target.value)}
+					/>
 				</Form>
 			</Modal>
 		</div>
