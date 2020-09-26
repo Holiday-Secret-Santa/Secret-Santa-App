@@ -5,9 +5,7 @@ import { UserAddOutlined } from "@ant-design/icons";
 import FormInputText from "../FormInput/FormInputText";
 import { findLastKey } from "lodash";
 
-const ModalPopUp = ({ state }) => {
-	state = { visible: false };
-
+const ModalPopUp = (props) => {
 	const [visible, setvisible] = useState(false);
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
@@ -20,7 +18,7 @@ const ModalPopUp = ({ state }) => {
 	const handleOk = (e) => {
 		console.log(e);
 		setvisible(false);
-		alert(`${firstName} ${lastName} ${email}`);
+		props.handleLogic(firstName, lastName, email);
 	};
 
 	const handleCancel = (e) => {

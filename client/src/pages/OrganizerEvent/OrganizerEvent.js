@@ -145,6 +145,11 @@ const ChartTitle = () => {
 };
 
 const OrganizerEvent = () => {
+	
+	function test(first_name, last_name, email) {
+		alert(`${first_name} ${last_name} ${email}`);
+	}
+
 	return (
 		<>
 			<Row gutter={[30, 30]} style={{ padding: 20 }}>
@@ -165,7 +170,7 @@ const OrganizerEvent = () => {
 					/>
 					<Divider />
 					<div className="center">
-						<ModalPopUp />
+						<ModalPopUp handleLogic={test} />
 					</div>
 				</ResponsiveColumn>
 			</Row>
