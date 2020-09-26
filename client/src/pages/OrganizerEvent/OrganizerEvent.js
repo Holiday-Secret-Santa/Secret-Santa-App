@@ -30,6 +30,12 @@ const mutation = gql`
 	}
 `;
 
+// Function to create participant
+const CreateParticipant = async (variables, getAccessTokenSilently, client) => {
+	const token = await getAccessTokenSilently();
+	return client(token).request(mutation, variables);
+};
+
 const getParticipantsInfo = () => {
 	return [];
 };
