@@ -7,7 +7,11 @@ import { Link } from "react-router-dom";
 const LogoutLink = () => {
 	const { logout } = useAuth0();
 	return (
-		<Link to="" onClick={() => logout({ returnTo: window.location.origin })}>
+		<Link
+			data-testid="logout-btn"
+			to=""
+			onClick={() => logout({ returnTo: window.location.origin })}
+		>
 			Sign Out
 		</Link>
 	);

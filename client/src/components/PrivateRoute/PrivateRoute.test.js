@@ -1,6 +1,6 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
-import LoginLink from "./index";
+import { render } from "@testing-library/react";
+import PrivateRoute from "./index";
 import { StaticRouter } from "react-router";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -11,10 +11,9 @@ useAuth0.mockReturnValue({
 });
 
 test("renders login link", () => {
-	const { getByTestId } = render(
+	render(
 		<StaticRouter>
-			<LoginLink />
+			<PrivateRoute exact path="/" component={<></>} />
 		</StaticRouter>
 	);
-	fireEvent.click(getByTestId("login-btn"));
 });
