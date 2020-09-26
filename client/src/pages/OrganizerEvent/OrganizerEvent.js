@@ -8,10 +8,27 @@ import Button from "../../components/Button/Button";
 import "./style.css";
 import { TeamOutlined } from "@ant-design/icons";
 import ModalPopUp from "../../components/ModalPopUp/ModalPopUp";
-import { GraphQLClient, gql, request } from "graphql-request";
+import { GraphQLClient, gql } from "graphql-request";
 
 // Main endpoint to query GraphQL
-const endpoint ="/graphql";
+const endpoint = "/graphql";
+
+// Added graphQLClient
+const graphQLClient = (token) =>
+	new GraphQLClient(endpoint, {
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	});
+
+// Adding mutation to create new participant
+const mutation = gql`
+	mutation CreateParticipant($input: InputParticipant!) {
+		createEvent(input: $input) {
+			id
+		}
+	}
+`;
 
 const getParticipantsInfo = () => {
 	return [];
