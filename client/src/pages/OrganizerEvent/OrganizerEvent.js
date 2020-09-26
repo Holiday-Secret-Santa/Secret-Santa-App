@@ -10,18 +10,11 @@ import { TeamOutlined } from "@ant-design/icons";
 import ModalPopUp from "../../components/ModalPopUp/ModalPopUp";
 import { GraphQLClient, gql } from "graphql-request";
 import { useAuth0 } from "@auth0/auth0-react";
+import { createParticipantMutation } from "../../actions/graphql.queries";
+import { graphQLClient } from "../../actions/graphql.api";
 
 // Main endpoint to query GraphQL
 const endpoint = "/graphql";
-
-// Adding mutation to create new participant
-const mutation = gql`
-	mutation CreateParticipant($input: InputParticipant!) {
-		createParticipant(input: $input) {
-			id
-		}
-	}
-`;
 
 // Notification for when participant is entered successfully
 const showSuccess = () => {
@@ -124,6 +117,7 @@ const OrganizerEvent = (props) => {
 	const { user, getAccessTokenSilently } = useAuth0();
 
 	// Function to create participant
+	// Keeping function on this page because relies on props id to link to Event
 	const createParticipant = async (first_name, last_name, email) => {
 		// Creating input variable
 		var variables = {
@@ -134,18 +128,10 @@ const OrganizerEvent = (props) => {
 				EventId: parseInt(props.match.params.id),
 			},
 		};
-		console.log(props.match.params.id);
-		// Added graphQLClient
-		const client = (token) =>
-			new GraphQLClient(endpoint, {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			});
 
 		const token = await getAccessTokenSilently();
-		return client(token)
-			.request(mutation, variables)
+		return graphQLClient(token)
+			.request(createParticipantMutation, variables)
 			.then((event) => {
 				showSuccess();
 			})

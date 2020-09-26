@@ -1,5 +1,8 @@
 import { GraphQLClient } from "graphql-request";
-import { createEventMutation } from "./graphql.queries";
+import {
+	createEventMutation,
+	createParticipantMutation,
+} from "./graphql.queries";
 const endpoint = "/graphql";
 
 // Common Graphql Client

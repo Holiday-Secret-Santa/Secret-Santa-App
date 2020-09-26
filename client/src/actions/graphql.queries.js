@@ -8,4 +8,12 @@ const createEventMutation = gql`
 	}
 `;
 
-export { createEventMutation };
+const createParticipantMutation = gql`
+	mutation CreateParticipant($input: InputParticipant!) {
+		createParticipant(input: $input) {
+			id
+		}
+	}
+`;
+
+export { createEventMutation, createParticipantMutation };
