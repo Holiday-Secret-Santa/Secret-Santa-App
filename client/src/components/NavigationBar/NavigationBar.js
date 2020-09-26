@@ -9,8 +9,7 @@ import {
 	MenuUnfoldOutlined,
 } from "@ant-design/icons";
 import { useAuth0 } from "@auth0/auth0-react";
-import LoginLink from "../LoginLink";
-import LogoutLink from "../LogoutLink";
+import { LoginLink, LogoutLink } from "../Link";
 import appLogo from "./appLogo.png";
 import "./style.css";
 import MenuItem from "antd/lib/menu/MenuItem";
