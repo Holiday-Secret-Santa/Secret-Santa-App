@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Divider } from "antd";
+import { Row, Divider, notification } from "antd";
 import { Bar } from "ant-design-pro/lib/Charts";
 import DetailCard from "./../../components/DetailCard/DetailCard";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
@@ -34,6 +34,22 @@ const mutation = gql`
 const CreateParticipant = async (variables, getAccessTokenSilently, client) => {
 	const token = await getAccessTokenSilently();
 	return client(token).request(mutation, variables);
+};
+
+// Notification for when participant is entered successfully
+const showSuccess = () => {
+	notification.success({
+		message: "Event Created",
+		description: "Event Created. You can now add participants and more",
+	});
+};
+
+// Notification for when participant is not created
+const showError = ({ error }) => {
+	notification.error({
+		message: "Error",
+		description: "We couldn't create your event due to error: " + error,
+	});
 };
 
 const getParticipantsInfo = () => {
