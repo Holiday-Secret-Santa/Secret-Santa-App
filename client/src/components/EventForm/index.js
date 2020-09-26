@@ -6,16 +6,29 @@ import { FormInputText, FormInputDate, FormInputTime } from "./../FormInput";
 import "antd/dist/antd.css";
 import "./style.css";
 
-const TitleInput = () => {
+const getRule = (message) => [{ required: true, message: message }];
+
+const TextColumnField = ({ name, label, placeholder, message }) => {
 	return (
 		<ResponsiveColumn lg={24}>
 			<FormInputText
-				name="title"
-				label="Title"
-				placeholder="Event title"
-				rules={[{ required: true, message: "Please enter a title" }]}
+				name={name}
+				label={label}
+				placeholder={placeholder}
+				rules={getRule(message)}
 			/>
 		</ResponsiveColumn>
+	);
+};
+
+const TitleInput = () => {
+	return (
+		<TextColumnField
+			name="title"
+			label="Title"
+			placeholder="Event title"
+			message="Please enter a title"
+		/>
 	);
 };
 
@@ -27,14 +40,14 @@ const DateInput = () => {
 					<FormInputDate
 						name="date"
 						label="Date"
-						rules={[{ required: true, message: "Please enter a date" }]}
+						rules={getRule("Please enter a date")}
 					/>
 				</ResponsiveColumn>
 				<ResponsiveColumn lg={12}>
 					<FormInputTime
 						name="time"
 						label="Time"
-						rules={[{ required: true, message: "Please enter a time" }]}
+						rules={getRule("Please enter a time")}
 					/>
 				</ResponsiveColumn>
 			</Row>
@@ -44,14 +57,12 @@ const DateInput = () => {
 
 const LocationInput = () => {
 	return (
-		<ResponsiveColumn lg={24}>
-			<FormInputText
-				name="location"
-				label="Location"
-				placeholder="Enter address or virtual meeting link"
-				rules={[{ required: true, message: "Please enter a location" }]}
-			/>
-		</ResponsiveColumn>
+		<TextColumnField
+			name="location"
+			label="Location"
+			placeholder="Enter address or virtual meeting link"
+			message="Please enter a location"
+		/>
 	);
 };
 

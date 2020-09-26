@@ -6,6 +6,5 @@ import EventForm from "./index.js";
 describe("New Event Form", () => {
 	test("renders form", () => {
 		const { getByTestId } = render(<EventForm />);
-		fireEvent.click(getByTestId("create-btn"));
 	});
 });
