@@ -27,14 +27,14 @@ const CreateEvent = () => {
 	const [eventCreated, setEventCreated] = useState(false);
 	const [nextUrl, setNextUrl] = useState("");
 	const { user, getAccessTokenSilently } = useAuth0();
-	const onSuccess = (eventid) =>
+	const onSuccess = (eventId) =>
 		processSuccess(eventId, setNextUrl, setEventCreated);
 
 	return (
 		<>
 			{eventCreated && <Redirect to={nextUrl} />}
 			<EventForm
-				action={() =>
+				action={(values) =>
 					createEvent(
 						values,
 						user,
