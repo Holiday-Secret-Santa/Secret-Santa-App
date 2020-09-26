@@ -9,43 +9,19 @@ import "./style.css";
 import { TeamOutlined } from "@ant-design/icons";
 import ModalPopUp from "../../components/ModalPopUp/ModalPopUp";
 import { GraphQLClient, gql } from "graphql-request";
+import { useAuth0 } from "@auth0/auth0-react";
 
 // Main endpoint to query GraphQL
 const endpoint = "/graphql";
 
-// Function to get input entered by user (event organizer).
-const getInput = (values) => {
-	return {
-		input: {
-			first_name: values.first_name,
-			last_name: values.last_name,
-			email: values.email,
-		},
-	};
-};
-
-// Added graphQLClient
-const graphQLClient = (token) =>
-	new GraphQLClient(endpoint, {
-		headers: {
-			Authorization: `Bearer ${token}`,
-		},
-	});
-
 // Adding mutation to create new participant
 const mutation = gql`
 	mutation CreateParticipant($input: InputParticipant!) {
-		createEvent(input: $input) {
+		createParticipant(input: $input) {
 			id
 		}
 	}
 `;
-
-// Function to create participant
-const CreateParticipant = async (variables, getAccessTokenSilently, client) => {
-	const token = await getAccessTokenSilently();
-	return client(token).request(mutation, variables);
-};
 
 // Notification for when participant is entered successfully
 const showSuccess = () => {
@@ -145,10 +121,29 @@ const ChartTitle = () => {
 };
 
 const OrganizerEvent = () => {
-	
-	function test(first_name, last_name, email) {
-		alert(`${first_name} ${last_name} ${email}`);
-	}
+	const { user, getAccessTokenSilently } = useAuth0();
+
+	// Function to create participant
+	const createParticipant = async (first_name, last_name, email) => {
+		// Creating input variable
+		var variables = {
+			input: {
+				first_name: first_name,
+				last_name: last_name,
+				email: email,
+			},
+		};
+		// Added graphQLClient
+		const client = (token) =>
+			new GraphQLClient(endpoint, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
+
+		const token = await getAccessTokenSilently();
+		return client(token).request(mutation, variables);
+	};
 
 	return (
 		<>
@@ -170,7 +165,7 @@ const OrganizerEvent = () => {
 					/>
 					<Divider />
 					<div className="center">
-						<ModalPopUp handleLogic={test} />
+						<ModalPopUp handleLogic={createParticipant} />
 					</div>
 				</ResponsiveColumn>
 			</Row>

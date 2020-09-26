@@ -82,15 +82,6 @@ const getParticipantsByEventId = (eventId) => {
 	return db.Participant.findAll({ where: { EventId: eventId } });
 };
 
-const createParticipant = (input) => {
-	// TODO: Send email invitation
-	return db.Participant.create({
-		...input,
-		invite_status: "Invited",
-		date_sent: new Date(),
-	});
-};
-
 var root = {
 	getEvents: () => {
 		return db.Event.findAll();
@@ -124,7 +115,13 @@ var root = {
 		return db.Participant.findOne({ where: { id: id } });
 	},
 	createParticipant: ({ input }) => {
-		return createParticipant({ input });
+		return db.Participant.create({
+			first_name: input.first_name,
+			last_name: input.last_name,
+			email: input.email,
+			invite_status: "Invited",
+			date_sent: new Date(),
+		});
 	},
 	deleteParticipant: ({ id }) => {
 		return db.Participant.destroy({ where: { id: id } });
