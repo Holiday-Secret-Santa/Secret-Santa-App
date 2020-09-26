@@ -32,24 +32,33 @@ const TitleInput = () => {
 	);
 };
 
+const DateSubField = ({ name, label, message, isDate, isTime }) => {
+	return (
+		<ResponsiveColumn lg={12}>
+			{isDate && (
+				<FormInputDate
+					name={name}
+					label={label}
+					rules={getRule("Please enter a " + name)}
+				/>
+			)}
+			{isTime && (
+				<FormInputTime
+					name={name}
+					label={label}
+					rules={getRule("Please enter a " + name)}
+				/>
+			)}
+		</ResponsiveColumn>
+	);
+};
+
 const DateInput = () => {
 	return (
 		<ResponsiveColumn lg={24}>
 			<Row justify="space-between" gutter={[10, 10]}>
-				<ResponsiveColumn lg={12}>
-					<FormInputDate
-						name="date"
-						label="Date"
-						rules={getRule("Please enter a date")}
-					/>
-				</ResponsiveColumn>
-				<ResponsiveColumn lg={12}>
-					<FormInputTime
-						name="time"
-						label="Time"
-						rules={getRule("Please enter a time")}
-					/>
-				</ResponsiveColumn>
+				<DateSubField isDate name="date" label="Date" />
+				<DateSubField isTime name="time" label="Time" />
 			</Row>
 		</ResponsiveColumn>
 	);

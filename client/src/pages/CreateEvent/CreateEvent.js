@@ -38,9 +38,23 @@ const mutation = gql`
 	}
 `;
 
-const createEvent = async (variables, getAccessTokenSilently) => {
+const createEvent = async (variables, getAccessTokenSilently, client) => {
 	const token = await getAccessTokenSilently();
-	return graphQLClient(token).request(mutation, variables);
+	return client(token).request(mutation, variables);
+};
+
+const showSuccess = () => {
+	notification.success({
+		message: "Event Created",
+		description: "Event Created. You can now add participants and more",
+	});
+};
+
+const showError = ({ error }) => {
+	notification.error({
+		message: "Error",
+		description: "We couldn't create your event due to error: " + error,
+	});
 };
 
 const CreateEvent = ({ props }) => {
@@ -52,20 +66,14 @@ const CreateEvent = ({ props }) => {
 
 	const action = (values) => {
 		let variables = getInput(values, email, given_name, family_name);
-		createEvent(variables, getAccessTokenSilently)
+		createEvent(variables, getAccessTokenSilently, graphQLClient)
 			.then((event) => {
-				notification.success({
-					message: "Event Created",
-					description: "Event Created. You can now add participants and more",
-				});
+				showSuccess();
 				setNextUrl(`/events/${event.createEvent.id}/organizer`);
 				setEventCreated(true);
 			})
 			.catch((error) => {
-				notification.error({
-					message: "Error",
-					description: "We couldn't create your event due to error: " + error,
-				});
+				showError(error);
 			});
 	};
 
@@ -77,4 +85,13 @@ const CreateEvent = ({ props }) => {
 	);
 };
 
+export {
+	endpoint,
+	getInput,
+	graphQLClient,
+	mutation,
+	createEvent,
+	showSuccess,
+	showError,
+};
 export default CreateEvent;
