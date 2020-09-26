@@ -73,6 +73,8 @@ var schema = buildSchema(`
 		getGifts: [Gift],
 		getGift(id: Int): Gift,
 		getGiftByParticipantId(participant_id: Int): [Gift],
+		getEventsByOrganizerEmail (email: String): [Event],
+		getEventsByParticipantEmail (email: String): [Event],
 	}
 
 	type Mutation {
@@ -181,6 +183,23 @@ var root = {
 				participant_id: p,
 				secret_santa_id: santa_id,
 			};
+		});
+	},
+	getEventsByOrganizerEmail: ({ email }) => {
+		return db.Event.findAll({
+			where: {
+				planner_email: email,
+			},
+		});
+	},
+	getEventsByParticipantEmail: ({ email }) => {
+		return db.Event.findAll({
+			include: [
+				{
+					model: db.Participant,
+					where: { email: email },
+				},
+			],
 		});
 	},
 };
