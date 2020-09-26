@@ -1,15 +1,16 @@
 import React from "react";
 import FormInput from "./FormInput";
-import { Input } from "antd";
+import { DatePicker } from "antd";
 
 // Creating form input component for text entries
-const FormInputText = (props) => {
+const FormInputDate = (props) => {
+	const dateFormat = "DD/MM/YYYY";
 	return (
 		<FormInput {...props}>
-			<Input placeholder={props.placeholder} />
+			<DatePicker format={dateFormat} />
 		</FormInput>
 	);
 };
 
 // Exporting component
-export default FormInputText;
+export default FormInputDate;

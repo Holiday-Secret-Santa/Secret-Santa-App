@@ -1,54 +1,111 @@
 import React from "react";
-import { Form, Input, Button } from "antd";
-import DateTimeIinput from "../DateTimeInput/index";
+import { Form, Row } from "antd";
+import Button from "./../Button";
+import ResponsiveColumn from "./../ResponsiveColumn";
+import { FormInputText, FormInputDate, FormInputTime } from "./../FormInput";
 import "antd/dist/antd.css";
 import "./style.css";
 
-const createFormItem = (key, name, label, children) => {
-  return (
-    <Form.Item key={key} name={name} label={label} rules={[{ required: true }]}>
-      {children}
-    </Form.Item>
-  );
+const getRule = (message) => [{ required: true, message: message }];
+
+const TextColumnField = ({ name, label, placeholder, message }) => {
+	return (
+		<ResponsiveColumn lg={24}>
+			<FormInputText
+				name={name}
+				label={label}
+				placeholder={placeholder}
+				rules={getRule(message)}
+			/>
+		</ResponsiveColumn>
+	);
 };
 
-const EventForm = () => {
-  const [form] = Form.useForm();
+const TitleInput = () => {
+	return (
+		<TextColumnField
+			name="title"
+			label="Title"
+			placeholder="Event title"
+			message="Please enter a title"
+		/>
+	);
+};
 
-  const onFinish = (values) => {
-    console.log(values);
-  };
+const DateSubField = ({ name, label, message, isDate, isTime }) => {
+	return (
+		<ResponsiveColumn lg={12}>
+			{isDate && (
+				<FormInputDate
+					name={name}
+					label={label}
+					rules={getRule("Please enter a " + name)}
+				/>
+			)}
+			{isTime && (
+				<FormInputTime
+					name={name}
+					label={label}
+					rules={getRule("Please enter a " + name)}
+				/>
+			)}
+		</ResponsiveColumn>
+	);
+};
 
-  return (
-    <Form
-      form={form}
-      onFinish={onFinish}
-      name="newEventForm"
-      className="newEventForm"
-    >
-      <h1 className="new-event-title">Create New Event</h1>
+const DateInput = () => {
+	return (
+		<ResponsiveColumn lg={24}>
+			<Row justify="space-between" gutter={[10, 10]}>
+				<DateSubField isDate name="date" label="Date" />
+				<DateSubField isTime name="time" label="Time" />
+			</Row>
+		</ResponsiveColumn>
+	);
+};
 
-      {createFormItem(
-        2,
-        "Event Title",
-        "Your Event Title",
-        <Input placeholder="Enter Title Here"></Input>
-      )}
-      <DateTimeIinput className="dateTimeInput" />
+const LocationInput = () => {
+	return (
+		<TextColumnField
+			name="location"
+			label="Location"
+			placeholder="Enter address or virtual meeting link"
+			message="Please enter a location"
+		/>
+	);
+};
 
-      {createFormItem(
-        3,
-        "Location",
-        "Location",
-        <Input placeholder="Enter address or virtual meeting link"></Input>
-      )}
-      <Form.Item className="submitBtn">
-        <Button type="primary" htmlType="submit">
-					Submit
-        </Button>
-      </Form.Item>
-    </Form>
-  );
+const ButtonInput = ({ action }) => {
+	return (
+		<ResponsiveColumn lg={24}>
+			<Form.Item className="submitBtn">
+				<Button testid="create-btn" text="Create Event" action={action} />
+			</Form.Item>
+		</ResponsiveColumn>
+	);
+};
+
+const EventForm = ({ action }) => {
+	const [form] = Form.useForm();
+	return (
+		<Row justify="center" style={{ padding: "40px" }}>
+			<ResponsiveColumn lg={16}>
+				<Form
+					form={form}
+					onFinish={action}
+					name="newEventForm"
+					className="newEventForm"
+				>
+					<Row>
+						<TitleInput />
+						<DateInput />
+						<LocationInput />
+						<ButtonInput action={form.submit} />
+					</Row>
+				</Form>
+			</ResponsiveColumn>
+		</Row>
+	);
 };
 
 export default EventForm;
