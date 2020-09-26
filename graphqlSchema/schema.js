@@ -97,9 +97,16 @@ var root = {
 			first_name: planner_first_name,
 			last_name: planner_last_name,
 			email: planner_email,
-			EventId,
+			EventId: EventId,
 		};
-		let participant = await createParticipant(participantInput);
+		db.Participant.create({
+			first_name: participantInput.first_name,
+			last_name: participantInput.last_name,
+			email: participantInput.email,
+			invite_status: "Invited",
+			date_sent: new Date(),
+			EventId: participantInput.EventId,
+		});
 		return createdEvent;
 	},
 	deleteEvent: ({ id }) => {
