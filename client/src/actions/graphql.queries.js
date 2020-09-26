@@ -16,6 +16,7 @@ const getUserEventsQuery = gql`
 			date
 			start_time
 			planner_email
+			location
 		}
 		getEventsByOrganizerEmail(email: $email) {
 			id
@@ -23,6 +24,7 @@ const getUserEventsQuery = gql`
 			date
 			start_time
 			planner_email
+			location
 		}
 	}
 `;
