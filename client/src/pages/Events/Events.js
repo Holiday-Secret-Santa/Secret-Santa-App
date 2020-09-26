@@ -7,32 +7,7 @@ import { AddButton } from "./../../components/Button";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-const sampleData = [
-	{
-		role: "organizer",
-		description: "Frosty the Snow Man",
-		date: "12/24/2020",
-		startTime: "7:30pm",
-		location: "https://virtualremoteparty.com",
-		participants: "12 participants confirmed",
-	},
-	{
-		role: "participant",
-		description: "Feliz Navidad",
-		date: "12/25/2020",
-		startTime: "7:30pm",
-		location: "https://virtualremoteparty.com",
-		participants: "15 participants confirmed",
-	},
-	{
-		role: "organizer",
-		description: "Ugly Sweater Exchange Party",
-		date: "12/10/2020",
-		startTime: "7:30pm",
-		location: "https://virtualremoteparty.com",
-		participants: "12 participants confirmed",
-	},
-];
+const dbEventsData = () => {};
 
 const getActions = (data) => {
 	return [
@@ -73,7 +48,7 @@ const EventsPage = () => {
 	return (
 		<div>
 			<Row gutter={[30, 30]} style={{ padding: 30 }}>
-				{partyList(sampleData)}
+				{partyList(dbEventsData)}
 			</Row>
 			<div className="center">
 				<Row gutter={[30, 30]} style={{ padding: 20 }}>
