@@ -8,6 +8,10 @@ import Button from "../../components/Button/Button";
 import "./style.css";
 import { TeamOutlined } from "@ant-design/icons";
 import ModalPopUp from "../../components/ModalPopUp/ModalPopUp";
+import { GraphQLClient, gql, request } from "graphql-request";
+
+// Main endpoint to query GraphQL
+const endpoint ="/graphql";
 
 const getParticipantsInfo = () => {
 	return [];
