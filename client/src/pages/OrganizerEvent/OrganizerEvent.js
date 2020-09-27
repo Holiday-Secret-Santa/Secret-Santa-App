@@ -37,6 +37,12 @@ const getParticipantsInfo = () => {
 const getColumns = () => {
 	const columns = [
 		{
+			title: "#",
+			dataIndex: "key",
+			key: "key",
+			align: "center",
+		},
+		{
 			title: "Participant Guest",
 			dataIndex: "participant",
 			key: "participant",
@@ -112,8 +118,18 @@ const ChartTitle = () => {
 };
 
 const setParticipantData = (d, setData) => {
-	setData(d);
-	console.log(d);
+	var formattedData = [];
+	d.getParticipantsByEventId.forEach((participant, index) => {
+		var participantEntry = {
+			key: index + 1,
+			participant: `${participant.first_name} ${participant.last_name}`,
+			guestEmail: participant.email,
+			secretSanta: "",
+			secretEmail: "",
+		};
+		formattedData.push(participantEntry);
+	});
+	setData(formattedData);
 };
 
 const OrganizerEvent = (props) => {
@@ -158,10 +174,7 @@ const OrganizerEvent = (props) => {
 						color="#d62828"
 					/>
 					<Divider />
-					<TableComp
-						dataSource={getParticipantsInfo()}
-						columns={getColumns(true)}
-					/>
+					<TableComp dataSource={data} columns={getColumns(true)} />
 					<Divider />
 					<div className="center">
 						<ModalPopUp handleLogic={createParticipant} />
