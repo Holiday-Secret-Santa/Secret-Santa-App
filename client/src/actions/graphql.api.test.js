@@ -19,6 +19,22 @@ afterEach(() => {
 
 const user = { given_name: "name", family_name: "familiy", email: "email" };
 
+const mockGrapgqlClient = (answer) => {
+	GraphQLClient.mockImplementation(() => {
+		return {
+			request: jest.fn(() => answer),
+		};
+	});
+};
+
+const mockGrapgqlClientSuccess = (answer) => {
+	mockGrapgqlClient(Promise.resolve(answer));
+};
+
+const mockGrapgqlClientError = (error) => {
+	mockGrapgqlClient(Promise.reject(error));
+};
+
 describe("graph apis", () => {
 	test("creates client with token", () => {
 		const client = graphQLClient("token");
@@ -27,11 +43,7 @@ describe("graph apis", () => {
 	});
 
 	test("process with client", () => {
-		GraphQLClient.mockImplementation(() => {
-			return {
-				request: jest.fn(() => Promise.resolve({ createEvent: { id: 1 } })),
-			};
-		});
+		mockGrapgqlClientSuccess({ createEvent: { id: 1 } });
 		processWithClient("token", "query", {}, onSuccess, onError);
 		expect(GraphQLClient).toHaveBeenCalledTimes(1);
 	});
@@ -44,29 +56,17 @@ describe("graph apis", () => {
 	};
 
 	test("handles success", () => {
-		GraphQLClient.mockImplementation(() => {
-			return {
-				request: jest.fn(() => Promise.resolve({ createEvent: { id: 1 } })),
-			};
-		});
+		mockGrapgqlClientSuccess({ createEvent: { id: 1 } });
 		createEvent(values, user, "token", onSuccess, onError);
 	});
 
 	test("handles error", () => {
-		GraphQLClient.mockImplementation(() => {
-			return {
-				request: jest.fn(() => Promise.reject("error")),
-			};
-		});
+		mockGrapgqlClientError("error");
 		createEvent(values, user, "token", onSuccess, onError);
 	});
 
 	test("process get user events", () => {
-		GraphQLClient.mockImplementation(() => {
-			return {
-				request: jest.fn(() => Promise.resolve({})),
-			};
-		});
+		mockGrapgqlClientSuccess({});
 		getUserEvents(user, "token", onSuccess, onError);
 	});
 });
