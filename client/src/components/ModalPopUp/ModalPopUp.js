@@ -3,7 +3,6 @@ import { Modal, Form } from "antd";
 import AntButton from "../Button/Button";
 import { UserAddOutlined } from "@ant-design/icons";
 import FormInputText from "../FormInput/FormInputText";
-import { findLastKey } from "lodash";
 
 const ModalPopUp = (props) => {
 	const [visible, setvisible] = useState(false);

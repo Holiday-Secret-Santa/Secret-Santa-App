@@ -8,13 +8,8 @@ import Button from "../../components/Button/Button";
 import "./style.css";
 import { TeamOutlined } from "@ant-design/icons";
 import ModalPopUp from "../../components/ModalPopUp/ModalPopUp";
-import { GraphQLClient, gql } from "graphql-request";
 import { useAuth0 } from "@auth0/auth0-react";
-import { createParticipantMutation } from "../../actions/graphql.queries";
 import { createParticipantLogic } from "../../actions/graphql.api";
-
-// Main endpoint to query GraphQL
-const endpoint = "/graphql";
 
 // Notification for when participant is entered successfully
 const showSuccess = () => {
@@ -114,7 +109,7 @@ const ChartTitle = () => {
 };
 
 const OrganizerEvent = (props) => {
-	const { user, getAccessTokenSilently } = useAuth0();
+	const { getAccessTokenSilently } = useAuth0();
 
 	// Function to create participant
 	// Keeping function on this page because relies on props id to link to Event
