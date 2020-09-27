@@ -10,6 +10,12 @@ test("renders modal popup component", () => {
 
 	// Testing specifically for clicking the OK button
 	userEvent.click(screen.getByRole("button", { name: /Add Participants/i }));
+	userEvent.type(screen.getByRole("textbox", { name: /First Name/i }), "test");
+	userEvent.type(screen.getByRole("textbox", { name: /Last Name/i }), "test");
+	userEvent.type(
+		screen.getByRole("textbox", { name: /Email/i }),
+		"test@test.com"
+	);
 	userEvent.click(screen.getByRole("button", { name: /OK/i }));
 
 	// Testing specifically for clicking the CANCEL button
