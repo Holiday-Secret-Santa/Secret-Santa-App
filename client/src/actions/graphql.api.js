@@ -1,8 +1,11 @@
 import { GraphQLClient } from "graphql-request";
+
 import {
 	createEventMutation,
 	createParticipantMutation,
+	getUserEventsQuery,
 } from "./graphql.queries";
+
 const endpoint = "/graphql";
 
 // Common Graphql Client
@@ -14,10 +17,17 @@ const graphQLClient = (token) =>
 		},
 	});
 
+const processWithClient = (token, query, variables, onSuccess, onError) => {
+	return graphQLClient(token)
+		.request(query, variables)
+		.then((data) => onSuccess(data))
+		.catch((error) => onError(error));
+};
+
 // Mutation APIs
 
 const createEvent = (values, user, token, onSuccess, onError) => {
-	const { given_name, family_name, email } = user ? user : {};
+	const { given_name, family_name, email } = user;
 
 	const variables = {
 		input: {
@@ -32,12 +42,30 @@ const createEvent = (values, user, token, onSuccess, onError) => {
 		},
 	};
 
-	return graphQLClient(token)
-		.request(createEventMutation, variables)
-		.then((event) => onSuccess(event.createEvent.id))
-		.catch((error) => onError(error));
+	return processWithClient(
+		token,
+		createEventMutation,
+		variables,
+		(data) => onSuccess(data.createEvent.id),
+		onError
+	);
+};
+
+const getUserEvents = (user, token, onSuccess, onError) => {
+	const { email } = user;
+	const variables = {
+		email: email,
+	};
+
+	return processWithClient(
+		token,
+		getUserEventsQuery,
+		variables,
+		onSuccess,
+		onError
+	);
 };
 
 // Query APIs
 
-export { graphQLClient, createEvent };
+export { graphQLClient, processWithClient, createEvent, getUserEvents };

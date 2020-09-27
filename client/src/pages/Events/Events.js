@@ -1,79 +1,100 @@
-import React from "react";
-import { Row, Tooltip } from "antd";
+import React, { useEffect, useState } from "react";
+import { Row, Tooltip, notification } from "antd";
 import { SettingFilled, GiftFilled } from "@ant-design/icons";
 import DetailCard from "./../../components/DetailCard/DetailCard";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import { AddButton } from "./../../components/Button";
 import { Link } from "react-router-dom";
+import { getUserEvents } from "./../../actions/graphql.api";
+import { useAuth0 } from "@auth0/auth0-react";
 import "./style.css";
 
-const sampleData = [
-	{
-		role: "organizer",
-		description: "Frosty the Snow Man",
-		date: "12/24/2020",
-		startTime: "7:30pm",
-		location: "https://virtualremoteparty.com",
-		participants: "12 participants confirmed",
-	},
-	{
-		role: "participant",
-		description: "Feliz Navidad",
-		date: "12/25/2020",
-		startTime: "7:30pm",
-		location: "https://virtualremoteparty.com",
-		participants: "15 participants confirmed",
-	},
-	{
-		role: "organizer",
-		description: "Ugly Sweater Exchange Party",
-		date: "12/10/2020",
-		startTime: "7:30pm",
-		location: "https://virtualremoteparty.com",
-		participants: "12 participants confirmed",
-	},
-];
+const getAction = (eventId, role) => {
+	const values =
+		role === "organizer"
+			? {
+					title: "Manage Your Gift Exchange",
+					icon: (
+						<SettingFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
+					),
+			  }
+			: {
+					title: "Add Gifts for Secret Santa",
+					icon: <GiftFilled style={{ fontSize: "24px", color: "#2c6e49" }} />,
+			  };
 
-const getActions = (data) => {
-	return [
-		// Icon buttons for future use
+	return (
 		<span>
-			<Tooltip
-				title={
-					data.role === "organizer"
-						? "Manage Your Gift Exchange"
-						: "Add Gifts for Secret Santa"
-				}
-			>
-				{data.role === "organizer" ? (
-					<SettingFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
-				) : (
-					<GiftFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
-				)}
+			<Tooltip title={values.title}>
+				<Link to={`/events/${eventId}/${role}`}>{values.icon}</Link>
 			</Tooltip>
-		</span>,
-	];
+		</span>
+	);
 };
 
-const partyList = (eventsData) =>
-	eventsData.map((data, index) => (
-		<ResponsiveColumn key={index} lg={8}>
-			<DetailCard
-				title={data.description}
-				actions={getActions(data)}
-				date={data.date}
-				startTime={data.startTime}
-				location={data.location}
-				participants={data.participants}
-			/>
-		</ResponsiveColumn>
-	));
+const getActions = (data) => {
+	return data.roles.map((r) => getAction(data.id, r));
+};
+
+const mergeEventsByRoles = (data) => {
+	var result = {};
+	// adds all events the user is an organizer
+	if (data.getEventsByOrganizerEmail)
+		data.getEventsByOrganizerEmail.map(
+			(ev) => (result[ev.id] = { ...ev, roles: ["organizer"] })
+		);
+	if (data.getEventsByParticipantEmail)
+		data.getEventsByParticipantEmail.map((ev) =>
+			result[ev.id]
+				? (result[ev.id] = { ...ev, roles: ["organizer", "participant"] })
+				: (result[ev.id] = { ...ev, roles: ["participant"] })
+		);
+	return Object.values(result);
+};
+
+const PartyList = ({ data }) => {
+	console.log(data);
+	return (
+		<>
+			{data.map((event, index) => (
+				<ResponsiveColumn key={index} lg={8}>
+					<DetailCard
+						title={event.description}
+						actions={getActions(event)}
+						date={event.date}
+						startTime={event.start_time}
+						location={event.location}
+					/>
+				</ResponsiveColumn>
+			))}
+		</>
+	);
+};
+
+const showError = (error) => {
+	notification.error({
+		message: "Error",
+		description: "Unabel to load dat due to error: " + error,
+	});
+};
 
 const EventsPage = () => {
+	const { user, getAccessTokenSilently } = useAuth0();
+	const [data, setData] = useState([]);
+
+	useEffect(() => {
+		getUserEvents(
+			user,
+			getAccessTokenSilently(),
+			(d) => setData(mergeEventsByRoles(d)),
+			showError
+		);
+	}, [user, getAccessTokenSilently]);
+
 	return (
 		<div>
 			<Row gutter={[30, 30]} style={{ padding: 30 }}>
-				{partyList(sampleData)}
+				<PartyList data={data} />
 			</Row>
 			<div className="center">
 				<Row gutter={[30, 30]} style={{ padding: 20 }}>
@@ -88,4 +109,5 @@ const EventsPage = () => {
 	);
 };
 
+export { PartyList, mergeEventsByRoles, getActions };
 export default EventsPage;
