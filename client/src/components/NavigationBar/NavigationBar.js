@@ -73,4 +73,5 @@ const NavigationBar = () => {
 	return isAuthenticated ? <AuthenticatedMenu /> : <UnauthenticatedMenu />;
 };
 
+export { AuthenticatedMenu };
 export default NavigationBar;
