@@ -8,4 +8,25 @@ const createEventMutation = gql`
 	}
 `;
 
-export { createEventMutation };
+const getUserEventsQuery = gql`
+	query GetUserEvents($email: String!) {
+		getEventsByParticipantEmail(email: $email) {
+			id
+			description
+			date
+			start_time
+			planner_email
+			location
+		}
+		getEventsByOrganizerEmail(email: $email) {
+			id
+			description
+			date
+			start_time
+			planner_email
+			location
+		}
+	}
+`;
+
+export { createEventMutation, getUserEventsQuery };

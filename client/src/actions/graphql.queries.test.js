@@ -1,7 +1,13 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import { createEventMutation } from "./graphql.queries";
+import { createEventMutation, getUserEventsQuery } from "./graphql.queries";
 
-test("validate create event mutation", () => {
-	expect(createEventMutation).toMatch(/mutation CreateEvent/);
+describe("gql statements", () => {
+	test("validate create event mutation", () => {
+		expect(createEventMutation).toMatch(/mutation CreateEvent/);
+	});
+
+	test("validate get user events query", () => {
+		expect(getUserEventsQuery).toMatch(/query GetUserEvents/);
+	});
 });
