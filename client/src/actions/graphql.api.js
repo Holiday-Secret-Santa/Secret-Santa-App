@@ -85,14 +85,13 @@ const createParticipantLogic = async (
 	};
 
 	const token = await getAccessTokenSilently();
-	return graphQLClient(token)
-		.request(createParticipantMutation, variables)
-		.then((event) => {
-			showSuccessMsg();
-		})
-		.catch((error) => {
-			showErrorMsg(error);
-		});
+	return processWithClient(
+		token,
+		createParticipantMutation,
+		variables,
+		showSuccessMsg,
+		showErrorMsg
+	);
 };
 
 // Query APIs
