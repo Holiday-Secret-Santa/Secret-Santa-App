@@ -5,6 +5,7 @@ import {
 	createEventMutation,
 	getUserEventsQuery,
 	createParticipantMutation,
+	getParticipantsbyEventIdQuery,
 } from "./graphql.queries";
 
 describe("gql statements", () => {
@@ -19,4 +20,10 @@ describe("gql statements", () => {
 
 test("validate create participant mutation", () => {
 	expect(createParticipantMutation).toMatch(/mutation CreateParticipant/);
+});
+
+test("validate get participants by event query", () => {
+	expect(getParticipantsbyEventIdQuery).toMatch(
+		/query GetParticipantsByEventId/
+	);
 });

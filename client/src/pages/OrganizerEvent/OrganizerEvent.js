@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Divider, notification } from "antd";
 import { Bar } from "ant-design-pro/lib/Charts";
 import DetailCard from "./../../components/DetailCard/DetailCard";
@@ -9,13 +9,17 @@ import "./style.css";
 import { TeamOutlined } from "@ant-design/icons";
 import ModalPopUp from "../../components/ModalPopUp/ModalPopUp";
 import { useAuth0 } from "@auth0/auth0-react";
-import { createParticipantLogic } from "../../actions/graphql.api";
+import {
+	createParticipantLogic,
+	getParticipantsbyEventId,
+} from "../../actions/graphql.api";
 
 // Notification for when participant is entered successfully
 const showSuccess = () => {
 	notification.success({
 		message: "Participant Added",
-		description: "Participant successfully added.",
+		description:
+			"Participant successfully added. Refresh to see new participants.",
 	});
 };
 
@@ -33,6 +37,12 @@ const getParticipantsInfo = () => {
 
 const getColumns = () => {
 	const columns = [
+		{
+			title: "#",
+			dataIndex: "key",
+			key: "key",
+			align: "center",
+		},
 		{
 			title: "Participant Guest",
 			dataIndex: "participant",
@@ -108,8 +118,33 @@ const ChartTitle = () => {
 	);
 };
 
+const setParticipantData = (d, setData) => {
+	var formattedData = [];
+	d.getParticipantsByEventId.forEach((participant, index) => {
+		var participantEntry = {
+			key: index + 1,
+			participant: `${participant.first_name} ${participant.last_name}`,
+			guestEmail: participant.email,
+			secretSanta: "",
+			secretEmail: "",
+		};
+		formattedData.push(participantEntry);
+	});
+	setData(formattedData);
+};
+
 const OrganizerEvent = (props) => {
 	const { getAccessTokenSilently } = useAuth0();
+	const [data, setData] = useState([]);
+
+	useEffect(() => {
+		getParticipantsbyEventId(
+			parseInt(props.match.params.id),
+			getAccessTokenSilently(),
+			(d) => setParticipantData(d, setData),
+			showError
+		);
+	}, [getAccessTokenSilently]);
 
 	// Function to create participant
 	// Keeping function on this page because relies on props id to link to Event
@@ -140,10 +175,7 @@ const OrganizerEvent = (props) => {
 						color="#d62828"
 					/>
 					<Divider />
-					<TableComp
-						dataSource={getParticipantsInfo()}
-						columns={getColumns(true)}
-					/>
+					<TableComp dataSource={data} columns={getColumns(true)} />
 					<Divider />
 					<div className="center">
 						<ModalPopUp handleLogic={createParticipant} />
@@ -163,5 +195,6 @@ export {
 	getRsvpData,
 	ChartTitle,
 	createParticipantLogic,
+	setParticipantData,
 };
 export default OrganizerEvent;
