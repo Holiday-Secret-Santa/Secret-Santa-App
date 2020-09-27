@@ -84,7 +84,7 @@ describe("graph apis", () => {
 		);
 	});
 
-	test("create participant on success", () => {
+	test("create participant on error", () => {
 		mockGrapgqlClientError("error");
 		createParticipantLogic(
 			"",
