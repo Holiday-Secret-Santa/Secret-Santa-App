@@ -37,4 +37,20 @@ const getUserEventsQuery = gql`
 	}
 `;
 
-export { createEventMutation, createParticipantMutation, getUserEventsQuery };
+const getParticipantsbyEventIdQuery = gql`
+	query GetParticipantsByEventId($eventId: Int!) {
+		getParticipantsByEventId(eventId: $eventId): {
+			id
+			first_name
+			last_name
+			email
+		}
+	}
+`;
+
+export {
+	createEventMutation,
+	createParticipantMutation,
+	getUserEventsQuery,
+	getParticipantsbyEventIdQuery,
+};
