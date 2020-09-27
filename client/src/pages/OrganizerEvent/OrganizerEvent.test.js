@@ -10,9 +10,17 @@ import OrganizerEvent, {
 	EventCard,
 	getRsvpData,
 	ChartTitle,
+	setParticipantData,
 } from "./OrganizerEvent";
+import { useAuth0 } from "@auth0/auth0-react";
 
 jest.mock("./../../actions/graphql.api");
+
+jest.mock("@auth0/auth0-react");
+useAuth0.mockReturnValue({
+	user: jest.fn(),
+	getAccessTokenSilently: jest.fn(),
+});
 
 // mvp test scenario for organizer event page
 test("renders organizer event page", () => {
@@ -34,4 +42,16 @@ test("renders organizer event page", () => {
 	EventCard();
 	getRsvpData();
 	ChartTitle();
+
+	var participantTest = {
+		getParticipantsByEventId: [
+			{
+				first_name: "test name",
+				last_name: "test name",
+				email: "email@test.com",
+			},
+		],
+	};
+
+	setParticipantData(participantTest, () => {});
 });

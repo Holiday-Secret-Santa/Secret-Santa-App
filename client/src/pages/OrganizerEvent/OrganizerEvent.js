@@ -18,7 +18,8 @@ import {
 const showSuccess = () => {
 	notification.success({
 		message: "Participant Added",
-		description: "Participant successfully added.",
+		description:
+			"Participant successfully added. Refresh to see new participants",
 	});
 };
 
@@ -194,5 +195,6 @@ export {
 	getRsvpData,
 	ChartTitle,
 	createParticipantLogic,
+	setParticipantData,
 };
 export default OrganizerEvent;
