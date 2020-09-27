@@ -11,10 +11,6 @@ test("renders modal popup component", () => {
 	// Testing specifically for clicking the OK button
 	userEvent.click(screen.getByRole("button", { name: /Add Participants/i }));
 	userEvent.click(screen.getByRole("button", { name: /OK/i }));
-});
-
-test("closes modal popup component", () => {
-	render(<ModalPopUp handleLogic={() => {}} />);
 
 	// Testing specifically for clicking the CANCEL button
 	userEvent.click(screen.getByRole("button", { name: /Add Participants/i }));
