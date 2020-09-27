@@ -1,5 +1,11 @@
 import { GraphQLClient } from "graphql-request";
-import { createEventMutation, getUserEventsQuery } from "./graphql.queries";
+
+import {
+	createEventMutation,
+	createParticipantMutation,
+	getUserEventsQuery,
+} from "./graphql.queries";
+
 const endpoint = "/graphql";
 
 // Common Graphql Client
@@ -60,6 +66,40 @@ const getUserEvents = (user, token, onSuccess, onError) => {
 	);
 };
 
+const createParticipantLogic = async (
+	first_name,
+	last_name,
+	email,
+	getAccessTokenSilently,
+	eventId,
+	showSuccessMsg,
+	showErrorMsg
+) => {
+	var variables = {
+		input: {
+			first_name: first_name,
+			last_name: last_name,
+			email: email,
+			EventId: parseInt(eventId),
+		},
+	};
+
+	const token = await getAccessTokenSilently();
+	return processWithClient(
+		token,
+		createParticipantMutation,
+		variables,
+		showSuccessMsg,
+		showErrorMsg
+	);
+};
+
 // Query APIs
 
-export { graphQLClient, processWithClient, createEvent, getUserEvents };
+export {
+	graphQLClient,
+	processWithClient,
+	createEvent,
+	getUserEvents,
+	createParticipantLogic,
+};

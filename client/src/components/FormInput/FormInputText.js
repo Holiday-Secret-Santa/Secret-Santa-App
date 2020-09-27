@@ -6,7 +6,12 @@ import { Input } from "antd";
 const FormInputText = (props) => {
 	return (
 		<FormInput {...props}>
-			<Input placeholder={props.placeholder} />
+			<Input
+				aria-label={props.label}
+				placeholder={props.placeholder}
+				onChange={props.onChange}
+				type="text"
+			/>
 		</FormInput>
 	);
 };

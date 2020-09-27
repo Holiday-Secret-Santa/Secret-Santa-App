@@ -2,7 +2,6 @@ const { buildSchema } = require("graphql");
 const { random } = require("lodash");
 const _ = require("lodash");
 const db = require("./../models");
-
 var schema = buildSchema(`
 	input InputEvent {
 		date: String,
@@ -14,7 +13,6 @@ var schema = buildSchema(`
 		planner_first_name: String,
 		planner_last_name: String,
 	}
-
 	type Event {
 		id: Int,
 		date: String,
@@ -24,14 +22,12 @@ var schema = buildSchema(`
 		location: String,
 		planner_email: String,
 	}
-
 	input InputParticipant {
 		first_name: String,
 		last_name: String,
 		email: String,
 		EventId: Int,
 	}
-
 	type Participant {
 		id: Int,
 		first_name: String,
@@ -43,19 +39,16 @@ var schema = buildSchema(`
 		EventId: Int,
 		secret_santa_id: Int
 	}
-
 	type ParticipantSanata {
 		participant_id: Int,
 		secret_santa_id: Int
 	}
-
 	input InputGift {
 		description: String,
 		link: String,
 		price: Int,
 		ParticipantId: Int
 	}
-
 	type Gift {
 		id: Int,
 		description: String,
@@ -63,7 +56,6 @@ var schema = buildSchema(`
 		price: Int,
 		ParticipantId: Int
 	}
-
 	type Query {
 		getEvents: [Event],
 		getEvent(id: Int): Event,
@@ -76,7 +68,6 @@ var schema = buildSchema(`
 		getEventsByOrganizerEmail (email: String): [Event],
 		getEventsByParticipantEmail (email: String): [Event],
 	}
-
 	type Mutation {
 		createEvent(input: InputEvent): Event,
 		deleteEvent(id: Int): Int,
@@ -89,17 +80,18 @@ var schema = buildSchema(`
 	}
 
 `);
-
 const getParticipantsByEventId = (eventId) => {
 	return db.Participant.findAll({ where: { EventId: eventId } });
 };
 
-const createParticipant = (input) => {
-	// TODO: Send email invitation
-	return db.Participant.create({
-		...input,
+const createParticipantObject = (input) => {
+	db.Participant.create({
+		first_name: input.first_name,
+		last_name: input.last_name,
+		email: input.email,
 		invite_status: "Invited",
 		date_sent: new Date(),
+		EventId: input.EventId,
 	});
 };
 
@@ -118,9 +110,9 @@ var root = {
 			first_name: planner_first_name,
 			last_name: planner_last_name,
 			email: planner_email,
-			EventId,
+			EventId: EventId,
 		};
-		let participant = await createParticipant(participantInput);
+		createParticipantObject(participantInput);
 		return createdEvent;
 	},
 	deleteEvent: ({ id }) => {
@@ -136,7 +128,7 @@ var root = {
 		return db.Participant.findOne({ where: { id: id } });
 	},
 	createParticipant: ({ input }) => {
-		return createParticipant({ input });
+		return createParticipantObject(input);
 	},
 	deleteParticipant: ({ id }) => {
 		return db.Participant.destroy({ where: { id: id } });
@@ -203,7 +195,6 @@ var root = {
 		});
 	},
 };
-
 module.exports = {
 	schema,
 	root,
