@@ -39,7 +39,7 @@ const getUserEventsQuery = gql`
 
 const getParticipantsbyEventIdQuery = gql`
 	query GetParticipantsByEventId($eventId: Int!) {
-		getParticipantsByEventId(eventId: $eventId): {
+		getParticipantsByEventId(eventId: $eventId) {
 			id
 			first_name
 			last_name

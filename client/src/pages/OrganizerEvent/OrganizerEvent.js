@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Divider, notification } from "antd";
 import { Bar } from "ant-design-pro/lib/Charts";
 import DetailCard from "./../../components/DetailCard/DetailCard";
@@ -9,7 +9,10 @@ import "./style.css";
 import { TeamOutlined } from "@ant-design/icons";
 import ModalPopUp from "../../components/ModalPopUp/ModalPopUp";
 import { useAuth0 } from "@auth0/auth0-react";
-import { createParticipantLogic } from "../../actions/graphql.api";
+import {
+	createParticipantLogic,
+	getParticipantsbyEventId,
+} from "../../actions/graphql.api";
 
 // Notification for when participant is entered successfully
 const showSuccess = () => {
@@ -108,8 +111,23 @@ const ChartTitle = () => {
 	);
 };
 
+const setParticipantData = (d, setData) => {
+	setData(d);
+	console.log(d);
+};
+
 const OrganizerEvent = (props) => {
 	const { getAccessTokenSilently } = useAuth0();
+	const [data, setData] = useState([]);
+
+	useEffect(() => {
+		getParticipantsbyEventId(
+			parseInt(props.match.params.id),
+			getAccessTokenSilently(),
+			(d) => setParticipantData(d, setData),
+			showError
+		);
+	}, [getAccessTokenSilently]);
 
 	// Function to create participant
 	// Keeping function on this page because relies on props id to link to Event
