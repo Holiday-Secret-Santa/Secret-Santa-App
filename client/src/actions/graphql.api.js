@@ -66,6 +66,41 @@ const getUserEvents = (user, token, onSuccess, onError) => {
 	);
 };
 
+const createParticipantLogic = async (
+	first_name,
+	last_name,
+	email,
+	getAccessTokenSilently,
+	eventId,
+	showSuccessMsg,
+	showErrorMsg
+) => {
+	var variables = {
+		input: {
+			first_name: first_name,
+			last_name: last_name,
+			email: email,
+			EventId: parseInt(eventId),
+		},
+	};
+
+	const token = await getAccessTokenSilently();
+	return graphQLClient(token)
+		.request(createParticipantMutation, variables)
+		.then((event) => {
+			showSuccessMsg();
+		})
+		.catch((error) => {
+			showErrorMsg(error);
+		});
+};
+
 // Query APIs
 
-export { graphQLClient, processWithClient, createEvent, getUserEvents };
+export {
+	graphQLClient,
+	processWithClient,
+	createEvent,
+	getUserEvents,
+	createParticipantLogic,
+};

@@ -5,6 +5,7 @@ import {
 	processWithClient,
 	createEvent,
 	getUserEvents,
+	createParticipantLogic,
 } from "./graphql.api";
 import { GraphQLClient } from "graphql-request";
 
@@ -68,5 +69,31 @@ describe("graph apis", () => {
 	test("process get user events", () => {
 		mockGrapgqlClientSuccess({});
 		getUserEvents(user, "token", onSuccess, onError);
+	});
+
+	test("create participant on success", () => {
+		mockGrapgqlClientSuccess({});
+		createParticipantLogic(
+			"",
+			"",
+			"",
+			() => {},
+			1,
+			() => {},
+			() => {}
+		);
+	});
+
+	test("create participant on success", () => {
+		mockGrapgqlClientError("error");
+		createParticipantLogic(
+			"",
+			"",
+			"",
+			() => {},
+			1,
+			() => {},
+			() => {}
+		);
 	});
 });

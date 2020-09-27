@@ -11,7 +11,7 @@ import ModalPopUp from "../../components/ModalPopUp/ModalPopUp";
 import { GraphQLClient, gql } from "graphql-request";
 import { useAuth0 } from "@auth0/auth0-react";
 import { createParticipantMutation } from "../../actions/graphql.queries";
-import { graphQLClient } from "../../actions/graphql.api";
+import { createParticipantLogic } from "../../actions/graphql.api";
 
 // Main endpoint to query GraphQL
 const endpoint = "/graphql";
@@ -120,24 +120,15 @@ const OrganizerEvent = (props) => {
 	// Keeping function on this page because relies on props id to link to Event
 	const createParticipant = async (first_name, last_name, email) => {
 		// Creating input variable
-		var variables = {
-			input: {
-				first_name: first_name,
-				last_name: last_name,
-				email: email,
-				EventId: parseInt(props.match.params.id),
-			},
-		};
-
-		const token = await getAccessTokenSilently();
-		return graphQLClient(token)
-			.request(createParticipantMutation, variables)
-			.then((event) => {
-				showSuccess();
-			})
-			.catch((error) => {
-				showError(error);
-			});
+		createParticipantLogic(
+			first_name,
+			last_name,
+			email,
+			getAccessTokenSilently,
+			props.match.params.id,
+			showSuccess,
+			showError
+		);
 	};
 
 	return (
@@ -176,5 +167,6 @@ export {
 	EventCard,
 	getRsvpData,
 	ChartTitle,
+	createParticipantLogic,
 };
 export default OrganizerEvent;
