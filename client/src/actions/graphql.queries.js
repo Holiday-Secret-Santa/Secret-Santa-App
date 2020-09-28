@@ -74,6 +74,14 @@ const getEventByEventIdQuery = gql`
 	}
 `;
 
+const getParticipantByEventIdAndEmailQuery = gql`
+	query GetParticipantByEventIdAndEmail($eventId: Int!, $email: String!) {
+		getParticipantByEventIdAndEmail(eventId: $eventId, email: $email) {
+			id
+		}
+	}
+`;
+
 export {
 	createEventMutation,
 	createParticipantMutation,
@@ -82,4 +90,5 @@ export {
 	getEventByEventIdQuery,
 	deleteEventMutation,
 	createGiftMutation,
+	getParticipantByEventIdAndEmailQuery,
 };
