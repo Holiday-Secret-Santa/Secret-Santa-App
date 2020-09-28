@@ -24,7 +24,9 @@ const detailCard = ({
 			<FieldSpan label="Event Date" data={date} />
 			<FieldSpan label="Event Time" data={startTime} />
 			<FieldSpan label="Location" data={location} />
-			<FieldSpan label="Total Participants" data={participants} />
+			{participants && (
+				<FieldSpan label="Total Participants" data={participants} />
+			)}
 		</Space>
 	</Card>
 );

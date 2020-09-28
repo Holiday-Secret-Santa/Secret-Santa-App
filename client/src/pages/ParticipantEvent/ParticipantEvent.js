@@ -63,6 +63,7 @@ const getColumns = (showDeleteAction) => {
 				<Tooltip title="Delete Gift Item">
 					<Button
 						type="text"
+						data-testid={`delete-gift-btn-${record.key}`}
 						onClick={() => alert(record.item)}
 						icon={
 							<DeleteTwoTone
