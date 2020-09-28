@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const LoginLink = () => {
 	const { loginWithRedirect } = useAuth0();
 	return (
-		<Link to="" onClick={() => loginWithRedirect()}>
+		<Link data-testid="login-btn" to="" onClick={() => loginWithRedirect()}>
 			Log In / Signup
 		</Link>
 	);
