@@ -54,7 +54,9 @@ const getAction = (eventId, role) => {
 };
 
 const DeleteAction = (eventId) => {
-	alert(`event ${eventId} deleted`);
+	const [eventDeleted, setEventDeleted] = useState(false);
+	const { user, getAccessTokenSilently } = useAuth0();
+	const onSuccess = (eventId) => processSuccess(eventId, setEventDeleted);
 };
 
 const getActions = (data) => {
@@ -99,7 +101,7 @@ const PartyList = ({ data }) => {
 const showError = (error) => {
 	notification.error({
 		message: "Error",
-		description: "Unabel to load dat due to error: " + error,
+		description: "Unable to load due to error: " + error,
 	});
 };
 
