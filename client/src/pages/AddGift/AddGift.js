@@ -6,6 +6,7 @@ import { AddButton } from "./../../components/Button";
 import { useAuth0 } from "@auth0/auth0-react";
 import { GraphQLClient, gql } from "graphql-request";
 import "./style.css";
+import { createGiftLogic } from "../../actions/graphql.api";
 
 
 const descriptionFieldRules = [
