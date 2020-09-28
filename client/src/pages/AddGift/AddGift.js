@@ -4,7 +4,6 @@ import { FormInputText, FormInputNumber } from "./../../components/FormInput";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import { AddButton } from "./../../components/Button";
 import { useAuth0 } from "@auth0/auth0-react";
-import { GraphQLClient, gql } from "graphql-request";
 import "./style.css";
 import { createGiftLogic } from "../../actions/graphql.api";
 
@@ -42,43 +41,22 @@ const AddGift = (props) => {
       },
     });
   };
+
+  const showError = () => {
+    message.error("Unable to add your gift");
+  };
   
   const onFinish = (values) => {
-    async function postGift() {
-      const endpoint = "/graphql";
-      
-      
-      const graphQLClient = new GraphQLClient(endpoint, {
-        headers: {
-          authorization: "Bearer MY_TOKEN",
-        },
-      });
+    createGiftLogic(
+      values.description,
+      values.url,
+      values.price,
+      getAccessTokenSilently,
+      participantId,
+      success,
+      showError
+    );
 
-      const mutation = gql`
-				mutation CreateGift($input: InputGift!) {
-					createGift(input: $input) {
-						id
-					}
-				}
-      `;
-      
-      const variables = {
-        input: {
-          description: values.description,
-          link: values.url,
-          price: values.price,
-          // ParticipantId: parseInt(props.match.params.id)
-        },
-      };
-
-      const data = await graphQLClient.request(mutation, variables);
-
-      console.log(JSON.stringify(data, undefined, 2));
-    
-    }
-
-    postGift().catch((error) => console.error(error));
-    success();
     form.resetFields();
   };
 
