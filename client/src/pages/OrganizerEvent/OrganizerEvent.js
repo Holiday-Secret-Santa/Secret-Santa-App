@@ -19,8 +19,7 @@ import {
 const showSuccess = () => {
 	notification.success({
 		message: "Participant Added",
-		description:
-			"Participant successfully added. Refresh to see new participants.",
+		description: "Participant successfully added.",
 	});
 };
 
@@ -134,6 +133,17 @@ const setParticipantData = (d, setData) => {
 	setData(formattedData);
 };
 
+// Function to update participant info dynamically
+const updateParticipantDynamically = (eventId, data, getToken) => {
+	showSuccess();
+	getParticipantsbyEventId(
+		parseInt(eventId),
+		getToken(),
+		(d) => setParticipantData(d, data),
+		showError
+	);
+};
+
 const OrganizerEvent = (props) => {
 	const { getAccessTokenSilently } = useAuth0();
 	const [data, setData] = useState([]);
@@ -169,7 +179,14 @@ const OrganizerEvent = (props) => {
 			email,
 			getAccessTokenSilently,
 			props.match.params.id,
-			showSuccess,
+			// Reinvoking get participant query to dynamically update the table with
+			// new participant info
+			() =>
+				updateParticipantDynamically(
+					props.match.params.id,
+					setData,
+					getAccessTokenSilently
+				),
 			showError
 		);
 	};
@@ -214,5 +231,6 @@ export {
 	ChartTitle,
 	createParticipantLogic,
 	setParticipantData,
+	updateParticipantDynamically,
 };
 export default OrganizerEvent;
