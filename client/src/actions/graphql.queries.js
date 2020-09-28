@@ -48,9 +48,22 @@ const getParticipantsbyEventIdQuery = gql`
 	}
 `;
 
+const getEventByEventIdQuery = gql`
+	query GetEvent($id: Int!) {
+		getEvent(id: $id) {
+			id
+			description
+			date
+			start_time
+			location
+		}
+	}
+`;
+
 export {
 	createEventMutation,
 	createParticipantMutation,
 	getUserEventsQuery,
 	getParticipantsbyEventIdQuery,
+	getEventByEventIdQuery,
 };
