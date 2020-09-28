@@ -133,6 +133,16 @@ const setParticipantData = (d, setData) => {
 	setData(formattedData);
 };
 
+const updateParticipantDynamically = (p, data, getToken) => {
+	showSuccess();
+	getParticipantsbyEventId(
+		parseInt(p.match.params.id),
+		getToken(),
+		(d) => setParticipantData(d, data),
+		showError
+	);
+};
+
 const OrganizerEvent = (props) => {
 	const { getAccessTokenSilently } = useAuth0();
 	const [data, setData] = useState([]);
@@ -170,15 +180,8 @@ const OrganizerEvent = (props) => {
 			props.match.params.id,
 			// Reinvoking get participant query to dynamically update the table with
 			// new participant info
-			() => {
-				showSuccess();
-				getParticipantsbyEventId(
-					parseInt(props.match.params.id),
-					getAccessTokenSilently(),
-					(d) => setParticipantData(d, setData),
-					showError
-				);
-			},
+			() =>
+				updateParticipantDynamically(props, setData, getAccessTokenSilently),
 			showError
 		);
 	};
