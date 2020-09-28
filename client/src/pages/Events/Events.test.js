@@ -88,7 +88,7 @@ describe("events page", () => {
 			);
 		});
 
-		await act(() => sleep(500)); // wait for useeffect to load data
+		await act(() => sleep(2000)); // wait for useeffect to load data
 		userEvent.click(screen.getByTestId("delete-btn-11"));
 		userEvent.click(screen.getByTestId("organizer-btn-11"));
 		userEvent.click(screen.getByTestId("participant-btn-11"));
