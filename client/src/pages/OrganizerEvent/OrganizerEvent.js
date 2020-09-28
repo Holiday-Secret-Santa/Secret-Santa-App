@@ -6,7 +6,7 @@ import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import TableComp from "./../../components/Table";
 import Button from "../../components/Button/Button";
 import "./style.css";
-import { PropertySafetyFilled, TeamOutlined } from "@ant-design/icons";
+import { TeamOutlined } from "@ant-design/icons";
 import ModalPopUp from "../../components/ModalPopUp/ModalPopUp";
 import { useAuth0 } from "@auth0/auth0-react";
 import {

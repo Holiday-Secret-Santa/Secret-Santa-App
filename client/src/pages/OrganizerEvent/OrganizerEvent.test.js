@@ -39,7 +39,12 @@ test("renders organizer event page", () => {
 	showError({});
 	getParticipantsInfo();
 	getColumns();
-	EventCard();
+	EventCard({
+		description: "test description",
+		date: "12/20/2020",
+		start_time: "7pm",
+		location: "remote link",
+	});
 	getRsvpData();
 	ChartTitle();
 
