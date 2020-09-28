@@ -27,7 +27,7 @@ const giftPriceRules = [
 ];
 
 // Creates the Add Gift Pages
-const AddGift = () => {
+const AddGift = (props) => {
   const [form] = Form.useForm();
   const { user } = useAuth0();
   const { user_id } = user ? user : {};
