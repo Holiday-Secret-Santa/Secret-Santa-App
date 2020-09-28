@@ -157,7 +157,7 @@ const OrganizerEvent = (props) => {
 			(d) => setParticipantData(d, setData),
 			showError
 		);
-	}, [getAccessTokenSilently]);
+	}, [getAccessTokenSilently, props.match.params.id]);
 
 	// Rendering event info
 	useEffect(() => {
@@ -167,7 +167,7 @@ const OrganizerEvent = (props) => {
 			(d) => setEventData(d.getEvent),
 			showError
 		);
-	}, [getAccessTokenSilently]);
+	}, [getAccessTokenSilently, props.match.params.id]);
 
 	// Function to create participant
 	// Keeping function on this page because relies on props id to link to Event

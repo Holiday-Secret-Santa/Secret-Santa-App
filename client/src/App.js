@@ -39,7 +39,7 @@ const AppContent = ({ isAuthenticated }) => {
 					path="/events/:id/participant"
 					component={ParticipantEvent}
 				/>
-				<Route
+				<PrivateRoute
 					exact
 					path="/events/:id/participant/addgift"
 					component={AddGift}
@@ -67,7 +67,7 @@ const App = () => {
 			<Layout>
 				<AppContent isAuthenticated={isAuthenticated} />
 			</Layout>
-			<FooterComp text={"Secret Santa App"}/>
+			<FooterComp text={"Secret Santa App"} />
 		</Layout>
 	);
 };
