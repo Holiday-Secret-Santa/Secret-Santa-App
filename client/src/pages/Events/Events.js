@@ -5,11 +5,11 @@ import DetailCard from "./../../components/DetailCard/DetailCard";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import { AddButton } from "./../../components/Button";
 import { Link } from "react-router-dom";
-import { getUserEvents } from "./../../actions/graphql.api";
+import { getUserEvents, deleteEvent } from "./../../actions/graphql.api";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./style.css";
 
-const getAction = (eventId, role) => {
+const getAction = (eventId, role, getAccessTokenSilently, onSuccess) => {
 	const values =
 		role === "organizer"
 			? [
@@ -24,7 +24,13 @@ const getAction = (eventId, role) => {
 						icon: (
 							<DeleteFilled style={{ fontSize: "24px", color: "#D62828" }} />
 						),
-						action: () => DeleteAction(eventId),
+						action: () =>
+							deleteEvent(
+								eventId,
+								getAccessTokenSilently(),
+								onSuccess,
+								showError
+							),
 					},
 			  ]
 			: [
@@ -35,7 +41,11 @@ const getAction = (eventId, role) => {
 			  ];
 
 	return values.map((v) => (
-		<span>
+		<span
+			data-testid={
+				v.action ? `delete-btn-${eventId}` : `${role}-btn-${eventId}`
+			}
+		>
 			<Tooltip title={v.title}>
 				{!v.action && <Link to={`/events/${eventId}/${role}`}>{v.icon}</Link>}
 				{v.action && (
@@ -53,14 +63,8 @@ const getAction = (eventId, role) => {
 	));
 };
 
-const DeleteAction = (eventId) => {
-	const [eventDeleted, setEventDeleted] = useState(false);
-	const { user, getAccessTokenSilently } = useAuth0();
-	const onSuccess = (eventId) => processSuccess(eventId, setEventDeleted);
-};
-
-const getActions = (data) => {
-	return data.roles.flatMap((r) => getAction(data.id, r));
+const getActions = (data, deleteAction) => {
+	return data.roles.flatMap((r) => getAction(data.id, r, deleteAction));
 };
 
 const mergeEventsByRoles = (data) => {
@@ -79,15 +83,14 @@ const mergeEventsByRoles = (data) => {
 	return Object.values(result);
 };
 
-const PartyList = ({ data }) => {
-	console.log(data);
+const PartyList = ({ data, getAccessTokenSilently, onSuccess }) => {
 	return (
 		<>
 			{data.map((event, index) => (
 				<ResponsiveColumn key={index} lg={8}>
 					<DetailCard
 						title={event.description}
-						actions={getActions(event)}
+						actions={getActions(event, getAccessTokenSilently, onSuccess)}
 						date={event.date}
 						startTime={event.start_time}
 						location={event.location}
@@ -98,30 +101,54 @@ const PartyList = ({ data }) => {
 	);
 };
 
-const showError = (error) => {
+const showLoadError = (error) => {
 	notification.error({
 		message: "Error",
 		description: "Unable to load due to error: " + error,
 	});
 };
 
+const showError = (error) => {
+	notification.error({
+		message: "Delete Failed",
+		description: "Unable to delete event due to error: " + error,
+	});
+};
+
+const showSuccess = () => {
+	notification.success({
+		message: "Event Deleted",
+		description: "Event was successfully deleted",
+	});
+};
+
 const EventsPage = () => {
 	const { user, getAccessTokenSilently } = useAuth0();
 	const [data, setData] = useState([]);
+	const [deleteState, setDeleteState] = useState(false);
 
 	useEffect(() => {
 		getUserEvents(
 			user,
 			getAccessTokenSilently(),
 			(d) => setData(mergeEventsByRoles(d)),
-			showError
+			showLoadError
 		);
-	}, [user, getAccessTokenSilently]);
+	}, [user, deleteState, getAccessTokenSilently]);
+
+	const onSuccess = () => {
+		showSuccess();
+		setDeleteState(!deleteState);
+	};
 
 	return (
 		<div>
 			<Row gutter={[30, 30]} style={{ padding: 30 }}>
-				<PartyList data={data} />
+				<PartyList
+					data={data}
+					getAccessTokenSilently={getAccessTokenSilently}
+					onSuccess={onSuccess}
+				/>
 			</Row>
 			<div className="center">
 				<Row gutter={[30, 30]} style={{ padding: 20 }}>
@@ -136,5 +163,13 @@ const EventsPage = () => {
 	);
 };
 
-export { PartyList, mergeEventsByRoles, getActions };
+export {
+	PartyList,
+	mergeEventsByRoles,
+	getActions,
+	getAction,
+	showSuccess,
+	showError,
+	showLoadError,
+};
 export default EventsPage;
