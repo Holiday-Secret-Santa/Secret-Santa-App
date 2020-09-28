@@ -37,11 +37,9 @@ const getUserEventsQuery = gql`
 	}
 `;
 
-const deleteEventQuery = gql`
+const deleteEventMutation = gql`
 	mutation deleteEvent($eventId: Int!) {
-		deleteEvent(eventId: $eventId) {
-			id
-		}
+		deleteEvent(id: $eventId)
 	}
 `;
 
@@ -74,5 +72,5 @@ export {
 	getUserEventsQuery,
 	getParticipantsbyEventIdQuery,
 	getEventByEventIdQuery,
-	deleteEventQuery,
+	deleteEventMutation,
 };
