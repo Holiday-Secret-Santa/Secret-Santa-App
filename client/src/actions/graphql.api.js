@@ -83,6 +83,34 @@ const getParticipantsbyEventId = (eventId, token, onSuccess, onError) => {
   );
 };
 
+const createGiftLogic = async (
+  description,
+  link,
+  price,
+  getAccessTokenSilently,
+  participantId,
+  showSuccessMsg,
+  showErrorMsg
+) => {
+  var variables = {
+    input: {
+      description: description,
+      link: link,
+      price: price,
+      participantId: participantId
+    },
+  };
+
+  const token = await getAccessTokenSilently();
+  return processWithClient(
+    token,
+    createGiftMutation,
+    variables,
+    showSuccessMsg,
+    showErrorMsg
+  );
+};
+
 const createParticipantLogic = async (
   first_name,
   last_name,
@@ -134,4 +162,5 @@ export {
   createParticipantLogic,
   getParticipantsbyEventId,
   getEventByEventId,
+  createGiftLogic,
 };
