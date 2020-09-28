@@ -64,7 +64,11 @@ const getAction = (eventId, role, getAccessTokenSilently, onSuccess) => {
 };
 
 const getActions = (data, deleteAction) => {
-	return data.roles.flatMap((r) => getAction(data.id, r, deleteAction));
+	let actions = [];
+	data.roles.map((r) =>
+		getAction(data.id, r, deleteAction).map((a) => actions.push(a))
+	);
+	return actions;
 };
 
 const mergeEventsByRoles = (data) => {
