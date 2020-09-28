@@ -168,7 +168,17 @@ const OrganizerEvent = (props) => {
 			email,
 			getAccessTokenSilently,
 			props.match.params.id,
-			showSuccess,
+			// Reinvoking get participant query to dynamically update the table with
+			// new participant info
+			() => {
+				showSuccess();
+				getParticipantsbyEventId(
+					parseInt(props.match.params.id),
+					getAccessTokenSilently(),
+					(d) => setParticipantData(d, setData),
+					showError
+				);
+			},
 			showError
 		);
 	};
