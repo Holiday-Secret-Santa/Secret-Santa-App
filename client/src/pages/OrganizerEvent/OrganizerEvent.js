@@ -133,10 +133,11 @@ const setParticipantData = (d, setData) => {
 	setData(formattedData);
 };
 
-const updateParticipantDynamically = (p, data, getToken) => {
+// Function to update participant info dynamically
+const updateParticipantDynamically = (eventId, data, getToken) => {
 	showSuccess();
 	getParticipantsbyEventId(
-		parseInt(p.match.params.id),
+		parseInt(eventId),
 		getToken(),
 		(d) => setParticipantData(d, data),
 		showError
@@ -181,7 +182,11 @@ const OrganizerEvent = (props) => {
 			// Reinvoking get participant query to dynamically update the table with
 			// new participant info
 			() =>
-				updateParticipantDynamically(props, setData, getAccessTokenSilently),
+				updateParticipantDynamically(
+					props.match.params.id,
+					setData,
+					getAccessTokenSilently
+				),
 			showError
 		);
 	};
@@ -226,5 +231,6 @@ export {
 	ChartTitle,
 	createParticipantLogic,
 	setParticipantData,
+	updateParticipantDynamically,
 };
 export default OrganizerEvent;
