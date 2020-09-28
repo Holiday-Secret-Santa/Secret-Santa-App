@@ -63,10 +63,12 @@ const getAction = (eventId, role, getAccessTokenSilently, onSuccess) => {
 	));
 };
 
-const getActions = (data, deleteAction) => {
+const getActions = (data, getAccessTokenSilently, onSuccess) => {
 	let actions = [];
 	data.roles.map((r) =>
-		getAction(data.id, r, deleteAction).map((a) => actions.push(a))
+		getAction(data.id, r, getAccessTokenSilently, onSuccess).map((a) =>
+			actions.push(a)
+		)
 	);
 	return actions;
 };
