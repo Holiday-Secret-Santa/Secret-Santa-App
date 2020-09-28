@@ -9,6 +9,7 @@ import {
 	getParticipantsbyEventId,
 	getEventByEventId,
 	deleteEvent,
+	getParticipantByEventIdAndEmail,
 } from "./graphql.api";
 import { GraphQLClient } from "graphql-request";
 
@@ -118,6 +119,16 @@ describe("graph apis", () => {
 	test("process delete event success", () => {
 		mockGrapgqlClientSuccess(1);
 		deleteEvent(
+			1,
+			"token",
+			() => {},
+			() => {}
+		);
+	});
+
+	test("process getParticipantByEventIdAndEmail success", () => {
+		mockGrapgqlClientSuccess(1);
+		getParticipantByEventIdAndEmail(
 			1,
 			"token",
 			() => {},

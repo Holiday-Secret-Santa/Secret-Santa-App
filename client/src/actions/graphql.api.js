@@ -8,6 +8,7 @@ import {
 	getEventByEventIdQuery,
 	deleteEventMutation,
 	createGiftMutation,
+	getParticipantByEventIdAndEmailQuery,
 } from "./graphql.queries";
 
 const endpoint = "/graphql";
@@ -112,7 +113,7 @@ const createGiftLogic = async (
 			description: description,
 			link: link,
 			price: price,
-			participantId: participantId,
+			ParticipantId: participantId,
 		},
 	};
 
@@ -167,6 +168,27 @@ const getEventByEventId = (eventId, token, onSuccess, onError) => {
 		onError
 	);
 };
+
+const getParticipantByEventIdAndEmail = (
+	eventId,
+	email,
+	token,
+	onSuccess,
+	onError
+) => {
+	const variables = {
+		eventId: eventId,
+		email: email,
+	};
+
+	return processWithClient(
+		token,
+		getParticipantByEventIdAndEmailQuery,
+		variables,
+		onSuccess,
+		onError
+	);
+};
 // Query APIs
 
 export {
@@ -179,4 +201,5 @@ export {
 	getEventByEventId,
 	deleteEvent,
 	createGiftLogic,
+	getParticipantByEventIdAndEmail,
 };
