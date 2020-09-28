@@ -8,6 +8,8 @@ import {
 	getParticipantsbyEventIdQuery,
 	getEventByEventIdQuery,
 	deleteEventMutation,
+	getParticipantByEventIdAndEmailQuery,
+	createGiftMutation,
 } from "./graphql.queries";
 
 describe("gql statements", () => {
@@ -35,5 +37,15 @@ describe("gql statements", () => {
 
 	test("validate delete event mutation", () => {
 		expect(deleteEventMutation).toMatch(/mutation deleteEvent/);
+	});
+
+	test("validate getParticipantByEventIdAndEmail query", () => {
+		expect(getParticipantByEventIdAndEmailQuery).toMatch(
+			/query GetParticipantByEventIdAndEmail/
+		);
+	});
+
+	test("validate createGiftMutation mutation", () => {
+		expect(createGiftMutation).toMatch(/mutation CreateGift/);
 	});
 });

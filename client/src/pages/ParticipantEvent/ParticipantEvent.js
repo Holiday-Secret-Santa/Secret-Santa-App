@@ -1,9 +1,12 @@
-import React from "react";
-import { Row, Button, Tooltip } from "antd";
+import React, { useEffect, useState } from "react";
+import { Row, Button, Tooltip, notification } from "antd";
 import { GiftTwoTone, DeleteTwoTone } from "@ant-design/icons";
 import DetailCard from "../../components/DetailCard/DetailCard";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import TableComp from "./../../components/Table";
+import { getParticipantByEventIdAndEmail } from "./../../actions/graphql.api";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 const getDummyItems = (size) => {
@@ -79,19 +82,24 @@ const getColumns = (showDeleteAction) => {
 	return columns;
 };
 
-const MyGiftListAddButton = () => {
+const MyGiftListAddButton = ({ link }) => {
 	return (
 		<Row justify="end">
 			<Tooltip title="Add Gift Item">
-				<Button
-					shape="circle"
-					size="large"
-					type="text"
-					icon={
-						<GiftTwoTone twoToneColor={customColor} style={{ fontSize: 48 }} />
-					}
-					style={{ width: 80, height: 80 }}
-				></Button>
+				<Link to={link}>
+					<Button
+						shape="circle"
+						size="large"
+						type="text"
+						icon={
+							<GiftTwoTone
+								twoToneColor={customColor}
+								style={{ fontSize: 48 }}
+							/>
+						}
+						style={{ width: 80, height: 80 }}
+					></Button>
+				</Link>
 			</Tooltip>
 		</Row>
 	);
@@ -109,7 +117,29 @@ const EventCard = () => {
 	);
 };
 
-const ParticipantEvent = () => {
+const showError = (error) => {
+	notification.error({
+		message: "Error",
+		description: "Unable to load participant due to error: " + error,
+	});
+};
+
+const ParticipantEvent = (props) => {
+	const eventId = props.match.params.id;
+	const { user, getAccessTokenSilently } = useAuth0();
+	const { email } = user;
+	const [participantId, setParticipantId] = useState({});
+
+	useEffect(() => {
+		getParticipantByEventIdAndEmail(
+			parseInt(eventId),
+			email,
+			getAccessTokenSilently(),
+			(data) => setParticipantId(data.getParticipantByEventIdAndEmail.id),
+			showError
+		);
+	}, [eventId, email, getAccessTokenSilently]);
+
 	return (
 		<>
 			<Row gutter={[30, 30]} style={{ padding: 20 }}>
@@ -122,7 +152,9 @@ const ParticipantEvent = () => {
 						dataSource={getMySecretSantaItems()}
 						columns={getColumns(false)}
 					/>
-					<MyGiftListAddButton />
+					<MyGiftListAddButton
+						link={`/events/${eventId}/participant/${participantId}/addgift`}
+					/>
 					<TableComp
 						title={() => "Create Your Gift List for Your Secret Santa!"}
 						dataSource={getMyItems()}

@@ -46,14 +46,14 @@ var schema = buildSchema(`
 	input InputGift {
 		description: String,
 		link: String,
-		price: Int,
+		price: Float,
 		ParticipantId: Int
 	}
 	type Gift {
 		id: Int,
 		description: String,
 		link: String,
-		price: Int,
+		price: Float,
 		ParticipantId: Int
 	}
 	type Query {
@@ -67,6 +67,7 @@ var schema = buildSchema(`
 		getGiftByParticipantId(participant_id: Int): [Gift],
 		getEventsByOrganizerEmail (email: String): [Event],
 		getEventsByParticipantEmail (email: String): [Event],
+		getParticipantByEventIdAndEmail (eventId: Int, email: String): Participant
 	}
 	type Mutation {
 		createEvent(input: InputEvent): Event,
@@ -192,6 +193,14 @@ var root = {
 					where: { email: email },
 				},
 			],
+		});
+	},
+	getParticipantByEventIdAndEmail: ({ eventId, email }) => {
+		return db.Participant.findOne({
+			where: {
+				EventId: eventId,
+				email: email,
+			},
 		});
 	},
 };

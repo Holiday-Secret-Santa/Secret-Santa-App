@@ -16,6 +16,14 @@ const createParticipantMutation = gql`
 	}
 `;
 
+const createGiftMutation = gql`
+	mutation CreateGift($input: InputGift!) {
+		createGift(input: $input) {
+			id
+		}
+	}
+`;
+
 const getUserEventsQuery = gql`
 	query GetUserEvents($email: String!) {
 		getEventsByParticipantEmail(email: $email) {
@@ -66,6 +74,14 @@ const getEventByEventIdQuery = gql`
 	}
 `;
 
+const getParticipantByEventIdAndEmailQuery = gql`
+	query GetParticipantByEventIdAndEmail($eventId: Int!, $email: String!) {
+		getParticipantByEventIdAndEmail(eventId: $eventId, email: $email) {
+			id
+		}
+	}
+`;
+
 export {
 	createEventMutation,
 	createParticipantMutation,
@@ -73,4 +89,6 @@ export {
 	getParticipantsbyEventIdQuery,
 	getEventByEventIdQuery,
 	deleteEventMutation,
+	createGiftMutation,
+	getParticipantByEventIdAndEmailQuery,
 };

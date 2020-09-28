@@ -41,7 +41,7 @@ const AppContent = ({ isAuthenticated }) => {
 				/>
 				<PrivateRoute
 					exact
-					path="/events/:id/participant/addgift"
+					path="/events/:id/participant/:participantid/addgift"
 					component={AddGift}
 				/>
 				<Route

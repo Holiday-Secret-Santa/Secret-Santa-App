@@ -4,15 +4,17 @@ import AntButton from "../Button/Button";
 import { UserAddOutlined } from "@ant-design/icons";
 import FormInputText from "../FormInput/FormInputText";
 
-const ModalPopUp = (props) => {
+
+ const ModalPopUp = (props) => {
 	const [visible, setvisible] = useState(false);
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
 	const [email, setEmail] = useState("");
 
-	const showModal = () => {
-		setvisible(true);
-	};
+  const showModal = () => {
+    setvisible(true);
+  };
+
 
 	const handleOk = (e) => {
 		console.log(e);
@@ -20,24 +22,25 @@ const ModalPopUp = (props) => {
 		props.handleLogic(firstName, lastName, email);
 	};
 
-	const handleCancel = (e) => {
-		console.log(e);
-		setvisible(false);
-	};
+  const handleCancel = (e) => {
+    // console.log(e);
+    setvisible(false);
+  };
 
-	return (
-		<div>
-			<AntButton
-				icon={<UserAddOutlined />}
-				action={showModal}
-				text={"Add Participants"}
-			/>
-			<Modal
-				title={
-					<label
-						style={{ color: "#2c6e49", fontSize: "22px", fontWeight: "bold" }}
-					>
+  return (
+    <div>
+      <AntButton
+        icon={<UserAddOutlined />}
+        action={showModal}
+        text={"Add Participants"}
+      />
+      <Modal
+        title={
+          <label
+            style={{ color: "#2c6e49", fontSize: "22px", fontWeight: "bold" }}
+          >
 						Add Participants
+
 					</label>
 				}
 				visible={visible}
