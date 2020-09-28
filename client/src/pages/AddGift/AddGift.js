@@ -5,7 +5,7 @@ import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import { AddButton } from "./../../components/Button";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./style.css";
-import { createGiftLogic } from "../../actions/graphql.api";
+import { createGift } from "../../actions/graphql.api";
 
 const descriptionFieldRules = [
 	{ required: true, message: "please enter gift description" },
@@ -46,11 +46,11 @@ const AddGift = (props) => {
 	const participantId = props.match.params.participantid;
 
 	const onFinish = (values) => {
-		createGiftLogic(
+		createGift(
 			values.description,
 			values.url,
 			values.price,
-			getAccessTokenSilently,
+			getAccessTokenSilently(),
 			parseInt(participantId),
 			success,
 			showError

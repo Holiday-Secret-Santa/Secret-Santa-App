@@ -99,11 +99,11 @@ const getParticipantsbyEventId = (eventId, token, onSuccess, onError) => {
 	);
 };
 
-const createGiftLogic = async (
+const createGift = async (
 	description,
 	link,
 	price,
-	getAccessTokenSilently,
+	token,
 	participantId,
 	showSuccessMsg,
 	showErrorMsg
@@ -117,7 +117,6 @@ const createGiftLogic = async (
 		},
 	};
 
-	const token = await getAccessTokenSilently();
 	return processWithClient(
 		token,
 		createGiftMutation,
@@ -200,6 +199,6 @@ export {
 	getParticipantsbyEventId,
 	getEventByEventId,
 	deleteEvent,
-	createGiftLogic,
+	createGift,
 	getParticipantByEventIdAndEmail,
 };
