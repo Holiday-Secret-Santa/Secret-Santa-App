@@ -28,6 +28,7 @@ const giftPriceRules = [
 
 // Creates the Add Gift Pages
 const AddGift = () => {
+  const [form] = Form.useForm();
   const { user } = useAuth0();
   const { user_id } = user ? user : {};
 
@@ -76,12 +77,13 @@ const AddGift = () => {
 
     postGift().catch((error) => console.error(error));
     success();
+    form.resetFields();
   };
 
   return (
     <Row gutter={[30, 30]} style={{ padding: 20 }} className="addGiftForm">
       <ResponsiveColumn lg={24}>
-        <Form onFinish={onFinish} name="nest-messages">
+        <Form form={form} onFinish={onFinish} name="nest-messages">
           <h1>Add Gift Ideas</h1>
           {/* Input for gift description*/}
           <FormInputText
