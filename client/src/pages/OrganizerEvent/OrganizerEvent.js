@@ -19,8 +19,7 @@ import {
 const showSuccess = () => {
 	notification.success({
 		message: "Participant Added",
-		description:
-			"Participant successfully added. Refresh to see new participants.",
+		description: "Participant successfully added.",
 	});
 };
 
