@@ -12,6 +12,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import {
 	createParticipantLogic,
 	getParticipantsbyEventId,
+	getEventByEventId,
 } from "../../actions/graphql.api";
 
 // Notification for when participant is entered successfully
@@ -75,13 +76,13 @@ const getColumns = () => {
 	return columns;
 };
 
-const EventCard = () => {
+const EventCard = (props) => {
 	return (
 		<DetailCard
-			title="Event details"
-			date="date"
-			startTime="9:00am"
-			location="park"
+			title={props.description}
+			date={props.date}
+			startTime={props.start_time}
+			location={props.location}
 			actions={[
 				<span>
 					<Button
@@ -136,12 +137,24 @@ const setParticipantData = (d, setData) => {
 const OrganizerEvent = (props) => {
 	const { getAccessTokenSilently } = useAuth0();
 	const [data, setData] = useState([]);
+	const [eventData, setEventData] = useState({});
 
+	// Rendering participant info
 	useEffect(() => {
 		getParticipantsbyEventId(
 			parseInt(props.match.params.id),
 			getAccessTokenSilently(),
 			(d) => setParticipantData(d, setData),
+			showError
+		);
+	}, [getAccessTokenSilently]);
+
+	// Rendering event info
+	useEffect(() => {
+		getEventByEventId(
+			parseInt(props.match.params.id),
+			getAccessTokenSilently(),
+			(d) => setEventData(d.getEvent),
 			showError
 		);
 	}, [getAccessTokenSilently]);
@@ -165,7 +178,12 @@ const OrganizerEvent = (props) => {
 		<>
 			<Row gutter={[30, 30]} style={{ padding: 20 }}>
 				<ResponsiveColumn lg={6}>
-					<EventCard />
+					<EventCard
+						description={eventData.description}
+						date={eventData.date}
+						start_time={eventData.start_time}
+						location={eventData.location}
+					/>
 				</ResponsiveColumn>
 				<ResponsiveColumn lg={18}>
 					<Bar

@@ -5,6 +5,7 @@ import {
 	createParticipantMutation,
 	getUserEventsQuery,
 	getParticipantsbyEventIdQuery,
+	getEventByEventIdQuery,
 } from "./graphql.queries";
 
 const endpoint = "/graphql";
@@ -109,6 +110,19 @@ const createParticipantLogic = async (
 	);
 };
 
+const getEventByEventId = (eventId, token, onSuccess, onError) => {
+	const variables = {
+		id: eventId,
+	};
+
+	return processWithClient(
+		token,
+		getEventByEventIdQuery,
+		variables,
+		onSuccess,
+		onError
+	);
+};
 // Query APIs
 
 export {
@@ -118,4 +132,5 @@ export {
 	getUserEvents,
 	createParticipantLogic,
 	getParticipantsbyEventId,
+	getEventByEventId,
 };
