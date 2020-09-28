@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Row, Tooltip, notification } from "antd";
-import { SettingFilled, GiftFilled } from "@ant-design/icons";
+import { Row, Tooltip, notification, Popconfirm } from "antd";
+import { SettingFilled, GiftFilled, DeleteFilled } from "@ant-design/icons";
 import DetailCard from "./../../components/DetailCard/DetailCard";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import { AddButton } from "./../../components/Button";
@@ -12,28 +12,53 @@ import "./style.css";
 const getAction = (eventId, role) => {
 	const values =
 		role === "organizer"
-			? {
-					title: "Manage Your Gift Exchange",
-					icon: (
-						<SettingFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
-					),
-			  }
-			: {
-					title: "Add Gifts for Secret Santa",
-					icon: <GiftFilled style={{ fontSize: "24px", color: "#2c6e49" }} />,
-			  };
+			? [
+					{
+						title: "Manage Your Gift Exchange",
+						icon: (
+							<SettingFilled style={{ fontSize: "24px", color: "#2c6e49" }} />
+						),
+					},
+					{
+						title: "Delete this Gift Exchange",
+						icon: (
+							<DeleteFilled style={{ fontSize: "24px", color: "#D62828" }} />
+						),
+						action: () => DeleteAction(eventId),
+					},
+			  ]
+			: [
+					{
+						title: "Add Gifts for Secret Santa",
+						icon: <GiftFilled style={{ fontSize: "24px", color: "#2c6e49" }} />,
+					},
+			  ];
 
-	return (
+	return values.map((v) => (
 		<span>
-			<Tooltip title={values.title}>
-				<Link to={`/events/${eventId}/${role}`}>{values.icon}</Link>
+			<Tooltip title={v.title}>
+				{!v.action && <Link to={`/events/${eventId}/${role}`}>{v.icon}</Link>}
+				{v.action && (
+					<Popconfirm
+						title="Are you sure you want to delete this event?"
+						onConfirm={v.action}
+						okText="Yes"
+						cancelText="No"
+					>
+						{v.icon}
+					</Popconfirm>
+				)}
 			</Tooltip>
 		</span>
-	);
+	));
+};
+
+const DeleteAction = (eventId) => {
+	alert(`event ${eventId} deleted`);
 };
 
 const getActions = (data) => {
-	return data.roles.map((r) => getAction(data.id, r));
+	return data.roles.flatMap((r) => getAction(data.id, r));
 };
 
 const mergeEventsByRoles = (data) => {
