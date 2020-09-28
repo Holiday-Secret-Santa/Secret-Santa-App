@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Form } from "antd";
+import { Row, Form, message } from "antd";
 import { FormInputText, FormInputNumber } from "./../../components/FormInput";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import { AddButton } from "./../../components/Button";
@@ -30,6 +30,16 @@ const giftPriceRules = [
 const AddGift = () => {
   const { user } = useAuth0();
   const { user_id } = user ? user : {};
+
+  const success = () => {
+    message.success({
+      content: "Gift has been added to your wish list",
+      className: "gift-add-success",
+      style: {
+        marginTop: "30vh",
+      },
+    });
+  };
 
   const onFinish = (values) => {
     async function postGift() {
@@ -65,6 +75,7 @@ const AddGift = () => {
     }
 
     postGift().catch((error) => console.error(error));
+    success();
   };
 
   return (
