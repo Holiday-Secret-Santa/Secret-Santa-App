@@ -17,11 +17,11 @@ const createParticipantMutation = gql`
 `;
 
 const createGiftMutation = gql`
-mutation CreateGift($input: InputGift!) {
-  createGift(input: $input) {
-    id
-  }
-}
+	mutation CreateGift($input: InputGift!) {
+		createGift(input: $input) {
+			id
+		}
+	}
 `;
 
 const getUserEventsQuery = gql`
@@ -42,6 +42,12 @@ const getUserEventsQuery = gql`
 			planner_email
 			location
 		}
+	}
+`;
+
+const deleteEventMutation = gql`
+	mutation deleteEvent($eventId: Int!) {
+		deleteEvent(id: $eventId)
 	}
 `;
 
@@ -69,10 +75,11 @@ const getEventByEventIdQuery = gql`
 `;
 
 export {
-  createEventMutation,
-  createParticipantMutation,
-  getUserEventsQuery,
-  getParticipantsbyEventIdQuery,
-  getEventByEventIdQuery,
-  createGiftMutation
+	createEventMutation,
+	createParticipantMutation,
+	getUserEventsQuery,
+	getParticipantsbyEventIdQuery,
+	getEventByEventIdQuery,
+	deleteEventMutation,
+	createGiftMutation,
 };
