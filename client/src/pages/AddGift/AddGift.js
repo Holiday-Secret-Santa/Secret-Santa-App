@@ -3,8 +3,8 @@ import { Row, Form, message } from "antd";
 import { FormInputText, FormInputNumber } from "./../../components/FormInput";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import { AddButton } from "./../../components/Button";
-import { GraphQLClient, gql } from "graphql-request";
 import { useAuth0 } from "@auth0/auth0-react";
+import { GraphQLClient, gql } from "graphql-request";
 import "./style.css";
 
 
@@ -28,9 +28,9 @@ const giftPriceRules = [
 
 // Creates the Add Gift Pages
 const AddGift = (props) => {
+  const { getAccessTokenSilently } = useAuth0();
   const [form] = Form.useForm();
-  const { user } = useAuth0();
-  const { user_id } = user ? user : {};
+  
 
   const success = () => {
     message.success({
@@ -41,11 +41,12 @@ const AddGift = (props) => {
       },
     });
   };
-
+  
   const onFinish = (values) => {
     async function postGift() {
       const endpoint = "/graphql";
-
+      
+      
       const graphQLClient = new GraphQLClient(endpoint, {
         headers: {
           authorization: "Bearer MY_TOKEN",
@@ -65,7 +66,7 @@ const AddGift = (props) => {
           description: values.description,
           link: values.url,
           price: values.price,
-          ParticipantId: user_id
+          // ParticipantId: parseInt(props.match.params.id)
         },
       };
 
