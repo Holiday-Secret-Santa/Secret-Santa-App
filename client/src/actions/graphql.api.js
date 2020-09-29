@@ -9,6 +9,7 @@ import {
 	deleteEventMutation,
 	createGiftMutation,
 	getParticipantByEventIdAndEmailQuery,
+	autoAssignSecretSantaMutation,
 } from "./graphql.queries";
 
 const endpoint = "/graphql";
@@ -188,6 +189,19 @@ const getParticipantByEventIdAndEmail = (
 		onError
 	);
 };
+
+const autoAssignSecretSanta = async (eventId) => {
+	const variables = {
+		eventId: eventId,
+	};
+
+	return processWithClient(
+		autoAssignSecretSantaMutation,
+		variables,
+		onSuccess,
+		onError
+	);
+};
 // Query APIs
 
 export {
@@ -201,4 +215,5 @@ export {
 	deleteEvent,
 	createGift,
 	getParticipantByEventIdAndEmail,
+	autoAssignSecretSanta,
 };
