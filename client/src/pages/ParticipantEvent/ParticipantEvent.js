@@ -124,6 +124,13 @@ const showError = (error) => {
   });
 };
 
+const giftError = (error) => {
+  notification.error({
+    message: "Gift Error",
+    description: "Unable to load gifts due to error: " + error,
+  });
+};
+
 const ParticipantEvent = (props) => {
   const eventId = props.match.params.id;
   const { user, getAccessTokenSilently } = useAuth0();
@@ -144,10 +151,10 @@ const ParticipantEvent = (props) => {
 
   useEffect(() => {
     getGiftByParticipantId(
-      parseInt(participantId),
+      3,
       getAccessTokenSilently(),
-      console.log(data.getGiftByParticipantId),
-      showError
+      (data) => console.log(data.getGiftByParticipantId),
+      giftError
     );
   }, []);
 
