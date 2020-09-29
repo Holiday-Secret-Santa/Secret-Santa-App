@@ -103,11 +103,11 @@ const EventCard = ({ description, date, start_time, location, action }) => {
 	);
 };
 
-const getRsvpData = () => {
+const getRsvpData = (rsvpCounts) => {
 	const dataRSVPs = [];
-	dataRSVPs.push({ x: "Accepted", y: 45 });
-	dataRSVPs.push({ x: "Rejected", y: 10 });
-	dataRSVPs.push({ x: "Pending", y: 10 });
+	dataRSVPs.push({ x: "Accepted", y: rsvpCounts.accepted });
+	dataRSVPs.push({ x: "Rejected", y: rsvpCounts.rejected });
+	dataRSVPs.push({ x: "Pending", y: rsvpCounts.pending });
 	return dataRSVPs;
 };
 
@@ -127,8 +127,13 @@ const ChartTitle = () => {
 	);
 };
 
-const setParticipantData = (d, setData) => {
+const setParticipantData = (d, setData, setRsvpCounts) => {
 	var formattedData = [];
+	var rsvpCounts = {
+		accepted: 0,
+		rejected: 0,
+		pending: 0,
+	};
 	d.getParticipantsByEventId.forEach((participant, index) => {
 		var participantEntry = {
 			key: index + 1,
@@ -140,13 +145,25 @@ const setParticipantData = (d, setData) => {
 			secretEmail: participant.SecretSanta ? participant.SecretSanta.email : "",
 		};
 		formattedData.push(participantEntry);
+		switch (participant.invite_status) {
+			case "Accepted":
+				rsvpCounts.accepted += 1;
+				break;
+			case "Rejected":
+				rsvpCounts.rejected += 1;
+				break;
+			default:
+				rsvpCounts.pending += 1;
+		}
 	});
+	setRsvpCounts(rsvpCounts);
 	setData(formattedData);
 };
 
 const OrganizerEvent = (props) => {
 	const { getAccessTokenSilently } = useAuth0();
 	const [data, setData] = useState([]);
+	const [rsvpCounts, setRsvpCounts] = useState({});
 	const [eventData, setEventData] = useState({});
 	const [reloadState, setReloadState] = useState(false);
 	const eventId = parseInt(props.match.params.id);
@@ -156,7 +173,7 @@ const OrganizerEvent = (props) => {
 		getParticipantsbyEventId(
 			eventId,
 			getAccessTokenSilently(),
-			(d) => setParticipantData(d, setData),
+			(d) => setParticipantData(d, setData, setRsvpCounts),
 			showError
 		);
 	}, [getAccessTokenSilently, eventId, reloadState]);
@@ -212,7 +229,7 @@ const OrganizerEvent = (props) => {
 					<Bar
 						height="300"
 						title={<ChartTitle />}
-						data={getRsvpData()}
+						data={getRsvpData(rsvpCounts)}
 						color="#d62828"
 					/>
 					<Divider />
