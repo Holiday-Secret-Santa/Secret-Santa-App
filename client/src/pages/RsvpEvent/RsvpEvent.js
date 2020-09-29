@@ -6,12 +6,12 @@ import Button from "../../components/Button";
 import "./style.css";
 
 const processStatusAction = (status, setStatusCallBack) => {
-	if (status === "going") {
+	if (status === "Accepted") {
 		notification.success({
 			message: "Going",
 			description: "You Have been added to the event list",
 		});
-	} else if (status === "not going") {
+	} else if (status === "Rejected") {
 		notification.warn({
 			message: "Not Going",
 			description: "No worries, we will notify the event host",
@@ -36,15 +36,15 @@ const RsvpEvent = () => {
 							<Button
 								testid="going-btn"
 								text="Going"
-								disabled={status === "going"}
-								action={() => processStatusAction("going", setStatus)}
+								disabled={status === "Accepted"}
+								action={() => processStatusAction("Accepted", setStatus)}
 							/>,
 							<Button
 								testid="not-going-btn"
 								text="Not Going"
-								disabled={status === "not going"}
+								disabled={status === "Rejected"}
 								bgColor="#D62828"
-								action={() => processStatusAction("not going", setStatus)}
+								action={() => processStatusAction("Rejected", setStatus)}
 							/>,
 						]}
 					/>
