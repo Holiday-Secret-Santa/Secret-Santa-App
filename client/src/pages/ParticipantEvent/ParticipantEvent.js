@@ -140,6 +140,8 @@ const ParticipantEvent = (props) => {
     );
   }, [eventId, email, getAccessTokenSilently]);
 
+  // develop useEffect hook to call getGiftByParticipantId
+
   return (
     <>
       <Row gutter={[30, 30]} style={{ padding: 20 }}>

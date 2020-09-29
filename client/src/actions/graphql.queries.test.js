@@ -10,6 +10,7 @@ import {
 	deleteEventMutation,
 	getParticipantByEventIdAndEmailQuery,
 	createGiftMutation,
+	autoAssignSecretSantaMutation,
 } from "./graphql.queries";
 
 describe("gql statements", () => {
@@ -47,5 +48,11 @@ describe("gql statements", () => {
 
 	test("validate createGiftMutation mutation", () => {
 		expect(createGiftMutation).toMatch(/mutation CreateGift/);
+	});
+
+	test("validate autoAssignSecretSantaMutation mutation", () => {
+		expect(autoAssignSecretSantaMutation).toMatch(
+			/mutation autoAssignSecretSanta/
+		);
 	});
 });

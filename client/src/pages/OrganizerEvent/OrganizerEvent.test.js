@@ -11,7 +11,6 @@ import OrganizerEvent, {
 	getRsvpData,
 	ChartTitle,
 	setParticipantData,
-	updateParticipantDynamically,
 } from "./OrganizerEvent";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -46,13 +45,8 @@ test("renders organizer event page", () => {
 		start_time: "7pm",
 		location: "remote link",
 	});
-	getRsvpData();
+	getRsvpData({ accepted: 1, rejected: 2, pending: 3 });
 	ChartTitle();
-	updateParticipantDynamically(
-		1,
-		() => {},
-		() => {}
-	);
 
 	var participantTest = {
 		getParticipantsByEventId: [
@@ -60,9 +54,18 @@ test("renders organizer event page", () => {
 				first_name: "test name",
 				last_name: "test name",
 				email: "email@test.com",
+				SecretSanta: {
+					first_name: "test name",
+					last_name: "test name",
+					email: "email@test.com",
+				},
 			},
 		],
 	};
 
-	setParticipantData(participantTest, () => {});
+	setParticipantData(
+		participantTest,
+		() => {},
+		() => {}
+	);
 });
