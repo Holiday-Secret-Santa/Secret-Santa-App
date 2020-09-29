@@ -222,4 +222,5 @@ export {
   deleteEvent,
   createGift,
   getParticipantByEventIdAndEmail,
+  getGiftByParticipantId
 };
