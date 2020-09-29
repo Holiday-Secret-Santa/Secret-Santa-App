@@ -9,6 +9,7 @@ import {
 	deleteEventMutation,
 	createGiftMutation,
 	getParticipantByEventIdAndEmailQuery,
+	autoAssignSecretSantaMutation,
 } from "./graphql.queries";
 
 const endpoint = "/graphql";
@@ -126,11 +127,11 @@ const createGift = async (
 	);
 };
 
-const createParticipantLogic = async (
+const createParticipant = async (
 	first_name,
 	last_name,
 	email,
-	getAccessTokenSilently,
+	token,
 	eventId,
 	showSuccessMsg,
 	showErrorMsg
@@ -144,7 +145,6 @@ const createParticipantLogic = async (
 		},
 	};
 
-	const token = await getAccessTokenSilently();
 	return processWithClient(
 		token,
 		createParticipantMutation,
@@ -188,6 +188,20 @@ const getParticipantByEventIdAndEmail = (
 		onError
 	);
 };
+
+const autoAssignSecretSanta = (eventId, token, onSuccess, onError) => {
+	const variables = {
+		eventId: eventId,
+	};
+
+	return processWithClient(
+		token,
+		autoAssignSecretSantaMutation,
+		variables,
+		onSuccess,
+		onError
+	);
+};
 // Query APIs
 
 export {
@@ -195,10 +209,11 @@ export {
 	processWithClient,
 	createEvent,
 	getUserEvents,
-	createParticipantLogic,
+	createParticipant,
 	getParticipantsbyEventId,
 	getEventByEventId,
 	deleteEvent,
 	createGift,
 	getParticipantByEventIdAndEmail,
+	autoAssignSecretSanta,
 };

@@ -5,12 +5,13 @@ import {
 	processWithClient,
 	createEvent,
 	getUserEvents,
-	createParticipantLogic,
+	createParticipant,
 	getParticipantsbyEventId,
 	getEventByEventId,
 	deleteEvent,
 	getParticipantByEventIdAndEmail,
 	createGift,
+	autoAssignSecretSanta,
 } from "./graphql.api";
 import { GraphQLClient } from "graphql-request";
 
@@ -83,7 +84,7 @@ describe("graph apis", () => {
 
 	test("create participant on success", () => {
 		mockGrapgqlClientSuccess({});
-		createParticipantLogic(
+		createParticipant(
 			"",
 			"",
 			"",
@@ -96,7 +97,7 @@ describe("graph apis", () => {
 
 	test("create participant on error", () => {
 		mockGrapgqlClientError("error");
-		createParticipantLogic(
+		createParticipant(
 			"",
 			"",
 			"",
@@ -143,6 +144,16 @@ describe("graph apis", () => {
 			"desc",
 			"link",
 			12.99,
+			"token",
+			() => {},
+			() => {}
+		);
+	});
+
+	test("process autoAssignSecretSanta success", () => {
+		mockGrapgqlClientSuccess({});
+		autoAssignSecretSanta(
+			1,
 			"token",
 			() => {},
 			() => {}

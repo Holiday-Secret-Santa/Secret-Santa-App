@@ -10,9 +10,10 @@ import { TeamOutlined } from "@ant-design/icons";
 import ModalPopUp from "../../components/ModalPopUp/ModalPopUp";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
-	createParticipantLogic,
+	createParticipant,
 	getParticipantsbyEventId,
 	getEventByEventId,
+	autoAssignSecretSanta,
 } from "../../actions/graphql.api";
 
 // Notification for when participant is entered successfully
@@ -24,10 +25,17 @@ const showSuccess = () => {
 };
 
 // Notification for when participant is not created
-const showError = ({ error }) => {
+const showError = (error) => {
 	notification.error({
 		message: "Error",
 		description: "We couldn't add your participant due to error: " + error,
+	});
+};
+
+const showAssignmentError = (error) => {
+	notification.error({
+		message: "Error",
+		description: "We couldn't assign secret santas due to error: " + error,
 	});
 };
 
@@ -75,18 +83,19 @@ const getColumns = () => {
 	return columns;
 };
 
-const EventCard = (props) => {
+const EventCard = ({ description, date, start_time, location, action }) => {
 	return (
 		<DetailCard
-			title={props.description}
-			date={props.date}
-			startTime={props.start_time}
-			location={props.location}
+			title={description}
+			date={date}
+			startTime={start_time}
+			location={location}
 			actions={[
 				<span>
 					<Button
 						icon={<TeamOutlined style={{ fontSize: "18px" }} />}
 						text={" Make Assignments"}
+						action={action}
 					/>
 				</span>,
 			]}
@@ -94,11 +103,11 @@ const EventCard = (props) => {
 	);
 };
 
-const getRsvpData = () => {
+const getRsvpData = (rsvpCounts) => {
 	const dataRSVPs = [];
-	dataRSVPs.push({ x: "Accepted", y: 45 });
-	dataRSVPs.push({ x: "Rejected", y: 10 });
-	dataRSVPs.push({ x: "Pending", y: 10 });
+	dataRSVPs.push({ x: "Accepted", y: rsvpCounts.accepted });
+	dataRSVPs.push({ x: "Rejected", y: rsvpCounts.rejected });
+	dataRSVPs.push({ x: "Pending", y: rsvpCounts.pending });
 	return dataRSVPs;
 };
 
@@ -118,75 +127,81 @@ const ChartTitle = () => {
 	);
 };
 
-const setParticipantData = (d, setData) => {
+const setParticipantData = (d, setData, setRsvpCounts) => {
 	var formattedData = [];
+	var rsvpCounts = {
+		accepted: 0,
+		rejected: 0,
+		pending: 0,
+	};
 	d.getParticipantsByEventId.forEach((participant, index) => {
 		var participantEntry = {
 			key: index + 1,
 			participant: `${participant.first_name} ${participant.last_name}`,
 			guestEmail: participant.email,
-			secretSanta: "",
-			secretEmail: "",
+			secretSanta: participant.SecretSanta
+				? `${participant.SecretSanta.first_name} ${participant.SecretSanta.last_name}`
+				: "",
+			secretEmail: participant.SecretSanta ? participant.SecretSanta.email : "",
 		};
 		formattedData.push(participantEntry);
+		switch (participant.invite_status) {
+			case "Accepted":
+				rsvpCounts.accepted += 1;
+				break;
+			case "Rejected":
+				rsvpCounts.rejected += 1;
+				break;
+			default:
+				rsvpCounts.pending += 1;
+		}
 	});
+	setRsvpCounts(rsvpCounts);
 	setData(formattedData);
-};
-
-// Function to update participant info dynamically
-const updateParticipantDynamically = (eventId, data, getToken) => {
-	showSuccess();
-	getParticipantsbyEventId(
-		parseInt(eventId),
-		getToken(),
-		(d) => setParticipantData(d, data),
-		showError
-	);
 };
 
 const OrganizerEvent = (props) => {
 	const { getAccessTokenSilently } = useAuth0();
 	const [data, setData] = useState([]);
+	const [rsvpCounts, setRsvpCounts] = useState({});
 	const [eventData, setEventData] = useState({});
+	const [reloadState, setReloadState] = useState(false);
+	const eventId = parseInt(props.match.params.id);
 
 	// Rendering participant info
 	useEffect(() => {
 		getParticipantsbyEventId(
-			parseInt(props.match.params.id),
+			eventId,
 			getAccessTokenSilently(),
-			(d) => setParticipantData(d, setData),
+			(d) => setParticipantData(d, setData, setRsvpCounts),
 			showError
 		);
-	}, [getAccessTokenSilently, props.match.params.id]);
+	}, [getAccessTokenSilently, eventId, reloadState]);
 
 	// Rendering event info
 	useEffect(() => {
 		getEventByEventId(
-			parseInt(props.match.params.id),
+			eventId,
 			getAccessTokenSilently(),
 			(d) => setEventData(d.getEvent),
 			showError
 		);
-	}, [getAccessTokenSilently, props.match.params.id]);
+	}, [getAccessTokenSilently, eventId]);
 
 	// Function to create participant
 	// Keeping function on this page because relies on props id to link to Event
-	const createParticipant = async (first_name, last_name, email) => {
+	const processCreateParticipant = (first_name, last_name, email) => {
 		// Creating input variable
-		createParticipantLogic(
+		createParticipant(
 			first_name,
 			last_name,
 			email,
-			getAccessTokenSilently,
-			props.match.params.id,
-			// Reinvoking get participant query to dynamically update the table with
-			// new participant info
-			() =>
-				updateParticipantDynamically(
-					props.match.params.id,
-					setData,
-					getAccessTokenSilently
-				),
+			getAccessTokenSilently(),
+			eventId,
+			() => {
+				showSuccess();
+				setReloadState(!reloadState);
+			},
 			showError
 		);
 	};
@@ -200,20 +215,28 @@ const OrganizerEvent = (props) => {
 						date={eventData.date}
 						start_time={eventData.start_time}
 						location={eventData.location}
+						action={() =>
+							autoAssignSecretSanta(
+								eventId,
+								getAccessTokenSilently(),
+								() => setReloadState(!reloadState),
+								showAssignmentError
+							)
+						}
 					/>
 				</ResponsiveColumn>
 				<ResponsiveColumn lg={18}>
 					<Bar
 						height="300"
 						title={<ChartTitle />}
-						data={getRsvpData()}
+						data={getRsvpData(rsvpCounts)}
 						color="#d62828"
 					/>
 					<Divider />
 					<TableComp dataSource={data} columns={getColumns(true)} />
 					<Divider />
 					<div className="center">
-						<ModalPopUp handleLogic={createParticipant} />
+						<ModalPopUp handleLogic={processCreateParticipant} />
 					</div>
 				</ResponsiveColumn>
 			</Row>
@@ -229,8 +252,7 @@ export {
 	EventCard,
 	getRsvpData,
 	ChartTitle,
-	createParticipantLogic,
+	createParticipant,
 	setParticipantData,
-	updateParticipantDynamically,
 };
 export default OrganizerEvent;
