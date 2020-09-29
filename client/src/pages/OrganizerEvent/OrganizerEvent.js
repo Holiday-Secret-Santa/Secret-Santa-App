@@ -13,6 +13,7 @@ import {
 	createParticipantLogic,
 	getParticipantsbyEventId,
 	getEventByEventId,
+	autoAssignSecretSanta,
 } from "../../actions/graphql.api";
 
 // Notification for when participant is entered successfully
@@ -87,6 +88,14 @@ const EventCard = (props) => {
 					<Button
 						icon={<TeamOutlined style={{ fontSize: "18px" }} />}
 						text={" Make Assignments"}
+						action={() => {
+							autoAssignSecretSanta(
+								eventId,
+								getAccessTokenSilently(),
+								onSuccess,
+								showError
+							);
+						}}
 					/>
 				</span>,
 			]}
