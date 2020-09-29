@@ -54,6 +54,11 @@ test("renders organizer event page", () => {
 				first_name: "test name",
 				last_name: "test name",
 				email: "email@test.com",
+				SecretSanta: {
+					first_name: "test name",
+					last_name: "test name",
+					email: "email@test.com",
+				},
 			},
 		],
 	};
