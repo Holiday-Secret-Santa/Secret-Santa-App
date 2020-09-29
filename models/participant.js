@@ -32,6 +32,7 @@ module.exports = function (sequelize) {
 
 	Participant.associate = function (models) {
 		Participant.hasOne(models.Participant, {
+			as: "SecretSanta",
 			foreignKey: "secret_santa_id",
 		});
 
