@@ -82,6 +82,15 @@ const getParticipantByEventIdAndEmailQuery = gql`
 	}
 `;
 
+const autoAssignSecretSantaMutation = gql`
+	mutation autoAssignSecretSanta($eventId: Int!) {
+		autoAssignSecretSanta(eventId: $eventId) {
+			participant_id
+			secret_santa_id
+		}
+	}
+`;
+
 export {
 	createEventMutation,
 	createParticipantMutation,
@@ -91,4 +100,5 @@ export {
 	deleteEventMutation,
 	createGiftMutation,
 	getParticipantByEventIdAndEmailQuery,
+	autoAssignSecretSantaMutation,
 };
