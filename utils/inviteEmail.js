@@ -9,11 +9,9 @@ async function invitationEmail() {
 	let transporter = nodemailer.createTransport({
 		host: "smtp.gmail.com",
 		service: "Gmail",
-		// port: 587,
-		// secure: false, // true for 465, false for other ports
 		auth: {
-			user: process.env.GMAIL_USER, // generated ethereal user
-			pass: process.env.GMAIL_PASSWORD, // generated ethereal password
+			user: process.env.GMAIL_USER,
+			pass: process.env.GMAIL_PASSWORD,
 		},
 	});
 
