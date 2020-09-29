@@ -142,6 +142,15 @@ const ParticipantEvent = (props) => {
 
   // develop useEffect hook to call getGiftByParticipantId
 
+  useEffect(() => {
+    getGiftByParticipantId(
+      parseInt(participantId),
+      getAccessTokenSilently(),
+      console.log(data.getGiftByParticipantId),
+      showError
+    );
+  }, []);
+
   return (
     <>
       <Row gutter={[30, 30]} style={{ padding: 20 }}>
