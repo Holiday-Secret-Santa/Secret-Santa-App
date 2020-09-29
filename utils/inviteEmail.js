@@ -21,9 +21,9 @@ async function invitationEmail(
 			pass: process.env.GMAIL_PASSWORD,
 		},
 		tls: {
-			rejectUnauthorized: false
+			rejectUnauthorized: false,
 		},
-		secure: false, 
+		secure: false,
 	});
 
 	// send mail with defined transport object
@@ -31,18 +31,18 @@ async function invitationEmail(
 		{
 			from: '"Secret Santa App" <secretsanta.partyapp@gmail.com>', // sender address
 			to: `${email}`, // list of receivers
-			subject: `${planner} sent you a Secret Santa invitation!`, // Subject line
+			subject: `Someone sent you a Secret Santa invitation!`, // Subject line
 			text: " ", // plain text body - nothing included here at this time
 			html: `<b>
 		<h1>You are invited the ${description} Secret Santa Party!</h>
-		<p>Here Secret Santa Party information.</p>
+		<p>${planner} sent you a Secret Santa invitation. Here Secret Santa Party information.</p>
 		<li>
 			<ul>Date: ${date}</ul>
 			<ul>Time: ${start_time}</ul>
 			<ul>Location: ${location}</ul>
 		</li>
 
-		<p>Please let ${planner} know if you plan on attending this Secret Santa event by 
+		<p>Please let your host know if you plan on attending this Secret Santa event by 
 		clicking on the link provided below to RSVP for the event. The link provided below will
 		redirect you to the Secret Santa App platform.</p>
 
