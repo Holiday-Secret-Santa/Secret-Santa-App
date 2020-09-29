@@ -134,8 +134,8 @@ const setParticipantData = (d, setData) => {
 			key: index + 1,
 			participant: `${participant.first_name} ${participant.last_name}`,
 			guestEmail: participant.email,
-			secretSanta: "",
-			secretEmail: "",
+			secretSanta: `${participant.SecretSanta.first_name} ${participant.SecretSanta.last_name}`,
+			secretEmail: participant.SecretSanta.email,
 		};
 		formattedData.push(participantEntry);
 	});
