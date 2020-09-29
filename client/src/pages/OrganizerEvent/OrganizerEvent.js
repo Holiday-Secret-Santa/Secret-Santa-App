@@ -10,7 +10,7 @@ import { TeamOutlined } from "@ant-design/icons";
 import ModalPopUp from "../../components/ModalPopUp/ModalPopUp";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
-	createParticipantLogic,
+	createParticipant,
 	getParticipantsbyEventId,
 	getEventByEventId,
 	autoAssignSecretSanta,
@@ -25,10 +25,17 @@ const showSuccess = () => {
 };
 
 // Notification for when participant is not created
-const showError = ({ error }) => {
+const showError = (error) => {
 	notification.error({
 		message: "Error",
 		description: "We couldn't add your participant due to error: " + error,
+	});
+};
+
+const showAssignmentError = (error) => {
+	notification.error({
+		message: "Error",
+		description: "We couldn't assign secret santas due to error: " + error,
 	});
 };
 
@@ -76,26 +83,19 @@ const getColumns = () => {
 	return columns;
 };
 
-const EventCard = (props) => {
+const EventCard = ({ description, date, start_time, location, action }) => {
 	return (
 		<DetailCard
-			title={props.description}
-			date={props.date}
-			startTime={props.start_time}
-			location={props.location}
+			title={description}
+			date={date}
+			startTime={start_time}
+			location={location}
 			actions={[
 				<span>
 					<Button
 						icon={<TeamOutlined style={{ fontSize: "18px" }} />}
 						text={" Make Assignments"}
-						action={() => {
-							autoAssignSecretSanta(
-								eventId,
-								getAccessTokenSilently(),
-								onSuccess,
-								showError
-							);
-						}}
+						action={action}
 					/>
 				</span>,
 			]}
@@ -142,60 +142,47 @@ const setParticipantData = (d, setData) => {
 	setData(formattedData);
 };
 
-// Function to update participant info dynamically
-const updateParticipantDynamically = (eventId, data, getToken) => {
-	showSuccess();
-	getParticipantsbyEventId(
-		parseInt(eventId),
-		getToken(),
-		(d) => setParticipantData(d, data),
-		showError
-	);
-};
-
 const OrganizerEvent = (props) => {
 	const { getAccessTokenSilently } = useAuth0();
 	const [data, setData] = useState([]);
 	const [eventData, setEventData] = useState({});
+	const [reloadState, setReloadState] = useState(false);
+	const eventId = parseInt(props.match.params.id);
 
 	// Rendering participant info
 	useEffect(() => {
 		getParticipantsbyEventId(
-			parseInt(props.match.params.id),
+			eventId,
 			getAccessTokenSilently(),
 			(d) => setParticipantData(d, setData),
 			showError
 		);
-	}, [getAccessTokenSilently, props.match.params.id]);
+	}, [getAccessTokenSilently, eventId, reloadState]);
 
 	// Rendering event info
 	useEffect(() => {
 		getEventByEventId(
-			parseInt(props.match.params.id),
+			eventId,
 			getAccessTokenSilently(),
 			(d) => setEventData(d.getEvent),
 			showError
 		);
-	}, [getAccessTokenSilently, props.match.params.id]);
+	}, [getAccessTokenSilently, eventId]);
 
 	// Function to create participant
 	// Keeping function on this page because relies on props id to link to Event
-	const createParticipant = async (first_name, last_name, email) => {
+	const processCreateParticipant = (first_name, last_name, email) => {
 		// Creating input variable
-		createParticipantLogic(
+		createParticipant(
 			first_name,
 			last_name,
 			email,
-			getAccessTokenSilently,
-			props.match.params.id,
-			// Reinvoking get participant query to dynamically update the table with
-			// new participant info
-			() =>
-				updateParticipantDynamically(
-					props.match.params.id,
-					setData,
-					getAccessTokenSilently
-				),
+			getAccessTokenSilently(),
+			eventId,
+			() => {
+				showSuccess();
+				setReloadState(!reloadState);
+			},
 			showError
 		);
 	};
@@ -209,6 +196,14 @@ const OrganizerEvent = (props) => {
 						date={eventData.date}
 						start_time={eventData.start_time}
 						location={eventData.location}
+						action={() =>
+							autoAssignSecretSanta(
+								eventId,
+								getAccessTokenSilently(),
+								() => setReloadState(!reloadState),
+								showAssignmentError
+							)
+						}
 					/>
 				</ResponsiveColumn>
 				<ResponsiveColumn lg={18}>
@@ -222,7 +217,7 @@ const OrganizerEvent = (props) => {
 					<TableComp dataSource={data} columns={getColumns(true)} />
 					<Divider />
 					<div className="center">
-						<ModalPopUp handleLogic={createParticipant} />
+						<ModalPopUp handleLogic={processCreateParticipant} />
 					</div>
 				</ResponsiveColumn>
 			</Row>
@@ -238,8 +233,7 @@ export {
 	EventCard,
 	getRsvpData,
 	ChartTitle,
-	createParticipantLogic,
+	createParticipant,
 	setParticipantData,
-	updateParticipantDynamically,
 };
 export default OrganizerEvent;

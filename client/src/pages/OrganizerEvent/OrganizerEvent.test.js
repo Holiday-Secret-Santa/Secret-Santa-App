@@ -11,7 +11,6 @@ import OrganizerEvent, {
 	getRsvpData,
 	ChartTitle,
 	setParticipantData,
-	updateParticipantDynamically,
 } from "./OrganizerEvent";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -48,11 +47,6 @@ test("renders organizer event page", () => {
 	});
 	getRsvpData();
 	ChartTitle();
-	updateParticipantDynamically(
-		1,
-		() => {},
-		() => {}
-	);
 
 	var participantTest = {
 		getParticipantsByEventId: [
