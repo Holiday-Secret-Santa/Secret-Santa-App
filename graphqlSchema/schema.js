@@ -1,6 +1,7 @@
 const { buildSchema } = require("graphql");
 const { random } = require("lodash");
 const _ = require("lodash");
+const invitationEmail = require("../utils/inviteEmail");
 const db = require("./../models");
 var schema = buildSchema(`
 	input InputEvent {
@@ -105,7 +106,7 @@ const getParticipantsByEventId = (eventId) => {
 	});
 };
 
-const createParticipantObject = (input) => {
+const createParticipantObject = async (input) => {
 	db.Participant.create({
 		first_name: input.first_name,
 		last_name: input.last_name,
@@ -114,6 +115,19 @@ const createParticipantObject = (input) => {
 		date_sent: new Date(),
 		EventId: input.EventId,
 	});
+	var eventData = await db.Event.findOne({ where: { id: input.EventId } });
+	console.log("EVENT DATA: " + JSON.stringify(eventData));
+
+	// calling invitationEmail function when participant is created
+	// so participant can get email once added to event
+	invitationEmail(
+		input.email,
+		eventData.planner_email,
+		eventData.description,
+		eventData.date,
+		eventData.start_time,
+		eventData.location
+	);
 };
 
 const assignSecretSanta = (participant_id, secret_santa_id) => {
