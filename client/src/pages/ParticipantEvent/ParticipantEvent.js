@@ -138,7 +138,7 @@ const ParticipantEvent = (props) => {
   const [participantId, setParticipantId] = useState({});
   const [wishList, setWishList] = useState({});
 
-  useEffect(() => {
+  useEffect( () => {
     getParticipantByEventIdAndEmail(
       parseInt(eventId),
       email,
@@ -146,18 +146,24 @@ const ParticipantEvent = (props) => {
       (data) => setParticipantId(data.getParticipantByEventIdAndEmail.id),
       showError
     );
-  }, [eventId, email, getAccessTokenSilently]);
-
-  // develop useEffect hook to call getGiftByParticipantId
-
-  useEffect(() => {
     getGiftByParticipantId(
-      3,
+      parseInt(participantId),
       getAccessTokenSilently(),
       (data) => console.log(data.getGiftByParticipantId),
       giftError
     );
-  }, []);
+  }, [eventId, email, getAccessTokenSilently, participantId]);
+
+  // develop useEffect hook to call getGiftByParticipantId
+
+  // useEffect(() => {
+  //   getGiftByParticipantId(
+  //     parseInt(participantId),
+  //     getAccessTokenSilently(),
+  //     (data) => console.log(data.getGiftByParticipantId),
+  //     giftError
+  //   );
+  // }, []);
 
   return (
     <>
