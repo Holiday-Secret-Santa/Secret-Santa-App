@@ -127,11 +127,11 @@ const createGift = async (
 	);
 };
 
-const createParticipantLogic = async (
+const createParticipant = async (
 	first_name,
 	last_name,
 	email,
-	getAccessTokenSilently,
+	token,
 	eventId,
 	showSuccessMsg,
 	showErrorMsg
@@ -145,7 +145,6 @@ const createParticipantLogic = async (
 		},
 	};
 
-	const token = await getAccessTokenSilently();
 	return processWithClient(
 		token,
 		createParticipantMutation,
@@ -190,12 +189,13 @@ const getParticipantByEventIdAndEmail = (
 	);
 };
 
-const autoAssignSecretSanta = async (eventId) => {
+const autoAssignSecretSanta = async (eventId, token, onSuccess, onError) => {
 	const variables = {
 		eventId: eventId,
 	};
 
 	return processWithClient(
+		token,
 		autoAssignSecretSantaMutation,
 		variables,
 		onSuccess,
@@ -209,7 +209,7 @@ export {
 	processWithClient,
 	createEvent,
 	getUserEvents,
-	createParticipantLogic,
+	createParticipant,
 	getParticipantsbyEventId,
 	getEventByEventId,
 	deleteEvent,
