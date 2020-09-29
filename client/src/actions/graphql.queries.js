@@ -69,14 +69,14 @@ const getParticipantsbyEventIdQuery = gql`
 `;
 
 const getGiftByParticipantIdQuery = gql`
-query GetGiftByParticipantId($participantId: Int!) {
-  getGiftByParticipantId(participantId: $participantId) {
-    id
-    description
-    link
-    price
-  }
-}
+	query GetGiftByParticipantId($participantId: Int!) {
+		getGiftByParticipantId(participantId: $participantId) {
+			id
+			description
+			link
+			price
+		}
+	}
 `;
 
 const getEventByEventIdQuery = gql`
@@ -109,14 +109,14 @@ const autoAssignSecretSantaMutation = gql`
 `;
 
 export {
-  createEventMutation,
-  createParticipantMutation,
-  getUserEventsQuery,
-  getParticipantsbyEventIdQuery,
-  getEventByEventIdQuery,
-  deleteEventMutation,
-  createGiftMutation,
-  getParticipantByEventIdAndEmailQuery,
-  getGiftByParticipantIdQuery,
-  autoAssignSecretSantaMutation,
+	createEventMutation,
+	createParticipantMutation,
+	getUserEventsQuery,
+	getParticipantsbyEventIdQuery,
+	getEventByEventIdQuery,
+	deleteEventMutation,
+	createGiftMutation,
+	getParticipantByEventIdAndEmailQuery,
+	getGiftByParticipantIdQuery,
+	autoAssignSecretSantaMutation,
 };
