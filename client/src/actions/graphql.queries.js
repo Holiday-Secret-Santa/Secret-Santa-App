@@ -62,6 +62,17 @@ const getParticipantsbyEventIdQuery = gql`
 	}
 `;
 
+const getGiftByParticipantId = gql`
+query GetGiftByParticipantId($participantId: Int!) {
+  getGiftByParticipantId(participantId: $participantId) {
+    id
+    description
+    link
+    price
+  }
+}
+`;
+
 const getEventByEventIdQuery = gql`
 	query GetEvent($id: Int!) {
 		getEvent(id: $id) {
@@ -83,12 +94,13 @@ const getParticipantByEventIdAndEmailQuery = gql`
 `;
 
 export {
-	createEventMutation,
-	createParticipantMutation,
-	getUserEventsQuery,
-	getParticipantsbyEventIdQuery,
-	getEventByEventIdQuery,
-	deleteEventMutation,
-	createGiftMutation,
-	getParticipantByEventIdAndEmailQuery,
+  createEventMutation,
+  createParticipantMutation,
+  getUserEventsQuery,
+  getParticipantsbyEventIdQuery,
+  getEventByEventIdQuery,
+  deleteEventMutation,
+  createGiftMutation,
+  getParticipantByEventIdAndEmailQuery,
+  getGiftByParticipantId,
 };
