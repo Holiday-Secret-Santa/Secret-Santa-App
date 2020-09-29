@@ -189,7 +189,7 @@ const getParticipantByEventIdAndEmail = (
 	);
 };
 
-const autoAssignSecretSanta = async (eventId, token, onSuccess, onError) => {
+const autoAssignSecretSanta = (eventId, token, onSuccess, onError) => {
 	const variables = {
 		eventId: eventId,
 	};

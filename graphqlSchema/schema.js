@@ -39,7 +39,19 @@ var schema = buildSchema(`
 		EventId: Int,
 		secret_santa_id: Int
 	}
-	type ParticipantSanata {
+	type ParticipantWithSanta {
+		id: Int,
+		first_name: String,
+		last_name: String,
+		email: String,
+		invite_status: String,
+		date_sent: String,
+		date_accepted: String,
+		EventId: Int,
+		secret_santa_id: Int,
+		SecretSanta: Participant
+	}
+	type ParticipantSanta {
 		participant_id: Int,
 		secret_santa_id: Int
 	}
@@ -61,7 +73,7 @@ var schema = buildSchema(`
 		getEvent(id: Int): Event,
 		getParticipants: [Participant],
 		getParticipant(id: Int): Participant,
-		getParticipantsByEventId(eventId: Int): [Participant],
+		getParticipantsByEventId(eventId: Int): [ParticipantWithSanta],
 		getGifts: [Gift],
 		getGift(id: Int): Gift,
 		getGiftByParticipantId(participant_id: Int): [Gift],
@@ -77,12 +89,20 @@ var schema = buildSchema(`
 		createGift(input: InputGift): Gift,
 		deleteGift(id: Int): Int,
 		assignSecretSanta(participant_id: Int, secret_santa_id: Int): [Int],
-		autoAssignSecretSanta(eventId: Int): [ParticipantSanata],
+		autoAssignSecretSanta(eventId: Int): [ParticipantSanta],
 	}
 
 `);
 const getParticipantsByEventId = (eventId) => {
-	return db.Participant.findAll({ where: { EventId: eventId } });
+	return db.Participant.findAll({
+		where: { EventId: eventId },
+		include: [
+			{
+				model: db.Participant,
+				as: "SecretSanta",
+			},
+		],
+	});
 };
 
 const createParticipantObject = (input) => {
@@ -94,6 +114,17 @@ const createParticipantObject = (input) => {
 		date_sent: new Date(),
 		EventId: input.EventId,
 	});
+};
+
+const assignSecretSanta = (participant_id, secret_santa_id) => {
+	return db.Participant.update(
+		{ secret_santa_id: secret_santa_id },
+		{
+			where: {
+				id: participant_id,
+			},
+		}
+	);
 };
 
 var root = {
@@ -151,16 +182,7 @@ var root = {
 			where: { ParticipantId: participant_id },
 		});
 	},
-	assignSecretSanta: ({ participant_id, secret_santa_id }) => {
-		return db.Participant.update(
-			{ secret_santa_id: secret_santa_id },
-			{
-				where: {
-					id: participant_id,
-				},
-			}
-		);
-	},
+	assignSecretSanta: assignSecretSanta,
 	autoAssignSecretSanta: async ({ eventId }) => {
 		let results = await getParticipantsByEventId(eventId);
 		if (results.length < 2) return [];
@@ -172,6 +194,7 @@ var root = {
 				santaIndex = random(Math.max(availableSantas.length - 1, 0));
 			} while (availableSantas[santaIndex] === p && availableSantas.length > 1);
 			let santa_id = availableSantas.splice(santaIndex, 1)[0];
+			assignSecretSanta(p, santa_id);
 			return {
 				participant_id: p,
 				secret_santa_id: santa_id,

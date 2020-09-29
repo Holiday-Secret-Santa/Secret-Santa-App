@@ -58,6 +58,12 @@ const getParticipantsbyEventIdQuery = gql`
 			first_name
 			last_name
 			email
+			SecretSanta {
+				id
+				first_name
+				last_name
+				email
+			}
 		}
 	}
 `;
