@@ -62,7 +62,7 @@ const getParticipantsbyEventIdQuery = gql`
 	}
 `;
 
-const getGiftByParticipantId = gql`
+const getGiftByParticipantIdQuery = gql`
 query GetGiftByParticipantId($participantId: Int!) {
   getGiftByParticipantId(participantId: $participantId) {
     id
@@ -102,5 +102,5 @@ export {
   deleteEventMutation,
   createGiftMutation,
   getParticipantByEventIdAndEmailQuery,
-  getGiftByParticipantId,
+  getGiftByParticipantIdQuery,
 };
