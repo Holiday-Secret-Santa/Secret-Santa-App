@@ -20,15 +20,20 @@ async function invitationEmail(
 			user: process.env.GMAIL_USER,
 			pass: process.env.GMAIL_PASSWORD,
 		},
+		tls: {
+			rejectUnauthorized: false
+		},
+		secure: false, 
 	});
 
 	// send mail with defined transport object
-	let info = await transporter.sendMail({
-		from: '"Secret Santa App" <secretsanta.partyapp@gmail.com>', // sender address
-		to: `${email}`, // list of receivers
-		subject: `${planner} sent you a Secret Santa invitation!`, // Subject line
-		text: " ", // plain text body - nothing included here at this time
-		html: `<b>
+	let info = await transporter.sendMail(
+		{
+			from: '"Secret Santa App" <secretsanta.partyapp@gmail.com>', // sender address
+			to: `${email}`, // list of receivers
+			subject: `${planner} sent you a Secret Santa invitation!`, // Subject line
+			text: " ", // plain text body - nothing included here at this time
+			html: `<b>
 		<h1>You are invited the ${description} Secret Santa Party!</h>
 		<p>Here Secret Santa Party information.</p>
 		<li>
@@ -46,10 +51,18 @@ async function invitationEmail(
 			https://secret-santa-platform.herokuapp.com/</a></ul>
 		</li>
         </b>`, // html body
-	});
+		},
+		(err, success) => {
+			if (err) {
+				console.log(err);
+			} else {
+				console.log(success);
+			}
+		}
+	);
 
-	console.log("Message sent: %s", info.messageId);
-	// Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+	// console.log("Message sent: %s", info.messageId);
+	// // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 }
 
 module.exports = invitationEmail;
