@@ -146,24 +146,18 @@ const ParticipantEvent = (props) => {
       (data) => setParticipantId(data.getParticipantByEventIdAndEmail.id),
       showError
     );
+  }, [eventId, email, getAccessTokenSilently, participantId]);
+
+  // develop useEffect hook to call getGiftByParticipantId
+
+  useEffect(() => {
     getGiftByParticipantId(
       parseInt(participantId),
       getAccessTokenSilently(),
       (data) => console.log(data.getGiftByParticipantId),
       giftError
     );
-  }, [eventId, email, getAccessTokenSilently, participantId]);
-
-  // develop useEffect hook to call getGiftByParticipantId
-
-  // useEffect(() => {
-  //   getGiftByParticipantId(
-  //     parseInt(participantId),
-  //     getAccessTokenSilently(),
-  //     (data) => console.log(data.getGiftByParticipantId),
-  //     giftError
-  //   );
-  // }, []);
+  }, []);
 
   return (
     <>
