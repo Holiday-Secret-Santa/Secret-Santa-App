@@ -115,6 +115,8 @@ const createParticipantObject = (input) => {
 		date_sent: new Date(),
 		EventId: input.EventId,
 	});
+	var eventData = root.getEvent(input.EventId);
+
 	// calling invitationEmail function when participant is created
 	// so participant can get email once added to event
 	invitationEmail(
@@ -123,7 +125,7 @@ const createParticipantObject = (input) => {
 		"Test Description",
 		"12/12/2020",
 		"7pm",
-		"remote link"
+		"remote link",
 	);
 };
 
