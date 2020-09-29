@@ -45,7 +45,7 @@ test("renders organizer event page", () => {
 		start_time: "7pm",
 		location: "remote link",
 	});
-	getRsvpData();
+	getRsvpData({ accepted: 1, rejected: 2, pending: 3 });
 	ChartTitle();
 
 	var participantTest = {
@@ -63,5 +63,9 @@ test("renders organizer event page", () => {
 		],
 	};
 
-	setParticipantData(participantTest, () => {});
+	setParticipantData(
+		participantTest,
+		() => {},
+		() => {}
+	);
 });
