@@ -117,7 +117,14 @@ const createParticipantObject = (input) => {
 	});
 	// calling invitationEmail function when participant is created
 	// so participant can get email once added to event
-	invitationEmail(email, planner, description, date, start_time, location);
+	invitationEmail(
+		"krystal.e.garcia@gmail.com",
+		"Krystal Duran",
+		"Test Description",
+		"12/12/2020",
+		"7pm",
+		"remote link"
+	);
 };
 
 const assignSecretSanta = (participant_id, secret_santa_id) => {
