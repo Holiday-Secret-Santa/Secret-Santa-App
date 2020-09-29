@@ -136,6 +136,7 @@ const ParticipantEvent = (props) => {
   const { user, getAccessTokenSilently } = useAuth0();
   const { email } = user;
   const [participantId, setParticipantId] = useState({});
+  const [wishList, setWishList] = useState({});
 
   useEffect(() => {
     getParticipantByEventIdAndEmail(
