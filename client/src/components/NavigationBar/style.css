@@ -1,5 +1,5 @@
 .custom-nav-style {
-	background: linear-gradient(0.25turn, #d2ddcb, #5a886e) !important;
+	background: linear-gradient(to bottom, #5a886e, #d2ddcb) !important;
 	border-bottom: 0.01px solid #758c80 !important;
 }
 
