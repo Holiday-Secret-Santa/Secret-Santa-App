@@ -85,7 +85,7 @@ const AddGift = (props) => {
       <Row gutter={[30, 30]} style={{ padding: 20 }} className="addGiftForm">
         <ResponsiveColumn lg={24}>
           <Form {...layout} form={form} onFinish={onFinish} name="nest-messages">
-            <h1>Add Gift Ideas</h1>
+            <h1 className="add-gift-header">Add Gift Ideas</h1>
             {/* Input for gift description*/}
             <FormInputText
               name="description"
