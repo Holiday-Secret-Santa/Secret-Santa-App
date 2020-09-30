@@ -98,7 +98,10 @@ const AddGift = (props) => {
               label="Price"
               rules={giftPriceRules}
             />
-            <AddButton {...tailLayout} htmlType="submit" text="Add Gift" />
+            <Form.Item {...tailLayout}>
+              <AddButton htmlType="submit" text="Add Gift" />
+            </Form.Item>
+            
           </Form>
         </ResponsiveColumn>
       </Row>
