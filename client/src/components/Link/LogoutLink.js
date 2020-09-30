@@ -11,9 +11,7 @@ const LogoutLink = () => {
 			data-testid="logout-btn"
 			to=""
 			onClick={() => logout({ returnTo: window.location.origin })}
-		>
-			Sign Out
-		</Link>
+		></Link>
 	);
 };
 

@@ -1,6 +1,9 @@
 .custom-nav-style {
-	background: linear-gradient(to bottom, #5a886e, #d2ddcb) !important;
-	border-bottom: 0.01px solid #758c80 !important;
+	background: linear-gradient(
+		to bottom,
+		rgba(90, 136, 110, 0.8),
+		rgba(223, 226, 221, 0.5)
+	) !important;
 }
 
 .icon-custom-style {

@@ -29,14 +29,14 @@ const AuthenticatedMenu = () => {
 				icon={<GiftOutlined style={{ fontSize: "20px" }} />}
 				className="icon-custom-style"
 			>
-				<Link to="/events">Events</Link>
+				<Link to="/events"></Link>
 			</Menu.Item>
 			<Menu.Item
 				key="3"
 				icon={<UserOutlined style={{ fontSize: "20px" }} />}
 				className="icon-custom-style"
 			>
-				<Link to="/profile">Profile</Link>
+				<Link to="/profile"></Link>
 			</Menu.Item>
 			<Menu.Item
 				key="4"
