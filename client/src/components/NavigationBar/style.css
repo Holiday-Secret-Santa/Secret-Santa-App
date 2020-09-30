@@ -1,4 +1,15 @@
 .custom-nav-style {
-	background: linear-gradient(0.25turn, #cad2c5, #5a886e) !important;
-	border-bottom: 0.1px solid #60766a !important;
+	background: linear-gradient(0.25turn, #d2ddcb, #5a886e) !important;
+	border-bottom: 0.01px solid #758c80 !important;
+}
+
+.icon-custom-style {
+	float: right !important;
+	font-size: 16px !important;
+	color: #9a1111 !important;
+	font-family: cursive !important;
+}
+
+.icon-custom-style:hover {
+	color: seagreen !important;
 }

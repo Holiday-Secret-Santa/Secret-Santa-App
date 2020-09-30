@@ -24,13 +24,25 @@ const AuthenticatedMenu = () => {
 	return (
 		<Menu mode="horizontal" className="custom-nav-style">
 			<LogoLink />
-			<Menu.Item key="2" icon={<GiftOutlined />} style={{ float: "right" }}>
+			<Menu.Item
+				key="2"
+				icon={<GiftOutlined style={{ fontSize: "20px" }} />}
+				className="icon-custom-style"
+			>
 				<Link to="/events">Events</Link>
 			</Menu.Item>
-			<Menu.Item key="3" icon={<UserOutlined />} style={{ float: "right" }}>
+			<Menu.Item
+				key="3"
+				icon={<UserOutlined style={{ fontSize: "20px" }} />}
+				className="icon-custom-style"
+			>
 				<Link to="/profile">Profile</Link>
 			</Menu.Item>
-			<Menu.Item key="4" icon={<LogoutOutlined />} style={{ float: "right" }}>
+			<Menu.Item
+				key="4"
+				icon={<LogoutOutlined style={{ fontSize: "20px" }} />}
+				className="icon-custom-style"
+			>
 				<LogoutLink />
 			</Menu.Item>
 		</Menu>
@@ -41,7 +53,11 @@ const UnauthenticatedMenu = () => {
 	return (
 		<Menu mode="horizontal" className="custom-nav-style">
 			<LogoLink />
-			<Menu.Item key="5" icon={<LoginOutlined />} style={{ float: "right" }}>
+			<Menu.Item
+				key="5"
+				icon={<LoginOutlined style={{ fontSize: "20px" }} />}
+				className="icon-custom-style"
+			>
 				<LoginLink />
 			</Menu.Item>
 		</Menu>
