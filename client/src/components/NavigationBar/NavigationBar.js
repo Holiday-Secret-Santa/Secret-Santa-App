@@ -6,15 +6,11 @@ import {
 	LogoutOutlined,
 	UserOutlined,
 	GiftOutlined,
-	MenuUnfoldOutlined,
 } from "@ant-design/icons";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginLink, LogoutLink } from "../Link";
 import appLogo from "./appLogo.png";
 import "./style.css";
-import MenuItem from "antd/lib/menu/MenuItem";
-
-const { SubMenu } = Menu;
 
 const LogoLink = () => {
 	return (
@@ -24,48 +20,32 @@ const LogoLink = () => {
 	);
 };
 
-const createMenuItem = (key, icon, children) => {
+const AuthenticatedMenu = () => {
 	return (
-		<Menu.Item key={key} icon={icon} style={{ padding: "7px" }}>
-			{children}
-		</Menu.Item>
-	);
-};
-
-const createMenu = (items) => {
-	return (
-		<Menu
-			mode="horizontal"
-			style={{ background: "#cad2c5", borderColor: "#2c6e49" }}
-		>
-			<MenuItem>
-				<LogoLink />
-			</MenuItem>
-			<SubMenu
-				key="SubMenu"
-				icon={
-					<MenuUnfoldOutlined style={{ fontSize: "20px", color: "#2c6e49" }} />
-				}
-				style={{ float: "right" }}
-			>
-				<Menu.ItemGroup>{items}</Menu.ItemGroup>
-			</SubMenu>
+		<Menu mode="horizontal" className="custom-nav-style">
+			<LogoLink />
+			<Menu.Item key="2" icon={<GiftOutlined />} style={{ float: "right" }}>
+				<Link to="/events">Events</Link>
+			</Menu.Item>
+			<Menu.Item key="3" icon={<UserOutlined />} style={{ float: "right" }}>
+				<Link to="/profile">Profile</Link>
+			</Menu.Item>
+			<Menu.Item key="4" icon={<LogoutOutlined />} style={{ float: "right" }}>
+				<LogoutLink />
+			</Menu.Item>
 		</Menu>
 	);
 };
 
-const AuthenticatedMenu = () => {
-	return createMenu(
-		<>
-			{createMenuItem(4, <LogoutOutlined />, <LogoutLink />)}
-			{createMenuItem(3, <UserOutlined />, <Link to="/profile">Profile</Link>)}
-			{createMenuItem(2, <GiftOutlined />, <Link to="/events">Events</Link>)}
-		</>
-	);
-};
-
 const UnauthenticatedMenu = () => {
-	return createMenu(createMenuItem(4, <LoginOutlined />, <LoginLink />));
+	return (
+		<Menu mode="horizontal" className="custom-nav-style">
+			<LogoLink />
+			<Menu.Item key="5" icon={<LoginOutlined />} style={{ float: "right" }}>
+				<LoginLink />
+			</Menu.Item>
+		</Menu>
+	);
 };
 
 const NavigationBar = () => {
@@ -73,5 +53,4 @@ const NavigationBar = () => {
 	return isAuthenticated ? <AuthenticatedMenu /> : <UnauthenticatedMenu />;
 };
 
-export { AuthenticatedMenu };
 export default NavigationBar;
