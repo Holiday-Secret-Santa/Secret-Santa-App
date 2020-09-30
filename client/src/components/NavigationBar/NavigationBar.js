@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, Image } from "antd";
+import { Menu, Image, Tooltip } from "antd";
 import { Link } from "react-router-dom";
 import {
 	LoginOutlined,
@@ -11,6 +11,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { LoginLink, LogoutLink } from "../Link";
 import appLogo from "./appLogo.png";
 import "./style.css";
+
+const color = "rgba(90, 136, 110, 0.7)";
 
 const LogoLink = () => {
 	return (
@@ -24,26 +26,35 @@ const AuthenticatedMenu = () => {
 	return (
 		<Menu mode="horizontal" className="custom-nav-style">
 			<LogoLink />
+
 			<Menu.Item
 				key="4"
 				icon={<LogoutOutlined style={{ fontSize: "20px" }} />}
 				className="icon-custom-style"
 			>
-				<LogoutLink />
+				<Tooltip title="Logout" color={color} key={color} placement="left">
+					<LogoutLink />
+				</Tooltip>
 			</Menu.Item>
+
 			<Menu.Item
 				key="3"
 				icon={<UserOutlined style={{ fontSize: "20px" }} />}
 				className="icon-custom-style"
 			>
-				<Link to="/profile"></Link>
+				<Tooltip title="Profile" color={color} key={color} placement="left">
+					<Link to="/profile"></Link>
+				</Tooltip>
 			</Menu.Item>
+
 			<Menu.Item
 				key="2"
 				icon={<GiftOutlined style={{ fontSize: "20px" }} />}
 				className="icon-custom-style"
 			>
-				<Link to="/events"></Link>
+				<Tooltip title="Events" color={color} key={color} placement="left">
+					<Link to="/events"></Link>
+				</Tooltip>
 			</Menu.Item>
 		</Menu>
 	);
@@ -53,6 +64,7 @@ const UnauthenticatedMenu = () => {
 	return (
 		<Menu mode="horizontal" className="custom-nav-style">
 			<LogoLink />
+
 			<Menu.Item
 				key="5"
 				icon={<LoginOutlined style={{ fontSize: "20px" }} />}
