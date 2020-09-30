@@ -13,6 +13,13 @@ const layout = {
   wrapperCol: { span: 8 },
 };
 
+const tailLayout = {
+  wrapperCol: {
+    offset: 8,
+    span: 16,
+  },
+};
+
 const descriptionFieldRules = [
   { required: true, message: "please enter gift description" },
 ];
@@ -91,7 +98,7 @@ const AddGift = (props) => {
               label="Price"
               rules={giftPriceRules}
             />
-            <AddButton htmlType="submit" text="Add Gift" />
+            <AddButton {...tailLayout} htmlType="submit" text="Add Gift" />
           </Form>
         </ResponsiveColumn>
       </Row>
