@@ -8,12 +8,17 @@
 
 .icon-custom-style {
 	float: right !important;
-	font-size: 15px !important;
+	font-size: 14px !important;
 	color: rgb(214, 40, 40) !important;
 	font-family: cursive !important;
 }
 
 .icon-custom-style:hover {
 	color: rgb(44, 110, 73) !important;
+	border-color: rgb(44, 110, 73, 0) !important;
+}
+
+.ant-tooltip {
+	font-size: 16px !important;
 	border-color: rgb(44, 110, 73, 0) !important;
 }
