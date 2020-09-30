@@ -9,6 +9,7 @@ import {
 	deleteEventMutation,
 	createGiftMutation,
 	getParticipantByEventIdAndEmailQuery,
+	getGiftByParticipantIdQuery,
 	autoAssignSecretSantaMutation,
 } from "./graphql.queries";
 
@@ -189,6 +190,22 @@ const getParticipantByEventIdAndEmail = (
 	);
 };
 
+const getGiftByParticipantId = (participantId, token, onSuccess, onError) => {
+	const variables = {
+		participantId: participantId,
+	};
+
+	return processWithClient(
+		token,
+		getGiftByParticipantIdQuery,
+		variables,
+		onSuccess,
+		onError
+	);
+};
+
+// Query APIs
+
 const autoAssignSecretSanta = (eventId, token, onSuccess, onError) => {
 	const variables = {
 		eventId: eventId,
@@ -202,7 +219,6 @@ const autoAssignSecretSanta = (eventId, token, onSuccess, onError) => {
 		onError
 	);
 };
-// Query APIs
 
 export {
 	graphQLClient,
@@ -216,4 +232,5 @@ export {
 	createGift,
 	getParticipantByEventIdAndEmail,
 	autoAssignSecretSanta,
+	getGiftByParticipantId,
 };

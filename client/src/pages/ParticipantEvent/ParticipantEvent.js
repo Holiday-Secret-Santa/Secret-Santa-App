@@ -4,7 +4,10 @@ import { GiftTwoTone, DeleteTwoTone } from "@ant-design/icons";
 import DetailCard from "../../components/DetailCard/DetailCard";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import TableComp from "./../../components/Table";
-import { getParticipantByEventIdAndEmail } from "./../../actions/graphql.api";
+import {
+	getParticipantByEventIdAndEmail,
+	getGiftByParticipantId,
+} from "./../../actions/graphql.api";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import "./style.css";
@@ -14,10 +17,10 @@ const getDummyItems = (size) => {
 
 	for (let i = 0; i < size; i++) {
 		itemsArray.push({
-			key: i,
-			item: `item ${i}`,
+			id: i,
+			description: `item ${i}`,
 			price: 32,
-			url: `http:"www.example.html"`,
+			link: 'http:"www.example.html"',
 		});
 	}
 	return itemsArray;
@@ -27,18 +30,14 @@ const getMySecretSantaItems = () => {
 	return getDummyItems(8);
 };
 
-const getMyItems = () => {
-	return getDummyItems(3);
-};
-
 const customColor = "#D62828";
 
 const getColumns = (showDeleteAction) => {
 	const columns = [
 		{
 			title: "Wish List Items",
-			dataIndex: "item",
-			key: "item",
+			dataIndex: "description",
+			key: "description",
 			align: "center",
 		},
 		{
@@ -50,14 +49,14 @@ const getColumns = (showDeleteAction) => {
 		},
 		{
 			title: "Purchase Gift Here",
-			dataIndex: "url",
-			key: "url",
+			dataIndex: "link",
+			key: "link",
 			responsive: ["lg"],
 			align: "center",
 		},
 	];
 
-	if (showDeleteAction)
+	if (showDeleteAction) {
 		columns.push({
 			title: "",
 			dataIndex: "",
@@ -66,8 +65,8 @@ const getColumns = (showDeleteAction) => {
 				<Tooltip title="Delete Gift Item">
 					<Button
 						type="text"
-						data-testid={`delete-gift-btn-${record.key}`}
-						onClick={() => alert(record.item)}
+						data-testid={`delete-gift-btn-${record.id}`}
+						onClick={() => alert(record.id)}
 						icon={
 							<DeleteTwoTone
 								twoToneColor={customColor}
@@ -78,6 +77,7 @@ const getColumns = (showDeleteAction) => {
 				</Tooltip>
 			),
 		});
+	}
 
 	return columns;
 };
@@ -124,11 +124,19 @@ const showError = (error) => {
 	});
 };
 
+const giftError = (error) => {
+	notification.error({
+		message: "Gift Error",
+		description: "Unable to load gifts due to error: " + error,
+	});
+};
+
 const ParticipantEvent = (props) => {
 	const eventId = props.match.params.id;
 	const { user, getAccessTokenSilently } = useAuth0();
 	const { email } = user;
-	const [participantId, setParticipantId] = useState({});
+	const [participantId, setParticipantId] = useState(null);
+	const [wishList, setWishList] = useState([]);
 
 	useEffect(() => {
 		getParticipantByEventIdAndEmail(
@@ -138,7 +146,22 @@ const ParticipantEvent = (props) => {
 			(data) => setParticipantId(data.getParticipantByEventIdAndEmail.id),
 			showError
 		);
-	}, [eventId, email, getAccessTokenSilently]);
+	}, [eventId, email, getAccessTokenSilently, participantId]);
+
+	// develop useEffect hook to call getGiftByParticipantId
+
+	useEffect(() => {
+		if (participantId)
+			getGiftByParticipantId(
+				parseInt(participantId),
+				getAccessTokenSilently(),
+				(data) => {
+					console.log(data.getGiftByParticipantId);
+					setWishList(data.getGiftByParticipantId);
+				},
+				giftError
+			);
+	}, [getAccessTokenSilently, participantId]);
 
 	return (
 		<>
@@ -157,7 +180,7 @@ const ParticipantEvent = (props) => {
 					/>
 					<TableComp
 						title={() => "Create Your Gift List for Your Secret Santa!"}
-						dataSource={getMyItems()}
+						dataSource={wishList}
 						columns={getColumns(true)}
 					/>
 				</ResponsiveColumn>
