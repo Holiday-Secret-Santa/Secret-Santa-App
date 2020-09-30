@@ -118,6 +118,8 @@ const createParticipantObject = async (input) => {
 	var eventData = await db.Event.findOne({ where: { id: input.EventId } });
 	console.log("EVENT DATA: " + JSON.stringify(eventData));
 
+	var participantData = db.Participant.findOne({ where: { id: id } });
+
 	// calling invitationEmail function when participant is created
 	// so participant can get email once added to event
 	invitationEmail(
@@ -126,7 +128,9 @@ const createParticipantObject = async (input) => {
 		eventData.description,
 		eventData.date,
 		eventData.start_time,
-		eventData.location
+		eventData.location,
+		input.EventId,
+		participantData.ParticipantId
 	);
 };
 

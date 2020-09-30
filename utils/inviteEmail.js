@@ -9,7 +9,9 @@ async function invitationEmail(
 	description,
 	date,
 	start_time,
-	location
+	location,
+	EventId,
+	ParticipantId
 ) {
 	console.log("Testing: this is the email " + email);
 	// create reusable transporter object using the default SMTP transport
