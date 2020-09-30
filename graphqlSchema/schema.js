@@ -92,7 +92,7 @@ var schema = buildSchema(`
 		assignSecretSanta(participant_id: Int, secret_santa_id: Int): [Int],
 		autoAssignSecretSanta(eventId: Int): [ParticipantSanta],
 		updateParticipantAccepted(id: Int): Participant,
-		updateParticipantRejected(id: Int): Particpant,
+		updateParticipantRejected(id: Int): Participant,
 	}
 
 `);
