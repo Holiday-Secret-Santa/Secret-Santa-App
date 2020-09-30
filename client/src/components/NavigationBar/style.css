@@ -22,3 +22,9 @@
 	font-size: 16px !important;
 	border-color: rgb(44, 110, 73, 0) !important;
 }
+
+.ant-menu-submenu-title {
+	margin-left: 80px !important;
+	color: rgb(214, 40, 40) !important;
+	font-size: 30px !important;
+}
