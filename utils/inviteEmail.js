@@ -9,9 +9,7 @@ async function invitationEmail(
 	description,
 	date,
 	start_time,
-	location,
-	EventId,
-	ParticipantId
+	location
 ) {
 	console.log("Testing: this is the email " + email);
 	// create reusable transporter object using the default SMTP transport
@@ -49,7 +47,7 @@ async function invitationEmail(
 		redirect you to the Secret Santa App platform.</p>
 
 		<li>
-			<ul><a href="https://secret-santa-platform.herokuapp.com/events/${eventId}/rsvp/${ParticipantId}">
+			<ul><a href="https://secret-santa-platform.herokuapp.com">
 			Secret Santa App on Heroku</a></ul>
 		</li>
         </b>`, // html body
