@@ -47,8 +47,8 @@ async function invitationEmail(
 		redirect you to the Secret Santa App platform.</p>
 
 		<li>
-			<ul><a href="https://secret-santa-platform.herokuapp.com/">
-			https://secret-santa-platform.herokuapp.com/</a></ul>
+			<ul><a href="https://secret-santa-platform.herokuapp.com/events/${eventId}/rsvp/${participant_id}">
+			Secret Santa App on Heroku</a></ul>
 		</li>
         </b>`, // html body
 		},
