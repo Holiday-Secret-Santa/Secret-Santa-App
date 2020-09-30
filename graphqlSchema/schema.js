@@ -107,7 +107,7 @@ const getParticipantsByEventId = (eventId) => {
 };
 
 const createParticipantObject = async (input) => {
-	db.Participant.create({
+	var participantData = await db.Participant.create({
 		first_name: input.first_name,
 		last_name: input.last_name,
 		email: input.email,
@@ -131,7 +131,7 @@ const createParticipantObject = async (input) => {
 		eventData.start_time,
 		eventData.location,
 		input.EventId,
-		input.ParticipantId
+		participantData.dataValues.id
 	);
 };
 
