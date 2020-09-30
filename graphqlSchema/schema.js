@@ -77,7 +77,7 @@ var schema = buildSchema(`
 		getParticipantsByEventId(eventId: Int): [ParticipantWithSanta],
 		getGifts: [Gift],
 		getGift(id: Int): Gift,
-		getGiftByParticipantId(participant_id: Int): [Gift],
+		getGiftByParticipantId(participantId: Int): [Gift],
 		getEventsByOrganizerEmail (email: String): [Event],
 		getEventsByParticipantEmail (email: String): [Event],
 		getParticipantByEventIdAndEmail (eventId: Int, email: String): Participant
@@ -191,20 +191,23 @@ var root = {
 		return db.Gift.findOne({ where: { id: id } });
 	},
 	createGift: ({ input }) => {
+		console.log(input);
 		return db.Gift.create(input);
 	},
 	deleteGift: ({ id }) => {
 		return db.Gift.destroy({ where: { id: id } });
 	},
-	getGiftByParticipantId: ({ participant_id }) => {
+	getGiftByParticipantId: ({ participantId }) => {
 		return db.Gift.findAll({
-			where: { ParticipantId: participant_id },
+			where: { ParticipantId: participantId },
 		});
 	},
 	assignSecretSanta: assignSecretSanta,
 	autoAssignSecretSanta: async ({ eventId }) => {
 		let results = await getParticipantsByEventId(eventId);
-		if (results.length < 2) return [];
+		if (results.length < 2) {
+			return [];
+		}
 		const participantIds = results.map((r) => r.dataValues.id);
 		var availableSantas = [...participantIds];
 		return participantIds.map((p, i) => {

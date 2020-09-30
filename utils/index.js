@@ -24,7 +24,7 @@ const DateColumn = (msg, allowNull) => {
 
 const DecimalColumn = (msg, allowNul) => {
 	return {
-		type: Sequelize.DataTypes.DECIMAL,
+		type: Sequelize.DataTypes.DECIMAL(10, 2),
 		allowNull: false,
 		validate: {
 			isNumeric: true,
