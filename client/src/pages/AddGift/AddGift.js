@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Form, notification } from "antd";
+import { Row, Form, notification, Layout } from "antd";
 import { FormInputText, FormInputNumber } from "./../../components/FormInput";
 import ResponsiveColumn from "./../../components/ResponsiveColumn";
 import { AddButton } from "./../../components/Button";
@@ -80,7 +80,7 @@ const AddGift = (props) => {
   };
 
   return (
-    <>
+    <Layout className="bgWrapper">
       {giftCreated && <Redirect to={nextUrl} />}
       <Row gutter={[30, 30]} style={{ padding: 20 }} className="addGiftForm">
         <ResponsiveColumn lg={24}>
@@ -105,7 +105,7 @@ const AddGift = (props) => {
           </Form>
         </ResponsiveColumn>
       </Row>
-    </>
+    </Layout>
   );
 };
 
