@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import NavigationBar, { AuthenticatedMenu } from "./NavigationBar";
+import NavigationBar from "./NavigationBar";
 import { StaticRouter } from "react-router";
 
 test("renders nav bar component", () => {
@@ -9,5 +9,4 @@ test("renders nav bar component", () => {
 			<NavigationBar />
 		</StaticRouter>
 	);
-	AuthenticatedMenu();
 });
