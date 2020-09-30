@@ -16,8 +16,8 @@ const color = "rgba(90, 136, 110, 0.7)";
 
 const LogoLink = () => {
 	return (
-		<Link to="/" style={{ float: "left", paddingLeft: "1%" }}>
-			<Image src={appLogo} width={200} preview={false} />
+		<Link to="/" style={{ float: "left" }}>
+			<Image src={appLogo} width={190} preview={false} />
 		</Link>
 	);
 };
@@ -36,7 +36,6 @@ const AuthenticatedMenu = () => {
 					<LogoutLink />
 				</Tooltip>
 			</Menu.Item>
-
 			<Menu.Item
 				key="3"
 				icon={<UserOutlined style={{ fontSize: "20px" }} />}
@@ -46,7 +45,6 @@ const AuthenticatedMenu = () => {
 					<Link to="/profile"></Link>
 				</Tooltip>
 			</Menu.Item>
-
 			<Menu.Item
 				key="2"
 				icon={<GiftOutlined style={{ fontSize: "20px" }} />}
