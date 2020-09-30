@@ -186,6 +186,18 @@ var root = {
 	deleteParticipant: ({ id }) => {
 		return db.Participant.destroy({ where: { id: id } });
 	},
+	updateParticipantAccepted: ({ id }) => {
+		return db.Participant.update(
+			{ invite_status: "Accepted" },
+			{ where: { id: id }, returning: true, plain: true }
+		);
+	},
+	updateParticipantRejected: ({ id }) => {
+		return db.Participant.update(
+			{ invite_status: "Rejected" },
+			{ where: { id: id }, returning: true, plain: true }
+		);
+	},
 	getGifts: () => {
 		return db.Gift.findAll();
 	},
