@@ -1,71 +1,77 @@
 import React from "react";
-import { Menu, Image } from "antd";
+import { Menu, Image, Tooltip } from "antd";
 import { Link } from "react-router-dom";
 import {
 	LoginOutlined,
 	LogoutOutlined,
 	UserOutlined,
 	GiftOutlined,
-	MenuUnfoldOutlined,
 } from "@ant-design/icons";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginLink, LogoutLink } from "../Link";
 import appLogo from "./appLogo.png";
 import "./style.css";
-import MenuItem from "antd/lib/menu/MenuItem";
 
-const { SubMenu } = Menu;
+const color = "rgba(90, 136, 110, 0.7)";
 
 const LogoLink = () => {
 	return (
 		<Link to="/" style={{ float: "left" }}>
-			<Image src={appLogo} width={200} preview={false} />
+			<Image src={appLogo} width={190} preview={false} />
 		</Link>
 	);
 };
 
-const createMenuItem = (key, icon, children) => {
+const AuthenticatedMenu = () => {
 	return (
-		<Menu.Item key={key} icon={icon} style={{ padding: "7px" }}>
-			{children}
-		</Menu.Item>
-	);
-};
+		<Menu mode="horizontal" className="custom-nav-style">
+			<LogoLink />
 
-const createMenu = (items) => {
-	return (
-		<Menu
-			mode="horizontal"
-			style={{ background: "#cad2c5", borderColor: "#2c6e49" }}
-		>
-			<MenuItem>
-				<LogoLink />
-			</MenuItem>
-			<SubMenu
-				key="SubMenu"
-				icon={
-					<MenuUnfoldOutlined style={{ fontSize: "20px", color: "#2c6e49" }} />
-				}
-				style={{ float: "right" }}
+			<Menu.Item
+				key="4"
+				icon={<LogoutOutlined style={{ fontSize: "20px" }} />}
+				className="icon-custom-style"
 			>
-				<Menu.ItemGroup>{items}</Menu.ItemGroup>
-			</SubMenu>
+				<Tooltip title="Logout" color={color} key={color} placement="left">
+					<LogoutLink />
+				</Tooltip>
+			</Menu.Item>
+			<Menu.Item
+				key="3"
+				icon={<UserOutlined style={{ fontSize: "20px" }} />}
+				className="icon-custom-style"
+			>
+				<Tooltip title="Profile" color={color} key={color} placement="left">
+					<Link to="/profile"></Link>
+				</Tooltip>
+			</Menu.Item>
+			<Menu.Item
+				key="2"
+				icon={<GiftOutlined style={{ fontSize: "20px" }} />}
+				className="icon-custom-style"
+			>
+				<Tooltip title="Events" color={color} key={color} placement="left">
+					<Link to="/events"></Link>
+				</Tooltip>
+			</Menu.Item>
 		</Menu>
 	);
 };
 
-const AuthenticatedMenu = () => {
-	return createMenu(
-		<>
-			{createMenuItem(4, <LogoutOutlined />, <LogoutLink />)}
-			{createMenuItem(3, <UserOutlined />, <Link to="/profile">Profile</Link>)}
-			{createMenuItem(2, <GiftOutlined />, <Link to="/events">Events</Link>)}
-		</>
-	);
-};
-
 const UnauthenticatedMenu = () => {
-	return createMenu(createMenuItem(4, <LoginOutlined />, <LoginLink />));
+	return (
+		<Menu mode="horizontal" className="custom-nav-style">
+			<LogoLink />
+
+			<Menu.Item
+				key="5"
+				icon={<LoginOutlined style={{ fontSize: "20px" }} />}
+				className="icon-custom-style"
+			>
+				<LoginLink />
+			</Menu.Item>
+		</Menu>
+	);
 };
 
 const NavigationBar = () => {
@@ -73,5 +79,4 @@ const NavigationBar = () => {
 	return isAuthenticated ? <AuthenticatedMenu /> : <UnauthenticatedMenu />;
 };
 
-export { AuthenticatedMenu };
 export default NavigationBar;

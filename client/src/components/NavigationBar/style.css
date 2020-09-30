@@ -1,0 +1,30 @@
+.custom-nav-style {
+	background: linear-gradient(
+		to bottom,
+		rgba(90, 136, 110, 0.8),
+		rgba(223, 226, 221, 0.5)
+	) !important;
+}
+
+.icon-custom-style {
+	float: right !important;
+	font-size: 14px !important;
+	color: rgb(214, 40, 40) !important;
+	font-family: cursive !important;
+}
+
+.icon-custom-style:hover {
+	color: rgb(44, 110, 73) !important;
+	border-color: rgb(44, 110, 73, 0) !important;
+}
+
+.ant-tooltip {
+	font-size: 16px !important;
+	border-color: rgb(44, 110, 73, 0) !important;
+}
+
+.ant-menu-submenu-title {
+	margin-left: 70px !important;
+	color: rgb(214, 40, 40) !important;
+	font-size: 20px !important;
+}
