@@ -14,7 +14,7 @@ import "./style.css";
 
 const LogoLink = () => {
 	return (
-		<Link to="/" style={{ float: "left" }}>
+		<Link to="/" style={{ float: "left", paddingLeft: "1%" }}>
 			<Image src={appLogo} width={200} preview={false} />
 		</Link>
 	);
@@ -25,11 +25,11 @@ const AuthenticatedMenu = () => {
 		<Menu mode="horizontal" className="custom-nav-style">
 			<LogoLink />
 			<Menu.Item
-				key="2"
-				icon={<GiftOutlined style={{ fontSize: "20px" }} />}
+				key="4"
+				icon={<LogoutOutlined style={{ fontSize: "20px" }} />}
 				className="icon-custom-style"
 			>
-				<Link to="/events"></Link>
+				<LogoutLink />
 			</Menu.Item>
 			<Menu.Item
 				key="3"
@@ -39,11 +39,11 @@ const AuthenticatedMenu = () => {
 				<Link to="/profile"></Link>
 			</Menu.Item>
 			<Menu.Item
-				key="4"
-				icon={<LogoutOutlined style={{ fontSize: "20px" }} />}
+				key="2"
+				icon={<GiftOutlined style={{ fontSize: "20px" }} />}
 				className="icon-custom-style"
 			>
-				<LogoutLink />
+				<Link to="/events"></Link>
 			</Menu.Item>
 		</Menu>
 	);
