@@ -2,5 +2,5 @@
 @import "~antd/dist/antd.css";
 
 body {
-	background-color: rgba(223, 226, 221, 0);
+	background-color: rgba(223, 226, 221, 0) !important;
 }

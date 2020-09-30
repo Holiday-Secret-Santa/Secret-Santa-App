@@ -1,10 +1,8 @@
-body {
-	width: 100%;
-	height: 100%;
-}
-
 .center {
 	display: flex !important;
 	align-items: center !important;
 	justify-content: center !important;
+}
+.ant-layout {
+	background-color: rgba(223, 226, 221, 0) !important;
 }
