@@ -130,6 +130,8 @@ const createParticipantObject = async (input) => {
 		eventData.date,
 		eventData.start_time,
 		eventData.location,
+		input.EventId,
+		input.ParticipantId
 	);
 };
 
