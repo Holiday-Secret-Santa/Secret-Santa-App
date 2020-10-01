@@ -131,6 +131,21 @@ const participantRejectedInviteMutation = gql`
 	}
 `;
 
+const getParticipantSantaWithWishList = gql`
+	query getParticipantSantaWithWishList($id: Int!) {
+		getWishListForSecretSanta(id: $id) {
+			description
+			link
+			price
+		}
+		getParticipantForSanta(id: $id) {
+			first_name
+			last_name
+			email
+		}
+	}
+`;
+
 export {
 	createEventMutation,
 	createParticipantMutation,
