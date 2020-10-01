@@ -1,8 +1,5 @@
 .addGiftForm {
 	width: 100%;
-	margin: auto;
-	display: flex;
-	justify-content: center;
 }
 
 .add-gift-header {
@@ -17,8 +14,19 @@
 
 .bgWrapper {
     background-image: url("./images/thebag.jpg");
-    height: 60rem;
+    height: 100vh;
+    width: 100vw;
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     background-attachment: fixed;
+    position: fixed;
+}
+
+@media screen and (max-width:575px) {
+  .addGiftForm {
+    margin-left: 1px !important;
+  }
+  .form-item-button .ant-col-offset-5 {
+    margin-left: 0;
+  }
 }

@@ -9,14 +9,14 @@ import "./style.css";
 import { createGift } from "../../actions/graphql.api";
 
 const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 8 },
+  labelCol: { span: 5 },
+  wrapperCol: { span: 14 },
 };
 
 const tailLayout = {
   wrapperCol: {
-    offset: 8,
-    span: 16,
+    offset: 5,
+    span: 10,
   },
 };
 
@@ -98,7 +98,7 @@ const AddGift = (props) => {
               label="Price"
               rules={giftPriceRules}
             />
-            <Form.Item {...tailLayout}>
+            <Form.Item {...tailLayout} className="form-item-button">
               <AddButton htmlType="submit" text="Add Gift" />
             </Form.Item>
             
