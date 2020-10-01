@@ -3,13 +3,19 @@
 ![react](https://img.shields.io/badge/library-react.js-purple/?style=flat&logo=react)
 ![npm](https://img.shields.io/npm/v/react-router-dom?color=purple&label=react-router&logo=react)
 ![npm](https://img.shields.io/npm/v/graphql?label=graphql&logo=graphql)
-![npm](https://img.shields.io/npm/v/jest?color=orange&label=graphql&logo=jest)
+![npm](https://img.shields.io/npm/v/jest?color=orange&label=jest&logo=jest)
 ![npm](https://img.shields.io/npm/v/nodemon?color=yellow&label=nodemon&logo=nodemon)
 ![npm](https://img.shields.io/npm/v/babel-eslint?color=pink&label=babel-eslint&logo=babel)
 ![npm](https://img.shields.io/npm/v/dotenv?color=lightblue&label=dotenv&logo=npm)
 ![npm](https://img.shields.io/npm/v/express?color=green&label=express&logo=npm)
 ![npm](https://img.shields.io/npm/v/lodash?color=red&label=lodash&logo=npm)
 ![npm](https://img.shields.io/npm/v/morgan?color=brown&label=morgan&logo=npm)
+![npm](https://img.shields.io/npm/v/mysql2?color=blue&label=mysql2&logo=mysql&logoColor=white)
+![npm](https://img.shields.io/npm/v/nodemailer?color=yellowgreen&label=nodemailer&logo=npm)
+![npm](https://img.shields.io/npm/v/sequelize?color=purple&label=sequelize&logo=npm)
+![npm](https://img.shields.io/npm/v/concurrently?color=magenta&label=concurrently&logo=npm)
+![npm](https://img.shields.io/npm/v/if-env?color=green&label=if-env&logo=npm)
+![npm](https://img.shields.io/npm/v/jwks-rsa?color=lightblue&label=jwks-rsa&logo=npm)
 
 <p align="center">
  <img src="imgs/readme/appLogo.png" alt="secret santa app logo" width="400px">
