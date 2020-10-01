@@ -17,8 +17,10 @@
 
 .bgWrapper {
     background-image: url("./images/thebag.jpg");
-    height: 60rem;
+    height: 100vh;
+    width: 100vw;
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     background-attachment: fixed;
+    position: fixed;
 }
