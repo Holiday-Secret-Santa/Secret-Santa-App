@@ -159,7 +159,6 @@ const onDeleteShowSuccess = () => {
 };
 
 const ParticipantEvent = (props) => {
-	// const eventId = props.match.params.id;
 	const eventId = parseInt(props.match.params.id);
 	const { user, getAccessTokenSilently } = useAuth0();
 	const { email } = user;
