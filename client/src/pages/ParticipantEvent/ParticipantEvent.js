@@ -7,6 +7,7 @@ import TableComp from "./../../components/Table";
 import {
 	getParticipantByEventIdAndEmail,
 	getGiftByParticipantId,
+	deleteGift,
 } from "./../../actions/graphql.api";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
@@ -32,7 +33,12 @@ const getMySecretSantaItems = () => {
 
 const customColor = "#D62828";
 
-const getColumns = (showDeleteAction) => {
+const getColumns = (
+	showDeleteAction,
+	getAccessTokenSilently,
+	onDeleteSuccess,
+	showDeleteError
+) => {
 	const columns = [
 		{
 			title: "Wish List Items",
@@ -66,7 +72,14 @@ const getColumns = (showDeleteAction) => {
 					<Button
 						type="text"
 						data-testid={`delete-gift-btn-${record.id}`}
-						onClick={() => alert(record.id)}
+						onClick={() =>
+							deleteGift(
+								record.id,
+								getAccessTokenSilently(),
+								onDeleteSuccess,
+								showDeleteError
+							)
+						}
 						icon={
 							<DeleteTwoTone
 								twoToneColor={customColor}
@@ -131,12 +144,27 @@ const giftError = (error) => {
 	});
 };
 
+const onDeleteShowError = (error) => {
+	notification.error({
+		message: "Delete Failed",
+		description: "Unable to delete gift due to error: " + error,
+	});
+};
+
+const onDeleteShowSuccess = () => {
+	notification.success({
+		message: "Gift Deleted",
+		description: "Gift was successfully deleted",
+	});
+};
+
 const ParticipantEvent = (props) => {
 	const eventId = props.match.params.id;
 	const { user, getAccessTokenSilently } = useAuth0();
 	const { email } = user;
 	const [participantId, setParticipantId] = useState(null);
 	const [wishList, setWishList] = useState([]);
+	const [deleteState, setDeleteState] = useState(false);
 
 	useEffect(() => {
 		getParticipantByEventIdAndEmail(
@@ -155,13 +183,15 @@ const ParticipantEvent = (props) => {
 			getGiftByParticipantId(
 				parseInt(participantId),
 				getAccessTokenSilently(),
-				(data) => {
-					console.log(data.getGiftByParticipantId);
-					setWishList(data.getGiftByParticipantId);
-				},
+				(data) => setWishList(data.getGiftByParticipantId),
 				giftError
 			);
-	}, [getAccessTokenSilently, participantId]);
+	}, [getAccessTokenSilently, participantId, deleteState]);
+
+	const onDeleteSuccess = () => {
+		onDeleteShowSuccess();
+		setDeleteState(!deleteState);
+	};
 
 	return (
 		<>
@@ -181,7 +211,12 @@ const ParticipantEvent = (props) => {
 					<TableComp
 						title={() => "Create Your Gift List for Your Secret Santa!"}
 						dataSource={wishList}
-						columns={getColumns(true)}
+						columns={getColumns(
+							true,
+							getAccessTokenSilently,
+							onDeleteSuccess,
+							onDeleteShowError
+						)}
 					/>
 				</ResponsiveColumn>
 			</Row>

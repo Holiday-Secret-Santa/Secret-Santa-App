@@ -51,6 +51,12 @@ const deleteEventMutation = gql`
 	}
 `;
 
+const deleteGiftMutation = gql`
+	mutation deleteGift($id: Int!) {
+		deleteGift(id: $id)
+	}
+`;
+
 const getParticipantsbyEventIdQuery = gql`
 	query GetParticipantsByEventId($eventId: Int!) {
 		getParticipantsByEventId(eventId: $eventId) {
@@ -136,6 +142,7 @@ export {
 	getParticipantByEventIdAndEmailQuery,
 	getGiftByParticipantIdQuery,
 	autoAssignSecretSantaMutation,
+	deleteGiftMutation,
 	participantAcceptedInviteMutation,
 	participantRejectedInviteMutation,
 };
