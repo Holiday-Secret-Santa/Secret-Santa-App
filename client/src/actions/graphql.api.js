@@ -14,6 +14,7 @@ import {
 	deleteGiftMutation,
 	participantAcceptedInviteMutation,
 	participantRejectedInviteMutation,
+	getParticipantSantaWithWishList,
 } from "./graphql.queries";
 
 const endpoint = "/graphql";
@@ -112,6 +113,20 @@ const getParticipantsbyEventId = (eventId, token, onSuccess, onError) => {
 	return processWithClient(
 		token,
 		getParticipantsbyEventIdQuery,
+		variables,
+		onSuccess,
+		onError
+	);
+};
+
+const getMySecretSantaItemsApi = (id, token, onSuccess, onError) => {
+	const variables = {
+		id: id,
+	};
+
+	return processWithClient(
+		token,
+		getParticipantSantaWithWishList,
 		variables,
 		onSuccess,
 		onError
@@ -281,4 +296,5 @@ export {
 	deleteGift,
 	participantAcceptedInvite,
 	participantRejectedInvite,
+	getMySecretSantaItemsApi,
 };

@@ -9,28 +9,11 @@ import {
 	getGiftByParticipantId,
 	deleteGift,
 	getEventByEventId,
+	getMySecretSantaItemsApi,
 } from "./../../actions/graphql.api";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import "./style.css";
-
-const getDummyItems = (size) => {
-	var itemsArray = [];
-
-	for (let i = 0; i < size; i++) {
-		itemsArray.push({
-			id: i,
-			description: `item ${i}`,
-			price: 32,
-			link: 'http:"www.example.html"',
-		});
-	}
-	return itemsArray;
-};
-
-const getMySecretSantaItems = () => {
-	return getDummyItems(8);
-};
 
 const customColor = "#D62828";
 
@@ -144,6 +127,13 @@ const giftError = (error) => {
 	});
 };
 
+const santaError = (error) => {
+	notification.error({
+		message: "Santa Error",
+		description: "Unable to get secret santa due to error: " + error,
+	});
+};
+
 const onDeleteShowError = (error) => {
 	notification.error({
 		message: "Delete Failed",
@@ -166,6 +156,8 @@ const ParticipantEvent = (props) => {
 	const [wishList, setWishList] = useState([]);
 	const [deleteState, setDeleteState] = useState(false);
 	const [eventData, setEventData] = useState({});
+	const [secretSantaItems, setSecretSantaItems] = useState([]);
+	const [secretSantaName, setSecretSantaName] = useState("");
 
 	useEffect(() => {
 		getParticipantByEventIdAndEmail(
@@ -180,13 +172,33 @@ const ParticipantEvent = (props) => {
 	// develop useEffect hook to call getGiftByParticipantId
 
 	useEffect(() => {
-		if (participantId)
+		if (participantId) {
+			let id = parseInt(participantId);
+
 			getGiftByParticipantId(
-				parseInt(participantId),
+				id,
 				getAccessTokenSilently(),
 				(data) => setWishList(data.getGiftByParticipantId),
 				giftError
 			);
+
+			getMySecretSantaItemsApi(
+				id,
+				getAccessTokenSilently(),
+				(data) => {
+					if (data.getParticipantForSanta)
+						setSecretSantaName(
+							`${
+								data.getParticipantForSanta.first_name +
+								" " +
+								data.getParticipantForSanta.last_name
+							}`
+						);
+					setSecretSantaItems(data.getWishListForSecretSanta);
+				},
+				santaError
+			);
+		}
 	}, [getAccessTokenSilently, participantId, deleteState]);
 
 	const onDeleteSuccess = () => {
@@ -217,9 +229,9 @@ const ParticipantEvent = (props) => {
 				</ResponsiveColumn>
 				<ResponsiveColumn lg={18}>
 					<TableComp
-						title={() => "You are the Secret Santa for ... "}
-						dataSource={getMySecretSantaItems()}
-						columns={getColumns(false)}
+						title={() => `You are the Secret Santa for ${secretSantaName} `}
+						dataSource={secretSantaItems}
+						columns={getColumns()}
 					/>
 					<MyGiftListAddButton
 						link={`/events/${eventId}/participant/${participantId}/addgift`}
