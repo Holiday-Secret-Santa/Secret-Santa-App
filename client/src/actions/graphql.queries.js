@@ -57,6 +57,7 @@ const getParticipantsbyEventIdQuery = gql`
 			id
 			first_name
 			last_name
+			invite_status
 			email
 			SecretSanta {
 				id
