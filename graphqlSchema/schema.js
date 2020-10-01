@@ -69,6 +69,7 @@ var schema = buildSchema(`
 		price: Float,
 		ParticipantId: Int
 	}
+
 	type Query {
 		getEvents: [Event],
 		getEvent(id: Int): Event,
@@ -80,7 +81,9 @@ var schema = buildSchema(`
 		getGiftByParticipantId(participantId: Int): [Gift],
 		getEventsByOrganizerEmail (email: String): [Event],
 		getEventsByParticipantEmail (email: String): [Event],
-		getParticipantByEventIdAndEmail (eventId: Int, email: String): Participant
+		getParticipantByEventIdAndEmail (eventId: Int, email: String): Participant,
+		getWishListForSecretSanta (id: Int): [Gift],
+		getParticipantForSanta (id: Int): Participant
 	}
 	type Mutation {
 		createEvent(input: InputEvent): Event,
@@ -205,7 +208,6 @@ var root = {
 		return db.Gift.findOne({ where: { id: id } });
 	},
 	createGift: ({ input }) => {
-		console.log(input);
 		return db.Gift.create(input);
 	},
 	deleteGift: ({ id }) => {
@@ -222,7 +224,9 @@ var root = {
 		if (results.length < 2) {
 			return [];
 		}
-		const participantIds = results.map((r) => r.dataValues.id);
+		const participantIds = results
+			.filter((r) => r.dataValues.invite_status != "Rejected")
+			.map((r) => r.dataValues.id);
 		var availableSantas = [...participantIds];
 		return participantIds.map((p, i) => {
 			var santaIndex = 0;
@@ -259,6 +263,23 @@ var root = {
 			where: {
 				EventId: eventId,
 				email: email,
+			},
+		});
+	},
+	getWishListForSecretSanta: ({ id }) => {
+		return db.Gift.findAll({
+			include: [
+				{
+					model: db.Participant,
+					where: { secret_santa_id: id },
+				},
+			],
+		});
+	},
+	getParticipantForSanta: ({ id }) => {
+		return db.Participant.findOne({
+			where: {
+				secret_santa_id: id,
 			},
 		});
 	},
