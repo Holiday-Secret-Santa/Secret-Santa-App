@@ -11,6 +11,7 @@ import {
 	getParticipantByEventIdAndEmailQuery,
 	getGiftByParticipantIdQuery,
 	autoAssignSecretSantaMutation,
+	deleteGiftMutation,
 } from "./graphql.queries";
 
 const endpoint = "/graphql";
@@ -81,6 +82,20 @@ const deleteEvent = (eventId, token, onSuccess, onError) => {
 	return processWithClient(
 		token,
 		deleteEventMutation,
+		variables,
+		onSuccess,
+		onError
+	);
+};
+
+const deleteGift = (id, token, onSuccess, onError) => {
+	const variables = {
+		id: id,
+	};
+
+	return processWithClient(
+		token,
+		deleteGiftMutation,
 		variables,
 		onSuccess,
 		onError
@@ -233,4 +248,5 @@ export {
 	getParticipantByEventIdAndEmail,
 	autoAssignSecretSanta,
 	getGiftByParticipantId,
+	deleteGift,
 };
