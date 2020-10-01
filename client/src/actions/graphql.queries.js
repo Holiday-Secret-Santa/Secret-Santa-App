@@ -160,4 +160,5 @@ export {
 	deleteGiftMutation,
 	participantAcceptedInviteMutation,
 	participantRejectedInviteMutation,
+	getParticipantSantaWithWishList,
 };
