@@ -4,9 +4,9 @@ import NavigationBar from "./NavigationBar";
 import { StaticRouter } from "react-router";
 
 test("renders nav bar component", () => {
-	render(
-		<StaticRouter location="someLocation">
-			<NavigationBar />
-		</StaticRouter>
-	);
+  render(
+    <StaticRouter location="someLocation">
+      <NavigationBar />
+    </StaticRouter>
+  );
 });
