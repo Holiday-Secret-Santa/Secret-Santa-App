@@ -1,5 +1,11 @@
 # Secret Santa App
 
+![react](https://img.shields.io/badge/library-react.js-purple/?style=flat&logo=react)
+![npm](https://img.shields.io/npm/v/graphql?label=graphql&logo=graphql)
+![npm](https://img.shields.io/npm/v/jest?color=orange&label=graphql&logo=jest)
+![npm](https://img.shields.io/npm/v/nodemon?color=yellow&label=nodemon&logo=nodemon)
+![npm](https://img.shields.io/npm/v/react-router-dom?color=purple&label=react-router&logo=react)
+
 <p align="center">
  <img src="imgs/readme/appLogo.png" alt="secret santa app logo" width="400px">
 </p>
@@ -161,7 +167,7 @@ The entity relationship **(ER) diagram** below provides a visual representation 
 ` The ER Diagram is based on the relations between the tables using SQL Self JOIN`
 
 <details>
-<summary> 📈 Click to expand the ERM diagram version 2.</summary>
+<summary> 📈 Click to expand the ERM diagram.</summary>
 <img src="./imgs/readme/ermDiagram2.png">
 </details>
 
