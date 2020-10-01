@@ -11,6 +11,8 @@ import {
 	getParticipantByEventIdAndEmailQuery,
 	createGiftMutation,
 	autoAssignSecretSantaMutation,
+	participantRejectedInviteMutation,
+	participantAcceptedInviteMutation,
 } from "./graphql.queries";
 
 describe("gql statements", () => {
@@ -53,6 +55,16 @@ describe("gql statements", () => {
 	test("validate autoAssignSecretSantaMutation mutation", () => {
 		expect(autoAssignSecretSantaMutation).toMatch(
 			/mutation autoAssignSecretSanta/
+		);
+	});
+	test("validate updated invite status change to accepted", () => {
+		expect(participantAcceptedInviteMutation).toMatch(
+			/mutation updateParticipantAccepted/
+		);
+	});
+	test("validate updated invite status change to rejected", () => {
+		expect(participantRejectedInviteMutation).toMatch(
+			/mutation updateParticipantRejected/
 		);
 	});
 });

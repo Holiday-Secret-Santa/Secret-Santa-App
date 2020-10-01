@@ -12,6 +12,8 @@ import {
 	getParticipantByEventIdAndEmail,
 	createGift,
 	autoAssignSecretSanta,
+	participantAcceptedInvite,
+	participantRejectedInvite,
 } from "./graphql.api";
 import { GraphQLClient } from "graphql-request";
 
@@ -153,6 +155,26 @@ describe("graph apis", () => {
 	test("process autoAssignSecretSanta success", () => {
 		mockGrapgqlClientSuccess({});
 		autoAssignSecretSanta(
+			1,
+			"token",
+			() => {},
+			() => {}
+		);
+	});
+
+	test("process participantAcceptedInvite success", () => {
+		mockGrapgqlClientSuccess(1);
+		participantAcceptedInvite(
+			1,
+			"token",
+			() => {},
+			() => {}
+		);
+	});
+
+	test("process participantRejectedInvite success", () => {
+		mockGrapgqlClientSuccess(1);
+		participantRejectedInvite(
 			1,
 			"token",
 			() => {},
