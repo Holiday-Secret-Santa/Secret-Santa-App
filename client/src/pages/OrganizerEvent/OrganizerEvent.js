@@ -144,7 +144,11 @@ const setParticipantData = (d, setData, setRsvpCounts) => {
 				: "",
 			secretEmail: participant.SecretSanta ? participant.SecretSanta.email : "",
 		};
-		formattedData.push(participantEntry);
+
+		if (participant.invite_status !== "Rejected") {
+			formattedData.push(participantEntry);
+		}
+
 		switch (participant.invite_status) {
 			case "Accepted":
 				rsvpCounts.accepted += 1;
