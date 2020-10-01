@@ -12,6 +12,8 @@ import {
 	getGiftByParticipantIdQuery,
 	autoAssignSecretSantaMutation,
 	deleteGiftMutation,
+	participantAcceptedInviteMutation,
+	participantRejectedInviteMutation,
 } from "./graphql.queries";
 
 const endpoint = "/graphql";
@@ -235,6 +237,34 @@ const autoAssignSecretSanta = (eventId, token, onSuccess, onError) => {
 	);
 };
 
+const participantAcceptedInvite = (id, token, onSuccess, onError) => {
+	const variables = {
+		id: id,
+	};
+
+	return processWithClient(
+		token,
+		participantAcceptedInviteMutation,
+		variables,
+		onSuccess,
+		onError
+	);
+};
+
+const participantRejectedInvite = (id, token, onSuccess, onError) => {
+	const variables = {
+		id: id,
+	};
+
+	return processWithClient(
+		token,
+		participantRejectedInviteMutation,
+		variables,
+		onSuccess,
+		onError
+	);
+};
+
 export {
 	graphQLClient,
 	processWithClient,
@@ -249,4 +279,6 @@ export {
 	autoAssignSecretSanta,
 	getGiftByParticipantId,
 	deleteGift,
+	participantAcceptedInvite,
+	participantRejectedInvite,
 };

@@ -63,6 +63,7 @@ const getParticipantsbyEventIdQuery = gql`
 			id
 			first_name
 			last_name
+			invite_status
 			email
 			SecretSanta {
 				id
@@ -114,6 +115,22 @@ const autoAssignSecretSantaMutation = gql`
 	}
 `;
 
+const participantAcceptedInviteMutation = gql`
+	mutation updateParticipantAccepted($id: Int!) {
+		updateParticipantAccepted(id: $id) {
+			id
+		}
+	}
+`;
+
+const participantRejectedInviteMutation = gql`
+	mutation updateParticipantRejected($id: Int!) {
+		updateParticipantRejected(id: $id) {
+			id
+		}
+	}
+`;
+
 export {
 	createEventMutation,
 	createParticipantMutation,
@@ -126,4 +143,6 @@ export {
 	getGiftByParticipantIdQuery,
 	autoAssignSecretSantaMutation,
 	deleteGiftMutation,
+	participantAcceptedInviteMutation,
+	participantRejectedInviteMutation,
 };
