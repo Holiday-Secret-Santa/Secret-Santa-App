@@ -52,8 +52,8 @@ const deleteEventMutation = gql`
 `;
 
 const deleteGiftMutation = gql`
-	mutation deleteEvent($eventId: Int!) {
-		deleteEvent(id: $eventId)
+	mutation deleteGift($id: Int!) {
+		deleteGift(id: $id)
 	}
 `;
 

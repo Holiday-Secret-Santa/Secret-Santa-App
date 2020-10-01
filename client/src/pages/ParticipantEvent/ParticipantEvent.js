@@ -36,8 +36,8 @@ const customColor = "#D62828";
 const getColumns = (
 	showDeleteAction,
 	getAccessTokenSilently,
-	onSuccess,
-	showError
+	onDeleteSuccess,
+	showDeleteError
 ) => {
 	const columns = [
 		{
@@ -76,8 +76,8 @@ const getColumns = (
 							deleteGift(
 								record.id,
 								getAccessTokenSilently(),
-								onSuccess,
-								showError
+								onDeleteSuccess,
+								showDeleteError
 							)
 						}
 						icon={
@@ -183,15 +183,12 @@ const ParticipantEvent = (props) => {
 			getGiftByParticipantId(
 				parseInt(participantId),
 				getAccessTokenSilently(),
-				(data) => {
-					console.log(data.getGiftByParticipantId);
-					setWishList(data.getGiftByParticipantId);
-				},
+				(data) => setWishList(data.getGiftByParticipantId),
 				giftError
 			);
 	}, [getAccessTokenSilently, participantId, deleteState]);
 
-	const onSuccess = () => {
+	const onDeleteSuccess = () => {
 		onDeleteShowSuccess();
 		setDeleteState(!deleteState);
 	};
@@ -214,7 +211,12 @@ const ParticipantEvent = (props) => {
 					<TableComp
 						title={() => "Create Your Gift List for Your Secret Santa!"}
 						dataSource={wishList}
-						columns={getColumns(true)}
+						columns={getColumns(
+							true,
+							getAccessTokenSilently,
+							onDeleteSuccess,
+							onDeleteShowError
+						)}
 					/>
 				</ResponsiveColumn>
 			</Row>
