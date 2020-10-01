@@ -1,10 +1,15 @@
 # Secret Santa App
 
 ![react](https://img.shields.io/badge/library-react.js-purple/?style=flat&logo=react)
+![npm](https://img.shields.io/npm/v/react-router-dom?color=purple&label=react-router&logo=react)
 ![npm](https://img.shields.io/npm/v/graphql?label=graphql&logo=graphql)
 ![npm](https://img.shields.io/npm/v/jest?color=orange&label=graphql&logo=jest)
 ![npm](https://img.shields.io/npm/v/nodemon?color=yellow&label=nodemon&logo=nodemon)
-![npm](https://img.shields.io/npm/v/react-router-dom?color=purple&label=react-router&logo=react)
+![npm](https://img.shields.io/npm/v/babel-eslint?color=pink&label=babel-eslint&logo=babel)
+![npm](https://img.shields.io/npm/v/dotenv?color=lightblue&label=dotenv&logo=npm)
+![npm](https://img.shields.io/npm/v/express?color=green&label=express&logo=npm)
+![npm](https://img.shields.io/npm/v/lodash?color=red&label=lodash&logo=npm)
+![npm](https://img.shields.io/npm/v/morgan?color=brown&label=morgan&logo=npm)
 
 <p align="center">
  <img src="imgs/readme/appLogo.png" alt="secret santa app logo" width="400px">
