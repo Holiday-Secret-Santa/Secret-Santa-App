@@ -1,8 +1,5 @@
 .addGiftForm {
 	width: 100%;
-	margin: auto;
-	display: flex;
-	justify-content: center;
 }
 
 .add-gift-header {
@@ -23,4 +20,13 @@
     background-position: center center;
     background-attachment: fixed;
     position: fixed;
+}
+
+@media screen and (max-width:575px) {
+  .addGiftForm {
+    margin-left: 1px !important;
+  }
+  .form-item-button .ant-col-offset-5 {
+    margin-left: 0;
+  }
 }
