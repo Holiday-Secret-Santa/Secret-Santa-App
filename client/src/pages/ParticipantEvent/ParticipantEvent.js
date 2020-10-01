@@ -8,6 +8,7 @@ import {
 	getParticipantByEventIdAndEmail,
 	getGiftByParticipantId,
 	deleteGift,
+	getEventByEventId,
 } from "./../../actions/graphql.api";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
@@ -118,14 +119,13 @@ const MyGiftListAddButton = ({ link }) => {
 	);
 };
 
-const EventCard = () => {
+const EventCard = ({ description, date, start_time, location }) => {
 	return (
 		<DetailCard
-			title="Event Details"
-			date="date"
-			startTime="9:00 am"
-			location={"My House"}
-			participants={12}
+			title={description}
+			date={date}
+			startTime={start_time}
+			location={location}
 		/>
 	);
 };
@@ -159,12 +159,14 @@ const onDeleteShowSuccess = () => {
 };
 
 const ParticipantEvent = (props) => {
-	const eventId = props.match.params.id;
+	// const eventId = props.match.params.id;
+	const eventId = parseInt(props.match.params.id);
 	const { user, getAccessTokenSilently } = useAuth0();
 	const { email } = user;
 	const [participantId, setParticipantId] = useState(null);
 	const [wishList, setWishList] = useState([]);
 	const [deleteState, setDeleteState] = useState(false);
+	const [eventData, setEventData] = useState({});
 
 	useEffect(() => {
 		getParticipantByEventIdAndEmail(
@@ -193,11 +195,26 @@ const ParticipantEvent = (props) => {
 		setDeleteState(!deleteState);
 	};
 
+	// render event info on participant view
+	useEffect(() => {
+		getEventByEventId(
+			eventId,
+			getAccessTokenSilently(),
+			(d) => setEventData(d.getEvent),
+			showError
+		);
+	}, [getAccessTokenSilently, eventId]);
+
 	return (
 		<>
 			<Row gutter={[30, 30]} style={{ padding: 20 }}>
 				<ResponsiveColumn lg={6}>
-					<EventCard />
+					<EventCard
+						description={eventData.description}
+						date={eventData.date}
+						start_time={eventData.start_time}
+						location={eventData.location}
+					/>
 				</ResponsiveColumn>
 				<ResponsiveColumn lg={18}>
 					<TableComp
