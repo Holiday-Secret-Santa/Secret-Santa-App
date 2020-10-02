@@ -28,3 +28,7 @@
 	color: rgb(214, 40, 40) !important;
 	font-size: 20px !important;
 }
+
+body .ant-tooltip-inner {
+  margin-right:20px
+}
