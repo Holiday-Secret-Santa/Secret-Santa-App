@@ -5,7 +5,7 @@
 ![react](https://img.shields.io/badge/library-react.js-purple/?style=flat&logo=react)
 ![npm](https://img.shields.io/npm/v/react-router-dom?color=purple&label=react-router&logo=react)
 ![npm](https://img.shields.io/npm/v/graphql?label=graphql&logo=graphql)
-![antd](https://img.shields.io/badge/Ant%20Design-UI%20library-ff69b4&logo=https://simpleicons.org/?q=ant%20deign)
+![antd](https://img.shields.io/badge/Ant%20Design-UI%20library-ff69b4)
 ![npm](https://img.shields.io/npm/v/jest?color=orange&label=jest&logo=jest)
 ![npm](https://img.shields.io/npm/v/nodemon?color=yellow&label=nodemon&logo=nodemon)
 ![npm](https://img.shields.io/npm/v/babel-eslint?color=pink&label=babel-eslint&logo=babel)
@@ -19,6 +19,8 @@
 ![npm](https://img.shields.io/npm/v/concurrently?color=magenta&label=concurrently&logo=npm)
 ![npm](https://img.shields.io/npm/v/if-env?color=green&label=if-env&logo=npm)
 ![npm](https://img.shields.io/npm/v/jwks-rsa?color=lightblue&label=jwks-rsa&logo=npm)
+![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/Holiday-Secret-Santa/Secret-Santa-App?label=code%20maintainability&logo=Code%20Climate)
+![Code Climate coverage](https://img.shields.io/codeclimate/coverage/Holiday-Secret-Santa/Secret-Santa-App?color=green&label=test%20coverage&logo=circleci)
 
 <p align="center">
  <img src="imgs/readme/appLogo.png" alt="secret santa app logo" width="400px">
