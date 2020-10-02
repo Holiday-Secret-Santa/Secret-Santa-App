@@ -5,6 +5,7 @@
 ![react](https://img.shields.io/badge/library-react.js-purple/?style=flat&logo=react)
 ![npm](https://img.shields.io/npm/v/react-router-dom?color=purple&label=react-router&logo=react)
 ![npm](https://img.shields.io/npm/v/graphql?label=graphql&logo=graphql)
+![antd](https://img.shields.io/badge/Ant%20Design-UI%20library-ff69b4)
 ![npm](https://img.shields.io/npm/v/jest?color=orange&label=jest&logo=jest)
 ![npm](https://img.shields.io/npm/v/nodemon?color=yellow&label=nodemon&logo=nodemon)
 ![npm](https://img.shields.io/npm/v/babel-eslint?color=pink&label=babel-eslint&logo=babel)
@@ -295,19 +296,19 @@ Here is a list of the core technologies we plan to use for the development of th
 
 Here is a list of core technologies that were used to develop this web application:
 
-- HTML
-- JavaScript
-- CSS
-- Ant Design (React-compatabile UI library)
-- Here is a link to the UI library's documentation - [click here to access documentation](https://ant.design/)
-- React.js
-- Node.js _(specific packages will be identifed at a later date)_
-- SQL to design the application's database
-- Moment.js for date/time fields
-- Email platform (Mailchim, Mailgun, ...) _(team will choose at a later date)_
-- GraphQL - [click here to reference documentation](https://graphql.org/)
-- Nodemailer - Software used to auto send emails to added pariticipants
-- CircleCI and Code Climate - Test monitoring and code quality maintenance.
+| Technologies | Description                                                                                              |
+| ------------ | -------------------------------------------------------------------------------------------------------- |
+| HTML         | Used to design the basic website structre                                                                |
+| JavaScript   | Used to add functionality to the application                                                             |
+| CSS          | Used to add custom styling to the application                                                            |
+| Ant Design   | React UI component library used to design this React-based application                                   |
+| React.js     | Javascript library used to design the front-end of this application                                      |
+| Node.js      | Used to establish the back-end server environment for this application (also utilized many NPM packages) |
+| SQL          | Application database is designed and quered using SQL and Sequelize                                      |
+| Nodemailer   | Package used to emable auto sending of emails to added pariticipants                                     |
+| GraphQL      | Used this query language for API interaction                                                             |
+| CircleCI     | Used to monitor embedded unit tests.                                                                     |
+| Code Climate | Used to monitor and test code quality (i.e. consistent coding best practices)                            |
 
 ### CircleCI and Code Climate
 
