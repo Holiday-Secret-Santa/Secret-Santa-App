@@ -319,13 +319,21 @@ While developing this application, the team integrated CircleCI into this reposi
 
 In addition to CircleCi, the team also incorporated Code Climate monitoring services into this repository to ensure the overall code quality developed by the team met coding best practices. Please visit the [Code Climate](https://codeclimate.com/) for additional instruction on how to integrate the Code Climate tool.
 
-#### IMPORTANT FYI for Package.json Files
+##### IMPORTANT FYI for Package.json Files
 
 This project contains two `package.json` files - one at the root directory and another in the client folder.
 
 In order to resolve coverage issues / limitations associated with Code Climate running coverage reports this full-stack application, the team had to **_intentionally_** include front-end dev dependencies in the root `package.json` file to ensure all frontend and backend tests are run from the single root `package.json` file.
 
 I am including this update to make it clear that we are aware react-related dependencies are typically only needed in the frontend portion and an application; however, the approach we used in this repository was used to work around Code Climate limitations.
+
+#### GraphQL
+
+Instead of using a traditional promise-based HTTP client, the team decided to use [GraphQL](https://graphql.org/) to make the API calls to our SQL-based backend database. When using GraphQL, we had the ability to specify tthe specific data items within a single call without using lengthy endpoints and axios calls.
+
+In additional, GraphQL does not require you to use PostMan to make test database call, and instead uses it own sandbox environment by simply adding `/graphql` to the end of the port address being used to locally launch the application. For example, instead of using `http://localhost:3001/`, you would use `http://localhost:3001/grqphql` to interact with the graphql sandbox environment. The image below shows the graphql sandbox environment and include a sample graphql query that the team used to query wish list items added by participants.
+
+![GraphQL Sample Query](./imgs/readme/sampleGraphQL.png)
 
 ---
 
