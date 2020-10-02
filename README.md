@@ -52,7 +52,7 @@
 
 ## Project Concept
 
-The 2020 holiday season is quickly approaching! This Secret Santa App will help your orchestrate the holiday fan-favorite game, Secret Santa! With this app, the user will be able to do the following:
+The 2020 holiday season is quickly approaching! This Secret Santa App will help you orchestrate the holiday fan-favorite game, Secret Santa! With this app, the user will be able to do the following:
 
 - Schedule a date for the secret santa gift exchange event
 - Invite family and friends to join in on the holiday fun
@@ -292,7 +292,7 @@ Please note that the when the user clicks the `Add Item Button` on the event det
 
 ## Technologies Used for Development
 
-Here is a list of the core technologies we plan to use for the development of this application. Please note that this list may change throughout the development of the application.
+Here is a list of the core technologies we used for the development of this application.
 
 ### Core Technologies
 
@@ -332,9 +332,9 @@ I am including this update to make it clear that we are aware react-related depe
 
 #### GraphQL
 
-Instead of using a traditional promise-based HTTP client, the team decided to use [GraphQL](https://graphql.org/) to make the API calls to our SQL-based backend database. When using GraphQL, we had the ability to specify tthe specific data items within a single call without using lengthy endpoints and axios calls.
+Instead of using a traditional promise-based HTTP client to pull data from a database, the team used [GraphQL](https://graphql.org/) to make the API calls to our SQL-based backend database. When using GraphQL, we had the ability to specify the specific data items within a single call without using lengthy endpoints and axios calls.
 
-In additional, GraphQL does not require you to use PostMan to make test database call, and instead uses it own sandbox environment by simply adding `/graphql` to the end of the port address being used to locally launch the application. For example, instead of using `http://localhost:3001/`, you would use `http://localhost:3001/grqphql` to interact with the graphql sandbox environment. The image below shows the graphql sandbox environment and include a sample graphql query that the team used to query wish list items added by participants.
+In addition, GraphQL does not require you to use PostMan to test database call, and instead uses it own sandbox environment by simply adding `/graphql` to the end of the port address being used to locally launch the application. For example, instead of using `http://localhost:3001/`, you would use `http://localhost:3001/grqphql` to interact with the graphql sandbox environment. The image below shows the graphql sandbox environment and include a sample graphql query that the team used to query wish list items added by participants.
 
 ![GraphQL Sample Query](./imgs/readme/sampleGraphQL.png)
 
