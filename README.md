@@ -1,5 +1,7 @@
 # Secret Santa App
 
+---
+
 ![react](https://img.shields.io/badge/library-react.js-purple/?style=flat&logo=react)
 ![npm](https://img.shields.io/npm/v/react-router-dom?color=purple&label=react-router&logo=react)
 ![npm](https://img.shields.io/npm/v/graphql?label=graphql&logo=graphql)
@@ -304,6 +306,8 @@ Here is a list of core technologies that were used to develop this web applicati
 - Moment.js for date/time fields
 - Email platform (Mailchim, Mailgun, ...) _(team will choose at a later date)_
 - GraphQL - [click here to reference documentation](https://graphql.org/)
+- Nodemailer - Software used to auto send emails to added pariticipants
+- CircleCI and Code Climate - Test monitoring and code quality maintenance.
 
 ### CircleCI and Code Climate
 
@@ -315,7 +319,7 @@ While developing this application, the team integrated CircleCI into this reposi
 
 In addition to CircleCi, the team also incorporated Code Climate monitoring services into this repository to ensure the overall code quality developed by the team met coding best practices. Please visit the [Code Climate](https://codeclimate.com/) for additional instruction on how to integrate the Code Climate tool.
 
-##### IMPORTANT FYI for Package.json Files
+#### IMPORTANT FYI for Package.json Files
 
 This project contains two `package.json` files - one at the root directory and another in the client folder.
 
@@ -339,7 +343,11 @@ All NPM packages needed for this application are already listed as dependencies 
 
 ### Testing Instructions
 
-When checking to see if all applicable unit tests pass throughout the development of this application, make sure to run the `npm test` command in your terminal each time you would like to test the application.
+When checking to see if all applicable unit tests pass throughout the development of this application, make sure to run the `npm run test` command in your terminal each time you would like to test the application. The team used the [Jest Testing Framework](https://jestjs.io/) to build all unit test for this application.
+
+There are a total of 64 passing unit test incorporated for this application, which results in 87 percent test coverage for the entire application.
+
+![Passing Unit Tests](./imgs/readme/unitTestsPassing.png)
 
 ---
 
