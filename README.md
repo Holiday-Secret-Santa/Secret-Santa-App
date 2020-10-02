@@ -1,5 +1,27 @@
 # Secret Santa App
 
+---
+
+![react](https://img.shields.io/badge/library-react.js-purple/?style=flat&logo=react)
+![npm](https://img.shields.io/npm/v/react-router-dom?color=purple&label=react-router&logo=react)
+![npm](https://img.shields.io/npm/v/graphql?label=graphql&logo=graphql)
+![antd](https://img.shields.io/badge/Ant%20Design-UI%20library-ff69b4)
+![npm](https://img.shields.io/npm/v/jest?color=orange&label=jest&logo=jest)
+![npm](https://img.shields.io/npm/v/nodemon?color=yellow&label=nodemon&logo=nodemon)
+![npm](https://img.shields.io/npm/v/babel-eslint?color=pink&label=babel-eslint&logo=babel)
+![npm](https://img.shields.io/npm/v/dotenv?color=lightblue&label=dotenv&logo=npm)
+![npm](https://img.shields.io/npm/v/express?color=green&label=express&logo=npm)
+![npm](https://img.shields.io/npm/v/lodash?color=red&label=lodash&logo=npm)
+![npm](https://img.shields.io/npm/v/morgan?color=brown&label=morgan&logo=npm)
+![npm](https://img.shields.io/npm/v/mysql2?color=blue&label=mysql2&logo=mysql&logoColor=white)
+![npm](https://img.shields.io/npm/v/nodemailer?color=yellowgreen&label=nodemailer&logo=npm)
+![npm](https://img.shields.io/npm/v/sequelize?color=purple&label=sequelize&logo=npm)
+![npm](https://img.shields.io/npm/v/concurrently?color=magenta&label=concurrently&logo=npm)
+![npm](https://img.shields.io/npm/v/if-env?color=green&label=if-env&logo=npm)
+![npm](https://img.shields.io/npm/v/jwks-rsa?color=lightblue&label=jwks-rsa&logo=npm)
+![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/Holiday-Secret-Santa/Secret-Santa-App?label=code%20maintainability&logo=Code%20Climate)
+![Code Climate coverage](https://img.shields.io/codeclimate/coverage/Holiday-Secret-Santa/Secret-Santa-App?color=green&label=test%20coverage&logo=circleci)
+
 <p align="center">
  <img src="imgs/readme/appLogo.png" alt="secret santa app logo" width="400px">
 </p>
@@ -30,7 +52,7 @@
 
 ## Project Concept
 
-The 2020 holiday season is quickly approaching! This Secret Santa App will help your orchestrate the holiday fan-favorite game, Secret Santa! With this app, the user will be able to do the following:
+The 2020 holiday season is quickly approaching! This Secret Santa App will help you orchestrate the holiday fan-favorite game, Secret Santa! With this app, the user will be able to do the following:
 
 - Schedule a date for the secret santa gift exchange event
 - Invite family and friends to join in on the holiday fun
@@ -158,15 +180,10 @@ The diagrams listed below outline the sequence of events required for the all ke
 
 The entity relationship **(ER) diagram** below provides a visual representation of how the data is saved inside the application's back-end database. This diagram also demonstrates the relationship between each database table.
 
-<details>
-<summary> 📈 Click to expand the ERM diagram version 1.</summary>
-<img src="./imgs/readme/ermDiagram.png">
-</details>
-
-`ER Diagram version 2 is based on the relations between the tables using SQL Self JOIN`
+` The ER Diagram is based on the relations between the tables using SQL Self JOIN`
 
 <details>
-<summary> 📈 Click to expand the ERM diagram version 2.</summary>
+<summary> 📈 Click to expand the ERM diagram.</summary>
 <img src="./imgs/readme/ermDiagram2.png">
 </details>
 
@@ -275,23 +292,25 @@ Please note that the when the user clicks the `Add Item Button` on the event det
 
 ## Technologies Used for Development
 
-Here is a list of the core technologies we plan to use for the development of this application. Please note that this list may change throughout the development of the application.
+Here is a list of the core technologies we used for the development of this application.
 
 ### Core Technologies
 
 Here is a list of core technologies that were used to develop this web application:
 
-- HTML
-- JavaScript
-- CSS
-- Ant Design (React-compatabile UI library)
-- Here is a link to the UI library's documentation - [click here to access documentation](https://ant.design/)
-- React.js
-- Node.js _(specific packages will be identifed at a later date)_
-- SQL to design the application's database
-- Moment.js for date/time fields
-- Email platform (Mailchim, Mailgun, ...) _(team will choose at a later date)_
-- GraphQL - [click here to reference documentation](https://graphql.org/)
+| Technologies | Description                                                                                              |
+| ------------ | -------------------------------------------------------------------------------------------------------- |
+| HTML         | Used to design the basic website structre                                                                |
+| JavaScript   | Used to add functionality to the application                                                             |
+| CSS          | Used to add custom styling to the application                                                            |
+| Ant Design   | React UI component library used to design this React-based application                                   |
+| React.js     | Javascript library used to design the front-end of this application                                      |
+| Node.js      | Used to establish the back-end server environment for this application (also utilized many NPM packages) |
+| SQL          | Application database is designed and quered using SQL and Sequelize                                      |
+| Nodemailer   | Package used to emable auto sending of emails to added pariticipants                                     |
+| GraphQL      | Used this query language for API interaction                                                             |
+| CircleCI     | Used to monitor embedded unit tests.                                                                     |
+| Code Climate | Used to monitor and test code quality (i.e. consistent coding best practices)                            |
 
 ### CircleCI and Code Climate
 
@@ -311,6 +330,14 @@ In order to resolve coverage issues / limitations associated with Code Climate r
 
 I am including this update to make it clear that we are aware react-related dependencies are typically only needed in the frontend portion and an application; however, the approach we used in this repository was used to work around Code Climate limitations.
 
+#### GraphQL
+
+Instead of using a traditional promise-based HTTP client to pull data from a database, the team used [GraphQL](https://graphql.org/) to make the API calls to our SQL-based backend database. When using GraphQL, we had the ability to specify the specific data items within a single call without using lengthy endpoints and axios calls.
+
+In addition, GraphQL does not require you to use PostMan to test database call, and instead uses it own sandbox environment by simply adding `/graphql` to the end of the port address being used to locally launch the application. For example, instead of using `http://localhost:3001/`, you would use `http://localhost:3001/grqphql` to interact with the graphql sandbox environment. The image below shows the graphql sandbox environment and include a sample graphql query that the team used to query wish list items added by participants.
+
+![GraphQL Sample Query](./imgs/readme/sampleGraphQL.png)
+
 ---
 
 ## Installation and Testing Instructions
@@ -327,7 +354,11 @@ All NPM packages needed for this application are already listed as dependencies 
 
 ### Testing Instructions
 
-When checking to see if all applicable unit tests pass throughout the development of this application, make sure to run the `npm test` command in your terminal each time you would like to test the application.
+When checking to see if all applicable unit tests pass throughout the development of this application, make sure to run the `npm run test` command in your terminal each time you would like to test the application. The team used the [Jest Testing Framework](https://jestjs.io/) to build all unit test for this application.
+
+There are a total of 64 passing unit test incorporated for this application, which results in 87 percent test coverage for the entire application.
+
+![Passing Unit Tests](./imgs/readme/unitTestsPassing.png)
 
 ---
 
