@@ -1,5 +1,9 @@
 # Secret Santa App
 
+![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/Holiday-Secret-Santa/Secret-Santa-App?label=code%20maintainability&logo=Code%20Climate)
+![Code Climate coverage](https://img.shields.io/codeclimate/coverage/Holiday-Secret-Santa/Secret-Santa-App?color=green&label=test%20coverage&logo=Code%20Climate)
+![CircleCI](https://img.shields.io/circleci/build/github/Holiday-Secret-Santa/Secret-Santa-App/master?logo=CircleCI)
+
 ---
 
 ![react](https://img.shields.io/badge/library-react.js-purple/?style=flat&logo=react)
@@ -19,9 +23,6 @@
 ![npm](https://img.shields.io/npm/v/concurrently?color=magenta&label=concurrently&logo=npm)
 ![npm](https://img.shields.io/npm/v/if-env?color=green&label=if-env&logo=npm)
 ![npm](https://img.shields.io/npm/v/jwks-rsa?color=lightblue&label=jwks-rsa&logo=npm)
-![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/Holiday-Secret-Santa/Secret-Santa-App?label=code%20maintainability&logo=Code%20Climate)
-![Code Climate coverage](https://img.shields.io/codeclimate/coverage/Holiday-Secret-Santa/Secret-Santa-App?color=green&label=test%20coverage&logo=Code%20Climate)
-![CircleCI](https://img.shields.io/circleci/build/github/Holiday-Secret-Santa/Secret-Santa-App/master?logo=CircleCI)
 
 <p align="center">
  <img src="imgs/readme/appLogo.png" alt="secret santa app logo" width="400px">
@@ -43,6 +44,7 @@
 - [Technologies Used for Development](#technologies-used-for-development)
   - [Core Technologies](#core-technologies)
   - [CircleCI and Code Climate](#circleci-and-code-climate)
+  - [GraphQL](#graphql)
 - [Installation and Testing Instructions](#installation-and-testing-instructions)
   - [Required Technologies](#required-technologies)
   - [Installation Instructions](#installation-instructions)
@@ -56,7 +58,7 @@
 The 2020 holiday season is quickly approaching! This Secret Santa App will help you orchestrate the holiday fan-favorite game, Secret Santa! With this app, the user will be able to do the following:
 
 - Schedule a date for the secret santa gift exchange event
-- Invite family and friends to join in on the holiday fun
+- Invite family and friends to join in on the holiday fun via email invite
 - Keep track of who accepted the secret santa invite
 - Discretely assign a single participant to each individual registered for the event
 - Allow participants to create a list of gift ideas they would like to recieve
@@ -87,13 +89,13 @@ SO THAT I can prepare an awesome holiday event for friends and family
 
 Here is a list of the MVP requirements for this app. Please note that these are the same core functionality items listed in the project description section.
 
-- The User can _register_, _login_ and _logout_
-- The User can schedule a date for the secret santa gift exchange event
-- The User can invite family and friends to join in on the holiday fun
-- The User can keep track of who accepted the secret santa invite
-- The User can discretely assign a single participant to each individual registered for the event with designed random assignment feature
-- The System allows participants to manually create a list of gift ideas they would like to recieve
-  - When creating a wish list item, the participant will be able to add an item name and URL link for potential online purchase
+- The User can _register_, _login_ and _logout_.
+- The User can schedule a date for the secret santa gift exchange event.
+- The User can invite family and friends to join in on the holiday fun via email invite.
+- The User can keep track of who accepted the secret santa invite.
+- The User can discretely assign a single participant to each individual registered for the event with built in random assignment feature.
+- The Participants can manually create a wish list of gift ideas they would like to recieve.
+  - When creating a wish list item, the participant will be able to add an item name and URL link for potential online purchase.
 
 ---
 
@@ -178,7 +180,7 @@ The diagrams listed below outline the sequence of events required for the all ke
 
 ### ER Diagram
 
-The entity relationship **(ER) diagram** below provides a visual representation of how the data is saved inside the application's back-end database. This diagram also demonstrates the relationship between each database table.
+The **entity relationship (ER) diagram** below provides a visual representation of how the data is saved inside the application's back-end database. This diagram also demonstrates the relationship between each database table.
 
 ` The ER Diagram is based on the relations between the tables using SQL Self JOIN`
 
@@ -191,7 +193,7 @@ The entity relationship **(ER) diagram** below provides a visual representation 
 
 #### Wireframes Applicable for All Users
 
-The wireframes below are applicable for all users. In theory, any user should be able to access the homepage, login page, view all their events, and create an event. However, the event details wireframe will be different depending on whether the user is the `event organizer` or `invited guest`. The wireframes for event details specific to that role are provided below in separate sections.
+The wireframes below are applicable for all users. In theory, any user should be able to access the homepage, login page, view all their events, and create an event. However, the event details wireframe will be different depending on whether the user is the `event organizer` or `invited guest (aka participant)`. The wireframes for event details specific to that role are provided below in separate sections.
 
 ##### Wireframe for Home page
 
@@ -244,7 +246,7 @@ The wireframe below is for the `event organizer` role. The `event organizer` sho
 
 ##### Wireframe for Viewing Secret Santa Assignments (Organizer Role)
 
-This wireframe was designed for the main MVP functionality that will allow for manual secret santa assignment.
+This wireframe was designed for the main MVP functionality that will allow the user to make secret santa assignments.
 
 <details>
 <summary> 🎨 Click to expand the secret santa assignment wireframe.</summary>
@@ -292,11 +294,9 @@ Please note that the when the user clicks the `Add Item Button` on the event det
 
 ## Technologies Used for Development
 
-Here is a list of the core technologies we used for the development of this application.
-
 ### Core Technologies
 
-Here is a list of core technologies that were used to develop this web application:
+Here is a list of core technologies that were used to develop this web application.
 
 | Technologies | Description                                                                                              |
 | ------------ | -------------------------------------------------------------------------------------------------------- |
@@ -316,25 +316,25 @@ Here is a list of core technologies that were used to develop this web applicati
 
 #### CircleCI
 
-While developing this application, the team integrated CircleCI into this repository to automatically monitor added unit testing included throughout the application. Please visit the [CircleCi documentation](https://circleci.com/) for additional instruction on how to integrate the CircleCI tool.
+While developing this application, the team integrated CircleCI into this repository to automatically monitor the build status of added unit test included throughout the application. Please visit the [CircleCi documentation](https://circleci.com/) for additional instruction on how to integrate the CircleCI tool.
 
 #### Code Climate
 
-In addition to CircleCi, the team also incorporated Code Climate monitoring services into this repository to ensure the overall code quality developed by the team met coding best practices. Please visit the [Code Climate](https://codeclimate.com/) for additional instruction on how to integrate the Code Climate tool.
+In addition to CircleCi, the team also incorporated Code Climate monitoring services into this repository to ensure overall code quality best practices were incorporated throughout the development of this application. Please visit the [Code Climate](https://codeclimate.com/) for additional instruction on how to integrate the Code Climate tool.
 
 ##### IMPORTANT FYI for Package.json Files
 
 This project contains two `package.json` files - one at the root directory and another in the client folder.
 
-In order to resolve coverage issues / limitations associated with Code Climate running coverage reports this full-stack application, the team had to **_intentionally_** include front-end dev dependencies in the root `package.json` file to ensure all frontend and backend tests are run from the single root `package.json` file.
+In order to resolve coverage issues / limitations associated with Code Climate running coverage reports for this full-stack application, the team had to **_intentionally_** include front-end dev dependencies in the root `package.json` file to ensure all frontend and backend tests ran from the single root `package.json` file.
 
 I am including this update to make it clear that we are aware react-related dependencies are typically only needed in the frontend portion and an application; however, the approach we used in this repository was used to work around Code Climate limitations.
 
-#### GraphQL
+### GraphQL
 
-Instead of using a traditional promise-based HTTP client to pull data from a database, the team used [GraphQL](https://graphql.org/) to make the API calls to our SQL-based backend database. When using GraphQL, we had the ability to specify the specific data items within a single call without using lengthy endpoints and axios calls.
+Instead of using a traditional promise-based HTTP client to pull data from the backend database used to store the application's data, the team used the [GraphQL API client](https://graphql.org/) to make API calls to our SQL-based backend database. When using GraphQL, we had the ability to specify identify the data items needed within a single call without using multiple, lengthy endpoints and axios calls.
 
-In addition, GraphQL does not require you to use PostMan to test database call, and instead uses it own sandbox environment by simply adding `/graphql` to the end of the port address being used to locally launch the application. For example, instead of using `http://localhost:3001/`, you would use `http://localhost:3001/grqphql` to interact with the graphql sandbox environment. The image below shows the graphql sandbox environment and include a sample graphql query that the team used to query wish list items added by participants.
+In addition, GraphQL does not require the use of PostMan to test database calls, and instead uses it own sandbox environment by simply adding `/graphql` to the end of the port address being used to locally launch the application. For example, instead of using `http://localhost:3001/`, you would use `http://localhost:3001/grqphql` to interact with the graphql sandbox environment. The image below shows the graphql sandbox environment and include a sample GraphQL query that the team used to query wish list items added by participants.
 
 ![GraphQL Sample Query](./imgs/readme/sampleGraphQL.png)
 
@@ -354,7 +354,7 @@ All NPM packages needed for this application are already listed as dependencies 
 
 ### Testing Instructions
 
-When checking to see if all applicable unit tests pass throughout the development of this application, make sure to run the `npm run test` command in your terminal each time you would like to test the application. The team used the [Jest Testing Framework](https://jestjs.io/) to build all unit test for this application.
+When checking to see if all applicable unit tests pass for this application, make sure to run the `npm run test` command in your terminal each time you would like to test status for all unit tests included in this application. The team used the [Jest Testing Framework](https://jestjs.io/) to build all unit test for this application.
 
 There are a total of 64 passing unit test incorporated for this application, which results in 87 percent test coverage for the entire application.
 
