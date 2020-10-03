@@ -20,7 +20,8 @@
 ![npm](https://img.shields.io/npm/v/if-env?color=green&label=if-env&logo=npm)
 ![npm](https://img.shields.io/npm/v/jwks-rsa?color=lightblue&label=jwks-rsa&logo=npm)
 ![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/Holiday-Secret-Santa/Secret-Santa-App?label=code%20maintainability&logo=Code%20Climate)
-![Code Climate coverage](https://img.shields.io/codeclimate/coverage/Holiday-Secret-Santa/Secret-Santa-App?color=green&label=test%20coverage&logo=circleci)
+![Code Climate coverage](https://img.shields.io/codeclimate/coverage/Holiday-Secret-Santa/Secret-Santa-App?color=green&label=test%20coverage&logo=Code%20Climate)
+![CircleCI](https://img.shields.io/circleci/build/github/Holiday-Secret-Santa/Secret-Santa-App/master?logo=CircleCI)
 
 <p align="center">
  <img src="imgs/readme/appLogo.png" alt="secret santa app logo" width="400px">
@@ -90,8 +91,7 @@ Here is a list of the MVP requirements for this app. Please note that these are 
 - The User can schedule a date for the secret santa gift exchange event
 - The User can invite family and friends to join in on the holiday fun
 - The User can keep track of who accepted the secret santa invite
-- The User can discretely assign a single participant to each individual registered for the event
-  - System offers option to do a random assignment (potential future development)
+- The User can discretely assign a single participant to each individual registered for the event with designed random assignment feature
 - The System allows participants to manually create a list of gift ideas they would like to recieve
   - When creating a wish list item, the participant will be able to add an item name and URL link for potential online purchase
 
@@ -300,16 +300,16 @@ Here is a list of core technologies that were used to develop this web applicati
 
 | Technologies | Description                                                                                              |
 | ------------ | -------------------------------------------------------------------------------------------------------- |
-| HTML         | Used to design the basic website structre                                                                |
+| HTML         | Used to design the basic website structure                                                               |
 | JavaScript   | Used to add functionality to the application                                                             |
 | CSS          | Used to add custom styling to the application                                                            |
 | Ant Design   | React UI component library used to design this React-based application                                   |
 | React.js     | Javascript library used to design the front-end of this application                                      |
 | Node.js      | Used to establish the back-end server environment for this application (also utilized many NPM packages) |
 | SQL          | Application database is designed and quered using SQL and Sequelize                                      |
-| Nodemailer   | Package used to emable auto sending of emails to added pariticipants                                     |
+| Nodemailer   | Package used to enable auto sending of emails to added participants                                      |
 | GraphQL      | Used this query language for API interaction                                                             |
-| CircleCI     | Used to monitor embedded unit tests.                                                                     |
+| CircleCI     | Used to monitor embedded unit tests                                                                      |
 | Code Climate | Used to monitor and test code quality (i.e. consistent coding best practices)                            |
 
 ### CircleCI and Code Climate
