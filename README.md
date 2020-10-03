@@ -63,6 +63,8 @@ The 2020 holiday season is quickly approaching! This Secret Santa App will help 
 - Discretely assign a single participant to each individual registered for the event
 - Allow participants to create a list of gift ideas they would like to recieve
 
+_Return to [Table of Contents](#table-of-contents)_
+
 ---
 
 ## Reference Links
@@ -73,6 +75,8 @@ Link to GitHub Repo used for application development- [https://github.com/Holida
 
 Link to Project Board used for application development - [https://github.com/Holiday-Secret-Santa/Secret-Santa-App/projects/1](https://github.com/Holiday-Secret-Santa/Secret-Santa-App/projects/1)
 
+_Return to [Table of Contents](#table-of-contents)_
+
 ---
 
 ## User Story
@@ -81,7 +85,10 @@ Link to Project Board used for application development - [https://github.com/Hol
 AS a user who needs to organize a secret santa gift exchange
 I WANT to be able to use an online application
 SO THAT I can prepare an awesome holiday event for friends and family
+
 ```
+
+_Return to [Table of Contents](#table-of-contents)_
 
 ---
 
@@ -97,7 +104,7 @@ Here is a list of the MVP requirements for this app. Please note that these are 
 - The Participants can manually create a wish list of gift ideas they would like to recieve.
   - When creating a wish list item, the participant will be able to add an item name and URL link for potential online purchase.
 
----
+## _Return to [Table of Contents](#table-of-contents)_
 
 ## Design
 
@@ -292,6 +299,8 @@ Please note that the when the user clicks the `Add Item Button` on the event det
 
 </details>
 
+_Return to [Table of Contents](#table-of-contents)_
+
 ---
 
 ## Technologies Used for Development
@@ -340,6 +349,8 @@ In addition, GraphQL does not require the use of PostMan to test database calls,
 
 ![GraphQL Sample Query](./imgs/readme/sampleGraphQL.png)
 
+_Return to [Table of Contents](#table-of-contents)_
+
 ---
 
 ## Installation and Testing Instructions
@@ -361,6 +372,8 @@ When checking to see if all applicable unit tests pass for this application, mak
 There are a total of 64 passing unit test incorporated for this application, which results in 87 percent test coverage for the entire application.
 
 ![Passing Unit Tests](./imgs/readme/unitTestsPassing.png)
+
+_Return to [Table of Contents](#table-of-contents)_
 
 ---
 
