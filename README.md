@@ -104,7 +104,7 @@ Here is a list of the MVP requirements for this app. Please note that these are 
 - The Participants can manually create a wish list of gift ideas they would like to recieve.
   - When creating a wish list item, the participant will be able to add an item name and URL link for potential online purchase.
 
-## _Return to [Table of Contents](#table-of-contents)_
+_Return to [Table of Contents](#table-of-contents)_
 
 ## Design
 
