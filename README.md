@@ -292,6 +292,8 @@ Please note that the when the user clicks the `Add Item Button` on the event det
 
 </details>
 
+---
+
 ## Technologies Used for Development
 
 ### Core Technologies
@@ -371,4 +373,4 @@ There are a total of 64 passing unit test incorporated for this application, whi
 
 ---
 
-[Table of Contents](#table-of-contents)
+_Return to [Table of Contents](#table-of-contents)_
