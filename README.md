@@ -106,6 +106,8 @@ Here is a list of the MVP requirements for this app. Please note that these are 
 
 _Return to [Table of Contents](#table-of-contents)_
 
+---
+
 ## Design
 
 ### Actions Diagram
