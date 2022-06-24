@@ -33,7 +33,7 @@
     "jest-canvas-mock": "^2.2.0",
     "jest-transform-css": "^2.0.0",
     "jest-transform-file": "^1.1.1",
-    "jsdom": "16.4.0",
+    "jsdom": "16.5.0",
     "jsdom-global": "3.0.2",
     "mysql2": "^1.7.0",
     "nodemon": "^1.18.7",
